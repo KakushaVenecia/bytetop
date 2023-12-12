@@ -17,8 +17,8 @@ Please ensure you have composer, xampp installed on your machine.
 - Clone the master branch of the repository if you are a collaborator into C:\xampp\htdocs folder.
 - Run composer install to install the project's Laravel dependencies
 - Run npm install to install any front-end dependencies through node package manager(npm)
-- run php artisan 
-
+- run php artisan serve and this is what the page should look when you run 
+you should see a page that renders and has the team names 
 
 ## License
 
