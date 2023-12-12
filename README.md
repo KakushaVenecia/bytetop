@@ -11,10 +11,10 @@
 This is an ecommerce platform that sells computers and accessories targeting students between the age range of 18-30. 
 This project is made by Team 1 for the Team Project Module. 
 
-## Installation Guidelines
+## Setup  Guidelines
 
 Please ensure you have composer, xampp installed on your machine. 
-- Clone the repository if you are a collaborator into C:\xampp\htdocs folder. 
+- Clone the master branch of the repository if you are a collaborator into C:\xampp\htdocs folder.
 - Run composer install to install the project's Laravel dependencies
 - Run npm install to install any front-end dependencies through node package manager(npm)
 - run php artisan 
