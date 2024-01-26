@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get('/morikeh',function(){
     return view('landing');
 });
+Route::get('/register',function(){
+    return view('register');
+});
