@@ -8,7 +8,16 @@
 </head>
 <body>
     <nav>
-<img class="logo" src="images/Logo.png" alt="Logo">
+        <img class="logo" src="images/Logo.png" alt="Logo">
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <button onclick="performSearch()">Search</button>
+        </div>
+        <div id="searchResults"></div>
+
+        <script src="script.js"></script>
+
     </nav>
     <h1>Welcome to ByteTop</h1>
     
@@ -20,5 +29,9 @@
         <img class= "products" src="images/Lenovo_Laptop.jpg" alt="Lenovo Laptop">
         <img class= "products" src="images/Dell_Laptop.webp" alt="Dell Laptop">
         <img class= "products" src="images/Acer_Laptop.webp" alt="Acer Laptop">
+
+        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi eum velit quae, 
+            nemo quidem, molestias minima, ducimus dolor ut ratione deleniti fugiat consequuntur quis 
+            soluta neque. Exercitationem voluptas officiis rerum.</p>
 </body>
 </html>
