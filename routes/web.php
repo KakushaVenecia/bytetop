@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/morikeh',function(){
+Route::get('/landing',function(){
     return view('landing');
 });
 Route::get('/register',function(){
