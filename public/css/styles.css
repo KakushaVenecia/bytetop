@@ -1,0 +1,36 @@
+*{
+    background-color: #FFFFFF;
+}
+.logo{
+    background-color: #FFFFFF;
+    width: 100px;
+    height: 100px;
+    margin-right: 20px; /* Adjust the margin as needed */
+}
+.products{
+    width: 250px;
+    height: 250px;
+}
+
+nav{
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+.search-container {
+    display: flex;
+    max-width: 400px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+}
+
+button {
+    background-color: 
+    #001E2C;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
