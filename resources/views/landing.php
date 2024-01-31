@@ -6,6 +6,20 @@
     <link rel="stylesheet" href="css/styles.css">
     <title>Document</title>
 </head>
+<style>
+a:link, a:visited {
+  background-color: #001E2C;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: #001E2C;
+}
+</style>
 <body>
     <nav>
         <img class="logo" src="images/Logo.png" alt="Logo">
@@ -16,22 +30,25 @@
         </div>
         <div id="searchResults"></div>
 
-        <script src="script.js"></script>
+        <div class="nav-links">
+            <a href="#">About</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Log In</a>
+            <a href="#">Basket</a>
+        </div>
+
+        <script src="js/script.js"></script>
 
     </nav>
     <h1>Welcome to ByteTop</h1>
     
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit est, 
-        asperiores quo culpa tenetur error optio itaque inventore sed sunt 
-        repellat similique impedit quia voluptates quod quae, nulla corporis facere!</p>
+    <p>Here you will find our latest deals and offers!</p>
 
         <img class= "products" src="images/Hp_Laptop.jpeg" alt="Hp laptop">
         <img class= "products" src="images/Lenovo_Laptop.jpg" alt="Lenovo Laptop">
         <img class= "products" src="images/Dell_Laptop.webp" alt="Dell Laptop">
         <img class= "products" src="images/Acer_Laptop.webp" alt="Acer Laptop">
 
-        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi eum velit quae, 
-            nemo quidem, molestias minima, ducimus dolor ut ratione deleniti fugiat consequuntur quis 
-            soluta neque. Exercitationem voluptas officiis rerum.</p>
+        <p> We have amazing deals on student laptops and accessories</p>
 </body>
 </html>
