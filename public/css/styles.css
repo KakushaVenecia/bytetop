@@ -1,8 +1,21 @@
-*{
-    background-color: #FFFFFF;
+*{margin: 0;
+
 }
+
+a:link, a:visited {
+    background-color: #001E2C;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  a:hover, a:active {
+    background-color: #03567d;
+  }
+
 .logo{
-    background-color: #FFFFFF;
     width: 100px;
     height: 100px;
     margin-right: 20px; /* Adjust the margin as needed */
@@ -17,6 +30,7 @@ nav{
     display: flex;
     align-items: center; /* Align items vertically */
     justify-content: space-between; /* Add this line to align items to the right */
+    background-color: white;
 }
 
 .nav-links {
@@ -27,7 +41,7 @@ nav{
 .nav-links a {
     margin-right: 15px; /* Adjust the margin between links */
     text-decoration: none;
-    color: #001E2C;
+    color: #ffffff;
 }
 
 .search-container {
@@ -50,4 +64,49 @@ button {
     padding: 10px;
     border: none;
     cursor: pointer;
+}
+
+
+  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  /* Add some padding inside the card container */
+  .container {
+   width: 90%;
+   margin:auto;
+  }
+
+  .deals{
+    display: flex;
+    justify-content: space-between;
+  }
+
+.card{
+    text-align: center;
+    width:200rem;
+    height:20rem;
+    padding: 5px;
+    margin: 3px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+ } 
+
+.card-img{
+    width: 200px;
+    height: 200px;
+}
+
+.more{
+    margin:0;
+    justify-content: center;
+    text-align: center;
+}
+
+.h3{
+    text-align: center;
+    margin: 20px !important;;
 }
