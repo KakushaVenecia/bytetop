@@ -6,20 +6,6 @@
     <link rel="stylesheet" href="css/styles.css">
     <title>Document</title>
 </head>
-<style>
-a:link, a:visited {
-  background-color: #001E2C;
-  color: white;
-  padding: 14px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-}
-
-a:hover, a:active {
-  background-color: #001E2C;
-}
-</style>
 <body>
     <nav>
         <img class="logo" src="images/Logo.png" alt="Logo">
@@ -29,7 +15,6 @@ a:hover, a:active {
             <button onclick="performSearch()">Search</button>
         </div>
         <div id="searchResults"></div>
-
         <div class="nav-links">
             <a href="/about">About</a>
             <a href="/register">Sign Up</a>
@@ -40,15 +25,40 @@ a:hover, a:active {
         <script src="js/script.js"></script>
 
     </nav>
+    <div class="container">
     <h1>Welcome to ByteTop</h1>
-    
+
+    <p> We have amazing deals on student laptops and accessories</p>
+
     <p>Here you will find our latest deals and offers!</p>
 
-        <img class= "products" src="images/Hp_Laptop.jpeg" alt="Hp laptop">
-        <img class= "products" src="images/Lenovo_Laptop.jpg" alt="Lenovo Laptop">
-        <img class= "products" src="images/Dell_Laptop.webp" alt="Dell Laptop">
-        <img class= "products" src="images/Acer_Laptop.webp" alt="Acer Laptop">
 
-        <p> We have amazing deals on student laptops and accessories</p>
+<div class = "deals">
+    <div class="card">
+        <h3><b>Deals in Laptops</b></h3>
+        <br>
+        <img class="card-img"src="images/Hp_Laptop.jpeg" alt="Hp laptop">
+        <div class="more">
+            <button>View More</button>
+        </div>
+    </div>
+   <div class="card">
+        <h3><b>Deals in PCs</b></h3>
+        <br>
+        <img class="card-img"src="images/PC.jpeg" alt="PC">
+        <div class="more">
+            <button>View More</button>
+        </div>
+    </div>
+    <div class="card">
+        <h3><b>Deals in Accessories</b></h3>
+        <br>
+        <img class="card-img" src="images/Keyboard.webp" alt="keyboard">
+        <div class="more">
+            <button>View More</button>
+        </div>
+    </div>
+</div>  
+
 </body>
 </html>
