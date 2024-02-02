@@ -15,23 +15,50 @@
             <button onclick="performSearch()">Search</button>
         </div>
         <div id="searchResults"></div>
+        <div class="nav-links">
+            <a href="/about">About</a>
+            <a href="/register">Sign Up</a>
+            <a href="/login">Log In</a>
+            <a href="#">Basket</a>
+        </div>
 
-        <script src="script.js"></script>
+        <script src="js/script.js"></script>
 
     </nav>
+    <div class="container">
     <h1>Welcome to ByteTop</h1>
-    
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit est, 
-        asperiores quo culpa tenetur error optio itaque inventore sed sunt 
-        repellat similique impedit quia voluptates quod quae, nulla corporis facere!</p>
 
-        <img class= "products" src="images/Hp_Laptop.jpeg" alt="Hp laptop">
-        <img class= "products" src="images/Lenovo_Laptop.jpg" alt="Lenovo Laptop">
-        <img class= "products" src="images/Dell_Laptop.webp" alt="Dell Laptop">
-        <img class= "products" src="images/Acer_Laptop.webp" alt="Acer Laptop">
+    <p> We have amazing deals on student laptops and accessories</p>
 
-        <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi eum velit quae, 
-            nemo quidem, molestias minima, ducimus dolor ut ratione deleniti fugiat consequuntur quis 
-            soluta neque. Exercitationem voluptas officiis rerum.</p>
+    <p>Here you will find our latest deals and offers!</p>
+
+
+<div class = "deals">
+    <div class="card">
+        <h3><b>Deals in Laptops</b></h3>
+        <br>
+        <img class="card-img"src="images/Hp_Laptop.jpeg" alt="Hp laptop">
+        <div class="more">
+            <button>View More</button>
+        </div>
+    </div>
+   <div class="card">
+        <h3><b>Deals in PCs</b></h3>
+        <br>
+        <img class="card-img"src="images/PC.jpeg" alt="PC">
+        <div class="more">
+            <button>View More</button>
+        </div>
+    </div>
+    <div class="card">
+        <h3><b>Deals in Accessories</b></h3>
+        <br>
+        <img class="card-img" src="images/Keyboard.webp" alt="keyboard">
+        <div class="more">
+            <button>View More</button>
+        </div>
+    </div>
+</div>  
+
 </body>
 </html>

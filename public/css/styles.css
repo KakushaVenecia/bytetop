@@ -1,11 +1,25 @@
-*{
-    background-color: #FFFFFF;
+*{margin: 0;
+
 }
+
+a:link, a:visited {
+    background-color: #001E2C;
+    color: white;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  a:hover, a:active {
+    background-color: #03567d;
+  }
+
 .logo{
-    background-color: #FFFFFF;
     width: 100px;
     height: 100px;
     margin-right: 20px; /* Adjust the margin as needed */
+    align-items: right;
 }
 .products{
     width: 250px;
@@ -15,10 +29,27 @@
 nav{
     display: flex;
     align-items: center; /* Align items vertically */
+    justify-content: space-between; /* Add this line to align items to the right */
+    background-color: white;
 }
+
+.nav-links {
+    display: flex;
+    margin-right: auto; /* Push the search bar to the right */
+}
+
+.nav-links a {
+    margin-right: 15px; /* Adjust the margin between links */
+    text-decoration: none;
+    color: #ffffff;
+}
+
 .search-container {
     display: flex;
-    max-width: 400px;
+    max-width: 500px;
+    flex: 1;
+    justify-content: center;
+    margin-right: 20px;
 }
 
 input[type="text"] {
@@ -34,4 +65,3 @@ button {
     border: none;
     cursor: pointer;
 }
-
