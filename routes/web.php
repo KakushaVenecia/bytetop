@@ -28,3 +28,6 @@ Route::get('/dashboard', function(){
 Route::get('/about', function(){
     return view ('about');
 });
+Route::get('/search', function(){
+    return view ('search');
+});
