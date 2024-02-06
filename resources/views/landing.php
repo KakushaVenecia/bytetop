@@ -16,9 +16,9 @@
         </div>
         <div id="searchResults"></div>
         <div class="nav-links">
-            <a href="#">About</a>
-            <a href="#">Sign Up</a>
-            <a href="#">Log In</a>
+            <a href="/about">About</a>
+            <a href="/register">Sign Up</a>
+            <a href="/login">Log In</a>
             <a href="#">Basket</a>
         </div>
 

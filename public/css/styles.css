@@ -67,8 +67,6 @@ button {
     cursor: pointer;
 }
 
-
-  
   /* On mouse-over, add a deeper shadow */
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -109,10 +107,8 @@ button {
 
 .h3{
     text-align: center;
-    margin: 20px !important;;
-}
+    margin: 20px !i
 
 .banner{
     width: 1200px;
     height: 400px;
-}
