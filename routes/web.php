@@ -34,8 +34,6 @@ Route::get('/dashboard', function(){
 Route::get('/about', function(){
     return view ('about');
 });
-
-Route::get('/forgot-password', [PasswordResetController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
-Route::post('/reset-password', [PasswordResetController::class, 'reset']);
+Route::get('/search', function(){
+    return view ('search');
+});

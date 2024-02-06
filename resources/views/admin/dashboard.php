@@ -20,10 +20,15 @@
 
 			<ul class="menu-dropdown">
 
-				<li><a href="#">Dashboard</a><span class="icon"><i class="fa fa-dashboard"></i></span></li>
+				<li><a href="">Dashboard</a><span class="icon"><i class="fa fa-dashboard"></i></span></li>
 
-				<li class="menu-hasdropdown">
-					<a href="#">Settings</a><span class="icon"><i class="fa fa-gear"></i></span>
+				
+				<li><a href="#">Favourites</a><span class="icon"><i class="fa fa-heart"></i></span></li>
+
+				<li><a href="#">Messages</a><span class="icon"><i class="fa fa-envelope"></i></span></li>
+
+        <li class="menu-hasdropdown">
+					<a href="/admin/settings">Settings</a><span class="icon"><i class="fa fa-gear"></i></span>
 
 					<label title="toggle menu" for="settings">
         <span class="downarrow"><i class="fa fa-caret-down"></i></span>
@@ -37,9 +42,6 @@
 					</ul>
 				</li>
 
-				<li><a href="#">Favourites</a><span class="icon"><i class="fa fa-heart"></i></span></li>
-
-				<li><a href="#">Messages</a><span class="icon"><i class="fa fa-envelope"></i></span></li>
 
 			</ul>
 

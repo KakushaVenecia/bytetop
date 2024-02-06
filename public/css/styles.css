@@ -3,16 +3,17 @@
 }
 
 a:link, a:visited {
-    background-color: #001E2C;
+    background-color: #00668A;
     color: white;
     padding: 14px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
+    border-radius: 8px;
   }
   
-  a:hover, a:active {
-    background-color: #03567d;
+  a:hover, .but:hover, a:active, .but:active{
+    background-color: #001E2C;
   }
 
 .logo{
@@ -59,7 +60,7 @@ input[type="text"] {
 
 button {
     background-color: 
-    #001E2C;
+    #00668A;
     color: white;
     padding: 10px;
     border: none;
@@ -106,5 +107,10 @@ button {
 
 .h3{
     text-align: center;
-    margin: 20px !important;;
+    margin: 20px !important;
+}
+
+.banner{
+    width: 1200px;
+    height: 400px;
 }

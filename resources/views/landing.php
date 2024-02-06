@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Document</title>
+    <title>landing page</title>
 </head>
 <body>
     <nav>
@@ -25,21 +25,22 @@
         <script src="js/script.js"></script>
 
     </nav>
-    <div class="container">
+<div class="container">
     <h1>Welcome to ByteTop</h1>
 
     <p> We have amazing deals on student laptops and accessories</p>
 
     <p>Here you will find our latest deals and offers!</p>
-
-
+<div class= "container2">
+    <img class= "banner" src="images/student_discount.jpg" alt="student discount banner">
+</div>
 <div class = "deals">
     <div class="card">
         <h3><b>Deals in Laptops</b></h3>
         <br>
         <img class="card-img"src="images/Hp_Laptop.jpeg" alt="Hp laptop">
         <div class="more">
-            <button>View More</button>
+            <button class= "but">View More</button>
         </div>
     </div>
    <div class="card">
@@ -47,7 +48,7 @@
         <br>
         <img class="card-img"src="images/PC.jpeg" alt="PC">
         <div class="more">
-            <button>View More</button>
+            <button class= "but">View More</button>
         </div>
     </div>
     <div class="card">
@@ -55,10 +56,15 @@
         <br>
         <img class="card-img" src="images/Keyboard.webp" alt="keyboard">
         <div class="more">
-            <button>View More</button>
+            <button class= "but">View More</button>
         </div>
     </div>
 </div>  
 
+<footer>
+    <a href = "">Contact us </a>
+    <a href = "">Your orders </a>
+
+</footer>
 </body>
 </html>
