@@ -9,7 +9,7 @@ a:link, a:visited {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    border-radius: 8px;
+border-radius: 8px;
   }
   
   a:hover, .but:hover, a:active, .but:active{
@@ -67,6 +67,8 @@ button {
     cursor: pointer;
 }
 
+
+  
   /* On mouse-over, add a deeper shadow */
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
