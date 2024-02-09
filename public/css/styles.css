@@ -1,4 +1,40 @@
 *{margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+
+nav a{
+    text-decoration: none;
+}
+
+a:hover{
+    color: #fff;
+}
+
+.navbutton{
+    margin-left: 3px;
+	font-size: 14px;
+	display: inline-block;
+	outline: 0;
+	border: none;
+	background: #fff;
+	font-weight: 500;
+	cursor: pointer;
+	letter-spacing: .1em;
+	text-decoration: none; 
+	text-transform: uppercase;
+	line-height: 100%;
+	border: 1px solid black !important;
+	border-radius: 5px;
+	white-space: nowrap;
+	padding: 0.800rem 1.3rem;
+	transition: all .2s linear;
+
+}
+
+.navbutton:hover , a:active, .but:active{
+    color: #fff;
+	background-color: #262626;
 }
 
 nav{
@@ -6,7 +42,10 @@ nav{
     align-items: center; /* Align items vertically */
     justify-content: space-between; /* Add this line to align items to the right */
     background-color: #ffffff;
+    width: 95%;
+    margin: auto;
 }
+
 .logo {
     width: 100px;
     height: 100px;
@@ -23,7 +62,6 @@ nav{
 .right {
     display: flex;
     align-items: center;
-   background-color: yellow;
 }
 
   /* a:hover, .but:hover, a:active, .but:active{
@@ -37,23 +75,9 @@ nav{
 }
 
 
-/* .nav-links {
-    display: flex;
-    margin-right: auto; /* Push the search bar to the right */
-/* } */
-
-.nav-links a {
- /* Adjust the margin between links */
-    text-decoration: none;
-    color: #ffffff;
-    border-style: solid;
-    border-bottom: #fff;
-    background-color: green;
-}
-
 .search-container {
     display: flex;
-    max-width: 65rem;
+    max-width: 55rem;
     flex: 1;
     justify-content: center;
     margin-right: 20px;
@@ -72,10 +96,8 @@ input[type="text"] {
 button  {
     background-color: 
     #00668A;
-    color: #001E2C;
-    /* padding: 10px; */
-    /* border: none;
-    cursor: pointer; */
+    text-decoration: none;
+ 
 } 
 
 
