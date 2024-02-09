@@ -30,13 +30,42 @@
             <h1>Dashboard</h1>
             <p>This is the dashboard content.</p>
         </div>
-        <div id="products" style="display: none;">
+        <!-- <div id="products" style="display: none;">
             <!-- Products content -->
-            <h1>Products</h1>
+            <!-- <h1>Products</h1>
             <p>This is the products content.</p>
-            <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
 
-        </div>
+            <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
+           
+        </div> --> 
+        <div id="products">
+    <h1>Products</h1>
+    
+    @if(count($products) > 0)
+        <ul>
+            @foreach($products as $product)
+                <li>
+                    <strong>{{ $product->name }}</strong><br>
+                    Description: {{ $product->description }}<br>
+                    Price: {{ $product->price }}<br>
+                    Tags: {{ $product->tags }}<br>
+                    Images: {{ $product->images }}<br>
+                    Category: {{ $product->category }}<br>
+
+                    <!-- Add more fields as needed -->
+
+                    <button class="navbutton">
+                        <a href="{{ route('admin.products.edit', $product->id) }}">Edit Product</a>
+                    </button>
+                </li>
+            @endforeach
+        </ul>
+    @else
+        <p>No products found.</p>
+    @endif
+
+    <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
+</div>
         <div id="customers" style="display: none;">
             <!-- Customers content -->
             <h1>Customers</h1>
