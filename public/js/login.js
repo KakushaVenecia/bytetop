@@ -1,7 +1,33 @@
 // Example to handle form submission
-const form = document.querySelector('form');
-form.addEventListener('submit', (event) => {
-    event.preventDefault(); // Prevent default form submission
-    // Add your login logic here, e.g., send data to a server
-    console.log('Login form submitted!');
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    fetch('http://your-api-endpoint/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password,
+        }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Invalid credentials');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Store the token in localStorage or sessionStorage
+        // Redirect the user to the dashboard or perform any other action
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 });
+

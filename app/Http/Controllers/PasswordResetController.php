@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Password;
 
 class PasswordResetController extends Controller
 {
-    use SendsPasswordResetEmails;
+    // use SendsPasswordResetEmails;
 
     /**
      * Create a new controller instance.

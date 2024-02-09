@@ -1,0 +1,67 @@
+body {
+  background: rgb(96,145,163);
+  background: linear-gradient(180deg, rgba(96,145,163,1) 56%, rgba(241,247,249,1) 100%);
+  font-family: Arial,sans-serif;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: #001E2C;
+  border-radius: 40px;
+  padding: 20px;
+  width: 700px;
+  height: 500px;
+ text-align:center;
+}
+
+h2 {
+color:white ;
+  text-align: center;
+  font-size: 50px;
+  height: 20px;
+  margin-top: 100px;
+
+}
+
+
+p:nth-of-type(1) {
+  color: white; 
+  font-size: 20px; 
+}
+
+/* Apply styles to the "Enter your email address" paragraph */
+p:nth-of-type(2) {
+  color: #fff; /* Blue color, you can change to your desired color */
+  font-size: 20px; /* Adjust size as needed */
+  margin-right: 10px;
+  height: 15px;
+  margin-bottom: 20rem;
+}
+
+
+
+
+
+.white-line {
+  border: .5px solid rgb(208, 205, 205); /* Adjust the border properties as needed */
+  margin: 30px 0; /* Adjust the margin properties as needed for spacing */
+  width: 500px;
+  margin-left: 6.5rem;
+
+}
+
+a {
+  color: #904d00;
+  font-family: Source Sans Pro;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.container p {
+  margin-bottom: 90px; /* Add margin to create space between paragraphs */
+}
+

@@ -19,6 +19,12 @@ function simulateSearch(term) {
     ];
 }
 
+
+function footerToggle(footerBtn) {
+    $(footerBtn).toggleClass("btnActive");
+    $(footerBtn).next().toggleClass("active");
+}
+
 function displayResults(results) {
     // Get the element where results will be displayed
     var resultsContainer = document.getElementById("searchResults");
@@ -33,3 +39,10 @@ function displayResults(results) {
         resultsContainer.appendChild(resultElement);
     });
 }
+
+
+$(document).ready(function(){
+        $('.carousel').slick({
+            // Slick options/configuration here
+        });
+})
