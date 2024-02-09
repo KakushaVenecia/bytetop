@@ -2,19 +2,43 @@
 
 }
 
-a:link, a:visited {
-    background-color: #00668A;
-    color: white;
-    padding: 14px 25px;
-    text-align: center;
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(207, 47, 47);
+    padding: 10px; /* Add padding for better spacing */
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+.search-container {
+    display: flex;
+}
+
+.nav-links {
+    display: flex;
+    margin-left: 20px; /* Adjust margin as needed */
+}
+
+.nav-links a {
     text-decoration: none;
-    display: inline-block;
-border-radius: 8px;
-  }
-  
-  a:hover, .but:hover, a:active, .but:active{
+    color: #ffffff;
+    margin: 0 10px; /* Adjust margin as needed */
+}
+
+.right {
+    display: flex;
+    align-items: center;
+}
+
+
+  /* a:hover, .but:hover, a:active, .but:active{
     background-color: #001E2C;
-  }
+  } */
 
 .logo{
     width: 100px;
@@ -31,7 +55,7 @@ nav{
     display: flex;
     align-items: center; /* Align items vertically */
     justify-content: space-between; /* Add this line to align items to the right */
-    background-color: white;
+    background-color: rgb(207, 47, 47);
 }
 
 .nav-links {
@@ -43,6 +67,8 @@ nav{
     margin-right: 15px; /* Adjust the margin between links */
     text-decoration: none;
     color: #ffffff;
+    border-style: solid;
+    border-bottom: #fff;
 }
 
 .search-container {
@@ -58,14 +84,20 @@ input[type="text"] {
     padding: 10px;
 }
 
-button {
+.slide{
+    height: 40rem;
+    
+    width: 100%;
+}
+
+/* button  {
     background-color: 
     #00668A;
     color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-}
+    /* padding: 10px; */
+    /* border: none;
+    cursor: pointer; */
+/* } */  */
 
 
   

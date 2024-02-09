@@ -1,16 +1,30 @@
 body {
   font-family: 'Work Sans', sans-serif;
   margin: 0;
-  background-color: #eee;
+  /* background-color: #eee; */
 }
 
 /* Layout */
 
-#container {
-  padding: 0;
-  margin: 0;
-  background-color: #fff;
+.container {
+  display: flex;
+  flex-direction: row;
 }
+
+.primary-nav {
+  width: 250px; /* Adjust the width as needed */
+}
+
+.content {
+  flex: 1;
+  padding: 20px; /* Add padding to separate content from navbar */
+}
+
+/* #container {
+  padding: 0;
+  margin-left: 50;
+  background-color: #661414;
+} */
 
 #main {
   padding: 4% 1.5em;
@@ -33,11 +47,11 @@ body {
 
 
 /* Menu Styles */
-
+/* 
 .primary-nav {
 	position: fixed;
 	z-index: 999;
-}
+} */
 
 .menu {
 	position: relative;
@@ -52,23 +66,11 @@ body {
 
 .open-panel {
   border: none;
-  background-color:#fff;
+  background-color:green;
   padding: 0;
 }
 
-.hamburger {
-	background: #fff;
-	position: relative;
-	display: block;
-	text-align: center;
-	padding: 13px 0;
-	width: 50px;
-  height: 73px;
-	left: 0;
-  top: 0;
-	z-index: 1000;
-  cursor: pointer;
-}
+
 
 .hamburger:before {
 	content:"\2630"; /* hamburger icon */
@@ -81,7 +83,7 @@ body {
 .openNav .hamburger:before {
 	content:"\2715"; /* close icon */
 	display: block;
-  color: #000;
+  color: #d30404;
   line-height: 32px;
   font-size: 16px;
 }
@@ -101,7 +103,7 @@ body {
 	pointer-events: none;
   width: 24px;
   height: 24px;
-  color: #fff;
+  color: pink;
 }
 
 .menu,
@@ -163,12 +165,12 @@ input#menu[type="checkbox"] {
 	display: none;
 }
 
-.new-wrapper {
+/* .new-wrapper {
 	position: absolute;
 	left: 50px;
   width: calc(100% - 50px);
   transition: transform .45s cubic-bezier(0.77, 0, 0.175, 1);
-}
+} */
 
 #menu:checked + ul.menu-dropdown {
     
@@ -205,18 +207,55 @@ input#menu[type="checkbox"] {
 }
 
 .downarrow:hover {
-  color: #fff;
+  color: #e91313;
 }
 
-.menu {
+.logo{
+  width: 100px;
+  height: 100px;
+  float: right; /* Adjust the margin as needed */
+  align-items: right;
+}
+
+/* .menu {
 	position: absolute;
 	display: block;
 	left: -200px;
   top: 0;
 	width: 250px;
   transition: all 0.45s cubic-bezier(0.77, 0, 0.175, 1);
-  background-color: #000;
+  background-color: yellow;
 	z-index: 999;
+} */
+
+/* Remove transition effect from the menu */
+.menu {
+  position: absolute;
+  display: block;
+  left: -200px;
+  top: 0;
+  width: 250px;
+  /* Remove transition */
+  /* transition: all 0.45s cubic-bezier(0.77, 0, 0.175, 1); */
+  background-color: #001E2C;
+  z-index: 999;
+}
+
+/* Ensure content starts where the navbar ends */
+/* .new-wrapper {
+  position: absolute;
+  left: 250px; /* Adjust this value based on your navbar width */
+  /* width: calc(100% - 250px); Adjust this value based on your navbar width */
+  /* transition: transform .45s cubic-bezier(0.77, 0, 0.175, 1); */
+/* } */ 
+
+/* Ensure content and navbar are side by side */
+@media screen and (max-width: 992px) {
+  .new-wrapper {
+      position: relative;
+      left: 0;
+      width: 100%;
+  }
 }
 
 .menu-dropdown {

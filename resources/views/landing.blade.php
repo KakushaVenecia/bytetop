@@ -10,13 +10,10 @@
 
 <body>
     @include('partials.navbar')
-
+    
+    <img class="slide" src="{{asset('images/header.webp')}}" alt="" srcset="">
     <div class="container">
-        <h1>Welcome to ByteTop</h1>
 
-        <p> We have amazing deals on student laptops and accessories</p>
-
-        <p>Here you will find our latest deals and offers!</p>
         <div class="deals">
             <div class="card">
                 <h3><b>Deals in Laptops</b></h3>
