@@ -41,46 +41,42 @@
     <h1>Popular Deals</h1>
     <div class="grid-container">
         <div class="grid-item">
-            <img src="{{asset('images/galaxybook.webp')}}" alt="">
+            <img src="{{asset('images/galaxybook.webp')}}" class="item-image" alt="">
             <h1 class="body-title">Galaxy Book</h1>
             <p class="body-content">Get this at only 400 Pounds.</p>
             <p class="body-content">Rating. 4.6/5</p>
             <button class="btn btn-discount">Add to Cart</button>
         </div>
         <div class="grid-item">
-            <img src="{{asset('images/Lenovoyoga.webp')}}" alt="">
+            <img src="{{asset('images/Lenovoyoga.webp')}}" class="item-image" alt="">
             <h1 class="body-title">Lenovo Yoga</h1>
             <p class="body-content">Get this at only 800 Pounds.</p>
-            <br>
             <p class="body-content">Rating. 4.7/5</p>
             <button class="btn btn-discount">Add to Cart</button>
         </div>
          <div class="grid-item">
-        <img src="{{asset('images/hpenvy.webp')}}" alt="">
+        <img src="{{asset('images/hpenvy.webp')}}" class="item-image" alt="">
         <h1 class="body-title">HP Envy</h1>
         <p class="body-content">Get this at only 400 Pounds.</p>
-        <br>
         <p class="body-content">Rating. 4.8/5</p>
         <button class="btn btn-discount">Add to Cart</button>
         </div>
         <div class="grid-item">
-            <img src="{{asset('images/Lenovoyoga.webp')}}" alt="">
+            <img src="{{asset('images/Lenovoyoga.webp')}}" class="item-image" alt="">
             <h1 class="body-title">Lenovo Yoga</h1>
             <p class="body-content">Get this at only 800 Pounds.</p>
-            <br>
             <p class="body-content">Rating. 4.7/5</p>
             <button class="btn btn-discount">Add to Cart</button>
         </div>
         <div class="grid-item">
-            <img src="{{asset('images/hpenvy.webp')}}" alt="">
+            <img src="{{asset('images/hpenvy.webp')}}" class="item-image" alt="">
             <h1 class="body-title">HP Envy</h1>
             <p class="body-content">Get this at only 400 Pounds.</p>
-            <br>
             <p class="body-content">Rating. 4.8/5</p>
             <button class="btn btn-discount">Add to Cart</button>
         </div>
         <div class="grid-item">
-            <img src="{{asset('images/galaxybook.webp')}}" alt="">
+            <img src="{{asset('images/galaxybook.webp')}}" class="item-image" alt="">
             <h1 class="body-title">Galaxy Book</h1>
             <p class="body-content">Get this at only 400 Pounds.</p>
             <p class="body-content">Rating. 4.6/5</p>

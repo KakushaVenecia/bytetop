@@ -1,8 +1,8 @@
 <footer style="background-color:#001E2C; padding: 3em 4em 2em; text-align: center;">
-    <div class="row" style="max-width: 90%; margin: 0 auto; display: flex; justify-content: space-around; color: #fff; border-bottom: 1px solid #cecece;">
+    <div class="row" style="max-width: 90%; margin: 20x auto; display: flex; justify-content: space-around; color: #fff; border-bottom: 1px solid #cecece;">
         <div class="col-3">
             <div class="link-cat">
-                <span class="footer-cat">Solution</span>
+                <span class="footer-cat">Services</span>
             </div>
             <ul class="footer-cat-links">
                 <li><a href="#"><span>Track My Order</span></a></li>
