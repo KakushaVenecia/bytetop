@@ -112,8 +112,9 @@ button  {
   }
   
   .card-img {
-    width: 80%; /* Resize image to 80% of card width */
-    max-width: 50rem; /* Set maximum width for the image */
+
+    width: 80%; /*Resize image to 80% of card width*/
+    max-width: 55rem; /* Set maximum width for the image */
     height: auto; /* Maintain aspect ratio */
   }
  
@@ -502,4 +503,9 @@ img {
 }
 h1{
     text-align: center;
+}
+
+.item-image {
+    width: 200px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
 }
