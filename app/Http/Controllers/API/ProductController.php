@@ -6,11 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Support\Facades\Redirect;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
-
-
-// Route::get('/products/create', [ProductController::class, 'create']);
-// Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 class ProductController extends Controller
 {
     public function create()
@@ -24,16 +21,84 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            // Add more validation rules as needed
+            'price' => 'required|numeric',
+            'tags' => 'required|string',
+            'images' => 'required|string',
+            'category' => 'required|string',
+        
         ]);
 
         // Create a new product
         $product = Product::create([
             'name' => $request->input('name'),
             'description' => $request->input('description'),
-            // Add more fields as needed
+            'price' => $request->input('price'),
+            'tags' => $request->input('tags'),
+            'images' => $request->input('images'),
+            'category' => $request->input('category'),
+        
         ]);
 
         return Redirect::route('dashboard')->with('success', 'Product created successfully');
     }
+
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('admindashboard.edit', compact('product'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validate the request data
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+            'tags' => 'required|string',
+            'images' => 'required|string',
+            'category' => 'required|string',
+            
+        ]);
+
+        // Find the product by ID
+        $product = Product::findOrFail($id);
+
+        // Update the product
+        $product->update([
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'tags' => $request->input('tags'),
+            'images' => $request->input('images'),
+            'category' => $request->input('category'),
+        
+        ]);
+
+        return Redirect::route('dashboard')->with('success', 'Product updated successfully');
+    }
+
+
+    public function destroy($id)
+    {
+        // Find the product by ID and delete it
+        $product = Product::findOrFail($id);
+        $product->delete();
+
+        return Redirect::route('dashboard')->with('success', 'Product deleted successfully');
+    }
+
+    // Example of how to use JWT authentication for product APIs
+    // public function index()
+    // {
+    //     $user = JWTAuth::parseToken()->authenticate();
+    //     $products = Product::all();
+
+    //     return response()->json(['user' => $user, 'products' => $products]);
+    // }
+    public function index()
+{
+    $products = Product::all();
+    return view('admindashboard.create', compact('products'));
+}
 }

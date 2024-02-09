@@ -11,7 +11,11 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'description', // Add 'name' attribute here
-        // Add other attributes that you want to be mass assignable
+        'description',
+        'price',
+        'tags',
+        'images',
+        'category',
+        
     ];
 }
