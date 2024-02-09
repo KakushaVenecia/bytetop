@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
@@ -13,9 +14,9 @@ class AuthController extends Controller
      * @return void
      */
     public function __construct()
-    {
-        $this->middleware('auth:api', ['except' => ['login']]);
-    }
+{
+    $this->middleware('auth:api');
+}
 
     /**
      * Get a JWT via given credentials.
@@ -80,4 +81,7 @@ class AuthController extends Controller
             'expires_in' => 60
         ]);
     }
+
+   
+
 }
