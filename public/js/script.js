@@ -39,3 +39,10 @@ function displayResults(results) {
         resultsContainer.appendChild(resultElement);
     });
 }
+
+
+$(document).ready(function(){
+        $('.carousel').slick({
+            // Slick options/configuration here
+        });
+})
