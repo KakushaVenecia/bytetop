@@ -18,7 +18,6 @@ use App\Http\Controllers\VerificationController;
 */
 
 Route::get('/email/verify/', [VerificationController::class, 'verify'])->name('verification.verify');
-
 Route::get('/',function(){
     return view('landing');
 });
