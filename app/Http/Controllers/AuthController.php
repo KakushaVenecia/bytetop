@@ -28,23 +28,23 @@ class AuthController extends Controller
 
      public function login(Request $request)
      {
-        //  $credentials = request(['email', 'password']);
+         $credentials = request(['email', 'password']);
      
-        //  if (! $token = auth()->attempt($credentials)) {
-        //      return response()->json(['error' => 'Unauthorized'], 401);
-        //  }
+         if (! $token = auth()->attempt($credentials)) {
+             return response()->json(['error' => 'Unauthorized'], 401);
+         }
      
-        //  return response()->json(['token' => $token]);
-        $credentials = $request->only('email', 'password');
+         return response()->json(['token' => $token]);
+    //     $credentials = $request->only('email', 'password');
 
-    if (Auth::attempt($credentials)) {
-        // Authentication passed...
-        return redirect()->intended('dashboard');
-    }
+    // if (Auth::attempt($credentials)) {
+    //     // Authentication passed...
+    //     return redirect()->intended('dashboard');
+    // }
 
-    return back()->withErrors([
-        'email' => 'The provided credentials do not match our records.',
-    ]);
+    // return back()->withErrors([
+    //     'email' => 'The provided credentials do not match our records.',
+    // ]);
      }
 
     /**
