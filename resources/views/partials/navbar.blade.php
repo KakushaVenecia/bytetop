@@ -16,10 +16,15 @@
     </div>
 
     <div class="right">
-        <button class="navbutton"><a href="/cart">Cart</a></button>
-        <button class="navbutton"><a href="/login">Log In </a></button>
-        <button class="navbutton"><a href="/signup">Sign Up</a></button>
-
+        @if(auth()->check())
+            <!-- User is logged in -->
+            <span class="me-3">Welcome, {{ auth()->user()->name }}</span>
+            <button class="navbutton"><a href="/cart">Cart</a></button>
+            <button class="navbutton"><a href="{{ route('logout') }}">Logout</a></button>
+        @else
+            <!-- User is not logged in -->
+            <button class="navbutton"><a href="/login">Log In</a></button>
+            <button class="navbutton"><a href="/signup">Sign Up</a></button>
+        @endif
     </div>
 </nav>
-

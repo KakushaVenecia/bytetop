@@ -25,47 +25,50 @@
     </div>
 
     <div class="content">
+        <div class="user-bar">
+            @if(auth()->check())
+                <p>Hello, {{ auth()->user()->name }}</p>
+                <form action="/logout" method="post">
+                    @csrf
+                    <button type="submit">Logout</button>
+                </form>
+            @endif
+        </div>
+
         <div id="dashboard" style="display: none;">
             <!-- Dashboard content -->
             <h1>Dashboard</h1>
             <p>This is the dashboard content.</p>
         </div>
-        <!-- <div id="products" style="display: none;">
+        <div id="products">
             <!-- Products content -->
-            <!-- <h1>Products</h1>
-            <p>This is the products content.</p>
+            <h1>Products</h1>
+            
+            @if(count($products) > 0)
+                <ul>
+                    @foreach($products as $product)
+                        <li>
+                            <strong>{{ $product->name }}</strong><br>
+                            Description: {{ $product->description }}<br>
+                            Price: {{ $product->price }}<br>
+                            Tags: {{ $product->tags }}<br>
+                            Images: {{ $product->images }}<br>
+                            Category: {{ $product->category }}<br>
+
+                            <!-- Add more fields as needed -->
+
+                            <button class="navbutton">
+                                <a href="{{ route('admin.products.edit', $product->id) }}">Edit Product</a>
+                            </button>
+                        </li>
+                    @endforeach
+                </ul>
+            @else
+                <p>No products found.</p>
+            @endif
 
             <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
-           
-        </div> --> 
-        <div id="products">
-    <h1>Products</h1>
-    
-    @if(count($products) > 0)
-        <ul>
-            @foreach($products as $product)
-                <li>
-                    <strong>{{ $product->name }}</strong><br>
-                    Description: {{ $product->description }}<br>
-                    Price: {{ $product->price }}<br>
-                    Tags: {{ $product->tags }}<br>
-                    Images: {{ $product->images }}<br>
-                    Category: {{ $product->category }}<br>
-
-                    <!-- Add more fields as needed -->
-
-                    <button class="navbutton">
-                        <a href="{{ route('admin.products.edit', $product->id) }}">Edit Product</a>
-                    </button>
-                </li>
-            @endforeach
-        </ul>
-    @else
-        <p>No products found.</p>
-    @endif
-
-    <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
-</div>
+        </div>
         <div id="customers" style="display: none;">
             <!-- Customers content -->
             <h1>Customers</h1>
@@ -94,37 +97,7 @@
         document.getElementById('settings').style.display = 'none';
     }
 
-    function showProducts() {
-        document.getElementById('dashboard').style.display = 'none';
-        document.getElementById('products').style.display = 'block';
-        document.getElementById('customers').style.display = 'none';
-        document.getElementById('orders').style.display = 'none';
-        document.getElementById('settings').style.display = 'none';
-    }
-
-    function showCustomers() {
-        document.getElementById('dashboard').style.display = 'none';
-        document.getElementById('products').style.display = 'none';
-        document.getElementById('customers').style.display = 'block';
-        document.getElementById('orders').style.display = 'none';
-        document.getElementById('settings').style.display = 'none';
-    }
-
-    function showOrders() {
-        document.getElementById('dashboard').style.display = 'none';
-        document.getElementById('products').style.display = 'none';
-        document.getElementById('customers').style.display = 'none';
-        document.getElementById('orders').style.display = 'block';
-        document.getElementById('settings').style.display = 'none';
-    }
-
-    function showSettings() {
-        document.getElementById('dashboard').style.display = 'none';
-        document.getElementById('products').style.display = 'none';
-        document.getElementById('customers').style.display = 'none';
-        document.getElementById('orders').style.display = 'none';
-        document.getElementById('settings').style.display = 'block';
-    }
+    // Add other show functions as needed
 
     // Show the dashboard content by default on page load
     showDashboard();

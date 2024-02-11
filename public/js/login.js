@@ -1,19 +1,14 @@
-// Example to handle form submission
 document.getElementById('loginForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    var formData = new FormData(this);
 
-    fetch('http://your-api-endpoint/login', {
+    fetch('/login', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         },
-        body: JSON.stringify({
-            email: email,
-            password: password,
-        }),
+        body: formData
     })
     .then(response => {
         if (!response.ok) {
@@ -23,11 +18,12 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
     })
     .then(data => {
         // Store the token in localStorage or sessionStorage
-        // Redirect the user to the dashboard or perform any other action
-        console.log(data);
+        localStorage.setItem('token', data.token);
+
+        // Redirect or navigate to another page
+        window.location.href = '/dashboard'; // Example redirect URL
     })
     .catch(error => {
         console.error('Error:', error);
     });
 });
-

@@ -7,7 +7,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
@@ -22,6 +21,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'password',
         'confirmpassword',
+        'role', 
+        'email_verification_token'
     ];
 
     /**
@@ -41,7 +42,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $guarded = [
-        'role',
+        // Remove 'role' from the $guarded array
     ];
 
     /**
@@ -52,4 +53,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    
 }
+
