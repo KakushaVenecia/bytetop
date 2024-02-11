@@ -35,3 +35,20 @@ Route::get('/about', function(){
 Route::get('/search', function(){
     return view ('search');
 });
+
+Route::get('/forgotpwd', function(){
+    return view ('forgotpwd');
+});
+
+Route::get('/checkmail', function(){
+    return view ('checkmail');
+});
+
+
+Route::get('/basket', function(){
+    return view ('basket');
+});
+
+Route::get('/checkout', function(){
+    return view ('checkout');
+});

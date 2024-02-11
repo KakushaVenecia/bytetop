@@ -16,8 +16,16 @@
 	<p>That's ok, It happens!</p>
 	<p>Enter your email address</p>
 	<input type="text" id="email" name="email" placeholder="Email address">
-	<button>Continue</button><br/><br/>
+    <div>
+                <button class= "continue"> 
+                    <span>Continue</span>
+                </button>
+                
+                <div class="Return">
+                    <a href="#" id= "returntologin">Return to login</a>
+                </div>
+	
 </div>
-
+<script src="js/forgotpwd.js"></script>
 </body>
 </html>

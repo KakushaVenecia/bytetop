@@ -5,3 +5,88 @@ form.addEventListener('submit', (event) => {
     // Add your login logic here, e.g., send data to a server
     console.log('Login form submitted!');
 });
+
+
+
+const showPassword = document.getElementById("show-password");
+const passwordField = document.getElementById("password");
+
+showPassword.addEventListener("click", function() {
+  const isPasswordVisible = passwordField.getAttribute("type") === "text";
+
+  this.classList.toggle("fa-eye-slash", !isPasswordVisible);
+  const type = isPasswordVisible ? "password" : "text";
+  passwordField.setAttribute("type", type);
+});
+
+
+
+
+  
+
+
+
+
+
+
+  function validateLogin() {
+    var emailInput = document.getElementsByName("email")[0];
+    var passwordInput = document.getElementsByName("password")[0];
+    var rememberMeCheckbox = document.getElementById("rememberMe");
+  
+    // Reset previous error messages
+    hideErrorMessages();
+  
+    // Validate email and password
+    if (emailInput.value === "") {
+      displayErrorMessage("Please enter an email", emailInput);
+      return;
+    }
+  
+    if (passwordInput.value === "") {
+      displayErrorMessage("Password is required", passwordInput);
+      return;
+    }
+  
+    // Check if the email and password are correct (replace this with your actual validation logic)
+    var isValidUser = validateUser(emailInput.value, passwordInput.value);
+  
+    if (isValidUser) {
+      // Redirect to home page or perform necessary actions for successful login
+      alert("Login successful!");
+    } else {
+      displayErrorMessage("A user with this email not found", emailInput);
+    }
+  }
+  
+  function displayErrorMessage(message, inputElement) {
+    var errorDiv = document.createElement("div");
+    errorDiv.className = "error-message";
+    errorDiv.textContent = message;
+    inputElement.parentNode.appendChild(errorDiv);
+  }
+  
+  function hideErrorMessages() {
+    var errorMessages = document.querySelectorAll(".error-message");
+    errorMessages.forEach(function (errorMessage) {
+      errorMessage.parentNode.removeChild(errorMessage);
+    });
+  }
+  
+  function validateUser(email, password) {
+    // Replace this with your actual validation logic
+    // For simplicity, assuming a user with email "test@example.com" and password "password" is valid
+    return email === "test@example.com" && password === "password";
+  }
+  
+
+
+
+
+document.getElementById("forgotPasswordLink").addEventListener("click", function() {
+    window.location.href = "http://127.0.0.1:8000/forgotpwd"; 
+});
+
+document.getElementById("create_account").addEventListener("click", function() {
+    window.location.href = "http://127.0.0.1:8000/register";
+});
