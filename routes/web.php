@@ -44,3 +44,10 @@ Route::get('/about', function(){
 Route::get('/search', function(){
     return view ('search');
 });
+Route::get('/productpage',function(){
+    return view('productpage');
+});
+
+Route::get('/register',function(){
+    return view('register');
+});
