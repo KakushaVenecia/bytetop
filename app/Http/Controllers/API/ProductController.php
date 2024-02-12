@@ -17,30 +17,36 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // Validate the request data
-        $request->validate([
-            'name' => 'required|string|max:255',
+        // validation and submit data dd($request->all()); this is to get the request body(diedump)
+        // dd($request->file('image'));
+        $formFields = $request->validate([
+            'name' => 'required|string',
             'description' => 'required|string',
             'price' => 'required|numeric',
             'tags' => 'required|string',
-            'images' => 'required|string',
             'category' => 'required|string',
-        
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
-        // Create a new product
-        $product = Product::create([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'price' => $request->input('price'),
-            'tags' => $request->input('tags'),
-            'images' => $request->input('images'),
-            'category' => $request->input('category'),
-        
-        ]);
-
+    
+        // Store the image
+        $formFields['image'] = $request->file('image')->store('images', 'public');
+    
+        // Assign the authenticated user's ID
+        $formFields['user_id'] = auth()->id();
+    
+        // Create the product
+        Product::create($formFields);
+    
+        // Dump the image path for debugging
+        // dd($formFields['image']);
+    
+        // Flash message stored for one page load 
+    
+        // Session::flash('message', 'Product Posted');
+    
         return Redirect::route('dashboard')->with('success', 'Product created successfully');
     }
+    
 
     public function edit($id)
     {
@@ -88,14 +94,6 @@ class ProductController extends Controller
         return Redirect::route('dashboard')->with('success', 'Product deleted successfully');
     }
 
-    // Example of how to use JWT authentication for product APIs
-    // public function index()
-    // {
-    //     $user = JWTAuth::parseToken()->authenticate();
-    //     $products = Product::all();
-
-    //     return response()->json(['user' => $user, 'products' => $products]);
-    // }
     public function index()
 {
     $products = Product::all();
