@@ -73,6 +73,14 @@ Route::get('/about-us', function(){
 Route::get('/search', function(){
     return view ('search');
 });
+<<<<<<< HEAD
+Route::get('/productpage',function(){
+    return view('productpage');
+});
+
+Route::get('/register',function(){
+    return view('register');
+=======
 
 
 
@@ -103,4 +111,5 @@ Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'des
 Route::get('/products', function(){
     $products = Product::all();
     return view('shop', compact('products'));
+>>>>>>> 4c5c98b180e0da6f366e3d589952fd30793bd6a0
 });
