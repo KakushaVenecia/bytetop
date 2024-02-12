@@ -35,17 +35,21 @@ return [
 
     'mailers' => [
         'smtp' => [
-            'transport' => 'smtp',
-            'url' => env('MAIL_URL'),
-            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
-            'port' => env('MAIL_PORT', 587),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
-            'password' => env('MAIL_PASSWORD'),
-            'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DOMAIN'),
+            'transport' => 'smtp', // Specifies the mail transport mechanism (in this case, SMTP).
+            'url' => env('MAIL_URL'), // Specifies the URL for the mail driver (typically not used directly).
+            'host' => env('MAIL_HOST', 'smtp.gmail.com'), // Specifies the SMTP server host.
+            'port' => env('MAIL_PORT', 587), // Specifies the SMTP server port.
+            'encryption' => env('MAIL_ENCRYPTION', 'tls'), // Specifies the encryption protocol (TLS by default).
+            'username' => env('MAIL_USERNAME'), // Specifies the SMTP username.
+            'password' => env('MAIL_PASSWORD'), // Specifies the SMTP password.
+            'timeout' => null, // Specifies the timeout for the SMTP connection (null means no timeout).
+            'local_domain' => env('MAIL_EHLO_DOMAIN'), // Specifies the local domain for the SMTP server (if needed).
+            'from' => [
+                'address' => env('MAIL_FROM_ADDRESS', 'cvenee@gmail.com'), // Specifies the default "from" address.
+                'name' => env('MAIL_FROM_NAME', 'Bytetop'), // Specifies the default "from" name.
+            ],
         ],
-
+    
         'ses' => [
             'transport' => 'ses',
         ],

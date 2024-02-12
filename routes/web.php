@@ -4,6 +4,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\RegisterController;
+use App\Http\Controllers\VerificationController;
+use App\Models\Product;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderItemController;
+use App\Models\Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,32 +21,86 @@ use App\Http\Controllers\API\RegisterController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/email/verify/', [VerificationController::class, 'verify'])->name('verification.verify');
+
+// basic nav pages
 Route::get('/',function(){
+ 'orderItem'==App\Models\OrderItem::count();
     return view('landing');
 });
-Route::get('/login',function(){
-    return view('login');
+
+Route::get('/signup', function(){
+        return view('register-user');
 });
-Route::get('/signup', [RegisterController::class, 'signin']);
+Route::get('/signin', function () {
+    return view('login-user');
+});
 
 
+
+
+Route::view('/checkmail', 'checkmail');
 
 // Admin dashboard web routes
 Route::get('/admin/dashboard', function () {
-    // dd('Dashboard route reached', resource_path('views/admindashboard/dashboard.blade.php'));
-    return view('admindashboard.dashboard');
+    $productCount = App\Models\Product::count();
+    return view('admindashboard.dashboard', [
+        'productCount' => $productCount,
+    ]);
 })->name('dashboard');
-
+Route::get('/dashboard', function(){
+    return view ('admin/dashboard');
+});
 Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
 
 
+// Verification
+Route::view('/verify-success', 'verification.verify-success')->name('verification.success');
 
+// Route to show the verification error view
+Route::view('/verify-error', 'verification.verify-error')->name('verification.error');
 
+Route::get('/verifyemail', function(){
 
-Route::get('/about', function(){
+return view('verifyyouremail');
+});
+
+Route::get('/about-us', function(){
     return view ('about');
 });
 
 Route::get('/search', function(){
     return view ('search');
+});
+
+
+
+
+
+// CART
+Route::get('/cart', [CartController::class, 'index'])->name('shopping-cart');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.addToCart');
+Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.removeFromCart');
+
+
+
+// / Routes for order controller
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
+Route::put('/orders/{id}', [OrderController::class, 'update'])->name('orders.update');
+Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
+
+
+
+// Routes for order item controller
+Route::post('/orders/{order_id}/items', [OrderItemController::class, 'store'])->name('orderItems.store');
+Route::put('/orders/{order_id}/items/{id}', [OrderItemController::class, 'update'])->name('orderItems.update');
+Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'destroy'])->name('orderItems.destroy');
+
+
+Route::get('/products', function(){
+    $products = Product::all();
+    return view('shop', compact('products'));
 });

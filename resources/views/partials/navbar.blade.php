@@ -11,15 +11,24 @@
     <div id="searchResults"></div>
 
     <div class="nav-links">
-        <button class="navbutton"><a href="/about">About Us</a></button>
+        <button class="navbutton"><a href="/about-us">About Us</a></button>
         <button class="navbutton"><a href="/products">Products</a></button>
+        <button class="navbutton"><a href="/cart">Cart</a></button>
+        {{-- <button class="navbutton"><a href="{{ route('shopping-cart') }}">
+            {{-- Order ({{ $cartItemCount }}) --}}
+        {{-- </a> --}}
+        {{-- <button> --}}
     </div>
 
     <div class="right">
-        <button class="navbutton"><a href="/cart">Cart</a></button>
-        <button class="navbutton"><a href="/login">Log In </a></button>
-        <button class="navbutton"><a href="/signup">Sign Up</a></button>
-
+        @if(Session::get('authenticated'))
+            <!-- User is logged in -->
+            <span class="me-3">Welcome, {{ Session::get('user_name') }}</span>
+            n class="navbutton"><a href="{{ route('logout') }}">Logout</a></button>
+        @else
+            <!-- User is not logged in -->
+            <button class="navbutton"><a href="/signin">Log In</a></button>
+            <button class="navbutton"><a href="/signup">Sign Up</a></button>
+        @endif
     </div>
 </nav>
-

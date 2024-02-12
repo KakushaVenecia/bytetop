@@ -41,8 +41,3 @@ function displayResults(results) {
 }
 
 
-$(document).ready(function(){
-        $('.carousel').slick({
-            // Slick options/configuration here
-        });
-})
