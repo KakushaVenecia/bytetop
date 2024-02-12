@@ -20,11 +20,11 @@ body {
 
 section{
     position: relative;
-    max-width: 590px;
-    max-height: 660px;
+    max-width: 500rem;
+    max-height: 660rem;
     background-color: #001E2C;
     /*border: 2px solid rgba(255, 255, 255, 0.5);*/
-    border-radius: 50px;
+    border-radius: 40px;
     backdrop-filter: blur(55px);
     display: flex;
     justify-content: center;
@@ -34,33 +34,36 @@ section{
 }
 
 
-
 h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     width: 132px;
     height: 54px;
     color: #fff;
     text-align: left;
-
     
+}
+
+.white-line {
+    border: .5px solid rgb(208, 205, 205); /* Adjust the border properties as needed */
+    margin: 1px 0; /* Adjust the margin properties as needed for spacing */
+    width: 200px;
 }
 
 .inputbox {
     position: relative;
-    margin: 50px 0;
-    max-width: 400px;
+    margin: 65px 0;
+    max-width: 400rem;
     border-bottom: none;
 }
 
 
 .inputbox label{
     position: absolute;
-    top: 30px;
+    top: .5px;
     left: 10px;
     transform: translateY(-100%);
     color: #ffffff;
     font-size: 25px;
-    pointer-events: none;
     transition: all 0.5s ease;
 }
 
@@ -72,23 +75,64 @@ input:valid ~ label {
 
 
 .inputbox input{
-    width: 400px;
+    width: 25rem;
     height: 52px;
     background-color: #D9D9D9;
-    border-radius: 50px;
+    border-radius: 1rem;
     font-size: 1.5rem;
     padding: 0 35px 0 20px;
-    color: rgb(11, 11, 11);
+}
+
+input[type=text]:focus, input[type=password]:focus{
+    background-color: #fff;
+    outline:none;
 }
 
 
-/*.inputbox ion-icon{
-    position: right;
-    right: 50px;
-    color: black;
-    font-size: 1.2rem;
-    top: 20px;
-}*/
+
+.input-box {
+    position: relative;
+    margin: 65px 0;
+    max-width: 400rem;
+    align-items: center;
+    display: flex;
+    
+}
+
+
+.input-box label{
+    position: absolute;
+    top: .5px;
+    left: 10px;
+    transform: translateY(-100%);
+    color: #ffffff;
+    font-size: 25px;
+    transition: all 0.5s ease;
+}
+
+
+
+
+.input-box input{
+    width: 25rem;
+    height: 52px;
+    background-color: #D9D9D9;
+    border-radius: 1rem;
+    font-size: 1.5rem;
+    padding: 0 35px 0 20px;
+}
+
+.input-box img{
+    width: 35px;
+    cursor: pointer;
+    
+}
+
+input[type=text]:focus, input[type=password]:focus{
+    background-color: #fff;
+    outline:none;
+}
+
 
 
 .forget{
@@ -107,13 +151,14 @@ input:valid ~ label {
 
 
 .forget label input{
-    margin-right: 2px;
+    margin-right: 10px;
 }
 
 .forget a{
     color: #fff;
     text-decoration: none;
     font-weight: 600;
+    margin-right: 10px;
 }
 
 .forget a:hover{
@@ -129,11 +174,12 @@ button{
     font-size: 25px;
     font-weight: 600;
     transition: all 0.5s ease;
+    margin-left: 6rem;
 
 }
 
 button:hover{
-    background-color: rgb(0255, 255, 255, 0.5);
+    background-color: #ffffff;
 }
 
 .register{
@@ -145,7 +191,7 @@ button:hover{
 
 .register p a {
     text-decoration: none;
-    color: #fff;
+    color: #ffffff;
     font-weight: 600;
 
 }
@@ -153,3 +199,31 @@ button:hover{
 .register p a:hover{
     text-decoration: underline;
 }
+
+
+
+
+.error-message {
+    color: rgb(238, 14, 14);
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 20px;
+  }
+  
+
+
+.password-container{
+    width: 300px;
+    position: relative;
+}
+
+.fa-eye{
+    position: absolute;
+    top: 34%;
+    right: 4%;
+    cursor: pointer;
+    color: black;
+}
+
+
+

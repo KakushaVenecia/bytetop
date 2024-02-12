@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->decimal('price', 8, 2); // Adjust precision and scale based on your needs
             $table->string('tags');
-            $table->text('images');
+            $table->string('images')->default(''); // Set a default value of an empty string
             $table->string('category');
             $table->timestamps();
         });
