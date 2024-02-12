@@ -1,0 +1,276 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 30px;
+    padding: 20px;
+    margin-top: 200px 
+}
+
+
+.heading{
+    font-size: 1.5rem;
+    color: brown;
+    margin-left: 10px;
+}
+
+.arow {
+    display: flex;
+    flex-direction: row;
+    margin-left: 2rem;
+}
+
+.acolumn {
+    flex: 1;
+}
+
+.a-checkbox{
+    width: 20px;
+    margin-left: 2rem;
+
+}
+
+.itemsprice{
+    margin-left: 48rem;
+    float: right;
+    width: 15%;
+    font-size: 20px;
+}
+.item-content {
+    display: flex;
+    margin-top: 10px;
+}
+
+.item {
+    margin-left: 60px;
+    width: 50rem;
+}
+
+.item-price {
+    margin-top: 10px;
+}
+
+.item-product-title{
+    line-height: 1.3em !important;
+    max-height: 2.6em;
+    color: #00668A;
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.sc-price {
+    color: black;
+    margin-left: 60rem;
+}
+
+.product-availability {
+    color: #4CAF50;
+    font-weight: 700;
+}
+
+.action-links {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.action-quantity,
+.action-delete,
+.action-save-for-later {
+    margin-right: 10px;
+    margin-right: 1.5rem;
+}
+
+.section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #001E2C;
+    overflow: auto;
+    padding: 20px 0 15px 0;
+}
+
+.white-space-nowrap {
+    white-space: nowrap;
+}
+.color-base {
+    color: #0F1111!important;
+    font-weight: 700;
+}
+.size-medium {
+    text-rendering: optimizeLegibility;
+}
+.size-medium {
+    font-size: 20px;
+    line-height: 24px!important;
+    margin-left: 64rem;
+}
+.text-bold {
+    font-weight: 700!important;
+}
+
+.a-medium {
+    margin-left: 58rem;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.sc-card-spacing-top-none {
+    margin-top: 0!important;
+}
+.a-cardui {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: #FFF;
+    overflow: auto;
+    padding: 20px 0 15px 0;
+}
+
+
+
+.quantity {
+    width: 8rem;
+    margin-bottom: 1rem;
+}
+
+.quantity_align {
+    display: flex;
+    color: #212121;
+    align-items: center;
+}
+
+.quantity_align .decrement:disabled {
+    color: #c2c2c2;
+    border-color: #e0e0e0;
+    cursor: auto;
+    
+}
+
+
+.quantity_align .decrement {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(#fff,#f9f9f9);
+    display: inline-block;
+    border: 1px solid #c2c2c2;
+    font-size: 16px;
+    border-radius: 50%;
+    padding-top: 1px;
+    line-height: 1;
+}
+
+
+.quantity_align .number_align {
+    display: inline-block;
+    padding: 3px 6px;
+    width: calc(100% - 60px);
+    height: 100%;
+    width: 46px;
+    height: 28px;
+    border-radius: 2px;
+    background-color: #fff;
+    border: 1px solid #c2c2c2;
+    margin: 0 5px;
+}
+
+.quantity_align .number_align .numberstatus {
+    border: none;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 500;
+    vertical-align: middle;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.quantity_align .increment {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(#fff,#f9f9f9);
+    display: inline-block;
+    border: 1px solid #c2c2c2;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 50%;
+    padding-top: 1px;
+    line-height: 1;
+}
+
+.subtotal {
+    margin-left: 58rem;
+}
+
+
+.a-section {
+    margin-top: 10rem;
+    text-align: right;
+    margin-right: 6rem;
+    
+}
+
+.subtotal1 {
+    font-size: 18px!important;
+    line-height: 24px!important;
+    margin-left: 28rem;
+}
+
+
+._1uc2IE{
+    width: 8rem;
+    margin-bottom: 1rem;
+}
+
+
+.sc-action-delete{
+    margin-right: 1.5rem;
+    margin-top: 1rem;
+    margin-left: 2rem 
+}
+
+.a-size-medium {
+    font-size: 18px!important;
+    line-height: 24px!important;
+    margin-left: 64rem;
+}
+
+.checkout{
+    width: 220px;
+    height: 48px;
+    border-radius: 12px;
+    background-color: #FFD814;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 600;
+    transition: all 0.5s ease;
+    margin-left: 61rem;
+    margin-top: 5rem;
+
+}
+
+.white-line {
+    background-color: transparent;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top: 1px solid #BBBFBF;
+    display: block;
+    height: 1px;
+    line-height: 19px;
+    margin-bottom: 14px;
+    margin-top: 0;
+    width: 80rem;
+    margin-left: 0.5rem;
+}
+
+button#proceed{
+    text-align: center;
+    margin-top: 15px; 
+    margin-left: 31px;
+     background-color: #FFD814;
+     color: #080808;
+     font-size: 15px;
+    border-block-color: #FFD814;
+    border-inline-color: #FFD814;
+    font-weight: 600;
+}

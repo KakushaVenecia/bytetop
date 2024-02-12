@@ -227,3 +227,30 @@ button:hover{
 
 
 
+
+
+
+
+.error-message {
+    color: rgb(238, 14, 14);
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 20px;
+  }
+  
+
+
+.password-container{
+    width: 300px;
+    position: relative;
+}
+
+.fa-eye{
+    position: absolute;
+    top: 34%;
+    right: 4%;
+    cursor: pointer;
+    color: black;
+}
+
+

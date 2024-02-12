@@ -73,14 +73,30 @@ Route::get('/about', function(){
 Route::get('/search', function(){
     return view ('search');
 });
-<<<<<<< HEAD
+
+Route::get('/forgotpwd', function(){
+    return view ('forgotpwd');
+});
+
+Route::get('/checkmail', function(){
+    return view ('checkmail');
+});
+
+
+Route::get('/cart', function(){
+    return view ('cart');
+});
+
+Route::get('/checkout', function(){
+    return view ('checkout');
+});
 Route::get('/productpage',function(){
     return view('productpage');
 });
 
 Route::get('/register',function(){
     return view('register');
-=======
+});
 
 // CART
 Route::get('/cart', [CartController::class, 'index'])->name('shopping-cart');
@@ -103,5 +119,4 @@ Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'des
 Route::get('/products', function(){
     $products = Product::all();
     return view('shop', compact('products'));
->>>>>>> 4c5c98b180e0da6f366e3d589952fd30793bd6a0
 });
