@@ -82,23 +82,23 @@ Route::get('/checkmail', function(){
     return view ('checkmail');
 });
 
+// from front end for intergration
+// Route::get('/cart', function(){
+//     return view ('cart');
+// });
 
-Route::get('/cart', function(){
-    return view ('cart');
-});
+// Route::get('/checkout', function(){
+//     return view ('checkout');
+// });
+// Route::get('/productpage',function(){
+//     return view('productpage');
+// });
 
-Route::get('/checkout', function(){
-    return view ('checkout');
-});
-Route::get('/productpage',function(){
-    return view('productpage');
-});
+// Route::get('/register',function(){
+//     return view('register');
+// });
 
-Route::get('/register',function(){
-    return view('register');
-});
-
-// CART
+// CART for backend for integration wirh the cart pages on front end
 Route::get('/cart', [CartController::class, 'index'])->name('shopping-cart');
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.addToCart');
 Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.removeFromCart');
