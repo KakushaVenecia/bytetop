@@ -7,8 +7,9 @@ body {
 }
 
 .heading{
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: brown;
+    margin-left: 10px;
 }
 
 .arow {
@@ -27,22 +28,23 @@ body {
 
 }
 
-.a-color-secondary{
-    margin-left: auto;
+.itemsprice{
+    margin-left: 48rem;
     float: right;
     width: 15%;
+    font-size: 20px;
 }
-.sc-list-item-content {
+.item-content {
     display: flex;
     margin-top: 10px;
 }
 
-.sc-item-content-group {
+.item {
     margin-left: 60px;
     width: 50rem;
 }
 
-.sc-item-price-block {
+.item-price {
     margin-top: 10px;
 }
 
@@ -52,7 +54,7 @@ body {
     color: #00668A;
 }
 
-.sc-product-title {
+.product-title {
     font-size: 16px;
     font-weight: bold;
 }
@@ -62,17 +64,19 @@ body {
     margin-left: 60rem;
 }
 
-.sc-product-availability {
-    color: #4CAF50; /* Green color for in-stock items */
+.product-availability {
+    color: #4CAF50;
+    font-weight: 700;
 }
 
-.sc-action-links {
+.action-links {
     margin-top: 10px;
+    margin-bottom: 15px;
 }
 
-.sc-action-quantity,
-.sc-action-delete,
-.sc-action-save-for-later {
+.action-quantity,
+.action-delete,
+.action-save-for-later {
     margin-right: 10px;
     margin-right: 1.5rem;
 }
@@ -85,58 +89,64 @@ body {
     padding: 20px 0 15px 0;
 }
 
-.sc-white-space-nowrap {
+.white-space-nowrap {
     white-space: nowrap;
 }
-.a-color-base {
+.color-base {
     color: #0F1111!important;
+    font-weight: 700;
 }
-.a-size-medium {
+.size-medium {
     text-rendering: optimizeLegibility;
 }
-.a-size-medium {
-    font-size: 18px!important;
+.size-medium {
+    font-size: 20px;
     line-height: 24px!important;
+    margin-left: 64rem;
 }
-.a-text-bold {
+.text-bold {
     font-weight: 700!important;
 }
 
 .a-medium {
     margin-left: 58rem;
     font-size: 20px;
+    font-weight: 700;
 }
 
-._1uc2IE {
+.quantity {
     width: 8rem;
+    margin-bottom: 1rem;
 }
 
-._3dY_ZR {
+.quantity_align {
     display: flex;
     color: #212121;
     align-items: center;
 }
 
-._3dY_ZR ._23FHuj:disabled {
+.quantity_align .decrement:disabled {
     color: #c2c2c2;
     border-color: #e0e0e0;
     cursor: auto;
+    
 }
 
-._3dY_ZR ._23FHuj {
+
+.quantity_align .decrement {
     width: 28px;
     height: 28px;
     background: linear-gradient(#fff,#f9f9f9);
     display: inline-block;
     border: 1px solid #c2c2c2;
-    cursor: pointer;
     font-size: 16px;
     border-radius: 50%;
     padding-top: 1px;
     line-height: 1;
 }
 
-._3dY_ZR ._26HdzL {
+
+.quantity_align .number_align {
     display: inline-block;
     padding: 3px 6px;
     width: calc(100% - 60px);
@@ -149,7 +159,7 @@ body {
     margin: 0 5px;
 }
 
-._3dY_ZR ._26HdzL ._253qQJ {
+.quantity_align .number_align .numberstatus {
     border: none;
     width: 100%;
     font-size: 14px;
@@ -159,7 +169,7 @@ body {
     margin-top: 5px;
 }
 
-._3dY_ZR ._23FHuj {
+.quantity_align .increment {
     width: 28px;
     height: 28px;
     background: linear-gradient(#fff,#f9f9f9);
@@ -181,7 +191,7 @@ body {
     margin-top: 10rem;
     text-align: right;
     margin-right: 6rem;
-    align-items: end;
+    
 }
 
 .subtotal1 {
@@ -190,10 +200,6 @@ body {
     margin-left: 28rem;
 }
 
-.checkout {
-    background: #FFD814;
-    border-color: #FCD200;
-}
 
 ._1uc2IE{
     width: 8rem;
@@ -205,4 +211,51 @@ body {
     margin-right: 1.5rem;
     margin-top: 1rem;
     margin-left: 2rem 
+}
+
+.a-size-medium {
+    font-size: 18px!important;
+    line-height: 24px!important;
+    margin-left: 64rem;
+}
+
+.checkout{
+    width: 220px;
+    height: 48px;
+    border-radius: 12px;
+    background-color: #FFD814;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 600;
+    transition: all 0.5s ease;
+    margin-left: 61rem;
+    margin-top: 5rem;
+
+}
+
+.white-line {
+    background-color: transparent;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top: 1px solid #BBBFBF;
+    display: block;
+    height: 1px;
+    line-height: 19px;
+    margin-bottom: 14px;
+    margin-top: 0;
+    width: 80rem;
+    margin-left: 0.5rem;
+}
+
+button#proceed{
+    text-align: center;
+    margin-top: 15px; 
+    margin-left: 31px;
+     background-color: #FFD814;
+     color: #080808;
+     font-size: 15px;
+    border-block-color: #FFD814;
+    border-inline-color: #FFD814;
+    font-weight: 600;
 }

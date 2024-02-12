@@ -61,8 +61,8 @@ Route::get('/checkmail', function(){
 });
 
 
-Route::get('/basket', function(){
-    return view ('basket');
+Route::get('/cart', function(){
+    return view ('cart');
 });
 
 Route::get('/checkout', function(){

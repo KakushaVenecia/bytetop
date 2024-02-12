@@ -116,5 +116,3 @@ document.getElementById("forgotPasswordLink").addEventListener("click", function
 document.getElementById("create_account").addEventListener("click", function() {
     window.location.href = "http://127.0.0.1:8000/register";
 });
-=======
->>>>>>> b888ac531b8c87dd9c449a59af9389ba55a3bd61
