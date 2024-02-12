@@ -15,7 +15,7 @@
         <button class="navbutton"><a href="/products">Products</a></button>
         <button class="navbutton"><a href="/cart">Cart</a></button>
         {{-- <button class="navbutton"><a href="{{ route('shopping-cart') }}">
-            {{-- Order ({{ $cartItemCount }}) --}}
+            {{-- Order ({{ $OrderItem }}) --}}
         {{-- </a> --}}
         {{-- <button> --}}
     </div>

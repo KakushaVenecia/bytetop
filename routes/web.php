@@ -66,7 +66,7 @@ Route::get('/verifyemail', function(){
 return view('verifyyouremail');
 });
 
-Route::get('/about-us', function(){
+Route::get('/about', function(){
     return view ('about');
 });
 
@@ -74,16 +74,10 @@ Route::get('/search', function(){
     return view ('search');
 });
 
-
-
-
-
 // CART
 Route::get('/cart', [CartController::class, 'index'])->name('shopping-cart');
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.addToCart');
 Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.removeFromCart');
-
-
 
 // / Routes for order controller
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
@@ -91,8 +85,6 @@ Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
 Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
 Route::put('/orders/{id}', [OrderController::class, 'update'])->name('orders.update');
 Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
-
-
 
 // Routes for order item controller
 Route::post('/orders/{order_id}/items', [OrderItemController::class, 'store'])->name('orderItems.store');
