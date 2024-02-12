@@ -125,8 +125,11 @@
         
     </div>
     
+    <div id="sc-active-cart" data-name="Active Cart" class="a-cardui sc-card-style sc-list sc-java-remote-feature celwidget sc-grid-view sc-grid-full-width sc-card-spacing-top-none" data-a-card-type="basic" data-csa-c-id="7ntulj-7bkkll-myg7rt-qbt35a" data-cel-widget="sc-active-cart">
+    <div class="a-cardui-body a-scroller-none">
 
-<section>
+
+    <section>
 <script src="js/cart.js"></script>
 
 </body>

@@ -108,7 +108,7 @@ input[type="text"] {
     text-align: center;
     text-decoration: none;
     white-space: nowrap;
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .Return a:hover {
@@ -126,9 +126,10 @@ input[type="text"] {
 }
 
 .Return {
-    margin-top: 18px;
+    margin-top: 10px;
     text-align: center;
     width: 100%;
+    margin-left: 2px;
 }
 
 .continue {
@@ -136,3 +137,9 @@ input[type="text"] {
     color: black;
 }
 
+.error-message {
+    color: rgb(238, 14, 14);
+    font-size: 15px;
+    margin-top: 5px;
+    margin-right: 11rem;
+  }

@@ -21,6 +21,7 @@
   <p>That's ok, It happens!</p>
   <p>Enter your email address</p>
   <input type="text" id="email" name="email" placeholder="Email address">
+  <p id="error-message" class="error-message"></p>
   <div>
     <button class="continue" onclick="continueClicked()">
       <span>Continue</span>
@@ -30,7 +31,6 @@
       <a href="#" id="returntologin">Return to login</a>
     </div>
 
-    <p id="error-message" class="error-message"></p>
   </div>
 
   <script src="js/forgotpwd.js"></script>
