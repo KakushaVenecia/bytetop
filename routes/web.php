@@ -6,6 +6,10 @@ use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\VerificationController;
 use App\Models\Product;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderItemController;
+use App\Models\Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,24 +23,24 @@ use App\Models\Product;
 */
 
 Route::get('/email/verify/', [VerificationController::class, 'verify'])->name('verification.verify');
+
+// basic nav pages
 Route::get('/',function(){
+ 'orderItem'==App\Models\OrderItem::count();
     return view('landing');
 });
 
-Route::get('/dashboard', function(){
-    return view ('admin/dashboard');
-});
 Route::get('/signup', function(){
         return view('register-user');
 });
-
 Route::get('/signin', function () {
     return view('login-user');
 });
 
 
-Route::view('/checkmail', 'checkmail');
 
+
+Route::view('/checkmail', 'checkmail');
 
 // Admin dashboard web routes
 Route::get('/admin/dashboard', function () {
@@ -45,9 +49,13 @@ Route::get('/admin/dashboard', function () {
         'productCount' => $productCount,
     ]);
 })->name('dashboard');
-
+Route::get('/dashboard', function(){
+    return view ('admin/dashboard');
+});
 Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
 
+
+// Verification
 Route::view('/verify-success', 'verification.verify-success')->name('verification.success');
 
 // Route to show the verification error view
@@ -66,11 +74,33 @@ Route::get('/search', function(){
     return view ('search');
 });
 
+
+
+
+
+// CART
+Route::get('/cart', [CartController::class, 'index'])->name('shopping-cart');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.addToCart');
+Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.removeFromCart');
+
+
+
+// / Routes for order controller
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+Route::get('/orders/{id}', [OrderController::class, 'show'])->name('orders.show');
+Route::put('/orders/{id}', [OrderController::class, 'update'])->name('orders.update');
+Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
+
+
+
+// Routes for order item controller
+Route::post('/orders/{order_id}/items', [OrderItemController::class, 'store'])->name('orderItems.store');
+Route::put('/orders/{order_id}/items/{id}', [OrderItemController::class, 'update'])->name('orderItems.update');
+Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'destroy'])->name('orderItems.destroy');
+
+
 Route::get('/products', function(){
     $products = Product::all();
-    foreach ($products as $product) {
-        // Output the image path for debugging
-        echo $product->images . "<br>";
-    }
     return view('shop', compact('products'));
 });
