@@ -14,7 +14,9 @@
 
 	<p>Your forgot password request submitted</p>
 	<p>We’ve sent an email to usermail@gmail.com to reset your password and dive into your account. The link in the email will expire in 24 hours.</p>
-  <a href="#">Click here</a> - not received an email / like to change the email address
+  <a href="#">Click here</a> - like to change the email address.
+
+  
 
 	
 </div>

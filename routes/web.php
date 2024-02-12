@@ -74,6 +74,22 @@ Route::get('/search', function(){
     return view ('search');
 });
 
+Route::get('/forgotpwd', function(){
+    return view ('forgotpwd');
+});
+
+Route::get('/checkmail', function(){
+    return view ('checkmail');
+});
+
+
+Route::get('/cart', function(){
+    return view ('cart');
+});
+
+Route::get('/checkout', function(){
+    return view ('checkout');
+});
 Route::get('/productpage',function(){
     return view('productpage');
 });
