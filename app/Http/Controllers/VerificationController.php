@@ -15,6 +15,12 @@ class VerificationController extends Controller
 
     // Retrieve the user by ID
     $user = User::findOrFail($userId);
+  
+    if ($user->role === 'admin') {
+        // Mark the email as verified for admin users
+        $user->markEmailAsVerified();
+        $user->save();
+        }
 
     // Retrieve the email verification token from the user
     $userVerificationToken = $user->email_verification_token;

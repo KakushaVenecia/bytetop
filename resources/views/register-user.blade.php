@@ -8,8 +8,11 @@
     <title>Register</title>
 </head>
 <body>
-    @if(session('success'))
-        <div class="success-message">{{ session('success') }}</div>
+    @if (session('error'))
+    <script>alert("{{ session('error') }}");</script>
+    @endif
+    @if (session('success'))
+    <script>alert("{{ session('success') }}");</script>
     @endif
 
     <form class="modal-content" id="registerForm" method="POST" action="{{ route('auth.register') }}">

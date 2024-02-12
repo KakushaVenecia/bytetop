@@ -9,14 +9,16 @@ use App\Http\Controllers\API\RegisterController;
 
 
 // product routes
-Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-Route::get('/allproducts', [ProductController::class, 'index']);
-Route::patch('/products', [ProductController::class, 'edit'])->name('');
 
 
 
 Route::post('/register', [RegisterController::class, 'regist'])->name('auth.register');
-Route::post('/login', [AuthController::class, 'login'])-> name('login');
+Route::post('/login', [RegisterController::class, 'loginUser'])->name('auth.login');
+Route::post('logout', [AuthController::class, 'logout']);
+Route::post('refresh', [AuthController::class, 'refresh']);
+Route::post('me', [AuthController::class, 'me']);
+
+
 // Route::post('api/logout', [AuthController::class, 'logout']);
 // Route::post('api/refresh', [AuthController::class, 'refresh']);
 // Route::post('api/me', [AuthController::class, 'me']);
@@ -28,14 +30,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-Route::group([
-    'middleware'=> 'api',
-], function ($router){
-    // Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
-    Route::post('logout', [AuthController::class, 'logout']);
-    Route::post('refresh', [AuthController::class, 'refresh']);
-    Route::post('me', [AuthController::class, 'me']);
-    
-});
+
+
+Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+
+Route::patch('/products', [ProductController::class, 'edit'])->name('');
+
+Route::get('/allproducts', [ProductController::class, 'index']);
 
 

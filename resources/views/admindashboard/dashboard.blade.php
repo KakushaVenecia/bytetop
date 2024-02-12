@@ -39,12 +39,13 @@
             <!-- Dashboard content -->
             <h1>Dashboard</h1>
             <p>This is the dashboard content.</p>
+            <h2>Products: {{ $productCount }}</h2>
         </div>
         <div id="products">
             <!-- Products content -->
             <h1>Products</h1>
             
-            @if(count($products) > 0)
+            {{-- @if(count($products) > 0)
                 <ul>
                     @foreach($products as $product)
                         <li>
@@ -65,7 +66,7 @@
                 </ul>
             @else
                 <p>No products found.</p>
-            @endif
+            @endif --}}
 
             <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
         </div>
@@ -96,7 +97,35 @@
         document.getElementById('orders').style.display = 'none';
         document.getElementById('settings').style.display = 'none';
     }
-
+    function showProducts() {
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('products').style.display = 'block';
+        document.getElementById('customers').style.display = 'none';
+        document.getElementById('orders').style.display = 'none';
+        document.getElementById('settings').style.display = 'none';
+    }
+    function showCustomers() {
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('products').style.display = 'none';
+        document.getElementById('customers').style.display = 'block';
+        document.getElementById('orders').style.display = 'none';
+        document.getElementById('settings').style.display = 'none';
+    }
+    function showOrders() {
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('products').style.display = 'none';
+        document.getElementById('customers').style.display = 'none';
+        document.getElementById('orders').style.display = 'block';
+        document.getElementById('settings').style.display = 'none';
+    }
+    function showSettings() {
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('products').style.display = 'none';
+        document.getElementById('customers').style.display = 'none';
+        document.getElementById('orders').style.display = 'none';
+        document.getElementById('settings').style.display = 'block';
+    }
+    // 
     // Add other show functions as needed
 
     // Show the dashboard content by default on page load

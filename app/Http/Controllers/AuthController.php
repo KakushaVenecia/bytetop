@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 
@@ -25,27 +23,16 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+    public function login()
+    {
+        $credentials = request(['email', 'password']);
 
-     public function login(Request $request)
-     {
-         $credentials = request(['email', 'password']);
-     
-         if (! $token = auth()->attempt($credentials)) {
-             return response()->json(['error' => 'Unauthorized'], 401);
-         }
-     
-         return response()->json(['token' => $token]);
-    //     $credentials = $request->only('email', 'password');
+        if (! $token = auth()->attempt($credentials)) {
+            return response()->json(['error' => 'Unauthorized'], 401);
+        }
 
-    // if (Auth::attempt($credentials)) {
-    //     // Authentication passed...
-    //     return redirect()->intended('dashboard');
-    // }
-
-    // return back()->withErrors([
-    //     'email' => 'The provided credentials do not match our records.',
-    // ]);
-     }
+        return $this->respondWithToken($token);
+    }
 
     /**
      * Get the authenticated User.
