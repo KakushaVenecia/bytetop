@@ -8,6 +8,7 @@
   <title>About Us Section</title>
 </head>
 <body>
+  @include('partials.navbar')
   <div class="container">
     <div class="title">
       <h1>About Us</h1>            
@@ -18,31 +19,31 @@
       <div class="content">
       <div class="article">
         <h2>We offer Laptops for Every Lifestyle, Every Goal</h2>
-<p>Welcome to ByteTop, your ultimate destination for cutting-edge
+      <p>Welcome to ByteTop, your ultimate destination for cutting-edge
    laptop technology and accessories. At ByteTop, we believe in the 
    power of innovation and the seamless integration of technology
     into everyday life.</p>
-<h3>Our Story</h3>
-<p>Established in 2023, ByteTop emerged from a passion for 
-  delivering top-quality laptops and related products to tech 
-  enthusiasts, professionals, and students alike. Our journey began 
-  with a commitment to providing an unparalleled online shopping 
-  experience, backed by exceptional customer service.</p>
+    <h3>Our Story</h3>
+    <p>Established in 2023, ByteTop emerged from a passion for 
+      delivering top-quality laptops and related products to tech 
+      enthusiasts, professionals, and students alike. Our journey began 
+       with a commitment to providing an unparalleled online shopping 
+      experience, backed by exceptional customer service.</p>
   
-  <a href="" class="button">Read More</a>
+      <a href="" class="button">Read More</a>
       </div>
 
       <div class="remaining">
     <h4>Our Mission</h4>
-  <p>At ByteTop, our mission is clear — to empower individuals with the latest and most advanced laptop solutions. We strive to be more than just a marketplace; we want to be your go-to source for everything related to laptops, from high-performance devices to must-have accessories.</p>
-  <h5>What Sets Us Apart</h5>
-  <p>We handpick the best laptops and accessories to ensure you get only the finest products available in the market.
-Our team of tech enthusiasts is here to provide expert advice, helping you make informed decisions based on your needs and preferences.
-Your satisfaction is our priority. We go the extra mile to deliver a seamless shopping experience, from browsing to checkout and beyond.
-</p>
-<h6>Our Commitment</h6>
-<p>We stand behind the quality of every product we offer. Expect nothing less than excellence when you shop with us.
-Stay ahead of the curve with the latest technological advancements. We are committed to bringing you the newest trends and innovations in the laptop industry.</p>
+      <p>At ByteTop, our mission is clear — to empower individuals with the latest and most advanced laptop solutions. We strive to be more than just a marketplace; we want to be your go-to source for everything related to laptops, from high-performance devices to must-have accessories.</p>
+      <h5>What Sets Us Apart</h5>
+      <p>We handpick the best laptops and accessories to ensure you get only the finest products available in the market.
+    Our team of tech enthusiasts is here to provide expert advice, helping you make informed decisions based on your needs and preferences.
+      Your satisfaction is our priority. We go the extra mile to deliver a seamless shopping experience, from browsing to checkout and beyond.
+    </p>
+      <h6>Our Commitment</h6>
+      <p>We stand behind the quality of every product we offer. Expect nothing less than excellence when you shop with us.
+        Stay ahead of the curve with the latest technological advancements. We are committed to bringing you the newest trends and innovations in the laptop industry.</p>
 </div>      
     </div>
     <div class="containers">
@@ -127,9 +128,10 @@ Stay ahead of the curve with the latest technological advancements. We are commi
 
 
   </div>
-    
+  </div>
+  </div>
   
-
+ 
 </body>
 </html>
 

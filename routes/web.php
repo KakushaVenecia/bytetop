@@ -28,17 +28,16 @@ Route::get('/email/verify/', [VerificationController::class, 'verify'])->name('v
 Route::get('/',function(){
  'orderItem'==App\Models\OrderItem::count();
     return view('landing');
-});
+})->name('landing');
 
 Route::get('/signup', function(){
         return view('register-user');
 });
+
+
 Route::get('/signin', function () {
     return view('login-user');
 });
-
-
-
 
 Route::view('/checkmail', 'checkmail');
 
@@ -52,23 +51,23 @@ Route::get('/admin/dashboard', function () {
 Route::get('/dashboard', function(){
     return view ('admin/dashboard');
 });
+
 Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
+
+
 
 
 // Verification
 Route::view('/verify-success', 'verification.verify-success')->name('verification.success');
-
 // Route to show the verification error view
 Route::view('/verify-error', 'verification.verify-error')->name('verification.error');
+
 
 Route::get('/verifyemail', function(){
 
 return view('verifyyouremail');
 });
 
-Route::get('/about', function(){
-    return view ('about');
-});
 
 Route::get('/search', function(){
     return view ('search');
@@ -83,20 +82,20 @@ Route::get('/checkmail', function(){
 });
 
 // from front end for intergration
-// Route::get('/cart', function(){
-//     return view ('cart');
-// });
+Route::get('/cartpage', function(){
+    return view ('cart');
+});
 
-// Route::get('/checkout', function(){
-//     return view ('checkout');
-// });
-// Route::get('/productpage',function(){
-//     return view('productpage');
-// });
+Route::get('/checkout', function(){
+    return view ('checkout');
+});
+Route::get('/productpage',function(){
+    return view('productpage');
+});
 
-// Route::get('/register',function(){
-//     return view('register');
-// });
+Route::get('/register',function(){
+    return view('register');
+});
 
 // CART for backend for integration wirh the cart pages on front end
 Route::get('/cart', [CartController::class, 'index'])->name('shopping-cart');
@@ -116,7 +115,17 @@ Route::put('/orders/{order_id}/items/{id}', [OrderItemController::class, 'update
 Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'destroy'])->name('orderItems.destroy');
 
 
+
+
+
+
+
+// Landing page routes
 Route::get('/products', function(){
-    $products = Product::all();
+    // $products = Product::all();
+    $products = Product::paginate(10);
     return view('shop', compact('products'));
+});
+Route::get('/about', function(){
+    return view ('about');
 });

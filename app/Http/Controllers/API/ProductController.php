@@ -29,24 +29,22 @@ class ProductController extends Controller
         ]);
     
         // Store the image
-        $formFields['image'] = $request->file('image')->store('images', 'public');
+        $image = $request->file('image');
+        $filename = $image->hashName();
+        $image->store('images', 'public');
+        $formFields['image'] = $filename; // Assign the filename to the 'image' field
     
         // Assign the authenticated user's ID
         $formFields['user_id'] = auth()->id();
     
+        // Debug: Dump the form fields to ensure correct data
+        // dd($formFields);
+    
         // Create the product
         Product::create($formFields);
     
-        // Dump the image path for debugging
-        // dd($formFields['image']);
-    
-        // Flash message stored for one page load 
-    
-        // Session::flash('message', 'Product Posted');
-    
         return Redirect::route('dashboard')->with('success', 'Product created successfully');
     }
-    
 
     public function edit($id)
     {
@@ -62,7 +60,7 @@ class ProductController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'tags' => 'required|string',
-            'images' => 'required|string',
+            'image' => 'required|string',
             'category' => 'required|string',
             
         ]);

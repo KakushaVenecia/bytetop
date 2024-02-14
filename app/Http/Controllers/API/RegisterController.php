@@ -8,8 +8,6 @@ use App\Notifications\WelcomeEmail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\User;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Carbon;
@@ -19,6 +17,7 @@ class RegisterController extends Controller
 {
     public function regist(Request $request)
 {
+    // dd($request);
     // Validate request data
     $request->validate([
         'name' => 'required|string',
@@ -26,6 +25,7 @@ class RegisterController extends Controller
         'password' => 'required|min:8|confirmed',
         'password_confirmation' => 'required|same:password',
     ]);
+
 
     // Check if user already exists
     $existingUser = User::where('email', $request->input('email'))->first();
@@ -57,6 +57,7 @@ class RegisterController extends Controller
 
         // Send welcome email with verification link
         $user->notify(new WelcomeEmail($verificationUrl));
+       
 
         // Return a redirect response with a success message
         return redirect('/verifyemail')->with('success', 'Registration email sent to user.');
@@ -71,6 +72,7 @@ class RegisterController extends Controller
 
     public function loginUser(Request $request)
     {
+        // dd($request);
         // Retrieve the user record based on the provided email
         $user = User::where('email', $request->input('email'))->first();
     
@@ -89,7 +91,6 @@ class RegisterController extends Controller
         // Check if the user is an admin
         if ($user->role === 'admin') {
             // Set session data for admin user
-            Session::put('admin_authenticated', true);
     
             // Redirect admin user to admin dashboard
             return redirect('/admin/dashboard');
@@ -103,7 +104,13 @@ class RegisterController extends Controller
     
         // Regular user authentication
         // Perform any additional actions, such as storing user session data, logging, etc.
-        Session::put('authenticated', true);
+        // Session::put('authenticated', true);
+        // Session::put('user_name', $user->name);
+         // Store user information in session
+       // Store user information in session
+        $request->session()->put('authenticated', true);
+        $request->session()->put('user_id', $user->id);
+        $request->session()->put('user_name', $user->name);
     
         // Redirect the user to the desired page (e.g., dashboard)
         return redirect('/');

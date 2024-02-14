@@ -11,7 +11,7 @@ use App\Http\Controllers\API\RegisterController;
 // product routes
 
 
-
+// Basic login and out 
 Route::post('/register', [RegisterController::class, 'regist'])->name('auth.register');
 Route::post('/login', [RegisterController::class, 'loginUser'])->name('auth.login');
 Route::post('logout', [AuthController::class, 'logout']);

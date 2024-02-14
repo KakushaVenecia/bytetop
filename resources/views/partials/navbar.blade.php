@@ -1,8 +1,9 @@
 <nav>
     <div class="left">
-        <img class="logo" src="images/Logo.png" alt="Logo">
+        <a href="{{ route('landing') }}"> 
+            <img class="logo" src="images/Logo.png" alt="Logo">
+        </a>
     </div>
-
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Search...">
         <button onclick="performSearch()">Search</button>
@@ -14,17 +15,17 @@
         <button class="navbutton"><a href="/about-us">About Us</a></button>
         <button class="navbutton"><a href="/products">Products</a></button>
         <button class="navbutton"><a href="/cart">Cart</a></button>
-        {{-- <button class="navbutton"><a href="{{ route('shopping-cart') }}">
+        {{-- <button class="navbutton"><a href="{{ route('shopping-cart') }}"> --}}
             {{-- Order ({{ $OrderItem }}) --}}
         {{-- </a> --}}
         {{-- <button> --}}
     </div>
 
     <div class="right">
-        @if(Session::get('authenticated'))
+        @if(session('authenticated'))
             <!-- User is logged in -->
-            <span class="me-3">Welcome, {{ Session::get('user_name') }}</span>
-            n class="navbutton"><a href="{{ route('logout') }}">Logout</a></button>
+            <span class="me-3">Welcome, {{ session('user_name') }}</span>
+            <button class="navbutton"><a href="{{ route('logout') }}">Logout</a></button>
         @else
             <!-- User is not logged in -->
             <button class="navbutton"><a href="/signin">Log In</a></button>

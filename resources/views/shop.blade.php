@@ -9,20 +9,19 @@
 </head>
 <body>
     @include('partials.navbar')
-    <div class="product-grid">
-        @foreach ($products as $product)
-            <div class="product-card"> 
-                <p>{{ $product->images }}</p>
-            <img src="http://localhost:8000/storage/{{ $product->image }}" alt="{{ $product->name }}" class="product-image">
-                <div class="product-details">
-                    <h2 class="product-name">{{ $product->name }}</h2>
-                    <p class="product-description">{{ $product->description }}</p>
-                    <p class="product-price">${{ $product->price }}</p>
-                    <button class="add-to-cart-btn" data-product-id="{{ $product->id }}">Add to Cart</button>
-                </div>
+<div class="product-grid">
+    @foreach ($products as $product)
+        <div class="product-card"> 
+            <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
+            <div class="product-details">
+                <h2 class="product-name">{{ $product->name }}</h2>
+                <p class="product-description">{{ $product->description }}</p>
+                <p class="product-price">${{ $product->price }}</p>
+                <button class="btn btn-add" data-product-id="{{ $product->id }}">Add to Cart</button>
             </div>
-        @endforeach
-    </div>
+        </div>
+    @endforeach
+</div>
     @include('partials.footer')
     <script>
 <script>
