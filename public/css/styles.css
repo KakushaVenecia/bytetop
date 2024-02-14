@@ -520,10 +520,10 @@ justify-content: space-around;
 
 .btn:hover{
 	color: #fff;
-	background-color: #262626;
+	background-color: #f7890b;
 }
 
-.btn-discount{
+.btn-add{
 	grid-column: 3;
 	grid-row: 4 / 5;
 	align-self: center;

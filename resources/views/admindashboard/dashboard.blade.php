@@ -8,9 +8,11 @@
 </head>
 <body>
 <div class="container">
-    <div class="primary-nav">
+    <div class="primary-nav"> 
         <nav role="navigation" class="menu">
-            <img class="logo" src="{{ asset('images/Logo.png') }}" alt="Logo">
+            <div>
+                <img class="logo" src="{{ asset('images/Logo.png') }}" alt="Logo">
+            </div>
             <div class="overflow-container">
                 <ul class="menu-dropdown">
                     <li><a href="#" onclick="showDashboard()">Dashboard</a><span class="icon"><i class="fa fa-dashboard"></i></span></li>
@@ -40,6 +42,7 @@
             <h1>Dashboard</h1>
             <p>This is the dashboard content.</p>
             <h2>Products: {{ $productCount }}</h2>
+            <button><a href="/products">Go to the products page</a></button>
         </div>
         <div id="products">
             <!-- Products content -->

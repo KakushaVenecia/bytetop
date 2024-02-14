@@ -119,6 +119,7 @@
 .containers {
   text-align: center;
   color: #fff;
+  background-color: #c0000c;
 }
 .member{
   padding-top: 60px;
@@ -186,6 +187,7 @@
       width: 30px;
       transition: 0.4s;
     }
+    
   
     .social-links a:hover{
       transform: scale(1.5);

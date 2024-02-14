@@ -3,15 +3,10 @@
   margin: 0;
 }
 
-/* Full-width input fields */
-<<<<<<< HEAD
-input[type=text],
-input[type=password] {
-  width: 100%;
-=======
+  
 input[type=text], input[type=password] , input[type=email] {
+  /* width: 100%; */
   width: 450px;
->>>>>>> 4c5c98b180e0da6f366e3d589952fd30793bd6a0
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
@@ -19,13 +14,7 @@ input[type=text], input[type=password] , input[type=email] {
   background: #f1f1f1;
 }
 
-/* Add a background color when the inputs get focus */
-<<<<<<< HEAD
-input[type=text]:focus,
-input[type=password]:focus {
-=======
 input[type=text]:focus, input[type=password]:focus  input[type=email]:focus{
->>>>>>> 4c5c98b180e0da6f366e3d589952fd30793bd6a0
   background-color: #ddd;
   outline: none;
 }
@@ -59,6 +48,7 @@ button:hover {
 .container {
   padding: 16px;
   color: #f44336;
+  width:500px
 }
 
 .clearfix {
@@ -95,8 +85,6 @@ button:hover {
   margin: 5% auto 15% auto;
   /* 5% from the top, 15% from the bottom and centered */
   border-radius: 50px;
-  width: 80%;
-  /* Could be more or less, depending on screen size */
 }
 
 /* Style the horizontal ruler
@@ -151,8 +139,6 @@ body {
   min-height: 100vh;
   margin: 0;
 }
-<<<<<<< HEAD
-=======
 
  /* Styles for success message */
  .success-message {
@@ -170,4 +156,3 @@ body {
   font-size: 14px;
   margin-top: 5px;
 }
->>>>>>> 4c5c98b180e0da6f366e3d589952fd30793bd6a0

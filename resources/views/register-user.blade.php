@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}"> 
     <title>Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/register.css"> 
 </head>
 <body>
     @if (session('error'))
-    <script>alert("{{ session('error') }}");</script>
-    @endif
-    @if (session('success'))
-    <script>alert("{{ session('success') }}");</script>
-    @endif
-
+    <div class="alert alert-danger">{{ session('error') }}</div>
+@endif
+@if (session('success'))
+    <div class="alert alert-success">{{ session('success') }}</div>
+@endif
     <form class="modal-content" id="registerForm" method="POST" action="{{ route('auth.register') }}">
         @csrf
         <div class="container">

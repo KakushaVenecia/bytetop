@@ -1,8 +1,4 @@
-body {
-  font-family: 'Work Sans', sans-serif;
-  margin: 0;
-  /* background-color: #eee; */
-}
+
 
 /* Layout */
 
@@ -267,7 +263,7 @@ input#menu[type="checkbox"] {
   position: relative;
   height: calc(100vh - 73px)!important;
   overflow-y: auto;
-  border-top: 73px solid #fff;
+  border-top: 73px solid #001E2C;
   z-index: -1;
   display:block;
 }
