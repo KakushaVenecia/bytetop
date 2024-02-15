@@ -72,6 +72,7 @@
 
 
             <div class="product-container" id="productContainer">
+                
             </div>
         </div>
     </main>

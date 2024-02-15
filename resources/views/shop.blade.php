@@ -43,7 +43,9 @@
                 xhr.setRequestHeader('Content-Type', 'application/json');
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
-                        // Handle the response from the server
+                        // Handle the response from the serve
+
+
                         if (xhr.status === 200) {
                             // Product added successfully
                             alert('Product added to cart!');
