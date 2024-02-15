@@ -18,20 +18,21 @@
                 <ul>
                     <li><a href="#" onclick="showProducts('computers')">Computers</a></li>
                     <li><a href="#" onclick="showProducts('laptops')">Laptops</a></li>
+                    <li><a href="#" onclick="showProducts('accessories')">Accessories</a></li>
                 </ul>
             </div>
 
             <div class="category-section">
                 <h2>PRICE</h2>
-                     <input type="range" id="priceRange" min="0" max="5000" step="1" value="5000" oninput="updatePriceLabel(this.value)">
-                     <label for="priceRange" id="priceLabel">£0 to £5000</label>
+                     <input type="range" id="priceRange" min="0" max="3000" step="1" value="3000" oninput="updatePriceLabel(this.value)">
+                     <label for="priceRange" id="priceLabel">£0 to £3000</label>
             </div>
 
             <div class="category-section">
                 <h2>BRAND</h2>
                 <ul>
-                    <li><input type="checkbox" id="brand-abc"><label for="brand-abc">ABC</label></li>
-                    <li><input type="checkbox" id="brand-xyz"><label for="brand-xyz">XYZ</label></li>
+                    <li><input type="checkbox" id="brand-abc"><label for="brand-abc">intel</label></li>
+                    <li><input type="checkbox" id="brand-xyz"><label for="brand-xyz">Apple</label></li>
                     <li><input type="checkbox" id="brand-hp"><label for="brand-hp">HP</label></li>
                     <li><input type="checkbox" id="brand-dell"><label for="brand-dell">Dell</label></li>
                     <li><input type="checkbox" id="brand-lenovo"><label for="brand-lenovo">Lenovo</label></li>
@@ -64,7 +65,9 @@
 
         <div id="products">
         <div class="breadcrumb">
-            <p><a href="#">Home</a> > <a href="#" onclick="showProducts('computers')">Computers</a> > <a href="#" onclick="showProducts('laptops')">Laptops</a></p>
+            <p><a href="#">Home</a> > <a href="#" onclick="showProducts('computers')">Computers</a> > <a href="#" onclick="showProducts('laptops')">Laptops</a> > <a href="#" onclick="showProducts('accessories')">Accessories</a></p>
+            
+
         </div>
 
 

@@ -31,7 +31,21 @@ function showProducts(category) {
                 </div>
             `;
         }
-    }
+    } else if (category === 'accessories') {
+        // Fetch and display accessories products (replace with actual data)
+        for (let i = 1; i <= 3; i++) {
+            document.getElementById('productContainer').innerHTML += `
+                <div class="product-section">
+                    <img src="https://via.placeholder.com/150" alt="Accessories ${i}" class="product-image">
+                    <h3>Laptop Model ${i}</h3>
+                    <p>Brand: Brand-${i}</p>
+                    <p>Processor: Core i${i}</p>
+                    <p>Date: ${getDate()}</p>
+                    <!-- Add other details -->
+                </div>
+            `;
+        }
+    } 
 }
 
 function getDate() {
@@ -45,7 +59,7 @@ function showProducts(category) {
     // Fetch and display products based on the category (placeholder data)
     if (category === 'computers') {
         // Fetch and display computer products (replace with actual data)
-        for (let i = 1; i <= 10; i++) {
+        for (let i = 1; i <= 51; i++) {
             document.getElementById('productContainer').innerHTML += `
                 <div class="product-section">
                     <img src="https://via.placeholder.com/150" alt="Computer ${i}" class="product-image">
@@ -59,7 +73,7 @@ function showProducts(category) {
         }
     } else if (category === 'laptops') {
         // Fetch and display laptop products (replace with actual data)
-        for (let i = 1; i <= 11; i++) {
+        for (let i = 1; i <= 21; i++) {
             document.getElementById('productContainer').innerHTML += `
                 <div class="product-section">
                     <img src="https://via.placeholder.com/150" alt="Laptop ${i}" class="product-image">
@@ -68,6 +82,19 @@ function showProducts(category) {
                     <p>Processor: Core i${i}</p>
                     <p>Date: ${getDate()}</p>
                     <!-- Add other details -->
+                </div>
+            `;
+        }
+    } else if (category === 'accessories') {
+        // Fetch and display accessories products (replace with actual data)
+        for (let i = 1; i <= 21; i++) {
+            document.getElementById('productContainer').innerHTML += `
+                <div class="product-section">
+                    <img src="https://via.placeholder.com/150" alt="Accessory ${i}" class="product-image">
+                    <h3>Accessory Model ${i}</h3>
+                    <p>Brand: Brand-${i}</p>
+                    <p>Date: ${getDate()}</p>
+                    <!-- Add other details specific to accessories -->
                 </div>
             `;
         }
