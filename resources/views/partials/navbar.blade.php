@@ -12,7 +12,7 @@
     <div id="searchResults"></div>
 
     <div class="nav-links">
-        <button class="navbutton"><a href="/about-us">About Us</a></button>
+        <button class="navbutton"><a href="/about">About Us</a></button>
         <button class="navbutton"><a href="/products">Products</a></button>
         <button class="navbutton"><a href="/cart">Cart</a></button>
         {{-- <button class="navbutton"><a href="{{ route('shopping-cart') }}"> --}}
