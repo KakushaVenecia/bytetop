@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
 </head>
 <body>
-<section>
+    @include('partials.navbar')
+<section class="section-area">
 <div class="cart-header">
     <div class="heading">
         <h1>Shopping Basket</h1>
@@ -79,7 +80,7 @@
         Subtotal ({{ $cartItems->count() }} item):
     </span>
     {{-- Display the total price --}}
-    <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£{{ $totalPrice }}</span></span>
+    {{-- <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£{{ $totalPrice }}</span></span> --}}
 </div>
 
 <div class="checkout">
@@ -93,7 +94,7 @@
 </div>
 
 </section>
-
+@include('partials.footer')
 <script src="{{ asset('js/cart.js') }}"></script>
 
 </body>

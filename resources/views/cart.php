@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -133,11 +133,11 @@
 <script src="js/cart.js"></script>
 
 </body>
-</html>
+</html> -->
 
  -->
 
- <!DOCTYPE html>
+ <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -217,7 +217,7 @@
         Subtotal ({{ $cartItems->count() }} item):
     </span>
     {{-- Display the total price --}}
-    <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£{{ $totalPrice }}</span></span>
+    <!-- <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£{{ $totalPrice }}</span></span> -->
 </div>
 
 <div class="checkout">
@@ -235,4 +235,4 @@
 <script src="{{ asset('js/cart.js') }}"></script>
 
 </body>
-</html>
+</html> -->

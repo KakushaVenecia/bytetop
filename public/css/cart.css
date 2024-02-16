@@ -1,9 +1,8 @@
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 30px;
-    padding: 20px;
-    margin-top: 200px 
+    margin:0;
+  
+    
 }
 
 
@@ -82,10 +81,13 @@ body {
     margin-right: 1.5rem;
 }
 
-.section {
+.section-area {
+    width:90%;
+    margin:auto;
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: #001E2C;
+    background-color: #ffffff;
+    border: solid 1px;
     overflow: auto;
     padding: 20px 0 15px 0;
 }

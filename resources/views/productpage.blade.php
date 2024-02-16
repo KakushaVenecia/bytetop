@@ -62,7 +62,7 @@
                         <h2>{{ $product->name }}</h2>
                         <p>{{ $product->description }}</p>
                         <p>Price: £{{ $product->price }}</p>
-                        <button class="btn btn-add" data-product-id="{{ $product->id }}">Add to Cart</button>
+                        <button class="btn btn-add" data-product-id="{{ $product->id }}" data-product-name="{{ $product->name }}" data-product-price="{{ $product->price }}">Add to Cart</button>
                     </div>
                 @endforeach
             </div>
