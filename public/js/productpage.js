@@ -23,7 +23,6 @@ function updatePriceLabel(value) {
     priceLabel.textContent = `£0 to £${value}`;
     }
 
-//  adding product to cart
 document.addEventListener('DOMContentLoaded', () => {
     const addToCartButtons = document.querySelectorAll('.btn-add');
     
