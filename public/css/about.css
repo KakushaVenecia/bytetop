@@ -4,18 +4,23 @@
   padding:0px;
   box-sizing:border-box;
   font-family: 'Poppins', sans-serif;
-  color: #fff;
   line-height: 1.5;
   letter-spacing: 1px;  
   }
   .container{
-    width: 100%;
+    width: 90%;
     min-height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('../images/image2.jpg');
+    margin: auto !important;
+    /* background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('../images/image2.jpg'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    }
+
+    p{
+      color: #0b0b0b! important;
+      font-size: bold;
     }
   .container .title{
     width: 100%;
@@ -26,7 +31,6 @@
     font-size: 22px;
     color: #fff;
     letter-spacing: 1.5px;
-    padding: 50px;  
   }
   .container .title h1::after{
     content: "";
@@ -42,19 +46,19 @@
   .container .subtitle{
     width: 100%;
     display: flex;
+    text-align: center;
     align-items: center;
     justify-content: center;    
     font-size: 22px;
     color: #222;
     letter-spacing: 1px;
-    padding: 50px 0px;
   }
 .content{
   width: 85%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 40px;
-  margin: 30px auto;
+  margin: auto;
   border: 1px solid #fff;   
 }  
 .content .article{
@@ -83,6 +87,7 @@
   color: #fff;
 }
 .content .article a{  
+  display: flex;
   font-size: 22px;
   text-decoration: none;
   display: inline-block;
@@ -114,45 +119,45 @@
   }   
 }
 .article{
-  text-align: center;
+  text-align: left;
 }
 .containers {
-  text-align: center;
-  color: #fff;
-  background-color: #c0000c;
-}
-.member{
-  padding-top: 60px;
-  color: #fff;
-  font-size: 20px;
-  margin: auto;
-  line-height: 50px;
-}
-.sub-containers{
-  max-width: 1200px;
-  margin: auto;
-  padding: 48px 0px;
-  display: flex;
-  flex-wrap: wrap;
+  display: flex; 
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; 
 }
-.team{
-  margin: 10px;
-  padding: 22px;
-  max-width: 100%;
-  cursor: pointer;
-  transition: 0.4s;
-  box-sizing: border-box;
+.member {
+  flex: 0 0 25%; 
+  max-width: 25%; 
+  padding: 0 15px; 
+  box-sizing: border-box; 
+}
+/* Add CSS styles here */
+.sub-containers {
+  display: flex; 
+  justify-content: center; /* Center the flex items horizontally */
+  align-items: center; /* Center the flex items vertically */
+  flex-wrap: wrap; /* Allow the flex items to wrap to the next line if needed */
+}
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color:rgb(96, 145, 163);
+  width:30%;
+  padding: 20px;
+  margin:20px;
+
 }
 
-.team{
-  margin: 0;
-  padding: 0;
-  display: inline-block; 
-  }
+.team img {
+  margin-bottom: 10px; /* Adjust as needed */
+}
 
   .team:hover{
-    background: #ddd;
+    background: #f41c1c;
     border-radius: 12px;
     }
     .team img {
@@ -177,11 +182,11 @@
       color: #fff;
     }
   
-    .social-links{
-      margin: 14px;    
-    }
-  
-    .social-links a{
+
+    .social-link {
+      left: 0;
+  }
+    .social-link a{
       display: inline-block;
       height: 30px;
       width: 30px;
@@ -189,10 +194,10 @@
     }
     
   
-    .social-links a:hover{
+    .social-link a:hover{
       transform: scale(1.5);
     }
   
-    .social-links a i{
+    .social-link a i{
       color: #fff;
     }

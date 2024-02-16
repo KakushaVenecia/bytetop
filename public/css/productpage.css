@@ -2,13 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-header {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
+    color:#001E2C;
 }
 
 main {
@@ -19,7 +13,34 @@ main {
 #categories {
     width: 25%;
     padding: 20px;
-    background-color: #f4f4f4;
+    background-color:#fff;
+    height: 100%;
+    border: 3px solid#001E2C ;
+}
+ul{
+    list-style-type: none;
+}
+a:hover{
+    list-style: none;
+    color: #f7890b !important;
+}
+
+.product {
+    border: 1px solid rgb(222, 222, 222);
+    margin-right: 10px;
+    padding: 5px;
+    width: 200px; /* Set a fixed width for each product */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Arrange children in a column */
+    justify-content: space-between; /* Distribute space evenly between children */
+    text-align: center; /* Center align content */
+}
+
+.product img {
+    width: 100%; /* Make the image fill the container */
+    height: 200px; /* Maintain aspect ratio */
+    max-height: 200px; /* Limit the maximum height of the image */
+    object-fit: cover; /* Scale the image while preserving its aspect ratio */
 }
 
 #products {
@@ -34,19 +55,9 @@ main {
 .product-container {
     display: flex;
     flex-wrap: wrap;
-}
-
-.product-section {
-    width: 200px;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #dddddd;
-    text-align: center; /* Center align text in product section */
-}
-
-.product-image {
-    max-width: 100%;
-    height: auto;
+    margin-right: 2px;
+    background-color: #fff;
+    padding-bottom: 20px;
 }
 
 .breadcrumb {
@@ -62,4 +73,36 @@ main {
 
 .breadcrumb a:hover {
     text-decoration: underline;
+    color: orange;
+}
+
+.btn {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    display: inline-block;
+    outline: 0;
+    border: none;
+    background: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    letter-spacing: .1em;
+    text-decoration: none; 
+    text-transform: uppercase;
+    line-height: 100%;
+    border: 1px solid black !important;
+    border-radius: 5px;
+    white-space: nowrap;
+    padding: 1.1rem 2rem; /* Adjusted padding */
+    transition: all .2s linear;
+}
+
+.btn:hover {
+    color: #fff;
+    background-color: #f7890b;
+}
+
+.btn-add {
+    grid-column: 3;
+    grid-row: 4 / 5;
+    align-self: center;
 }

@@ -89,8 +89,14 @@ Route::get('/cartpage', function(){
 Route::get('/checkout', function(){
     return view ('checkout');
 });
-Route::get('/productpage',function(){
-    return view('productpage');
+Route::get('/products',function(){
+     // Fetch all distinct categories from the products table
+     $categories = ['Laptops', 'Computers', 'Accessories'];
+     // Fetch distinct categories from the products table
+    $distinctCategories = Product::distinct()->pluck('category');
+
+    $products = Product::paginate(10);
+    return view('productpage',  compact('products'),  ['categories' => $categories], ['distinctCategories' => $distinctCategories]);
 });
 
 Route::get('/register',function(){
@@ -121,7 +127,7 @@ Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'des
 
 
 // Landing page routes
-Route::get('/products', function(){
+Route::get('/productpage', function(){
     // $products = Product::all();
     $products = Product::paginate(10);
     return view('shop', compact('products'));
