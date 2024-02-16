@@ -26,7 +26,7 @@ Route::get('/email/verify/', [VerificationController::class, 'verify'])->name('v
 
 // basic nav pages
 Route::get('/',function(){
- 'orderItem'==App\Models\OrderItem::count();
+//  'orderItem'==App\Models\OrderItem::count();
     return view('landing');
 })->name('landing');
 
