@@ -14,7 +14,7 @@
     <div class="nav-links">
         <button class="navbutton"><a href="/about">About Us</a></button>
         <button class="navbutton"><a href="/products">Products</a></button>
-        <button class="navbutton"><a href="/cart">Cart</a></button>
+        <button class="navbutton"><a href="/cart">Cart (<span id="cartItemCount">0</span>)</a></button>
         {{-- <button class="navbutton"><a href="{{ route('shopping-cart') }}"> --}}
             {{-- Order ({{ $OrderItem }}) --}}
         {{-- </a> --}}
