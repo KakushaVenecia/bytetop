@@ -10,6 +10,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Models\Cart;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,9 +71,11 @@ return view('verifyyouremail');
 });
 
 
-Route::get('/search', function(){
+Route::get('/Search', function(){
     return view ('search');
 });
+
+Route::post('/Search', [SearchController::class, 'findSearch']);
 
 Route::get('/forgotpwd', function(){
     return view ('forgotpwd');
