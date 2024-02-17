@@ -27,7 +27,7 @@ class SearchController extends Controller
                 //dd($search);
         $test = Product::where ( 'name', 'LIKE', '%' . $search . '%' )->orWhere ( 'description', 'LIKE', '%' . $search . '%' )->get ();
     if (count ( $test ) > 0)
-    return view ( 'Search' )->withDetails ( $test )->withQuery ( $search );
+    return view ('Search')->withTest($test)->withQuery ($search);
     else
     return view ( 'Search' )->withMessage ( 'No Details found. Try to search again !' );		
     }

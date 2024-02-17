@@ -71,7 +71,7 @@ return view('verifyyouremail');
 });
 
 
-Route::get('/search', function(){
+Route::get('/Search', function(){
     return view ('search');
 });
 
