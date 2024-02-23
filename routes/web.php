@@ -10,6 +10,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Models\Cart;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,8 +46,9 @@ Route::view('/checkmail', 'checkmail');
 // Admin dashboard web routes
 Route::get('/admin/dashboard', function () {
     $productCount = App\Models\Product::count();
+    $users = App\Models\User::all();
     return view('admindashboard.dashboard', [
-        'productCount' => $productCount,
+        'productCount' => $productCount, 'users' => $users
     ]);
 })->name('dashboard');
 Route::get('/dashboard', function(){
@@ -70,9 +72,11 @@ return view('verifyyouremail');
 });
 
 
-Route::get('/search', function(){
+Route::get('/Search', function(){
     return view ('search');
 });
+
+Route::post('/Search', [SearchController::class, 'findSearch']);
 
 Route::get('/forgotpwd', function(){
     return view ('forgotpwd');
