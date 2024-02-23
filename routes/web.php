@@ -46,8 +46,9 @@ Route::view('/checkmail', 'checkmail');
 // Admin dashboard web routes
 Route::get('/admin/dashboard', function () {
     $productCount = App\Models\Product::count();
+    $users = App\Models\User::all();
     return view('admindashboard.dashboard', [
-        'productCount' => $productCount,
+        'productCount' => $productCount, 'users' => $users
     ]);
 })->name('dashboard');
 Route::get('/dashboard', function(){

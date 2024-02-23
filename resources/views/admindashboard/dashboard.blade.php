@@ -77,6 +77,15 @@
             <!-- Customers content -->
             <h1>Customers</h1>
             <p>This is the customers content.</p>
+            @foreach ($users as $user)
+            <div>
+            <h2>{{ $user->name }}</h2>
+            <p>Email: {{ $user->email }}</p>
+            <p>Role: {{ $user ->role }}</p>
+        <
+        <!-- Add other customer details here -->
+    </div>
+@endforeach
         </div>
         <div id="orders" style="display: none;">
             <!-- Orders content -->
