@@ -34,7 +34,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 
-Route::patch('/products', [ProductController::class, 'edit'])->name('');
+Route::patch('/products/{id}', [ProductController::class, 'update'])->name('products.update');
 
 Route::get('/allproducts', [ProductController::class, 'index']);
 
