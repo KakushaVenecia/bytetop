@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Cart;
 
 class CartController extends Controller
-{
-    public function index()
+{ public function index()
     {
         // Retrieve the user's cart items
         $cartItems = Cart::with('product')->where('user_id', auth()->id())->get();
@@ -23,19 +22,22 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-        $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'quantity' => 'required|numeric|min:1'
-        ]);
 
-        // Add the product to the cart
-        Cart::create([
-            'user_id' => auth()->id(),
-            'product_id' => $request->input('product_id'),
-            'quantity' => $request->input('quantity')
-        ]);
-
-        return redirect()->route('shopping-cart')->with('success', 'Product added to cart successfully');
+            $request->validate([
+                'product_id' => 'required|exists:products,id',
+                'quantity' => 'required|numeric|min:1'
+            ]);
+    
+            // Add the product to the cart
+            Cart::create([
+                'user_id' => auth()->id(),
+                'product_id' => $request->input('product_id'),
+                'quantity' => $request->input('quantity')
+            ]);
+    
+            // Return a JSON response indicating success
+            return response()->json(['success' => true]);
+        
     }
 
     public function removeFromCart($id)
@@ -46,3 +48,4 @@ class CartController extends Controller
         return redirect()->route('shopping-cart')->with('success', 'Product removed from cart successfully');
     }
 }
+
