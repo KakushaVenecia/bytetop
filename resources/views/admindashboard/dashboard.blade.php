@@ -45,33 +45,43 @@
             <button><a href="/products">Go to the products page</a></button>
         </div>
         <div id="products">
-            <!-- Products content -->
-            <h1>Products</h1>
-            
-            {{-- @if(count($products) > 0)
-                <ul>
-                    @foreach($products as $product)
-                        <li>
-                            <strong>{{ $product->name }}</strong><br>
-                            Description: {{ $product->description }}<br>
-                            Price: {{ $product->price }}<br>
-                            Tags: {{ $product->tags }}<br>
-                            Images: {{ $product->images }}<br>
-                            Category: {{ $product->category }}<br>
+    <!-- Products content -->
+    <h1>Products</h1>
 
-                            <!-- Add more fields as needed -->
+    @if(count($products) > 0)
+        <ul>
+            @foreach($products as $product)
+                <li>
+                <img width="100" src="{{ asset('storage/images/' . $product->image) }}" alt="Product Image"> <br />
+                    <strong>{{ $product->name }}</strong><br>
+                    Description: {{ $product->description }}<br>
+                    Price: {{ $product->price }}<br>
+                    Tags: {{ $product->tags }}<br>
+                    Category: {{ $product->category }}<br>
 
-                            <button class="navbutton">
-                                <a href="{{ route('admin.products.edit', $product->id) }}">Edit Product</a>
-                            </button>
-                        </li>
-                    @endforeach
-                </ul>
-            @else
-                <p>No products found.</p>
-            @endif --}}
+                    <!-- Add more fields as needed -->
 
-            <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
+                    <button class="navbutton">
+                    <a href="{{ route('admin.products.edit', $product->id) }}" class="edit-button">Edit Product</a>
+                    </button>
+
+                    <!-- Add delete form -->
+                    <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="navbutton" onclick="return confirm('Are you sure you want to delete this product?')">Delete Product</button>
+                    </form>
+                </li>
+            @endforeach
+        </ul>
+    @else
+        <p>No products found.</p>
+    @endif
+
+    <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
+</div>
+
+
         </div>
         <div id="customers" style="display: none;">
             <!-- Customers content -->
@@ -143,5 +153,25 @@
     // Show the dashboard content by default on page load
     showDashboard();
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const editButtons = document.querySelectorAll('.navbutton a');
+
+        editButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                console.log('Edit button clicked');
+
+                // Extract the product ID from the button's href attribute
+                const urlParts = button.getAttribute('href').split('/');
+                const productId = urlParts[urlParts.length - 2]; // Get the second-to-last part
+
+                // Redirect to the product edit page or perform other actions based on the product ID
+                window.location.href = '/admin/products/' + productId + '/edit';
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
