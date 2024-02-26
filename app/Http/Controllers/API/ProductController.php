@@ -16,7 +16,9 @@ class ProductController extends Controller
     }
 
     public function store(Request $request)
-    {
+    { 
+        // dd($request);
+
         // validation and submit data dd($request->all()); this is to get the request body(diedump)
         // dd($request->file('image'));
         $formFields = $request->validate([
@@ -36,6 +38,7 @@ class ProductController extends Controller
     
         // Assign the authenticated user's ID
         $formFields['user_id'] = auth()->id();
+        // $formFields['user_id'] = auth('api')->id;
     
         // Debug: Dump the form fields to ensure correct data
         // dd($formFields);
@@ -48,25 +51,37 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        
         $product = Product::findOrFail($id);
         return view('admindashboard.edit', compact('product'));
+        
     }
 
     public function update(Request $request, $id)
     {
+         // Debug: Dump the product ID received in the request
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric',
             'tags' => 'required|string',
-            'image' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category' => 'required|string',
             
         ]);
 
+        
+
         // Find the product by ID
         $product = Product::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '_' . $image->getClientOriginalName();
+            $image->storeAs('public/images', $imageName); // Store in the 'storage/app/public/images' directory
+            $product->image = $imageName;
+        }
 
         // Update the product
         $product->update([
@@ -74,11 +89,10 @@ class ProductController extends Controller
             'description' => $request->input('description'),
             'price' => $request->input('price'),
             'tags' => $request->input('tags'),
-            'images' => $request->input('images'),
             'category' => $request->input('category'),
         
         ]);
-
+        
         return Redirect::route('dashboard')->with('success', 'Product updated successfully');
     }
 
@@ -97,4 +111,13 @@ class ProductController extends Controller
     $products = Product::all();
     return view('admindashboard.create', compact('products'));
 }
+
+public function dashboard()
+{
+    $productCount = Product::count();
+    $products = Product::all();
+
+    return view('admindashboard.dashboard', compact('productCount', 'products'));
+}
+
 }
