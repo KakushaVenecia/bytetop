@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -116,8 +117,14 @@ public function dashboard()
 {
     $productCount = Product::count();
     $products = Product::all();
+    $users = User::all();
 
-    return view('admindashboard.dashboard', compact('productCount', 'products'));
+    // Return the view with all necessary data
+    return view('admindashboard.dashboard', [
+        'productCount' => $productCount,
+        'products' => $products,
+        'users' => $users,
+    ]);
 }
 
 }

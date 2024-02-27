@@ -40,6 +40,8 @@
         <div id="dashboard" style="display: none;">
             <!-- Dashboard content -->
             <h1>Dashboard</h1>
+            
+    <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
             <p>This is the dashboard content.</p>
             <h2>Products: {{ $productCount }}</h2>
             <button><a href="/products">Go to the products page</a></button>
@@ -78,37 +80,37 @@
         <p>No products found.</p>
     @endif
 
-    <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
 </div>
-
-
-        </div>
-        <div id="customers" style="display: none;">
-            <!-- Customers content -->
-            <h1>Customers</h1>
-            <p>This is the customers content.</p>
-            @foreach ($users as $user)
-            <div>
-            <h2>{{ $user->name }}</h2>
-            <p>Email: {{ $user->email }}</p>
-            <p>Role: {{ $user ->role }}</p>
-        <
+<div id="customers" style="display: none;">
+    <!-- Customers content -->
+    <h1>Customers</h1>
+    <p>This is the customers content.</p>
+    @foreach ($users as $user)
+    <div>
+        <h2>{{ $user->name }}</h2>
+        <p>Email: {{ $user->email }}</p>
+        <p>Role: {{ $user ->role }}</p>
         <!-- Add other customer details here -->
     </div>
-@endforeach
-        </div>
-        <div id="orders" style="display: none;">
-            <!-- Orders content -->
-            <h1>Orders</h1>
-            <p>This is the orders content.</p>
-        </div>
-        <div id="settings" style="display: none;">
-            <!-- Settings content -->
-            <h1>Settings</h1>
-            <p>This is the settings content.</p>
-        </div>
+    @endforeach
+</div>
+<div id="orders" style="display: none;">
+    <!-- Orders content -->
+    <h1>Orders</h1>
+    <p>This is the orders content.</p>
+</div>
+<div id="settings" style="display: none;">
+    <!-- Settings content -->
+    <h1>Settings</h1>
+    <p>This is the settings content.</p>
+    <button>Edit Settings</button>
+    <button>Invite Admins</button>
+</div>
+<div>
+        
         <!-- Add more content sections for other pages -->
     </div>
+</div>
 </div>
 
 <script>

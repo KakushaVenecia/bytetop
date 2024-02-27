@@ -8,37 +8,24 @@
     <link rel="stylesheet" href="css/register.css"> 
 </head>
 <body>
-    @if (session('error'))
-    <div class="alert alert-danger">{{ session('error') }}</div>
-@endif
-@if (session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
-@endif
-    <form class="modal-content" id="registerForm" method="POST" action="{{ route('auth.register') }}">
-        @csrf
+    <form class="modal-content" id="registerForm">
         <div class="container">
             <h1>Create Account</h1>
             <label for="name"><b>Your Name:</b></label><br>
-            <input type="text" placeholder="First and last name" name="name" value="{{ old('name') }}" required><br>
+            <input type="text" id="name" placeholder="First and last name" value="{{ old('name') }}" required><br>
 
             <label for="email"><b>Email:</b></label><br>
-            <input type="email" placeholder="Enter your Email" name="email" value="{{ old('email') }}" required><br>
-            @error('email')
-                <span class="error-message">{{ $message }}</span>
-            @enderror
+            <input type="email" id="email" placeholder="Enter your Email" value="{{ old('email') }}" required><br>
+            <span id="emailError" class="error-message"></span><br>
 
             <label for="password"><b>Create a Password:</b></label><br>
-            <input type="password" placeholder="At least 8 characters" name="password" id="password" required><br>
+            <input type="password" id="password" placeholder="At least 8 characters" required><br>
             <span class="password-info">Password must be at least 8 characters long.</span>
-            @error('password')
-                <span class="error-message">{{ $message }}</span>
-            @enderror
+            <span id="passwordError" class="error-message"></span><br>
 
             <label for="password_confirmation"><b>Re-enter Password:</b></label><br>
-            <input type="password" placeholder="Re-enter Password" name="password_confirmation" required><br>
-            @error('password_confirmation')
-                <span class="error-message">{{ $message }}</span>
-            @enderror
+            <input type="password" id="passwordConfirmation" placeholder="Re-enter Password" required><br>
+            <span id="passwordConfirmationError" class="error-message"></span><br>
 
             <p>By creating an account, you agree to Bytetop's Conditions of Use and Privacy Note. <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
             
