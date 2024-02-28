@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->decimal('price', 8, 2); // Adjust precision and scale based on your needs
+            $table->decimal('price', 10, 2); // Adjust precision and scale based on your needs
             $table->string('tags');
-            $table->string('images')->default(''); // Set a default value of an empty string
-            $table->string('category');
+            $table->string('image')->default(''); // Set a default value of an empty string
+            $table->enum('category', ['Laptops', 'Computers', 'Accessories']); // Define enum with specified categories
             $table->timestamps();
         });
     }

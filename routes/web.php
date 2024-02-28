@@ -10,6 +10,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Models\Cart;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,53 +27,63 @@ Route::get('/email/verify/', [VerificationController::class, 'verify'])->name('v
 
 // basic nav pages
 Route::get('/',function(){
- 'orderItem'==App\Models\OrderItem::count();
+//  'orderItem'==App\Models\OrderItem::count();
     return view('landing');
-});
+})->name('landing');
 
 Route::get('/signup', function(){
         return view('register-user');
 });
+
+
+
 Route::get('/signin', function () {
     return view('login-user');
 });
 
-
-
-
 Route::view('/checkmail', 'checkmail');
 
 // Admin dashboard web routes
-Route::get('/admin/dashboard', function () {
-    $productCount = App\Models\Product::count();
-    return view('admindashboard.dashboard', [
-        'productCount' => $productCount,
-    ]);
-})->name('dashboard');
-Route::get('/dashboard', function(){
-    return view ('admin/dashboard');
-});
+// Route::get('/admin/dashboard', function () {
+//     $productCount = App\Models\Product::count();
+//     $users = App\Models\User::all();
+//     return view('admindashboard.dashboard', [
+//         'productCount' => $productCount, 'users' => $users
+//     ]);
+// })->name('dashboard');
+// Route::get('/dashboard', function(){
+//     return view ('admin/dashboard');
+// });
+
+
 Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
+Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store');
+Route::get('/admin/products/{id}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
+Route::put('/admin/products/{id}', [ProductController::class, 'update'])->name('admin.products.update');
+Route::delete('/admin/products/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
+Route::get('/admin/dashboard', [ProductController::class, 'dashboard'])->name('dashboard');
+Route::get('/get-product-description', [ProductController::class, 'getProductDescription'])->name('get-product-description');
+
+
 
 
 // Verification
 Route::view('/verify-success', 'verification.verify-success')->name('verification.success');
-
 // Route to show the verification error view
 Route::view('/verify-error', 'verification.verify-error')->name('verification.error');
+
 
 Route::get('/verifyemail', function(){
 
 return view('verifyyouremail');
 });
 
-Route::get('/about', function(){
-    return view ('about');
-});
 
-Route::get('/search', function(){
+Route::get('/Search', function(){
     return view ('search');
 });
+
+Route::post('/Search', [SearchController::class, 'findSearch']);
 
 Route::get('/forgotpwd', function(){
     return view ('forgotpwd');
@@ -83,20 +94,26 @@ Route::get('/checkmail', function(){
 });
 
 // from front end for intergration
-// Route::get('/cart', function(){
-//     return view ('cart');
-// });
+Route::get('/cartpage', function(){
+    return view ('cart');
+});
 
-// Route::get('/checkout', function(){
-//     return view ('checkout');
-// });
-// Route::get('/productpage',function(){
-//     return view('productpage');
-// });
+Route::get('/checkout', function(){
+    return view ('checkout');
+});
+Route::get('/products',function(){
+     // Fetch all distinct categories from the products table
+     $categories = ['Laptops', 'Computers', 'Accessories'];
+     // Fetch distinct categories from the products table
+    $distinctCategories = Product::distinct()->pluck('category');
 
-// Route::get('/register',function(){
-//     return view('register');
-// });
+    $products = Product::paginate(10);
+    return view('productpage',  compact('products'),  ['categories' => $categories], ['distinctCategories' => $distinctCategories]);
+});
+
+Route::get('/register',function(){
+    return view('register');
+});
 
 // CART for backend for integration wirh the cart pages on front end
 Route::get('/cart', [CartController::class, 'index'])->name('shopping-cart');
@@ -116,7 +133,17 @@ Route::put('/orders/{order_id}/items/{id}', [OrderItemController::class, 'update
 Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'destroy'])->name('orderItems.destroy');
 
 
-Route::get('/products', function(){
-    $products = Product::all();
+
+
+
+
+
+// Landing page routes
+Route::get('/productpage', function(){
+    // $products = Product::all();
+    $products = Product::paginate(10);
     return view('shop', compact('products'));
+});
+Route::get('/about', function(){
+    return view ('about');
 });

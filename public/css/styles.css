@@ -48,8 +48,10 @@ nav{
     align-items: center; /* Align items vertically */
     justify-content: space-between; /* Add this line to align items to the right */
     background-color: #ffffff;
-    width: 95%;
+    width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     margin: auto;
+
 }
 
 .logo {
@@ -520,10 +522,10 @@ justify-content: space-around;
 
 .btn:hover{
 	color: #fff;
-	background-color: #262626;
+	background-color: #f7890b;
 }
 
-.btn-discount{
+.btn-add{
 	grid-column: 3;
 	grid-row: 4 / 5;
 	align-self: center;

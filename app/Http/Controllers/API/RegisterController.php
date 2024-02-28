@@ -4,12 +4,11 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Notifications\WelcomeEmail;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Models\User;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Carbon;
@@ -18,59 +17,56 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class RegisterController extends Controller
 {
     public function regist(Request $request)
-{
-    // Validate request data
-    $request->validate([
-        'name' => 'required|string',
-        'email' => 'required|email|unique:users,email',
-        'password' => 'required|min:8|confirmed',
-        'password_confirmation' => 'required|same:password',
-    ]);
-
-    // Check if user already exists
-    $existingUser = User::where('email', $request->input('email'))->first();
-    if ($existingUser) {
-        return redirect()->back()->withInput()->with('error', 'User with this email already exists.');
-    }
-
-    try {
-        // Create the user
-        $user = User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-            'role' => 'customer', // Set the default role to "customer"
+    {
+        dd($request->all());
+        // Validate request data
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed',
+            'password_confirmation' => 'required|same:password',
         ]);
-
-        // Generate email verification token
-        $token = Str::random(60);
-
-        // Update user with email verification token
-        $user->update(['email_verification_token' => $token]);
-
-        // Generate verification URL with user's ID
-        $verificationUrl = URL::temporarySignedRoute(
-            'verification.verify',
-            Carbon::now()->addMinutes(60),
-            ['id' => $user->getKey(), 'hash' => $token] 
-        );
-
-        // Send welcome email with verification link
-        $user->notify(new WelcomeEmail($verificationUrl));
-
-        // Return a redirect response with a success message
-        return redirect('/verifyemail')->with('success', 'Registration email sent to user.');
-    } catch (\Exception $e) {
-        // Log the detailed error message for debugging
-        logger()->error('Failed to register user: ' . $e->getMessage());
-
-        // Return a redirect response with an error message
-        return redirect()->back()->withInput()->with('error', 'Failed to register user. Please try again later.');
+    
+        try {
+            // Check if user already exists
+            $existingUser = User::where('email', $request->input('email'))->first();
+            if ($existingUser) {
+                return response()->json(['error' => 'User with this email already exists.'], 422);
+            }
+    
+            // Create the user
+            $user = User::create([
+                'name' => $request->input('name'),
+                'email' => $request->input('email'),
+                'password' => Hash::make($request->input('password')),
+                'role' => 'customer', // Set the default role to "customer"
+            ]);
+    
+            // Generate JWT token
+            $token = JWTAuth::fromUser($user);
+    
+            // Generate verification URL with JWT token
+            $verificationUrl = URL::to('/verify-email') . '?token=' . $token;
+    
+            // Send welcome email with verification link
+            $user->notify(new WelcomeEmail($verificationUrl));
+    
+            // Return a success response
+            return response()->json(['message' => 'Registration email sent to user.'], 200);
+        } catch (\Exception $e) {
+            // Log the detailed error message for debugging
+            logger()->error('Failed to register user: ' . $e->getMessage());
+    
+            // Return an error response
+            return response()->json(['error' => 'Failed to register user. Please try again later.'], 500);
+        }
     }
-}
+    
+    
 
     public function loginUser(Request $request)
     {
+        // dd($request);
         // Retrieve the user record based on the provided email
         $user = User::where('email', $request->input('email'))->first();
     
@@ -89,7 +85,6 @@ class RegisterController extends Controller
         // Check if the user is an admin
         if ($user->role === 'admin') {
             // Set session data for admin user
-            Session::put('admin_authenticated', true);
     
             // Redirect admin user to admin dashboard
             return redirect('/admin/dashboard');
@@ -103,7 +98,13 @@ class RegisterController extends Controller
     
         // Regular user authentication
         // Perform any additional actions, such as storing user session data, logging, etc.
-        Session::put('authenticated', true);
+        // Session::put('authenticated', true);
+        // Session::put('user_name', $user->name);
+         // Store user information in session
+       // Store user information in session
+        $request->session()->put('authenticated', true);
+        $request->session()->put('user_id', $user->id);
+        $request->session()->put('user_name', $user->name);
     
         // Redirect the user to the desired page (e.g., dashboard)
         return redirect('/');

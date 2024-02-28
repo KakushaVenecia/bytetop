@@ -1,88 +1,57 @@
-function showProducts(category) {
-    // Reset product area content
-    document.getElementById('productContainer').innerHTML = '';
+document.addEventListener('DOMContentLoaded', () => {
+    try {
+        
+        const addToCartButtons = document.querySelectorAll('.btn-add');
 
-    // Fetch and display products based on the category (placeholder data)
-    if (category === 'computers') {
-        // Fetch and display computer products (replace with actual data)
-        for (let i = 1; i <= 3; i++) {
-            document.getElementById('productContainer').innerHTML += `
-                <div class="product-section">
-                    <img src="https://via.placeholder.com/150" alt="Computer ${i}" class="product-image">
-                    <h3>Computer Model ${i}</h3>
-                    <p>Brand: Brand-${i}</p>
-                    <p>Processor: Core i${i}</p>
-                    <p>Date: ${getDate()}</p>
-                    <!-- Add other details -->
-                </div>
-            `;
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const productId = button.dataset.productId;
+                const productName = button.dataset.productName;
+                const productPrice = button.dataset.productPrice;
+
+                // Send AJAX request to add the product to the cart
+                fetch('/cart/add', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                    },
+                    body: JSON.stringify({
+                        product_id: productId,
+                        name: productName,
+                        price: productPrice,
+                        quantity: 1 // You can adjust this as needed
+                    })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data); // Log the response for debugging
+
+
+                        // Update the cart count on the UI
+                        // You can update the count based on the response from the server
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+        });
+
+        function updateCartCount() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/cart/count', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    console.log('Cart count:', response.count);
+                }
+            };
+            xhr.send();
         }
-    } else if (category === 'laptops') {
-        // Fetch and display laptop products (replace with actual data)
-        for (let i = 1; i <= 3; i++) {
-            document.getElementById('productContainer').innerHTML += `
-                <div class="product-section">
-                    <img src="https://via.placeholder.com/150" alt="Laptop ${i}" class="product-image">
-                    <h3>Laptop Model ${i}</h3>
-                    <p>Brand: Brand-${i}</p>
-                    <p>Processor: Core i${i}</p>
-                    <p>Date: ${getDate()}</p>
-                    <!-- Add other details -->
-                </div>
-            `;
-        }
+
+        // Call the function to update cart count on page load
+        updateCartCount();
+    } catch (error) {
+        console.error('An error occurred:', error);
     }
-}
-
-function getDate() {
-    const currentDate = new Date();
-    return currentDate.toDateString();
-}
-function showProducts(category) {
-    // Reset product area content
-    document.getElementById('productContainer').innerHTML = '';
-
-    // Fetch and display products based on the category (placeholder data)
-    if (category === 'computers') {
-        // Fetch and display computer products (replace with actual data)
-        for (let i = 1; i <= 10; i++) {
-            document.getElementById('productContainer').innerHTML += `
-                <div class="product-section">
-                    <img src="https://via.placeholder.com/150" alt="Computer ${i}" class="product-image">
-                    <h3>Computer Model ${i}</h3>
-                    <p>Brand: Brand-${i}</p>
-                    <p>Processor: Core i${i}</p>
-                    <p>Date: ${getDate()}</p>
-                    <!-- Add other details -->
-                </div>
-            `;
-        }
-    } else if (category === 'laptops') {
-        // Fetch and display laptop products (replace with actual data)
-        for (let i = 1; i <= 11; i++) {
-            document.getElementById('productContainer').innerHTML += `
-                <div class="product-section">
-                    <img src="https://via.placeholder.com/150" alt="Laptop ${i}" class="product-image">
-                    <h3>Laptop Model ${i}</h3>
-                    <p>Brand: Brand-${i}</p>
-                    <p>Processor: Core i${i}</p>
-                    <p>Date: ${getDate()}</p>
-                    <!-- Add other details -->
-                </div>
-            `;
-        }
-    }
-}
-
-
-function updatePriceLabel(value) {
-const priceLabel = document.getElementById('priceLabel');
-priceLabel.textContent = `£0 to £${value}`;
-}
-
-
-
-function getDate() {
-    const currentDate = new Date();
-    return currentDate.toDateString();
-}
+});
