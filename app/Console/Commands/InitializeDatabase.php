@@ -36,7 +36,7 @@ class InitializeDatabase extends Command
         // Create initial administrative user
         $admin = User::create([
             'name' => 'Bytetop Admin',
-            'email' => 'saikiransurineni616@gmail.com',
+            'email' => 'kakushavenecia@gmail.com',
             'password' => bcrypt($password),
             'role' => 'admin',
             'email_verification_token' => $token, // Generate email verification token

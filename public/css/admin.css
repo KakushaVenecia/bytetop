@@ -1,8 +1,11 @@
-
+*{
+  margin: 0%;
+}
 
 /* Layout */
 
 .container {
+ 
   display: flex;
   flex-direction: row;
 }
@@ -228,9 +231,10 @@ input#menu[type="checkbox"] {
 .menu {
   position: absolute;
   display: block;
-  left: -200px;
+  /* left: -200px; */
   top: 0;
   width: 250px;
+  height:100vh;
   /* Remove transition */
   /* transition: all 0.45s cubic-bezier(0.77, 0, 0.175, 1); */
   background-color: #001E2C;

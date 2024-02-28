@@ -20,6 +20,7 @@
                     <li><a href="#" onclick="showCustomers()">Customers</a><span class="icon"><i class="fa fa-heart"></i></span></li>
                     <li><a href="#" onclick="showOrders()">Orders</a><span class="icon"><i class="fa fa-heart"></i></span></li>
                     <li><a href="#" onclick="showSettings()">Settings</a><span class="icon"><i class="fa fa-heart"></i></span></li>
+                    <li><a href="#" onclick="showNotifications()">Notifications</a><span class="icon"><i class="fa fa-heart"></i></span></li>
                     <!-- Add more sidebar links as needed -->
                 </ul>
             </div>
@@ -40,6 +41,8 @@
         <div id="dashboard" style="display: none;">
             <!-- Dashboard content -->
             <h1>Dashboard</h1>
+            <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
+   
             <p>This is the dashboard content.</p>
             <h2>Products: {{ $productCount }}</h2>
             <button><a href="/products">Go to the products page</a></button>
@@ -60,10 +63,7 @@
                     Category: {{ $product->category }}<br>
 
                     <!-- Add more fields as needed -->
-
-                    <button class="navbutton">
-                    <a href="{{ route('admin.products.edit', $product->id) }}" class="edit-button">Edit Product</a>
-                    </button>
+                    <button class="navbutton edit-button" data-product-id="{{ $product->id }}">Edit Product</button>
 
                     <!-- Add delete form -->
                     <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" style="display:inline;">
@@ -78,37 +78,42 @@
         <p>No products found.</p>
     @endif
 
-    <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
 </div>
-
-
-        </div>
-        <div id="customers" style="display: none;">
-            <!-- Customers content -->
-            <h1>Customers</h1>
-            <p>This is the customers content.</p>
-            @foreach ($users as $user)
-            <div>
-            <h2>{{ $user->name }}</h2>
-            <p>Email: {{ $user->email }}</p>
-            <p>Role: {{ $user ->role }}</p>
-        <
+<div id="customers" style="display: none;">
+    <!-- Customers content -->
+    <h1>Customers</h1>
+    <p>This is the customers content.</p>
+    @foreach ($users as $user)
+    <div>
+        <h2>{{ $user->name }}</h2>
+        <p>Email: {{ $user->email }}</p>
+        <p>Role: {{ $user ->role }}</p>
         <!-- Add other customer details here -->
     </div>
-@endforeach
-        </div>
-        <div id="orders" style="display: none;">
-            <!-- Orders content -->
-            <h1>Orders</h1>
-            <p>This is the orders content.</p>
-        </div>
-        <div id="settings" style="display: none;">
-            <!-- Settings content -->
-            <h1>Settings</h1>
-            <p>This is the settings content.</p>
-        </div>
+    @endforeach
+</div>
+<div id="orders" style="display: none;">
+    <!-- Orders content -->
+    <h1>Orders</h1>
+    <p>This is the orders content.</p>
+</div>
+<div id="settings" style="display: none;">
+    <!-- Settings content -->
+    <h1>Settings</h1>
+    <p>This is the settings content.</p>
+    <button>Edit Settings</button>
+    <button>Invite Admins</button>
+</div>
+<div id="notifications" style="display: none;">
+    <!-- Orders content -->
+    <h1>Notifications</h1>
+    <p>This is the Notification content.</p>
+</div>
+<div>
+        
         <!-- Add more content sections for other pages -->
     </div>
+</div>
 </div>
 
 <script>
@@ -118,6 +123,7 @@
         document.getElementById('customers').style.display = 'none';
         document.getElementById('orders').style.display = 'none';
         document.getElementById('settings').style.display = 'none';
+        document.getElementById('notifications').style.display = 'none';
     }
     function showProducts() {
         document.getElementById('dashboard').style.display = 'none';
@@ -125,6 +131,7 @@
         document.getElementById('customers').style.display = 'none';
         document.getElementById('orders').style.display = 'none';
         document.getElementById('settings').style.display = 'none';
+        document.getElementById('notifications').style.display = 'none';
     }
     function showCustomers() {
         document.getElementById('dashboard').style.display = 'none';
@@ -132,6 +139,7 @@
         document.getElementById('customers').style.display = 'block';
         document.getElementById('orders').style.display = 'none';
         document.getElementById('settings').style.display = 'none';
+        document.getElementById('notifications').style.display = 'none';
     }
     function showOrders() {
         document.getElementById('dashboard').style.display = 'none';
@@ -139,6 +147,7 @@
         document.getElementById('customers').style.display = 'none';
         document.getElementById('orders').style.display = 'block';
         document.getElementById('settings').style.display = 'none';
+        document.getElementById('notifications').style.display = 'none';
     }
     function showSettings() {
         document.getElementById('dashboard').style.display = 'none';
@@ -146,31 +155,41 @@
         document.getElementById('customers').style.display = 'none';
         document.getElementById('orders').style.display = 'none';
         document.getElementById('settings').style.display = 'block';
+        document.getElementById('notifications').style.display = 'none';
+    }
+    function showNotifications() {
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('products').style.display = 'none';
+        document.getElementById('customers').style.display = 'none';
+        document.getElementById('orders').style.display = 'none';
+        document.getElementById('settings').style.display = 'none';
+        document.getElementById('notifications').style.display = 'block';
     }
     // 
     // Add other show functions as needed
 
     // Show the dashboard content by default on page load
     showDashboard();
-</script>
-<script>
+    
     document.addEventListener('DOMContentLoaded', function() {
-        const editButtons = document.querySelectorAll('.navbutton a');
+    const editButtons = document.querySelectorAll('.edit-button');
 
-        editButtons.forEach(button => {
-            button.addEventListener('click', function(event) {
-                event.preventDefault();
-                console.log('Edit button clicked');
+    editButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            event.preventDefault();
+            console.log('Edit button clicked');
 
-                // Extract the product ID from the button's href attribute
-                const urlParts = button.getAttribute('href').split('/');
-                const productId = urlParts[urlParts.length - 2]; // Get the second-to-last part
+            // Extract the product ID from the data-product-id attribute
+            const productId = button.getAttribute('data-product-id');
 
-                // Redirect to the product edit page or perform other actions based on the product ID
-                window.location.href = '/admin/products/' + productId + '/edit';
-            });
+            // Redirect to the product edit page
+            window.location.href = '/admin/products/' + productId + '/edit';
         });
     });
+});
+
+
+
 </script>
 
 </body>
