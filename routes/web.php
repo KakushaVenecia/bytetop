@@ -1,4 +1,5 @@
 <?php
+
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PasswordResetController;
@@ -13,6 +14,7 @@ use App\Models\Cart;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\product\ProductDetailsController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,33 +30,31 @@ use App\Http\Controllers\ReviewController;
 Route::get('/email/verify/', [VerificationController::class, 'verify'])->name('verification.verify');
 
 // basic nav pages
-Route::get('/',function(){
-//  'orderItem'==App\Models\OrderItem::count();
+Route::get('/', function () {
+    //  'orderItem'==App\Models\OrderItem::count();
     return view('landing');
 })->name('landing');
 
-Route::get('/signup', function(){
-        return view('register-user');
+Route::get('/signup', function () {
+    return view('register-user');
 });
 
 
 
 Route::get('/signin', function () {
     return view('login-user');
-});
+})->name('login');
+
+
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+
 
 Route::view('/checkmail', 'checkmail');
 
 // Admin dashboard web routes
-Route::get('/admin/dashboard', function () {
-    $productCount = App\Models\Product::count();
-    $users = App\Models\User::all();
-    return view('admindashboard.dashboard', [
-        'productCount' => $productCount, 'users' => $users
-    ]);
-})->name('dashboard');
-Route::get('/dashboard', function(){
-    return view ('admin/dashboard');
+
+Route::get('/dashboard', function () {
+    return view('admin/dashboard');
 });
 
 
@@ -76,36 +76,36 @@ Route::view('/verify-success', 'verification.verify-success')->name('verificatio
 Route::view('/verify-error', 'verification.verify-error')->name('verification.error');
 
 
-Route::get('/verifyemail', function(){
+Route::get('/verifyemail', function () {
 
-return view('verifyyouremail');
+    return view('verifyyouremail');
 });
 
 
-Route::get('/Search', function(){
-    return view ('search');
+Route::get('/Search', function () {
+    return view('search');
 });
 
 Route::post('/Search', [SearchController::class, 'findSearch']);
 
-Route::get('/forgotpwd', function(){
-    return view ('forgotpwd');
+Route::get('/forgotpwd', function () {
+    return view('forgotpwd');
 });
 
-Route::get('/checkmail', function(){
-    return view ('checkmail');
+Route::get('/checkmail', function () {
+    return view('checkmail');
 });
 
 // from front end for intergration
-Route::get('/cartpage', function(){
-    return view ('cart');
+Route::get('/cartpage', function () {
+    return view('cart');
 });
 
 
-Route::get('/products',function(){
-     // Fetch all distinct categories from the products table
-     $categories = ['Laptops', 'Computers', 'Accessories'];
-     // Fetch distinct categories from the products table
+Route::get('/products', function () {
+    // Fetch all distinct categories from the products table
+    $categories = ['Laptops', 'Computers', 'Accessories'];
+    // Fetch distinct categories from the products table
     $distinctCategories = Product::distinct()->pluck('category');
 
     $products = Product::paginate(10);
@@ -116,7 +116,7 @@ Route::get('/product/{id}', [ProductDetailsController::class, 'show'])->name('pr
 Route::post('/product/{productId}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
 
-Route::get('/register',function(){
+Route::get('/register', function () {
     return view('register');
 });
 
@@ -144,11 +144,35 @@ Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'des
 
 
 // Landing page routes
-Route::get('/productpage', function(){
+Route::get('/productpage', function () {
     // $products = Product::all();
     $products = Product::paginate(10);
     return view('shop', compact('products'));
 });
-Route::get('/about', function(){
-    return view ('about');
+Route::get('/about', function () {
+    return view('about');
+});
+
+
+Route::group(['middleware' => 'auth'], function () {
+    // Your protected routes here
+
+    Route::get('/admin/dashboard', function () {
+        $productCount = App\Models\Product::count();
+
+        $products = Product::paginate(10);
+
+        $users = App\Models\User::all();
+        return view('admindashboard.dashboard', [
+            'products' => $products,
+            'productCount' => $productCount,
+             'users' => $users
+        ]);
+    })->name('dashboard');
+
+
+});
+
+Route::middleware('web')->group(function () {
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });

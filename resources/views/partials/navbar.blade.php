@@ -22,9 +22,9 @@
     </div>
 
     <div class="right">
-        @if(session('authenticated'))
+        @auth
             <!-- User is logged in -->
-            <span class="me-3">Welcome, {{ session('user_name') }}</span>
+            <button class="navbutton ">Welcome, {{ Auth::user()->name }}</button>
             <button class="navbutton"><a href="{{ route('logout') }}">Logout</a></button>
         @else
             <!-- User is not logged in -->

@@ -48,23 +48,27 @@
         <!-- Add Review Form -->
         <div class="mt-3">
             <h5>Add Your Review</h5>
-            <form method="post" action="{{ route('reviews.store', ['productId' => $product->id]) }}">
-                @csrf
-                <div class="mb-3">
-                    <label for="reviewName" class="form-label">Your Name</label>
-                    <input type="text" class="form-control" id="reviewName" name="user_name" required>
+            <div class="row">
+                <div class="col-md-4">
+                    @auth
+                    <form method="post" action="{{ route('reviews.store', ['productId' => $product->id]) }}">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="reviewContent" class="form-label">Your Review</label>
+                            <textarea class="form-control" id="reviewContent" name="content" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="reviewRating" class="form-label">Rating (0-5)</label>
+                            <input type="range" class="form-range" id="reviewRating" name="rating" min="0" max="5" step="1" required>
+                            <output for="reviewRating" class="form-label mt-2">0</output>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Review</button>
+                    </form>
+                    @else
+                    <p>Please <a href="{{ route('login') }}">log in</a> to leave a review.</p>
+                    @endauth
                 </div>
-                <div class="mb-3">
-                    <label for="reviewContent" class="form-label">Your Review</label>
-                    <textarea class="form-control" id="reviewContent" name="content" rows="3" required></textarea>
-                </div>
-                <div class="mb-3">
-                    <label for="reviewRating" class="form-label">Rating (0-5)</label>
-                    <input type="range" class="form-range" id="reviewRating" name="rating" min="0" max="5" step="1" required>
-                    <output for="reviewRating" class="form-label mt-2">0</output>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit Review</button>
-            </form>
+            </div>
         </div>
     </div>
 
