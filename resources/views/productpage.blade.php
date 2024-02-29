@@ -59,7 +59,7 @@
                 @foreach($products as $product)
                     <div class="product" data-category="{{ $product->category }}"> <!-- Add data-category attribute to each product -->
                         <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
-                        <h2>{{ $product->name }}</h2>
+                        <h2><a href="/product/{{ $product->id }}">{{ $product->name }}</a></h2>
                         <p>{{ $product->description }}</p>
                         <p>Price: £{{ $product->price }}</p>
                         <button class="btn btn-add" data-product-id="{{ $product->id }}" data-product-name="{{ $product->name }}" data-product-price="{{ $product->price }}">Add to Cart</button>

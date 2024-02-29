@@ -108,10 +108,10 @@ class ProductController extends Controller
     }
 
     public function index()
-{
-    $products = Product::all();
-    return view('admindashboard.create', compact('products'));
-}
+    {
+        $products = Product::all();
+        return view('admindashboard.create', compact('products'));
+    }
 
 public function dashboard()
 {

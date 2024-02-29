@@ -1,7 +1,7 @@
 <nav>
     <div class="left">
         <a href="{{ route('landing') }}"> 
-            <img class="logo" src="images/Logo.png" alt="Logo">
+            <img class="logo" src="/images/Logo.png" alt="Logo">
         </a>
     </div>
     <div class="search-container">

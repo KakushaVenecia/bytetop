@@ -11,6 +11,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Models\Cart;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\product\ProductDetailsController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,9 +101,7 @@ Route::get('/cartpage', function(){
     return view ('cart');
 });
 
-Route::get('/checkout', function(){
-    return view ('checkout');
-});
+
 Route::get('/products',function(){
      // Fetch all distinct categories from the products table
      $categories = ['Laptops', 'Computers', 'Accessories'];
@@ -111,6 +111,10 @@ Route::get('/products',function(){
     $products = Product::paginate(10);
     return view('productpage',  compact('products'),  ['categories' => $categories], ['distinctCategories' => $distinctCategories]);
 });
+
+Route::get('/product/{id}', [ProductDetailsController::class, 'show'])->name('product.show');
+Route::post('/product/{productId}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
 
 Route::get('/register',function(){
     return view('register');
