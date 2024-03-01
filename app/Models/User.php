@@ -1,11 +1,14 @@
 <?php
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Model implements Authenticatable
+class User extends Authenticatable implements MustVerifyEmail, JWTSubject
+
 {
     use AuthenticatableTrait;
 
@@ -52,13 +55,14 @@ class User extends Model implements Authenticatable
         $this->remember_token = $value;
     }
 
-    /**
-     * Get the column name for the "remember me" token.
-     *
-     * @return string
-     */
-    public function getRememberTokenName()
+    public function getJWTIdentifier()
     {
-        return 'remember_token';
+        return $this->getKey();
     }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+    
 }

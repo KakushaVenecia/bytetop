@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Products</title>
     <link rel="stylesheet" href="css/productpage.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -66,8 +67,8 @@
                 </div>
             </div>
         </div>
+        <div id="productDetails"></div>
             <div class="product-container" id="productContainer">
-                <!-- Blade foreach to iterate over products -->
                 @foreach($products as $product)
                     <div class="product" data-category="{{ $product->category }}"> <!-- Add data-category attribute to each product -->
                         <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
@@ -75,7 +76,7 @@
                         <p>{{ $product->description }}</p>
                         <p>Price: £{{ $product->price }}</p>
                         <button onclick="openModal('{{ $product->name }}', '{{ $product->description }}', '{{ $product->price }}', '{{ asset('storage/images/' . $product->image) }}')">View</button>
-                        <button class="btn btn-add" data-product-id="{{ $product->id }}" data-product-name="{{ $product->name }}" data-product-price="{{ $product->price }}">Add to Cart</button>
+                        <button class="btn-add" data-product-id="{{ $product->id }}" >Add to Cart</button>
                     </div>
                 @endforeach
             </div>
@@ -84,6 +85,8 @@
     @include('partials.footer')
     <script src="js/productpage.js"></script>
     <script >
+
+
         function showProducts(category) {
             // Fetch and display products based on the category
             if (category === 'all') {
@@ -127,9 +130,6 @@
         const modal = document.getElementById('myModal');
         modal.style.display = 'none';
     }
-
-    
-
-    </script>
+</script>
 </body>
 </html>

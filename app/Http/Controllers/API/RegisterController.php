@@ -17,16 +17,23 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class RegisterController extends Controller
 {
     public function regist(Request $request)
-    {
-        dd($request->all());
+    {dd();
         // Validate request data
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed',
+            'password' => 'required|min:8',
             'password_confirmation' => 'required|same:password',
+        ], [
+            'name.required' => 'The name field is required.',
+            'email.required' => 'The email field is required.',
+            'email.email' => 'Please enter a valid email address.',
+            'email.unique' => 'The email address is already in use.',
+            'password.required' => 'The password field is required.',
+            'password.min' => 'The password must be at least 8 characters long.',
+            'password_confirmation.required' => 'Please confirm your password.',
+            'password_confirmation.same' => 'The password confirmation does not match.',
         ]);
-    
         try {
             // Check if user already exists
             $existingUser = User::where('email', $request->input('email'))->first();
