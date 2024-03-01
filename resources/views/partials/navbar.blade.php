@@ -14,22 +14,22 @@
     <div class="nav-links">
         <button class="navbutton"><a href="/about">About Us</a></button>
         <button class="navbutton"><a href="/products">Products</a></button>
-        <button class="navbutton"><a href="/cart">Cart (<span id="cartItemCount">0</span>)</a></button>
-        {{-- <button class="navbutton"><a href="{{ route('shopping-cart') }}"> --}}
-            {{-- Order ({{ $OrderItem }}) --}}
-        {{-- </a> --}}
-        {{-- <button> --}}
+        <button class="navbutton"><a href="/cart">Cart</a></button>
     </div>
 
     <div class="right">
         @if(session('authenticated'))
             <!-- User is logged in -->
-            <span class="me-3">Welcome, {{ session('user_name') }}</span>
-            <button class="navbutton"><a href="{{ route('logout') }}">Logout</a></button>
+            <span class="me-3">Welcome, {{ explode(' ', session('user_name'))[0] }}</span>
+            <form id="logout-form" action="{{ route('tologout') }}" method="POST">
+                @csrf
+                <button class="navbutton" type="submit">Logout</button>
+            </form>
         @else
             <!-- User is not logged in -->
-            <button class="navbutton"><a href="/signin">Log In</a></button>
-            <button class="navbutton"><a href="/signup">Sign Up</a></button>
+            <button class="navbutton"><a href="/login">Log In</a></button>
+            <button class="navbutton"><a href="/register">Sign Up</a></button>
         @endif
     </div>
 </nav>
+

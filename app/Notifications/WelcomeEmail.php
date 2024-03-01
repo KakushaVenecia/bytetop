@@ -3,10 +3,8 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Carbon;
+use Illuminate\Notifications\Messages\MailMessage;
 
 class WelcomeEmail extends Notification
 {
@@ -19,8 +17,6 @@ class WelcomeEmail extends Notification
         $this->verificationUrl = $verificationUrl;
     }
 
-  
-
     public function via($notifiable)
     {
         return ['mail'];
@@ -28,7 +24,7 @@ class WelcomeEmail extends Notification
 
     public function toMail($notifiable)
     {
-        return (new Mailable)
+        return (new MailMessage)
             ->subject('Welcome to ' . config('app.name'))
             ->line('Welcome to ' . config('app.name') . '! Thanks for registering with us.')
             ->line('Before you get started, please verify your email address by clicking the button below:')

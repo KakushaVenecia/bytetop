@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Products</title>
     <link rel="stylesheet" href="css/productpage.css">
     <link rel="stylesheet" href="css/styles.css">
@@ -66,8 +67,8 @@
                 </div>
             </div>
         </div>
+        <div id="productDetails"></div>
             <div class="product-container" id="productContainer">
-                <!-- Blade foreach to iterate over products -->
                 @foreach($products as $product)
                     <div class="product" data-category="{{ $product->category }}"> <!-- Add data-category attribute to each product -->
                         <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
