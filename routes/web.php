@@ -107,7 +107,7 @@ Route::get('/cart', function () {
     return view('shopping-cart');
 });
 
-Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add')->middleware('auth');;
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 
 
 

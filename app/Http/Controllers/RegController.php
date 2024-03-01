@@ -84,6 +84,7 @@ class RegController extends Controller
         if (Auth::attempt($credentials)) {
 
             session()->put('authenticated', true);
+            session()->put('user_id', Auth::user()->id); 
             session()->put('user_name', Auth::user()->name);
 
             return redirect()->route('landing')->with('success', 'Login successful');

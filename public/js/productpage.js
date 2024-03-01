@@ -32,11 +32,24 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(data => {
-            // Handle success response, e.g., update cart count in navbar
-            console.log('Item added to cart:', data);
+            if (data.error) {
+                // Handle case where item is already in the cart
+                alert(data.error);
+            } else {
+                // Handle success response, e.g., update cart count in navbar
+                updateCartCount(data.cart_count);
+                console.log('Item added to cart:', data);
+            }
         })
         .catch(error => {
             console.error('Error adding item to cart:', error.message);
         });
+    }
+
+    function updateCartCount(count) {
+        const cartCountElement = document.getElementById('cartCount');
+        if (cartCountElement) {
+            cartCountElement.textContent = count;
+        }
     }
 });
