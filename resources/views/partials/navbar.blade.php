@@ -30,7 +30,7 @@
         @else
             <!-- User is not logged in -->
             <button class="navbutton"><a href="/login">Log In</a></button>
-            <button class="navbutton"><a href="/signup">Sign Up</a></button>
+            <button class="navbutton"><a href="/register">Sign Up</a></button>
         @endif
     </div>
 </nav>
