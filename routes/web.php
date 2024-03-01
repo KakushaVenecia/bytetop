@@ -46,19 +46,25 @@ Route::get('/signin', function () {
 Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
 
 Route::view('/checkmail', 'checkmail');
-
 // Admin dashboard web routes
-Route::get('/dashboard', function () {
-    return view('admin/dashboard');
-})->name('dashboard');
+Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
+    Route::get('/dashboard', function () {
+        $productCount = App\Models\Product::count();
+        $products = Product::paginate(10);
+        $users = App\Models\User::all();
+        return view('admindashboard.dashboard', [
+            'products' => $products,
+            'productCount' => $productCount,
+            'users' => $users
+        ]);
+    })->name('dashboard');
 
-Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
-Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store');
-Route::get('/admin/products/{id}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
-Route::put('/admin/products/{id}', [ProductController::class, 'update'])->name('admin.products.update');
-Route::delete('/admin/products/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
-Route::get('/admin/dashboard', [ProductController::class, 'dashboard'])->name('dashboard');
-Route::get('/get-product-description', [ProductController::class, 'getProductDescription'])->name('get-product-description');
+    Route::get('/products/create', [ProductController::class, 'create'])->name('admin.products.create');
+    Route::post('/products', [ProductController::class, 'store'])->name('admin.products.store');
+    Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
+    Route::put('/products/{id}', [ProductController::class, 'update'])->name('admin.products.update');
+    Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
+});
 
 // Verification
 Route::view('/verify-success', 'verification.verify-success')->name('verification.success');

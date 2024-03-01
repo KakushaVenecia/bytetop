@@ -5,7 +5,6 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -19,43 +18,42 @@ class ProductController extends Controller
     }
 
     public function store(Request $request)
-    { 
-        // Validate the request data
-        $request->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'price' => 'required|numeric',
-            'tags' => 'required|string',
-            'category' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'quantity' => 'required|integer|min:1', 
-        ]);
-    
-        // Store the image
-        $image = $request->file('image');
-        $filename = $image->hashName();
-        $image->store('images', 'public');
-    
-        // Create an array with common fields for all products
-        $commonFields = [
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'price' => $request->input('price'),
-            'tags' => $request->input('tags'),
-            'category' => $request->input('category'),
-            'image' => $filename,
-            'user_id' => auth()->id(),
-        ];
-    
-        // Create multiple products based on quantity
-        for ($i = 0; $i < $request->quantity; $i++) {
-            Product::create($commonFields);
-        }
-    
-        // return redirect()->route('dashboard')->with('success', 'Products created successfully');
-        // Return a JSON response indicating success or failure
-         return response()->json(['success' => true, 'message' => 'Product created successfully']);
+{ 
+    // Validate the request data
+    $request->validate([
+        'name' => 'required|string',
+        'description' => 'required|string',
+        'price' => 'required|numeric',
+        'tags' => 'required|string',
+        'category' => 'required|string',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'quantity' => 'required|integer|min:1', 
+    ]);
+
+    // Store the image
+    $image = $request->file('image');
+    $filename = $image->hashName();
+    $image->store('images', 'public');
+
+    // Create an array with common fields for all products
+    $commonFields = [
+        'name' => $request->input('name'),
+        'description' => $request->input('description'),
+        'price' => $request->input('price'),
+        'tags' => $request->input('tags'),
+        'category' => $request->input('category'),
+        'image' => $filename,
+        'user_id' => auth()->id(),
+    ];
+
+    // Create multiple products based on quantity
+    for ($i = 0; $i < $request->quantity; $i++) {
+        Product::create($commonFields);
     }
+
+    return redirect()->route('admin.dashboard')->with('success', 'Products created successfully');
+
+}
     
 
     public function edit($id)
