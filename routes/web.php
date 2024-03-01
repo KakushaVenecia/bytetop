@@ -140,3 +140,13 @@ Route::get('/productpage', function(){
 Route::get('/about', function(){
     return view ('about');
 });
+
+
+
+Route::get('/ordersuccess', function(){
+    return view ('ordersuccess');
+});
+
+Route::get('/account', function(){
+    return view ('account');
+});
