@@ -1,7 +1,7 @@
 <nav>
     <div class="left">
         <a href="{{ route('landing') }}"> 
-            <img class="logo" src="images/Logo.png" alt="Logo">
+            <img class="logo" src="/images/Logo.png" alt="Logo">
         </a>
     </div>
     <div class="search-container">
@@ -20,13 +20,14 @@
     </div>
 
     <div class="right">
-        @if(session('authenticated'))
+        @auth
             <!-- User is logged in -->
             <span class="me-3">Welcome, {{ explode(' ', session('user_name'))[0] }}</span>
             <form id="logout-form" action="{{ route('tologout') }}" method="POST">
                 @csrf
                 <button class="navbutton" type="submit">Logout</button>
             </form>
+
         @else
             <!-- User is not logged in -->
             <button class="navbutton"><a href="/login">Log In</a></button>
