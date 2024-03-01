@@ -8,35 +8,75 @@ use Illuminate\Http\Request;
 
 class VerificationController extends Controller
 { 
-     public function verify(Request $request)   
-{
-    $userId = $request->query('id');
-    $verificationToken = $request->query('hash');
 
-    // Retrieve the user by ID
-    $user = User::findOrFail($userId);
-  
-    if ($user->role === 'admin') {
-        // Mark the email as verified for admin users
-        $user->markEmailAsVerified();
-        $user->save();
+    public function verify(Request $request)   
+    {
+        dd($request->all());
+        $userId = $request->query('id');
+        $verificationToken = $request->query('hash');
+
+        // Retrieve the user by ID
+        $user = User::findOrFail($userId);
+      
+        if ($user->role === 'admin') {
+            // Mark the email as verified for admin users
+            $user->markEmailAsVerified();
+            $user->save();
+
+            logger()->info('Admin email verified successfully.');
+
+            // Redirect admin users to the admin dashboard or another page
+            return redirect('/admin/dashboard');
         }
 
-    // Retrieve the email verification token from the user
-    $userVerificationToken = $user->email_verification_token;
+        // Retrieve the email verification token from the user
+        $userVerificationToken = $user->email_verification_token;
 
-// Compare the user ID and verification token with the values from the request query parameters
-if ($userId == $user->id && hash_equals($verificationToken, $userVerificationToken)) {
-        // If the user ID and verification token match, mark the email as verified
-        $user->markEmailAsVerified();
-        $user->save(); 
+        // Compare the user ID and verification token with the values from the request query parameters
+        if ($userId == $user->id && hash_equals($verificationToken, $userVerificationToken)) {
+            // If the user ID and verification token match, mark the email as verified
+            $user->markEmailAsVerified();
+            $user->save(); 
             logger()->info('Email verified successfully.');
 
-            // Redirect the user to a success page or display a success message
-            return view('verification.verify-success');
+            // Redirect regular users to the login page or any other appropriate page
+            return redirect('/login')->with('success', 'Email verified successfully. You can now login.');
         }
 
         // You can handle the error in different ways, such as displaying a generic error message to the user
         return view('verification.verify-error');
-}
+    }
+
+
+//      public function verify(Request $request)   
+// {
+//     $userId = $request->query('id');
+//     $verificationToken = $request->query('hash');
+
+//     // Retrieve the user by ID
+//     $user = User::findOrFail($userId);
+  
+//     if ($user->role === 'admin') {
+//         // Mark the email as verified for admin users
+//         $user->markEmailAsVerified();
+//         $user->save();
+//         }
+
+//     // Retrieve the email verification token from the user
+//     $userVerificationToken = $user->email_verification_token;
+
+// // Compare the user ID and verification token with the values from the request query parameters
+// if ($userId == $user->id && hash_equals($verificationToken, $userVerificationToken)) {
+//         // If the user ID and verification token match, mark the email as verified
+//         $user->markEmailAsVerified();
+//         $user->save(); 
+//             logger()->info('Email verified successfully.');
+
+//             // Redirect the user to a success page or display a success message
+//             return view('verification.verify-success');
+//         }
+
+//         // You can handle the error in different ways, such as displaying a generic error message to the user
+//         return view('verification.verify-error');
+// }
 }

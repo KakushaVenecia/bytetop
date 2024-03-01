@@ -53,7 +53,19 @@
             <div class="breadcrumb">
                 <p><a href="#" onclick="showProducts('all')">All Products</a></p>
             </div>
-
+            <div id="myModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div class="modal-details">
+                    <img id="modalProductImage" alt="Product Image" class="modal-image">
+                    <div class="product-info">
+                        <h2 id="modalProductName"></h2>
+                        <p id="modalProductDescription"></p>
+                        <p id="modalProductPrice"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
             <div class="product-container" id="productContainer">
                 <!-- Blade foreach to iterate over products -->
                 @foreach($products as $product)
@@ -62,6 +74,7 @@
                         <h2>{{ $product->name }}</h2>
                         <p>{{ $product->description }}</p>
                         <p>Price: £{{ $product->price }}</p>
+                        <button onclick="openModal('{{ $product->name }}', '{{ $product->description }}', '{{ $product->price }}', '{{ asset('storage/images/' . $product->image) }}')">View</button>
                         <button class="btn btn-add" data-product-id="{{ $product->id }}" data-product-name="{{ $product->name }}" data-product-price="{{ $product->price }}">Add to Cart</button>
                     </div>
                 @endforeach
@@ -70,5 +83,53 @@
     </main>
     @include('partials.footer')
     <script src="js/productpage.js"></script>
+    <script >
+        function showProducts(category) {
+            // Fetch and display products based on the category
+            if (category === 'all') {
+                // Show all products
+                document.querySelectorAll('.product').forEach(function (product) {
+                    product.style.display = 'block';
+                });
+            } else {
+                // Hide all products
+                document.querySelectorAll('.product').forEach(function (product) {
+                    product.style.display = 'none';
+                });
+
+                // Show products matching the selected category
+                document.querySelectorAll('.product[data-category="' + category + '"]').forEach(function (product) {
+                    product.style.display = 'block';
+                });
+            }
+        }
+
+        function updatePriceLabel(value) {
+            const priceLabel = document.getElementById('priceLabel');
+            priceLabel.textContent = `£0 to £${value}`;
+        }
+        function openModal(name, description, price, imageSrc) {
+        const modal = document.getElementById('myModal');
+        const productName = document.getElementById('modalProductName');
+        const productDescription = document.getElementById('modalProductDescription');
+        const productPrice = document.getElementById('modalProductPrice');
+        const productImage = document.getElementById('modalProductImage');
+
+        productName.textContent = name;
+        productDescription.textContent = description;
+        productPrice.textContent = `Price: £${price}`;
+        productImage.src = imageSrc;
+
+        modal.style.display = 'block';
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('myModal');
+        modal.style.display = 'none';
+    }
+
+    
+
+    </script>
 </body>
 </html>

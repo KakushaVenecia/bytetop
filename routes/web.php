@@ -44,16 +44,16 @@ Route::get('/signin', function () {
 Route::view('/checkmail', 'checkmail');
 
 // Admin dashboard web routes
-Route::get('/admin/dashboard', function () {
-    $productCount = App\Models\Product::count();
-    $users = App\Models\User::all();
-    return view('admindashboard.dashboard', [
-        'productCount' => $productCount, 'users' => $users
-    ]);
-})->name('dashboard');
-Route::get('/dashboard', function(){
-    return view ('admin/dashboard');
-});
+// Route::get('/admin/dashboard', function () {
+//     $productCount = App\Models\Product::count();
+//     $users = App\Models\User::all();
+//     return view('admindashboard.dashboard', [
+//         'productCount' => $productCount, 'users' => $users
+//     ]);
+// })->name('dashboard');
+// Route::get('/dashboard', function(){
+//     return view ('admin/dashboard');
+// });
 
 
 Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
@@ -62,7 +62,7 @@ Route::get('/admin/products/{id}/edit', [ProductController::class, 'edit'])->nam
 Route::put('/admin/products/{id}', [ProductController::class, 'update'])->name('admin.products.update');
 Route::delete('/admin/products/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
 Route::get('/admin/dashboard', [ProductController::class, 'dashboard'])->name('dashboard');
-
+Route::get('/get-product-description', [ProductController::class, 'getProductDescription'])->name('get-product-description');
 
 
 
