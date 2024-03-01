@@ -46,30 +46,6 @@ class CartController extends Controller
 
    
 
-    protected function getCartItems() {
-        $cartItems = [];
-    
-        // Check if the user is authenticated and retrieve cart items
-        if (auth()->check()) {
-            $userId = auth()->id();
-    
-            // Retrieve cart items from session (if any)
-            if (session()->has('cart_items')) {
-                $cartItems = session('cart_items');
-            }
-    
-            // Retrieve cart items from the database and merge them with session items
-            $dbCartItems = Cart::where('user_id', $userId)->get();
-            $cartItems = $cartItems->merge($dbCartItems);
-        } else {
-            // If the user is not authenticated, retrieve cart items from the session only
-            if (session()->has('cart_items')) {
-                $cartItems = session('cart_items');
-            }
-        }
-    
-        return $cartItems;
-    }
 
     public function getCartCount()
 {

@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Password;
+use App\Models\Cart;
 
 
 class RegController extends Controller
@@ -83,9 +84,13 @@ class RegController extends Controller
 
         if (Auth::attempt($credentials)) {
 
+            $userId = Auth::id();
+
+            $cartCount = Cart::where('user_id', $userId)->count();
             session()->put('authenticated', true);
             session()->put('user_id', Auth::user()->id); 
             session()->put('user_name', Auth::user()->name);
+            session()->put('cart_count', $cartCount);
 
             return redirect()->route('landing')->with('success', 'Login successful');
         } else {
