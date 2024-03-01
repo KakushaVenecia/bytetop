@@ -44,11 +44,7 @@ class CartController extends Controller
     }
     
 
-    protected function getCartCount()
-    {
-        $userId = session('user_id');
-        return Cart::where('user_id', $userId)->count();
-    }
+   
 
     protected function getCartItems() {
         $cartItems = [];
@@ -74,6 +70,33 @@ class CartController extends Controller
     
         return $cartItems;
     }
+
+    public function getCartCount()
+{
+    $userId = session('user_id');
+
+    if ($userId) {
+        $cartCount = Cart::where('user_id', $userId)->count();
+        return response()->json(['cart_count' => $cartCount]);
+    }
+
+    return response()->json(['cart_count' => 770]);
+}
+// public function getCartCount($userId = null)
+// {
+//     if (!$userId && session()->has('user_id')) {
+//         $userId = session('user_id');
+//     } elseif (!$userId && auth()->check()) {
+//         $userId = auth()->id();
+//     }
+
+//     if ($userId) {
+//         $cartCount = Cart::where('user_id', $userId)->count();
+//         return response()->json(['cart_count' => $cartCount]);
+//     }
+
+//     return response()->json(['cart_count' => 770]);
+// }
 
     // Method to remove a product from the cart
     public function removeFromCart($id)

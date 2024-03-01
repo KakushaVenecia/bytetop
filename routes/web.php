@@ -108,6 +108,8 @@ Route::get('/cart', function () {
 });
 
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
+
 
 
 

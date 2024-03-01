@@ -14,10 +14,9 @@
     <div class="nav-links">
         <button class="navbutton"><a href="/about">About Us</a></button>
         <button class="navbutton"><a href="/products">Products</a></button>
-        <button class="navbutton" id="cartButton">
-            <a href="/cart">Cart</a>
-            <button class="navbutton"><a href="/cart">Cart</a><span id="cartCount" class="cart-count">{{ session('cart_count', 0) }}</span></button>
-        </button>
+       
+            <button class="navbutton"  id="cartButton"><a href="/cart">Cart</a><span id="cartCount" class="cart-count">{{ session('cart_count', 0) }}</span></button>
+
     </div>
 
     <div class="right">
