@@ -80,7 +80,7 @@ class CartController extends Controller
         return response()->json(['cart_count' => $cartCount]);
     }
 
-    return response()->json(['cart_count' => 770]);
+    return response()->json(['cart_count' => '']);
 }
 // public function getCartCount($userId = null)
 // {
