@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -8,52 +9,51 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements MustVerifyEmail, JWTSubject
-
 {
-    use AuthenticatableTrait;
-
-    // Your user model code here
+    use HasFactory, Notifiable;
 
     /**
-     * Get the unique identifier for the user.
+     * The attributes that are mass assignable.
      *
-     * @return mixed
+     * @var array
      */
-    public function getAuthIdentifier()
-    {
-        return $this->getKey();
-    }
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'confirmpassword',
+        'role', 
+        'email_verification_token'
+    ];
 
     /**
-     * Get the password for the user.
+     * The attributes that should be hidden for arrays.
      *
-     * @return string
+     * @var array
      */
-    public function getAuthPassword()
-    {
-        return $this->password;
-    }
+    protected $hidden = [
+        'password',
+        'confirmpassword',
+        'remember_token',
+    ];
 
     /**
-     * Get the token value for the "remember me" session.
+     * The attributes that should be guarded from mass assignment.
      *
-     * @return string
+     * @var array
      */
-    public function getRememberToken()
-    {
-        return $this->remember_token;
-    }
+    protected $guarded = [
+        // Remove 'role' from the $guarded array
+    ];
 
     /**
-     * Set the token value for the "remember me" session.
+     * The attributes that should be cast to native types.
      *
-     * @param  string  $value
-     * @return void
+     * @var array
      */
-    public function setRememberToken($value)
-    {
-        $this->remember_token = $value;
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
     public function getJWTIdentifier()
     {
@@ -66,3 +66,4 @@ class User extends Authenticatable implements MustVerifyEmail, JWTSubject
     }
     
 }
+
