@@ -34,10 +34,10 @@ class VerificationController extends Controller
     
                 if ($user->hasVerifiedEmail()) {
                     // Redirect the user to the login page
-                    return redirect()->route('/signin')->with('info', 'Your email is already verified. You can now login.');
+                    return redirect()->route('login-user')->with('info', 'Your email is already verified. You can now login.');
                 } elseif (!$user->hasVerifiedEmail() && $user->markEmailAsVerified()) {
                     // Redirect the user to the verification success page
-                    return redirect()->route('verification.verify-success')->with('success', 'Email verified successfully. You can now login.');
+                    return redirect()->route('verification.success')->with('success', 'Email verified successfully. You can now login.');
                 }
                 
                 // If there was an issue marking the email as verified
