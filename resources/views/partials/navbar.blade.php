@@ -16,9 +16,8 @@
         <button class="navbutton"><a href="/products">Products</a></button>
         <button class="navbutton" id="cartButton">
             <a href="/cart">Cart</a>
-            <span id="cartCount" class="cart-count">0</span>
+            <span id="cartCount" class="cart-count">{{ session('cart_count', 0) }}</span>
         </button>
-
     </div>
 
     <div class="right">
@@ -31,8 +30,8 @@
             </form>
         @else
             <!-- User is not logged in -->
-            <button class="navbutton"><a href="/login">Log In</a></button>
-            <button class="navbutton"><a href="/register">Sign Up</a></button>
+            <button class="navbutton"><a href="/signin">Log In</a></button>
+            <button class="navbutton"><a href="/signup">Sign Up</a></button>
         @endif
     </div>
 </nav>

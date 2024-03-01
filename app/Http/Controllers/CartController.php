@@ -32,8 +32,9 @@ class CartController extends Controller
                 'quantity' => $validatedData['quantity'],
             ]);
     
-            // Retrieve the updated cart count
+            // Update the cart count in the session
             $cartCount = $this->getCartCount();
+            session(['cart_count' => $cartCount]);
     
             return response()->json(['message' => 'Product added to cart successfully', 'cart_count' => $cartCount]);
         } else {
@@ -41,6 +42,7 @@ class CartController extends Controller
             return response()->json(['error' => 'User is not authenticated. Please log in.'], 401);
         }
     }
+    
 
     protected function getCartCount()
     {
