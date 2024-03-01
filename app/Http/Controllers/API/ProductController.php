@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Http\Controllers\API;
-
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ProductController extends Controller
 {
+  
     public function create()
     {
         $products = Product::all();
@@ -18,43 +18,42 @@ class ProductController extends Controller
     }
 
     public function store(Request $request)
-    { 
-        // Validate the request data
-        $request->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'price' => 'required|numeric',
-            'tags' => 'required|string',
-            'category' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'quantity' => 'required|integer|min:1', 
-        ]);
-    
-        // Store the image
-        $image = $request->file('image');
-        $filename = $image->hashName();
-        $image->store('images', 'public');
-    
-        // Create an array with common fields for all products
-        $commonFields = [
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'price' => $request->input('price'),
-            'tags' => $request->input('tags'),
-            'category' => $request->input('category'),
-            'image' => $filename,
-            'user_id' => auth()->id(),
-        ];
-    
-        // Create multiple products based on quantity
-        for ($i = 0; $i < $request->quantity; $i++) {
-            Product::create($commonFields);
-        }
-    
-        // return redirect()->route('dashboard')->with('success', 'Products created successfully');
-        // Return a JSON response indicating success or failure
-         return response()->json(['success' => true, 'message' => 'Product created successfully']);
+{ 
+    // Validate the request data
+    $request->validate([
+        'name' => 'required|string',
+        'description' => 'required|string',
+        'price' => 'required|numeric',
+        'tags' => 'required|string',
+        'category' => 'required|string',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'quantity' => 'required|integer|min:1', 
+    ]);
+
+    // Store the image
+    $image = $request->file('image');
+    $filename = $image->hashName();
+    $image->store('images', 'public');
+
+    // Create an array with common fields for all products
+    $commonFields = [
+        'name' => $request->input('name'),
+        'description' => $request->input('description'),
+        'price' => $request->input('price'),
+        'tags' => $request->input('tags'),
+        'category' => $request->input('category'),
+        'image' => $filename,
+        'user_id' => auth()->id(),
+    ];
+
+    // Create multiple products based on quantity
+    for ($i = 0; $i < $request->quantity; $i++) {
+        Product::create($commonFields);
     }
+
+    return redirect()->route('admin.dashboard')->with('success', 'Products created successfully');
+
+}
     
 
     public function edit($id)
@@ -115,26 +114,10 @@ class ProductController extends Controller
     }
 
     public function index()
-{
-    $products = Product::all();
-    dd($products); 
-    return view('admindashboard.create', compact('products'));
-}
-public function getProductDescription(Request $request)
-{
-    $productName = $request->query('name');
-
-    // Retrieve the product description based on the product name
-    $product = Product::where('name', $productName)->first();
-
-    if ($product) {
-        // If the product is found, return its description
-        return response()->json(['description' => $product->description]);
-    } else {
-        // If the product is not found, return a JSON response with a 404 status code
-        return response()->json(['error' => 'Product not found'], 404);
+    {
+        $products = Product::all();
+        return view('admindashboard.create', compact('products'));
     }
-}
 
 public function dashboard()
 {
