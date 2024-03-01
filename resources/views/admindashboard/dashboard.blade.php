@@ -9,29 +9,24 @@
 </head>
 
 <body>
-    <div class="container">
-        @if (Auth::check())
-        <p>User is logged in</p>
-        @else
-        <p>User is NOT logged in</p>
-        @endif
-        <div class="primary-nav">
-            <nav role="navigation" class="menu">
-                <div>
-                    <img class="logo" src="{{ asset('images/Logo.png') }}" alt="Logo">
-                </div>
-                <div class="overflow-container">
-                    <ul class="menu-dropdown">
-                        <li><a href="#" onclick="showDashboard()">Dashboard</a><span class="icon"><i class="fa fa-dashboard"></i></span></li>
-                        <li><a href="#" onclick="showProducts()">Products</a><span class="icon"><i class="fa fa-heart"></i></span></li>
-                        <li><a href="#" onclick="showCustomers()">Customers</a><span class="icon"><i class="fa fa-heart"></i></span></li>
-                        <li><a href="#" onclick="showOrders()">Orders</a><span class="icon"><i class="fa fa-heart"></i></span></li>
-                        <li><a href="#" onclick="showSettings()">Settings</a><span class="icon"><i class="fa fa-heart"></i></span></li>
-                        <!-- Add more sidebar links as needed -->
-                    </ul>
-                </div>
-            </nav>
-        </div>
+<div class="container">
+    <div class="primary-nav"> 
+        <nav role="navigation" class="menu">
+            <div>
+                <img class="logo" src="{{ asset('images/Logo.png') }}" alt="Logo">
+            </div>
+            <div class="overflow-container">
+                <ul class="menu-dropdown">
+                    <li><a href="#" onclick="showDashboard()">Dashboard</a><span class="icon"><i class="fa fa-dashboard"></i></span></li>
+                    <li><a href="#" onclick="showProducts()">Products</a><span class="icon"><i class="fa fa-heart"></i></span></li>
+                    <li><a href="#" onclick="showCustomers()">Customers</a><span class="icon"><i class="fa fa-heart"></i></span></li>
+                    <li><a href="#" onclick="showOrders()">Orders</a><span class="icon"><i class="fa fa-heart"></i></span></li>
+                    <li><a href="#" onclick="showSettings()">Settings</a><span class="icon"><i class="fa fa-heart"></i></span></li>
+                    <!-- Add more sidebar links as needed -->
+                </ul>
+            </div>
+        </nav>
+    </div>
 
         <div class="content">
             <div class="user-bar">
@@ -44,16 +39,16 @@
                 @endif
             </div>
 
-            <div id="dashboard" style="display: none;">
-                <!-- Dashboard content -->
-                <h1>Dashboard</h1>
-                <p>This is the dashboard content.</p>
-                <h2>Products: {{ $productCount }}</h2>
-                <button><a href="/products">Go to the products page</a></button>
-            </div>
-            <div id="products">
-                <!-- Products content -->
-                <h1>Products</h1>
+        <div id="dashboard" style="display: none;">
+            <!-- Dashboard content -->
+            <h1>Dashboard</h1>
+            <p>This is the dashboard content.</p>
+            <h2>Products: {{ $productCount }}</h2>
+            <button><a href="/products">Go to the products page</a></button>
+        </div>
+        <div id="products">
+    <!-- Products content -->
+    <h1>Products</h1>
 
                 @if(count($products) > 0)
                 <ul>
@@ -66,27 +61,27 @@
                         Tags: {{ $product->tags }}<br>
                         Category: {{ $product->category }}<br>
 
-                        <!-- Add more fields as needed -->
+                    <!-- Add more fields as needed -->
 
-                        <button class="navbutton">
-                            <a href="{{ route('admin.products.edit', $product->id) }}" class="edit-button">Edit Product</a>
-                        </button>
+                    <button class="navbutton">
+                    <a href="{{ route('admin.products.edit', $product->id) }}" class="edit-button">Edit Product</a>
+                    </button>
 
-                        <!-- Add delete form -->
-                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="navbutton" onclick="return confirm('Are you sure you want to delete this product?')">Delete Product</button>
-                        </form>
-                    </li>
-                    @endforeach
-                </ul>
-                @else
-                <p>No products found.</p>
-                @endif
+                    <!-- Add delete form -->
+                    <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="navbutton" onclick="return confirm('Are you sure you want to delete this product?')">Delete Product</button>
+                    </form>
+                </li>
+            @endforeach
+        </ul>
+    @else
+        <p>No products found.</p>
+    @endif
 
-                <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
-            </div>
+    <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
+</div>
 
 
         </div>
@@ -96,12 +91,13 @@
             <p>This is the customers content.</p>
             @foreach ($users as $user)
             <div>
-                <h2>{{ $user->name }}</h2>
-                <p>Email: {{ $user->email }}</p>
-                <p>Role: {{ $user ->role }}</p>
-                < <!-- Add other customer details here -->
-            </div>
-            @endforeach
+            <h2>{{ $user->name }}</h2>
+            <p>Email: {{ $user->email }}</p>
+            <p>Role: {{ $user ->role }}</p>
+        <
+        <!-- Add other customer details here -->
+    </div>
+@endforeach
         </div>
         <div id="orders" style="display: none;">
             <!-- Orders content -->
@@ -115,73 +111,69 @@
         </div>
         <!-- Add more content sections for other pages -->
     </div>
-    </div>
+</div>
 
-    <script>
-        function showDashboard() {
-            document.getElementById('dashboard').style.display = 'block';
-            document.getElementById('products').style.display = 'none';
-            document.getElementById('customers').style.display = 'none';
-            document.getElementById('orders').style.display = 'none';
-            document.getElementById('settings').style.display = 'none';
-        }
+<script>
+    function showDashboard() {
+        document.getElementById('dashboard').style.display = 'block';
+        document.getElementById('products').style.display = 'none';
+        document.getElementById('customers').style.display = 'none';
+        document.getElementById('orders').style.display = 'none';
+        document.getElementById('settings').style.display = 'none';
+    }
+    function showProducts() {
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('products').style.display = 'block';
+        document.getElementById('customers').style.display = 'none';
+        document.getElementById('orders').style.display = 'none';
+        document.getElementById('settings').style.display = 'none';
+    }
+    function showCustomers() {
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('products').style.display = 'none';
+        document.getElementById('customers').style.display = 'block';
+        document.getElementById('orders').style.display = 'none';
+        document.getElementById('settings').style.display = 'none';
+    }
+    function showOrders() {
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('products').style.display = 'none';
+        document.getElementById('customers').style.display = 'none';
+        document.getElementById('orders').style.display = 'block';
+        document.getElementById('settings').style.display = 'none';
+    }
+    function showSettings() {
+        document.getElementById('dashboard').style.display = 'none';
+        document.getElementById('products').style.display = 'none';
+        document.getElementById('customers').style.display = 'none';
+        document.getElementById('orders').style.display = 'none';
+        document.getElementById('settings').style.display = 'block';
+    }
+    // 
+    // Add other show functions as needed
 
-        function showProducts() {
-            document.getElementById('dashboard').style.display = 'none';
-            document.getElementById('products').style.display = 'block';
-            document.getElementById('customers').style.display = 'none';
-            document.getElementById('orders').style.display = 'none';
-            document.getElementById('settings').style.display = 'none';
-        }
+    // Show the dashboard content by default on page load
+    showDashboard();
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const editButtons = document.querySelectorAll('.navbutton a');
 
-        function showCustomers() {
-            document.getElementById('dashboard').style.display = 'none';
-            document.getElementById('products').style.display = 'none';
-            document.getElementById('customers').style.display = 'block';
-            document.getElementById('orders').style.display = 'none';
-            document.getElementById('settings').style.display = 'none';
-        }
+        editButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                console.log('Edit button clicked');
 
-        function showOrders() {
-            document.getElementById('dashboard').style.display = 'none';
-            document.getElementById('products').style.display = 'none';
-            document.getElementById('customers').style.display = 'none';
-            document.getElementById('orders').style.display = 'block';
-            document.getElementById('settings').style.display = 'none';
-        }
+                // Extract the product ID from the button's href attribute
+                const urlParts = button.getAttribute('href').split('/');
+                const productId = urlParts[urlParts.length - 2]; // Get the second-to-last part
 
-        function showSettings() {
-            document.getElementById('dashboard').style.display = 'none';
-            document.getElementById('products').style.display = 'none';
-            document.getElementById('customers').style.display = 'none';
-            document.getElementById('orders').style.display = 'none';
-            document.getElementById('settings').style.display = 'block';
-        }
-        // 
-        // Add other show functions as needed
-
-        // Show the dashboard content by default on page load
-        showDashboard();
-    </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const editButtons = document.querySelectorAll('.navbutton a');
-
-            editButtons.forEach(button => {
-                button.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    console.log('Edit button clicked');
-
-                    // Extract the product ID from the button's href attribute
-                    const urlParts = button.getAttribute('href').split('/');
-                    const productId = urlParts[urlParts.length - 2]; // Get the second-to-last part
-
-                    // Redirect to the product edit page or perform other actions based on the product ID
-                    window.location.href = '/admin/products/' + productId + '/edit';
-                });
+                // Redirect to the product edit page or perform other actions based on the product ID
+                window.location.href = '/admin/products/' + productId + '/edit';
             });
         });
-    </script>
+    });
+</script>
 
 </body>
 

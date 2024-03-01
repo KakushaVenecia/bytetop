@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Support\Facades\Redirect;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -13,42 +14,49 @@ class ProductController extends Controller
   
     public function create()
     {
-        return view('admindashboard.create');
+        $products = Product::all();
+        return view('admindashboard.create')->with('products', $products);
     }
 
     public function store(Request $request)
     { 
-        // dd($request);
-
-        // validation and submit data dd($request->all()); this is to get the request body(diedump)
-        // dd($request->file('image'));
-        $formFields = $request->validate([
+        // Validate the request data
+        $request->validate([
             'name' => 'required|string',
             'description' => 'required|string',
             'price' => 'required|numeric',
             'tags' => 'required|string',
             'category' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'quantity' => 'required|integer|min:1', 
         ]);
     
         // Store the image
         $image = $request->file('image');
         $filename = $image->hashName();
         $image->store('images', 'public');
-        $formFields['image'] = $filename; // Assign the filename to the 'image' field
     
-        // Assign the authenticated user's ID
-        $formFields['user_id'] = auth()->id();
-        // $formFields['user_id'] = auth('api')->id;
+        // Create an array with common fields for all products
+        $commonFields = [
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'price' => $request->input('price'),
+            'tags' => $request->input('tags'),
+            'category' => $request->input('category'),
+            'image' => $filename,
+            'user_id' => auth()->id(),
+        ];
     
-        // Debug: Dump the form fields to ensure correct data
-        // dd($formFields);
+        // Create multiple products based on quantity
+        for ($i = 0; $i < $request->quantity; $i++) {
+            Product::create($commonFields);
+        }
     
-        // Create the product
-        Product::create($formFields);
-    
-        return Redirect::route('dashboard')->with('success', 'Product created successfully');
+        // return redirect()->route('dashboard')->with('success', 'Products created successfully');
+        // Return a JSON response indicating success or failure
+         return response()->json(['success' => true, 'message' => 'Product created successfully']);
     }
+    
 
     public function edit($id)
     {
@@ -117,8 +125,14 @@ public function dashboard()
 {
     $productCount = Product::count();
     $products = Product::all();
+    $users = User::all();
 
-    return view('admindashboard.dashboard', compact('productCount', 'products'));
+    // Return the view with all necessary data
+    return view('admindashboard.dashboard', [
+        'productCount' => $productCount,
+        'products' => $products,
+        'users' => $users,
+    ]);
 }
 
 }

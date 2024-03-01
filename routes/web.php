@@ -39,24 +39,18 @@ Route::get('/signup', function () {
     return view('register-user');
 });
 
-
-
 Route::get('/signin', function () {
     return view('login-user');
 })->name('login');
 
-
 Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
-
 
 Route::view('/checkmail', 'checkmail');
 
 // Admin dashboard web routes
-
 Route::get('/dashboard', function () {
     return view('admin/dashboard');
-});
-
+})->name('dashboard');
 
 Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
 Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store');
@@ -64,23 +58,16 @@ Route::get('/admin/products/{id}/edit', [ProductController::class, 'edit'])->nam
 Route::put('/admin/products/{id}', [ProductController::class, 'update'])->name('admin.products.update');
 Route::delete('/admin/products/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
 Route::get('/admin/dashboard', [ProductController::class, 'dashboard'])->name('dashboard');
-
-
-
-
-
+Route::get('/get-product-description', [ProductController::class, 'getProductDescription'])->name('get-product-description');
 
 // Verification
 Route::view('/verify-success', 'verification.verify-success')->name('verification.success');
 // Route to show the verification error view
 Route::view('/verify-error', 'verification.verify-error')->name('verification.error');
 
-
 Route::get('/verifyemail', function () {
-
     return view('verifyyouremail');
 });
-
 
 Route::get('/Search', function () {
     return view('search');
@@ -96,31 +83,28 @@ Route::get('/checkmail', function () {
     return view('checkmail');
 });
 
-// from front end for intergration
+// from front end for integration
 Route::get('/cartpage', function () {
     return view('cart');
 });
-
 
 Route::get('/products', function () {
     // Fetch all distinct categories from the products table
     $categories = ['Laptops', 'Computers', 'Accessories'];
     // Fetch distinct categories from the products table
     $distinctCategories = Product::distinct()->pluck('category');
-
     $products = Product::paginate(10);
-    return view('productpage',  compact('products'),  ['categories' => $categories], ['distinctCategories' => $distinctCategories]);
+    return view('productpage', compact('products'), ['categories' => $categories, 'distinctCategories' => $distinctCategories]);
 });
 
 Route::get('/product/{id}', [ProductDetailsController::class, 'show'])->name('product.show');
 Route::post('/product/{productId}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
-
 Route::get('/register', function () {
     return view('register');
 });
 
-// CART for backend for integration wirh the cart pages on front end
+// CART for backend for integration with the cart pages on the front end
 Route::get('/cart', [CartController::class, 'index'])->name('shopping-cart');
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.addToCart');
 Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.removeFromCart');
@@ -137,12 +121,6 @@ Route::post('/orders/{order_id}/items', [OrderItemController::class, 'store'])->
 Route::put('/orders/{order_id}/items/{id}', [OrderItemController::class, 'update'])->name('orderItems.update');
 Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'destroy'])->name('orderItems.destroy');
 
-
-
-
-
-
-
 // Landing page routes
 Route::get('/productpage', function () {
     // $products = Product::all();
@@ -153,24 +131,19 @@ Route::get('/about', function () {
     return view('about');
 });
 
-
 Route::group(['middleware' => 'auth'], function () {
     // Your protected routes here
 
     Route::get('/admin/dashboard', function () {
         $productCount = App\Models\Product::count();
-
         $products = Product::paginate(10);
-
         $users = App\Models\User::all();
         return view('admindashboard.dashboard', [
             'products' => $products,
             'productCount' => $productCount,
-             'users' => $users
+            'users' => $users
         ]);
     })->name('dashboard');
-
-
 });
 
 Route::middleware('web')->group(function () {
