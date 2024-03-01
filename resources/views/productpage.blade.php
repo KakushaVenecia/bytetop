@@ -76,7 +76,7 @@
                         <p>{{ $product->description }}</p>
                         <p>Price: £{{ $product->price }}</p>
                         <button onclick="openModal('{{ $product->name }}', '{{ $product->description }}', '{{ $product->price }}', '{{ asset('storage/images/' . $product->image) }}')">View</button>
-                        <button class="btn btn-add" data-product-id="{{ $product->id }}" data-product-name="{{ $product->name }}" data-product-price="{{ $product->price }}">Add to Cart</button>
+                        <button class="btn-add" data-product-id="{{ $product->id }}" >Add to Cart</button>
                     </div>
                 @endforeach
             </div>
@@ -85,6 +85,8 @@
     @include('partials.footer')
     <script src="js/productpage.js"></script>
     <script >
+
+
         function showProducts(category) {
             // Fetch and display products based on the category
             if (category === 'all') {
@@ -128,9 +130,6 @@
         const modal = document.getElementById('myModal');
         modal.style.display = 'none';
     }
-
-    
-
-    </script>
+</script>
 </body>
 </html>

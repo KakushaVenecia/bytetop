@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\API\ProductController;
-use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\VerificationController;
 use App\Models\Product;
 use App\Http\Controllers\CartController;
@@ -41,6 +39,12 @@ Route::post('/tosignin', [RegController::class, 'register'])->name('tosignin');
 Route::get('/login', [RegController::class,'showLoginForm'])->name('login-user');
 Route::post('/tologin', [RegController::class, 'login'])->name('tologin');
 Route::post('/logout', [RegController::class, 'logout'])->name('tologout');
+Route::get('/forgotpwd', function(){ return view ('forgotpwd');});
+Route::post('/forgot-password', [RegController::class, 'sendResetLinkEmail'])->name('forgot-password');
+Route::get('password/reset', [RegController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [RegController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}', [RegController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [RegController::class, 'reset'])->name('password.update');
 
 
 
@@ -49,9 +53,10 @@ Route::get('/signup', function() {  return view('register-user');});
 
 
 
-
 Route::view('/checkmail', 'checkmail');
-
+Route::get('/checkmail', function(){
+    return view ('checkmail');
+});
 
 
 Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
@@ -67,29 +72,15 @@ Route::get('/get-product-description', [ProductController::class, 'getProductDes
 
 // Verification
 Route::view('/verify-success', 'verification.verify-success')->name('verification.success');
-// Route to show the verification error view
 Route::view('/verify-error', 'verification.verify-error')->name('verification.error');
+Route::get('/verifyemail', function(){return view('verifyyouremail');});
 
 
-Route::get('/verifyemail', function(){
-
-return view('verifyyouremail');
-});
-
-
-Route::get('/Search', function(){
-    return view ('search');
-});
-
+Route::get('/Search', function(){return view ('search');});
 Route::post('/Search', [SearchController::class, 'findSearch']);
 
-Route::get('/forgotpwd', function(){
-    return view ('forgotpwd');
-});
 
-Route::get('/checkmail', function(){
-    return view ('checkmail');
-});
+
 
 // from front end for intergration
 Route::get('/cartpage', function(){
@@ -116,7 +107,7 @@ Route::get('/cart', function () {
     return view('shopping-cart');
 });
 
-Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.addToCart');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add')->middleware('auth');;
 
 
 

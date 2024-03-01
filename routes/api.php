@@ -7,9 +7,7 @@ use App\Http\Controllers\API\RegisterController;
 
 
 
-// Route::post('/register', [RegisterController::class, 'regist'])->name('auth.register');
-// Route::post('/login', [RegisterController::class, 'loginUser'])->name('auth.login');
-Route::post('logout', [RegisterController::class, 'logout']);
+
 Route::post('refresh', [RegisterController::class, 'refresh']);
 Route::post('me', [RegisterController::class, 'me']);
 
