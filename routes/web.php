@@ -104,7 +104,8 @@ Route::get('/products',function(){
 
 // CART ROUTE
 Route::get('/cart', function () {
-    return view('shopping-cart');
+    $cartItems = Cart::all();
+    return view('shopping-cart', ['cartItems'=> $cartItems]);
 });
 
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
