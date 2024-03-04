@@ -44,6 +44,11 @@ body {
     width: 50rem;
 }
 
+img{
+    width:200px;
+    height: 200px;
+}
+
 .item-price {
     margin-top: 10px;
 }

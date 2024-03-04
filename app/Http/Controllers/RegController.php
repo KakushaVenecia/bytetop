@@ -21,57 +21,57 @@ class RegController extends Controller
     }
 
     public function register(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed',
-        ], [
-            'name.required' => 'The name field is required.',
-            'email.required' => 'The email field is required.',
-            'email.email' => 'Please enter a valid email address.',
-            'email.unique' => 'The email address is already in use.',
-            'password.required' => 'The password field is required.',
-            'password.min' => 'The password must be at least 8 characters long.',
-            'password_confirmation.required' => 'Please confirm your password.',
-            'password_confirmation.same' => 'The passwords do not match.',
-        ]);
-    
-        try {
-            // Check if user already exists
-            $existingUser = User::where('email', $request->input('email'))->first();
-            if ($existingUser) {
-                return redirect()->back()->with('error', 'User with this email already exists.');
-            }
-        
-          // Generate a random verification token
-          $verificationToken = Str::random(40); // You can adjust the length as needed
-    
-          // Create the user with the verification token
-          $user = User::create([
-              'name' => $request->input('name'),
-              'email' => $request->input('email'),
-              'password' => Hash::make($request->input('password')),
-              'role' => 'customer', // Set the default role to "customer"
-              'email_verification_token' => $verificationToken, // Save the verification token
-          ]);
-        
-            // Generate verification URL with JWT token
-            $verificationUrl = URL::to('/verify-email') . '?token=' . $verificationToken;
-        
-            // Send welcome email with verification link
-            $user->notify(new WelcomeEmail($verificationUrl));
-        
-            // Flash success message
-            return redirect('/verifyemail')->with('success', 'Registration successful. Please check your email for verification.');
-        } catch (\Exception $e) {
-            // Log the detailed error message for debugging
-            logger()->error('Failed to register user: ' . $e->getMessage());
-        
-            // Flash error message for registration failure
-            return redirect()->back()->with('error', 'Failed to register user. Please try again later.');
+{
+    $validatedData = $request->validate([
+        'name' => 'required|string',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|min:8|confirmed',
+    ], [
+        'name.required' => 'The name field is required.',
+        'email.required' => 'The email field is required.',
+        'email.email' => 'Please enter a valid email address.',
+        'email.unique' => 'The email address is already in use.',
+        'password.required' => 'The password field is required.',
+        'password.min' => 'The password must be at least 8 characters long.',
+        'password_confirmation.required' => 'Please confirm your password.',
+        'password_confirmation.same' => 'The passwords do not match.',
+    ]);
+
+    try {
+        // Check if user already exists
+        $existingUser = User::where('email', $validatedData['email'])->first();
+        if ($existingUser) {
+            return redirect()->back()->with('error', 'User with this email already exists.');
         }
+
+        // Generate a random verification token
+        $verificationToken = Str::random(40); // You can adjust the length as needed
+
+        // Create the user with the verification token
+        $user = User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => Hash::make($validatedData['password']),
+            'role' => 'customer', // Set the default role to "customer"
+            'email_verification_token' => $verificationToken, // Save the verification token
+        ]);
+
+        // Generate verification URL with JWT token
+        $verificationUrl = URL::to('/verify-email') . '?token=' . $verificationToken;
+
+        // Send welcome email with verification link
+        $user->notify(new WelcomeEmail($verificationUrl));
+
+        // Flash success message
+        return redirect('/verifyemail')->with('success', 'Registration successful. Please check your email for verification.');
+    } catch (\Exception $e) {
+        // Log the detailed error message for debugging
+        logger()->error('Failed to register user: ' . $e->getMessage());
+
+        // Flash error message for registration failure
+        return redirect()->back()->with('error', 'Failed to register user. Please try again later.');
     }
+}
 
     public function showLoginForm()
     {
