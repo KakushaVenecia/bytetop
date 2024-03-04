@@ -44,9 +44,6 @@ class CartController extends Controller
     }
     
 
-   
-
-
     public function getCartCount()
 {
     $userId = session('user_id');
@@ -57,6 +54,28 @@ class CartController extends Controller
     }
 
     return response()->json(['cart_count' => '']);
+}
+
+
+public function subtotal(){
+    $userId = session('user_id');
+
+      // Initialize subtotal variable
+      $subtotal = 0;
+
+      if ($userId) {
+          // Retrieve the items in the user's cart
+          $cartItems = Cart::where('user_id', $userId)->get();
+
+              // Loop through each item in the cart
+        foreach ($cartItems as $item) {
+            // Calculate subtotal for each item (price * quantity) and add to total
+            $subtotal += $item->price * $item->quantity;
+            $totalItems += $item->quantity;
+        }
+}
+// Pass the subtotal to the view
+return view('cart', ['subtotal' => $subtotal, 'totalItems' => $totalItems]);
 }
 
     public function removeFromCart($id)

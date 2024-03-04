@@ -17,7 +17,7 @@ class InviteController extends Controller
         ]);
 
                 // Create a new invitation record in the database
-                $invitation = Invitation::create([
+                $invitation = User::create([
                     'name' => $formFields['name'],
                     'email' => $formFields['email'],
                     'status' => 'pending', // Assuming the default status is 'pending'
