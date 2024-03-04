@@ -24,6 +24,7 @@
 </div>
     @include('partials.footer')
     <script src="{{ asset('js/productpage.js') }}"></script>
+    
 </body>
 
 </html>

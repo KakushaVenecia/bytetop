@@ -40,7 +40,7 @@
 
             <div class="item">
                 <a class="product-link" target="_blank" rel="noopener" href="{{ $cartItem->product->url }}">
-                    <img src="{{ $cartItem->product->image }}" alt="{{ $cartItem->product->name }}" class="sc-product-image">
+                    <img src="{{ asset('storage/images/' . $cartItem->product->image) }}" alt="{{ $cartItem->product->name }}" class="sc-product-image">
                 </a>
             </div>
 
@@ -96,6 +96,7 @@
 </section>
 @include('partials.footer')
 <script src="{{ asset('js/cart.js') }}"></script>
+<script src="{{ asset('js/productpage.js') }}"></script>
 
 </body>
 </html>

@@ -34,7 +34,7 @@ class CartController extends Controller
     
             // Update the cart count in the session
             $cartCount = $this->getCartCount();
-            session(['cart_count' => $cartCount]);
+            // session(['cart_count' => $cartCount]);
     
             return response()->json(['message' => 'Product added to cart successfully', 'cart_count' => $cartCount]);
         } else {
@@ -58,23 +58,7 @@ class CartController extends Controller
 
     return response()->json(['cart_count' => '']);
 }
-// public function getCartCount($userId = null)
-// {
-//     if (!$userId && session()->has('user_id')) {
-//         $userId = session('user_id');
-//     } elseif (!$userId && auth()->check()) {
-//         $userId = auth()->id();
-//     }
 
-//     if ($userId) {
-//         $cartCount = Cart::where('user_id', $userId)->count();
-//         return response()->json(['cart_count' => $cartCount]);
-//     }
-
-//     return response()->json(['cart_count' => 770]);
-// }
-
-    // Method to remove a product from the cart
     public function removeFromCart($id)
     {
         // Your logic to remove the product from the cart
