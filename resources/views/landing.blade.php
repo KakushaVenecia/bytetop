@@ -11,7 +11,7 @@
 
 <body>
     @include('partials.navbar')
-    
+   
     <img class="slide" src="{{asset('images/header.webp')}}" alt="" srcset="">
     <div class="container">
         <h1>Product Catalogue</h1>

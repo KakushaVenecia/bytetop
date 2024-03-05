@@ -1,34 +1,44 @@
-<nav>
-    <div class="left">
-        <a href="{{ route('landing') }}"> 
-            <img class="logo" src="/images/Logo.png" alt="Logo">
-        </a>
-    </div>
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search...">
-        <button onclick="performSearch()">Search</button>
+
+ <nav>
+    <div class="logo" href="{{ route('landing') }}"> 
+        <img class="logo" src="/images/Logo.png" alt="Logo">
     </div>
     
-    <div id="searchResults"></div>
-
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+        <button class="search-button" onclick="performSearch()">
+            <x-bi-search/>
+        </button>
+    </div>
+    
     <div class="nav-links">
-        <button class="navbutton"><a href="/about">About Us</a></button>
-        <button class="navbutton"><a href="/products">Products</a></button>
-            <button class="navbutton"  id="cartCount" ><a href="/cart">Cart</a><span id="cartCount" class="cart-count">{{ session('cart_count', 0) }}</span></button>
-    </div>
-
-    <div class="right">
+        {{-- <a href="/about">About Us</a> --}}
+        <a href="/products">Products</a>
+        {{-- <div class="dropdown"> --}}
+            <a class="navbutton" href="/cart">Cart 
+                @auth
+                    <span class="cart-count"> {{ $cartItems->count() }}</span>
+                    <x-bi-bell-fill/>
+                @endauth
+            </a>
+        {{-- </div> --}}
+        
         @auth
-            <span class="me-3">Welcome, {{ explode(' ', session('user_name'))[0] }}</span>
-            <form id="logout-form" action="{{ route('tologout') }}" method="POST">
-                @csrf
-                <button class="navbutton" type="submit">Logout</button>
-            </form>
-
+            <div class="dropdown">
+                <button class="navbutton">Account <i class="fas fa-user"></i></button>
+                <div class="dropdown-content">
+                    <form id="logout-form" action="{{ route('tologout') }}" method="POST">
+                        @csrf
+                        <button type="submit">Logout</button>
+                    </form>
+                </div>
+            </div>
         @else
-            <!-- User is not logged in -->
-            <button class="navbutton"><a href="/login">Log In</a></button>
-            <button class="navbutton"><a href="/register">Sign Up</a></button>
-        @endif
+            <div>
+                <a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a>
+                <a href="/register"><i class="fas fa-user-plus"></i> Sign Up</a>
+            </div>
+        @endauth
     </div>
-</nav>
+ </nav>
+

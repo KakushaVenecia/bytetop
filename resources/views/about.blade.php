@@ -10,6 +10,9 @@
 </head>
 <body>
 @include('partials.navbar')
+
+
+{{-- <x-bi-bell-fill/> --}}
   <div class="container">
     <div class="subtitle">
       <p>One of the UK’s leading digital retailers, we offer more than 10,000 products online</p>
