@@ -1,5 +1,4 @@
-
- <nav>
+<nav>
     <div class="logo" href="{{ route('landing') }}"> 
         <img class="logo" src="/images/Logo.png" alt="Logo">
     </div>
@@ -7,21 +6,20 @@
     <div class="search-container">
         <input type="text" id="searchInput" class="search-input" placeholder="Search...">
         <button class="search-button" onclick="performSearch()">
-            <x-bi-search/>
+            <i class="fas fa-search"></i> <!-- Font Awesome search icon -->
         </button>
     </div>
     
     <div class="nav-links">
         {{-- <a href="/about">About Us</a> --}}
         <a href="/products">Products</a>
-        {{-- <div class="dropdown"> --}}
-            <a class="navbutton" href="/cart">Cart 
+
+            <a class="navbutton" href="/cart"> Cart
+                <i class="fas fa-shopping-cart"></i> 
                 @auth
-                    <span class="cart-count"> {{ $cartItems->count() }}</span>
-                    <x-bi-bell-fill/>
+                    {{-- <span class="cart-count"> {{ $cartItems->count() }}</span> --}}
                 @endauth
             </a>
-        {{-- </div> --}}
         
         @auth
             <div class="dropdown">
@@ -29,7 +27,10 @@
                 <div class="dropdown-content">
                     <form id="logout-form" action="{{ route('tologout') }}" method="POST">
                         @csrf
-                        <button type="submit">Logout</button>
+                        <button type="submit">
+                            <i class="fas fa-sign-out-alt"></i> 
+                            Logout
+                        </button>
                     </form>
                 </div>
             </div>
@@ -40,5 +41,4 @@
             </div>
         @endauth
     </div>
- </nav>
-
+</nav>

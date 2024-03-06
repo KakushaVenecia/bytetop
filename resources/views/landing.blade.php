@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/fontawesome.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/fontawesome.css') }}"> --}}
+    <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <title>Document</title>
 </head>
@@ -13,6 +14,7 @@
     @include('partials.navbar')
    
     <img class="slide" src="{{asset('images/header.webp')}}" alt="" srcset="">
+   
     <div class="container">
         <h1>Product Catalogue</h1>
         <div class="deals">
