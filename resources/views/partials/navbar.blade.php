@@ -1,35 +1,44 @@
 <nav>
-    <div class="left">
-        <a href="{{ route('landing') }}"> 
-            <img class="logo" src="images/Logo.png" alt="Logo">
-        </a>
-    </div>
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search...">
-        <button onclick="performSearch()">Search</button>
+    <div class="logo" href="{{ route('landing') }}"> 
+        <img class="logo" src="/images/Logo.png" alt="Logo">
     </div>
     
-    <div id="searchResults"></div>
-
-    <div class="nav-links">
-        <button class="navbutton"><a href="/about">About Us</a></button>
-        <button class="navbutton"><a href="/products">Products</a></button>
-        <button class="navbutton"><a href="/cart">Cart (<span id="cartItemCount">0</span>)</a></button>
-        {{-- <button class="navbutton"><a href="{{ route('shopping-cart') }}"> --}}
-            {{-- Order ({{ $OrderItem }}) --}}
-        {{-- </a> --}}
-        {{-- <button> --}}
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+        <button class="search-button" onclick="performSearch()">
+            <i class="fas fa-search"></i> <!-- Font Awesome search icon -->
+        </button>
     </div>
+    
+    <div class="nav-links">
+        {{-- <a href="/about">About Us</a> --}}
+        <a href="/products">Products</a>
 
-    <div class="right">
-        @if(session('authenticated'))
-            <!-- User is logged in -->
-            <span class="me-3">Welcome, {{ session('user_name') }}</span>
-            <button class="navbutton"><a href="{{ route('logout') }}">Logout</a></button>
+            <a class="navbutton" href="/cart"> Cart
+                <i class="fas fa-shopping-cart"></i> 
+                @auth
+                    {{-- <span class="cart-count"> {{ $cartItems->count() }}</span> --}}
+                @endauth
+            </a>
+        
+        @auth
+            <div class="dropdown">
+                <button class="navbutton">Account <i class="fas fa-user"></i></button>
+                <div class="dropdown-content">
+                    <form id="logout-form" action="{{ route('tologout') }}" method="POST">
+                        @csrf
+                        <button type="submit">
+                            <i class="fas fa-sign-out-alt"></i> 
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            </div>
         @else
-            <!-- User is not logged in -->
-            <button class="navbutton"><a href="/signin">Log In</a></button>
-            <button class="navbutton"><a href="/signup">Sign Up</a></button>
-        @endif
+            <div>
+                <a href="/login"><i class="fas fa-sign-in-alt"></i> Log In</a>
+                <a href="/register"><i class="fas fa-user-plus"></i> Sign Up</a>
+            </div>
+        @endauth
     </div>
 </nav>

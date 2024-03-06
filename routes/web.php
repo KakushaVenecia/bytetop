@@ -1,9 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\API\ProductController;
-use App\Http\Controllers\API\RegisterController;
 use App\Http\Controllers\VerificationController;
 use App\Models\Product;
 use App\Http\Controllers\CartController;
@@ -11,6 +9,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Models\Cart;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\RegController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +22,7 @@ use App\Http\Controllers\SearchController;
 |
 */
 
-Route::get('/email/verify/', [VerificationController::class, 'verify'])->name('verification.verify');
+Route::get('/verify-email', [VerificationController::class, 'verify'])->name('verification.verify');
 
 // basic nav pages
 Route::get('/',function(){
@@ -31,29 +30,35 @@ Route::get('/',function(){
     return view('landing');
 })->name('landing');
 
-Route::get('/signup', function(){
-        return view('register-user');
-});
 
 
 
-Route::get('/signin', function () {
-    return view('login-user');
-});
+// REGISTER 
+Route::get('/register', [RegController::class, 'showRegistrationForm'])->name('register');
+Route::post('/tosignin', [RegController::class, 'register'])->name('tosignin');
+Route::get('/login', [RegController::class,'showLoginForm'])->name('login');
+Route::post('/tologin', [RegController::class, 'login'])->name('tologin');
+Route::post('/logout', [RegController::class, 'logout'])->name('tologout');
+Route::get('/forgotpwd', function(){ return view ('forgotpwd');});
+Route::post('/forgot-password', [RegController::class, 'sendResetLinkEmail'])->name('forgot-password');
+Route::get('password/reset', [RegController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [RegController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}', [RegController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [RegController::class, 'reset'])->name('password.update');
+
+
+
+// Delete these views
+
+
+Route::get('/signup', function() {  return view('register-user');});
+
+
 
 Route::view('/checkmail', 'checkmail');
-
-// Admin dashboard web routes
-// Route::get('/admin/dashboard', function () {
-//     $productCount = App\Models\Product::count();
-//     $users = App\Models\User::all();
-//     return view('admindashboard.dashboard', [
-//         'productCount' => $productCount, 'users' => $users
-//     ]);
-// })->name('dashboard');
-// Route::get('/dashboard', function(){
-//     return view ('admin/dashboard');
-// });
+Route::get('/checkmail', function(){
+    return view ('checkmail');
+});
 
 
 Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
@@ -69,29 +74,15 @@ Route::get('/get-product-description', [ProductController::class, 'getProductDes
 
 // Verification
 Route::view('/verify-success', 'verification.verify-success')->name('verification.success');
-// Route to show the verification error view
 Route::view('/verify-error', 'verification.verify-error')->name('verification.error');
+Route::get('/verifyemail', function(){return view('verifyyouremail');});
 
 
-Route::get('/verifyemail', function(){
-
-return view('verifyyouremail');
-});
-
-
-Route::get('/Search', function(){
-    return view ('search');
-});
-
+Route::get('/Search', function(){return view ('search');});
 Route::post('/Search', [SearchController::class, 'findSearch']);
 
-Route::get('/forgotpwd', function(){
-    return view ('forgotpwd');
-});
 
-Route::get('/checkmail', function(){
-    return view ('checkmail');
-});
+
 
 // from front end for intergration
 Route::get('/cartpage', function(){
@@ -111,14 +102,19 @@ Route::get('/products',function(){
     return view('productpage',  compact('products'),  ['categories' => $categories], ['distinctCategories' => $distinctCategories]);
 });
 
-Route::get('/register',function(){
-    return view('register');
+
+
+// CART ROUTE
+Route::get('/cart', function () {
+    $cartItems = Cart::all();
+    return view('shopping-cart', ['cartItems'=> $cartItems]);
 });
 
-// CART for backend for integration wirh the cart pages on front end
-Route::get('/cart', [CartController::class, 'index'])->name('shopping-cart');
-Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.addToCart');
-Route::delete('/cart/remove/{id}', [CartController::class, 'removeFromCart'])->name('cart.removeFromCart');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
+Route::get('/cart/subtotal', [CartController::class, 'subtotal'])->name('subtotal');
+
+
 
 // / Routes for order controller
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');

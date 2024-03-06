@@ -30,7 +30,7 @@
                         @endphp
                     @endif
                 @endforeach
-                <option value="__custom__">Enter Custom Product Name</option>
+                <option value="_custom_">Enter Custom Product Name</option>
             </select>
                     <div class="mb-6">
                         <label for="description" class="inline-block text-lg mb-2">Description</label>

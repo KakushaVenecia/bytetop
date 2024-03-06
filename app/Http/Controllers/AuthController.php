@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,31 +15,24 @@ class AuthController extends Controller
      * @return void
      */
     public function __construct()
-{
-    $this->middleware('auth:api');
-}
-
-    /**
-     * Get a JWT via given credentials.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function login()
     {
-        $credentials = request(['email', 'password']);
-
-        if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-
-        return $this->respondWithToken($token);
+        $this->middleware('web');
     }
 
-    /**
-     * Get the authenticated User.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
+    
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (auth('web')->attempt($credentials)) {
+            // Authentication successful
+            return redirect()->intended('/admin/dashboard'); // Redirect to your desired location
+        }
+
+        // Authentication failed
+        return back()->withErrors(['email' => 'Invalid credentials']);
+    }
+
     public function me()
     {
         return response()->json(auth()->user());
@@ -53,7 +47,7 @@ class AuthController extends Controller
     {
         auth()->logout();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return redirect()->route('landing')->withErrors(['email' => 'You have been logged out successfully']);
     }
 
     /**
@@ -78,10 +72,9 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => 60
+            'expires_in' => 60,
+            'user' => auth()->user(),
+
         ]);
     }
-
-   
-
 }
