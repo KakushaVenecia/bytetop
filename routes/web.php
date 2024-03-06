@@ -36,7 +36,7 @@ Route::get('/',function(){
 // REGISTER 
 Route::get('/register', [RegController::class, 'showRegistrationForm'])->name('register');
 Route::post('/tosignin', [RegController::class, 'register'])->name('tosignin');
-Route::get('/login', [RegController::class,'showLoginForm'])->name('login-user');
+Route::get('/login', [RegController::class,'showLoginForm'])->name('login');
 Route::post('/tologin', [RegController::class, 'login'])->name('tologin');
 Route::post('/logout', [RegController::class, 'logout'])->name('tologout');
 Route::get('/forgotpwd', function(){ return view ('forgotpwd');});
@@ -47,6 +47,8 @@ Route::get('password/reset/{token}', [RegController::class, 'showResetForm'])->n
 Route::post('password/reset', [RegController::class, 'reset'])->name('password.update');
 
 
+
+// Delete these views
 
 
 Route::get('/signup', function() {  return view('register-user');});
