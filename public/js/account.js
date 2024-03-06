@@ -11,21 +11,33 @@ function toggleMenu() {
     menu.style.display = (menu.style.display === "none" || menu.style.display === "") ? "block" : "none";
 }
 
-function openPopup(section) {
-    var popup = document.getElementById(section.toLowerCase() + 'Popup');
+function openPopup(popupId) {
+    // Hide all popups
+    hideAllPopups();
+
+    // Show the specified popup
+    var popup = document.getElementById(popupId);
     if (popup) {
-        popup.style.display = 'block';
+        popup.style.display = "block";
     }
+
 }
+
+function hideAllPopups() {
+    // Hide all popups
+    var popups = document.querySelectorAll('.popup');
+    popups.forEach(function (popup) {
+        popup.style.display = "none";
+    });
+}
+
 
 function closePopup(popupId) {
     var popup = document.getElementById(popupId);
     if (popup) {
-        popup.style.display = 'none';
+        popup.style.display = "none";
     }
 }
-
-
 
 
 function openAddressForm() {
@@ -42,3 +54,5 @@ function closeAddressForm() {
     // Remove blur from the body
     document.body.classList.remove('body-blur');
 }
+
+
