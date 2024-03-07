@@ -68,7 +68,10 @@ function signOut() {
 
 function openPopup(popupId) {
     var popup = document.getElementById(popupId);
+    
     if (popup) {
+        document.querySelector('main').classList.add('blurbackground');
+
         popup.style.display = "block";
     }
 }
@@ -76,6 +79,8 @@ function openPopup(popupId) {
 function closePopup(popupId) {
     var popup = document.getElementById(popupId);
     if (popup) {
+        document.querySelector('main').classList.remove('blurbackground');
+
         popup.style.display = "none";
     }
 }
@@ -99,3 +104,4 @@ function updateField(fieldName, newFieldValue) {
     closePopup('editNamePopup');
     // Adjust the closePopup call based on the specific popup you're updating
 }
+

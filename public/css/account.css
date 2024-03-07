@@ -1565,3 +1565,9 @@ h01 {
    .namegrp button:hover::before {
     width: 100%;
    }
+
+   .blurbackground {
+    filter: blur(50%);
+    background-color:  red;
+    transition: filter 0.3s ease;
+}

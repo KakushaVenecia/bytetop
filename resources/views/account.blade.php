@@ -31,7 +31,8 @@
 <header>
     <h1>Your Account</h1>
 </header>
-<main>
+
+<main class = "blurbackground">
     
 <section class="account-sections" id="Orders">
         <h2>Orders</h2>
@@ -127,7 +128,7 @@
 </div>
 
 <!-- Edit Name Popup -->
-<div id="editNamePopup" class="edit-popup">
+<div id="editNamePopup" class="edit-popup" style="display: none">
     <span class="close" onclick="closePopup('editNamePopup')">&times;</span>
 
     <h01>Change your name</h01>
