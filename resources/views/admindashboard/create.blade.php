@@ -18,7 +18,6 @@
             <label for="name" class="inline-block text-lg mb-2">Brand Name</label>
             <select name="name" id="product-name" class="border border-gray-200 rounded p-2 w-full">
                 <option value="">Select a product</option>
-                <!-- only adding unique names to the dropdown -->
                 @php
                     $unique_names = [];
                 @endphp

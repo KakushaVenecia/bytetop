@@ -166,7 +166,6 @@
         document.getElementById('notifications').style.display = 'block';
     }
     // 
-    // Add other show functions as needed
 
     // Show the dashboard content by default on page load
     showDashboard();
