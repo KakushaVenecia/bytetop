@@ -56,3 +56,46 @@ function closeAddressForm() {
 }
 
 
+function signOut() {
+    // Perform any necessary sign-out actions (e.g., clearing session data, etc.)
+
+    // Redirect to the landing page
+    window.location.href = 'http://127.0.0.1:8000/';
+}
+
+
+
+
+function openPopup(popupId) {
+    var popup = document.getElementById(popupId);
+    if (popup) {
+        popup.style.display = "block";
+    }
+}
+
+function closePopup(popupId) {
+    var popup = document.getElementById(popupId);
+    if (popup) {
+        popup.style.display = "none";
+    }
+}
+
+function openEditPopup(popupId) {
+    // Close other popups
+    closePopup('editNamePopup');
+    closePopup('editEmailPopup');
+    closePopup('editMobilePopup');
+    closePopup('editPasswordPopup');
+    
+    // Open the requested popup
+    openPopup(popupId);
+}
+
+
+function updateField(fieldName, newFieldValue) {
+    var field = document.getElementById(fieldName);
+    var newValue = document.getElementById(newFieldValue).value;
+    field.value = newValue;
+    closePopup('editNamePopup');
+    // Adjust the closePopup call based on the specific popup you're updating
+}

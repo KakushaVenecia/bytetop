@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/account.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     
     <title>Your Page Title</title>
 </head>
@@ -23,6 +24,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 <header>
     <h1>Your Account</h1>
@@ -63,86 +67,25 @@
     </div>
     <hr class="blue-line">
     <a class="find">Don't Worry. Find it now....</a>
-
-    <div class="guest-lookup__form-wrapper">
-  <form novalidate="" class="guest-lookup__form ng-untouched ng-pristine ng-invalid">
-    <div class="guest-lookup__title suball_title">Enter order ID and Email ID</div>
-    <div class="guest-lookup__mandatory-label suball_mandatory-label ng-star-inserted">
-      <span class="ng-star-inserted">*</span><!---->Mandatory fields
+<div class = "ordergroup">
+    <div class="head">
+        <h22 class="order-lookup-header">Order Lookup</h22>
     </div>
-    <!---->
-    <div class="guest-lookup__form-fields">
-      <mat-form-field class="mat-mdc-form-field guest-lookup__form-field ng-tns-c118-3 suball_form-field mat-mdc-form-field-type-mat-input mat-form-field-appearance-fill mat-form-field-hide-placeholder mat-primary ng-untouched ng-pristine ng-invalid ng-star-inserted">
-        <!---->
-        <div class="mat-mdc-text-field-wrapper mdc-text-field ng-tns-c118-3 mdc-text-field--filled">
-          <div class="mat-mdc-form-field-focus-overlay ng-tns-c118-3 ng-star-inserted"></div>
-          <!---->
-          <div class="mat-mdc-form-field-flex ng-tns-c118-3">
-            <!---->
-            <!---->
-            <!---->
-            <div class="mat-mdc-form-field-infix ng-tns-c118-3">
-              <label matformfieldfloatinglabel="" class="mdc-floating-label mat-mdc-floating-label ng-tns-c118-3 ng-star-inserted" id="mat-mdc-form-field-label-0" for="mat-input-0" aria-owns="mat-input-0">
-                <mat-label class="ng-tns-c118-3">Order ID</mat-label>
-                <span aria-hidden="true" class="mat-mdc-form-field-required-marker mdc-floating-label--required ng-tns-c118-3 ng-star-inserted"></span>
-                <!---->
-              </label>
-              <!---->
-              <!---->
-              <!---->
-              <input matinput="" type="text" formcontrolname="orderId" required="" class="mat-mdc-input-element ng-tns-c118-3 ng-untouched ng-pristine ng-invalid mat-mdc-form-field-input-control mdc-text-field__input cdk-text-field-autofill-monitored" id="mat-input-0" aria-required="true">
-            </div>
-            <!---->
-            <!---->
-          </div>
-          <div matformfieldlineripple="" class="mdc-line-ripple ng-tns-c118-3 mdc-line-ripple--deactivating ng-star-inserted"></div>
-          <!---->
-        </div>
-        <div class="mat-mdc-form-field-subscript-wrapper mat-mdc-form-field-bottom-align ng-tns-c118-3">
-          <!---->
-          <div class="mat-mdc-form-field-hint-wrapper ng-tns-c118-3 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="opacity: 1; transform: translateY(0%);">
-            <!---->
-            <div class="mat-mdc-form-field-hint-spacer ng-tns-c118-3"></div>
-          </div>
-          <!---->
-        </div>
-      </mat-form-field>
-      <mat-form-field class="mat-mdc-form-field guest-lookup__form-field ng-tns-c118-4 mat-mdc-form-field-type-mat-input mat-form-field-appearance-fill mat-form-field-hide-placeholder mat-primary ng-untouched ng-pristine ng-invalid ng-star-inserted">
-        <!---->
-        <div class="mat-mdc-text-field-wrapper mdc-text-field ng-tns-c118-4 mdc-text-field--filled">
-          <div class="mat-mdc-form-field-focus-overlay ng-tns-c118-4 ng-star-inserted"></div>
-          <!---->
-          <div class="mat-mdc-form-field-flex ng-tns-c118-4">
-            <!---->
-            <!---->
-            <!---->
-            <div class="mat-mdc-form-field-infix ng-tns-c118-4">
-              <label matformfieldfloatinglabel="" class="mdc-floating-label mat-mdc-floating-label ng-tns-c118-4 ng-star-inserted" id="mat-mdc-form-field-label-2" for="mat-input-1" aria-owns="mat-input-1">
-                <mat-label class="ng-tns-c118-4">Email ID</mat-label>
-                <span aria-hidden="true" class="mat-mdc-form-field-required-marker mdc-floating-label--required ng-tns-c118-4 ng-star-inserted"></span>
-                <!---->
-              </label>
-              <!---->
-              <!---->
-              <!---->
-              <input matinput="" type="text" formcontrolname="orderId" required="" class="mat-mdc-input-element ng-tns-c118-3 ng-untouched ng-pristine ng-invalid mat-mdc-form-field-input-control mdc-text-field__input cdk-text-field-autofill-monitored" id="mat-input-0" aria-required="true">            </div>
-            <!---->
-            <!---->
-          </div>
-          <div matformfieldlineripple="" class="mdc-line-ripple ng-tns-c118-4 mdc-line-ripple--deactivating ng-star-inserted"></div>
-          <!---->
-          <div class="mat-mdc-form-field-subscript-wrapper mat-mdc-form-field-bottom-align ng-tns-c118-4"><!----><div class="mat-mdc-form-field-hint-wrapper ng-tns-c118-4 ng-trigger ng-trigger-transitionMessages ng-star-inserted" style="opacity: 1; transform: translateY(0%);"><!----><div class="mat-mdc-form-field-hint-spacer ng-tns-c118-4"></div></div><!----></div>
-    
-        
-          <div class="guest-lookup__form-button-container"><button type="submit" class="guest-lookup__form-button button pill-btn pill-btn--black suball_form-button" disabled="" data-an-tr="account-order-lookup" data-an-la="order look up:search"> Search </button></div>
-    
-    
-        </div>
+
+
+    <div class="group">
+
+        <input required="" type="text2" class="input">
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label>Order ID *</label>
+    </div>
+
+    <div class= "grp">
+        <button> Order loopup </button>
+    </div>
 
 </div>
-
-</div>
-
 </div>
 
 
@@ -154,38 +97,58 @@
         <span class="close" onclick="closePopup('loginsecurityPopup')">&times;</span>
         
         <body2>
-    <div class="container1">
-        <h0>Login & Security</h0>
-        <form action="#" method="post">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text1" id="name" name="name" value="ByteTop" disabled>
-                <button type="button" id="edit" name="edit" class="edit-btn">Edit</button>
+        <div class="container1">
+    <h0>Login & Security</h0>
+    <form action="#" method="post">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text1" id="name" name="name" value="ByteTop" disabled>
+            <button type="button" id="changeName" class="edit-btn" onclick="openEditPopup('editNamePopup')">Change</button>
+        </div>
 
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email1" id="email" name="email" value="Bytetop@gmail.com" disabled>
-                <button type="button" id="edit" name="edit" class="edit-btn">Edit</button>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email1" id="email" name="email" value="Bytetop@gmail.com" disabled>
+            <button type="button" id="editEmail" class="edit-btn" onclick="openEditPopup('editEmailPopup')">Change</button>
+        </div>
 
-            </div>
-            <div class="form-group">
-                <label for="mobile">Mobile Number</label>
-                <input type="tel1" id="mobile" name="mobile" placeholder="Add your mobile number" disabled>
-                <button type="button" id="edit" name="edit" class="edit-btn">Add</button>
+        <div class="form-group">
+            <label for="mobile">Mobile Number</label>
+            <input type="tel1" id="mobile" name="mobile" placeholder="Add your mobile number" disabled>
+            <button type="button" id="editMobile" class="edit-btn" onclick="openEditPopup('editMobilePopup')">Add</button>
+        </div>
 
-            </div>
-            
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password1" id="password" name="password" value="**********" disabled>
-                <button type="button" id="edit" name="edit" class="edit-btn">Edit</button>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password1" id="password" name="password" value="**********" disabled>
+            <button type="button" id="editPassword" class="edit-btn" onclick="openEditPopup('editPasswordPopup')">Change</button>
+        </div>
+    </form>
+</div>
 
-            </div>
-            
-            
-        </form>
+<!-- Edit Name Popup -->
+<div id="editNamePopup" class="edit-popup">
+    <span class="close" onclick="closePopup('editNamePopup')">&times;</span>
+
+    <h01>Change your name</h01>
+    <div class="namecontainer">
+        <div class="message">Make sure that you click the Save Changes button when you have finished...</div>
+        
+        <div class="namegroup">
+            <input required="" type="text2" class="input">
+            <span class="highlight"></span>
+            <span class="bar"></span>
+            <label>New name *</label>
+        </div>
+
+        <div class= "namegrp">
+            <button type="button" onclick="updateField('name', 'newName')">Save changes</button>
+        </div>
+        
     </div>
+</div>
+
+
 </body2>
         
     </div>
