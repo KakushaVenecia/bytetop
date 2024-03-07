@@ -22,7 +22,7 @@
   width: 350px;
   height: 400px;
   background-color: #001E2C;
-  padding: 2px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center; /* Center align content */
@@ -89,7 +89,9 @@ button:hover {
 }
 </style>
 <body>
+  
     <div class="container"> 
+      
         <div class="logo">
         <a href="/" ><img src="/images/Logo.png" alt="Logo"></a> 
         </div>
@@ -97,13 +99,19 @@ button:hover {
     
     <form method="POST" action="{{ route('tologin') }}">
         @csrf
+       <div>
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email" required placeholder="Enter your Email">
         <br>
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password" required placeholder="Enter Your email">
         <br>
-        <button type="submit">Login</button>
+        @if (session()->has('error'))
+        <div style="color: red;">{{ session('error') }}</div>
+        @endif
+       </div>
+       <button type="submit">Login</button>
+      
         <div class="info">
             No Account ? <a  href="{{ route('register') }}">Create an Account with us</a>
         </div>

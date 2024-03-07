@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #f8f9fa; 
+}
+
+.logo {
+    height: auto; /* Adjust as needed */
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container input[type="text"] {
+    padding: 8px;
+    margin-right: 5px;
+}
+
+.search-button {
+    height: 60%;
+    padding: 0 10px; /* Adjust as needed */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a,
+.navbutton {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid black; /* Added border */
+    border-radius: 25px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: large;
+}
+
+.nav-links a:hover,
+.navbutton:hover {
+    background-color: #f7890b; /* Changed to orange */
+    color: #000!important;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content button[type="submit"] {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: large;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    z-index: 1;
+    right: 0;
+}
+
+.dropdown-links {
+    display: flex; /* Display links in a row */
+    flex-direction: column; /* Arrange links vertically */
+    align-items: flex-start; /* Align links to the start (left) */
+    margin-top: 9px;
+}
+
+.dropdown-links a,
+.dropdown-links form {
+    padding: 4px 14px; /* Add padding to links and buttons */
+    text-decoration: none; /* Remove underline from links */
+    color: #000; /* Set color for links */
+    display: block; /* Make links and buttons block elements */
+    width: 100%; /* Set width to 100% */
+    border: none;
+}
+
+.dropdown-links a:hover,
+.dropdown-links form:hover {
+    background-color:#f7890b; 
+    border-radius: 0;/* Change background color on hover */
+    color: #fff;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.right {
+    margin-left: auto;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Change flex direction to column */
+    }
+
+    .nav-links,
+    .search-container {
+        margin-top: 10px; /* Add margin between sections */
+    }
+}

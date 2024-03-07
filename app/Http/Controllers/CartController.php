@@ -71,11 +71,11 @@ public function subtotal(){
         foreach ($cartItems as $item) {
             // Calculate subtotal for each item (price * quantity) and add to total
             $subtotal += $item->price * $item->quantity;
-            $totalItems += $item->quantity;
+            // $totalItems += $item->quantity;
         }
 }
 // Pass the subtotal to the view
-return view('cart', ['subtotal' => $subtotal, 'totalItems' => $totalItems]);
+return view('cart', ['subtotal' => $subtotal]);
 }
 
     public function removeFromCart($id)
