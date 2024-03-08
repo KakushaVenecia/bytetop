@@ -10,6 +10,7 @@ use App\Http\Controllers\OrderItemController;
 use App\Models\Cart;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RegController;
+use App\Http\Controllers\ShippingAddressController;
 
 /*
 |--------------------------------------------------------------------------
@@ -169,9 +170,8 @@ Route::put('/orders/{order_id}/items/{id}', [OrderItemController::class, 'update
 Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'destroy'])->name('orderItems.destroy');
 
 
-
-
-
+// Route for submitting the shipping address form
+Route::post('/shipping-address', [ShippingAddressController::class, 'store'])->name('shipping-address.store');
 
 
 // Landing page routes
