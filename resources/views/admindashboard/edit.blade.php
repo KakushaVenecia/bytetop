@@ -106,8 +106,6 @@ a{
             <input type="text" id="category" name="category" value="{{ $product->category }}" required><br>
         </div>
 
-        <!-- Add more fields as needed -->
-
         <div>
             <button type="submit">Update Product</button>
         </div>

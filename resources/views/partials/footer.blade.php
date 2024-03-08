@@ -1,4 +1,4 @@
-<footer style="background-color:#001E2C; padding: 3em 4em 2em; text-align: center;">
+{{-- <footer style="background-color:#001E2C; padding: 3em 4em 2em; text-align: center;">
     <div class="row" style="max-width: 90%; margin: 20x auto; display: flex; justify-content: space-around; color: #fff; border-bottom: 1px solid #cecece;">
         <div class="col-3">
             <div class="link-cat">
@@ -56,4 +56,30 @@
     <div id="copyright">
         &copy; All Rights Reserved 2023
     </div>
+</footer> --}}
+
+<footer>
+    <div class="footer-content">
+        <h3>ByteTop</h3>
+        <p></p>
+        <ul class="socials">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        <p>copyright © <a href="#">ByteTop Limited</a>  </p>
+                <div class="footer-menu">
+                  <ul class="f-menu">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="">Blog</a></li>
+                  </ul>
+                </div>
+    </div>
+
 </footer>

@@ -99,15 +99,12 @@ class RegController extends Controller
     }
     public function logout(Request $request)
     {
-        // dd($request);
-        // there is an error of token
-        // Auth::logout(); // Clear authentication status
+  
+    Auth::logout(); // Clear authentication status
 
-        $request->session()->invalidate(); // Invalidate the session
+    $request->session()->invalidate();
 
-        $request->session()->regenerateToken(); // Regenerate CSRF token
-
-        return redirect()->route('landing');
+    return redirect()->route('landing');
     }
 
     public function showLinkRequestForm()

@@ -37,7 +37,7 @@ Route::get('/',function(){
 // REGISTER 
 Route::get('/register', [RegController::class, 'showRegistrationForm'])->name('register');
 Route::post('/tosignin', [RegController::class, 'register'])->name('tosignin');
-Route::get('/login', [RegController::class,'showLoginForm'])->name('login-user');
+Route::get('/login', [RegController::class,'showLoginForm'])->name('login');
 Route::post('/tologin', [RegController::class, 'login'])->name('tologin');
 Route::post('/logout', [RegController::class, 'logout'])->name('tologout');
 Route::get('/forgotpwd', function(){ return view ('forgotpwd');});
@@ -48,6 +48,8 @@ Route::get('password/reset/{token}', [RegController::class, 'showResetForm'])->n
 Route::post('password/reset', [RegController::class, 'reset'])->name('password.update');
 
 
+
+// Delete these views
 
 
 Route::get('/signup', function() {  return view('register-user');});
@@ -71,6 +73,13 @@ Route::get('/get-product-description', [ProductController::class, 'getProductDes
 
 
 
+
+
+
+
+
+
+
 // Verification
 Route::view('/verify-success', 'verification.verify-success')->name('verification.success');
 Route::view('/verify-error', 'verification.verify-error')->name('verification.error');
@@ -84,29 +93,61 @@ Route::post('/Search', [SearchController::class, 'findSearch']);
 
 
 // from front end for intergration
-Route::get('/cartpage', function(){
-    return view ('cart');
-});
+// Route::get('/cartpage', function(){
+//     return view ('cart');
+// });
 
 Route::get('/checkout', function(){
     return view ('checkout');
 });
-Route::get('/products',function(){
-     // Fetch all distinct categories from the products table
-     $categories = ['Laptops', 'Computers', 'Accessories'];
-     // Fetch distinct categories from the products table
+
+
+
+
+Route::get('/products', function() {
+    // Fetch all distinct categories from the products table
+    $categories = ['Laptops', 'Computers', 'Accessories'];
+    
+    // Fetch distinct categories from the products table
     $distinctCategories = Product::distinct()->pluck('category');
 
-    $products = Product::paginate(10);
-    return view('productpage',  compact('products'),  ['categories' => $categories], ['distinctCategories' => $distinctCategories]);
+
+    $productCount = Product::count();
+
+    // Get unique product names
+    $uniqueProductNames = Product::distinct()->pluck('name');
+
+    $productCounts = [];
+    foreach ($uniqueProductNames as $name) {
+        $count = Product::where('name', $name)->count();
+        $productCounts[$name] = $count;
+    }
+    $products = [];
+    foreach ($uniqueProductNames as $name) {
+        $product = Product::where('name', $name)->first();
+        $products[] = $product;
+    }
+
+    // dd($uniqueProductNames); // Debugging statement
+
+    return view('productpage', compact('products', 'categories', 'distinctCategories', 'productCounts', 'uniqueProductNames'));
 });
 
 
 
 // CART ROUTE
-Route::get('/cart', function () {
+Route::get('/cartpage', function () {
     $cartItems = Cart::all();
-    return view('shopping-cart', ['cartItems'=> $cartItems]);
+    
+    // Iterate over each cart item and fetch the corresponding product details
+    foreach ($cartItems as $cartItem) {
+        // Retrieve the product details based on the product ID in the cart item
+        $product = Product::find($cartItem->product_id);
+        
+        // Assign the product price to the cart item
+        $cartItem->price = $product->price; 
+    }
+    return view('cart', ['cartItems'=> $cartItems]);
 });
 
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
