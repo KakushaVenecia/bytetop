@@ -72,6 +72,13 @@ Route::get('/get-product-description', [ProductController::class, 'getProductDes
 
 
 
+
+
+
+
+
+
+
 // Verification
 Route::view('/verify-success', 'verification.verify-success')->name('verification.success');
 Route::view('/verify-error', 'verification.verify-error')->name('verification.error');
@@ -92,14 +99,37 @@ Route::get('/cartpage', function(){
 Route::get('/checkout', function(){
     return view ('checkout');
 });
-Route::get('/products',function(){
-     // Fetch all distinct categories from the products table
-     $categories = ['Laptops', 'Computers', 'Accessories'];
-     // Fetch distinct categories from the products table
+
+
+
+
+Route::get('/products', function() {
+    // Fetch all distinct categories from the products table
+    $categories = ['Laptops', 'Computers', 'Accessories'];
+    
+    // Fetch distinct categories from the products table
     $distinctCategories = Product::distinct()->pluck('category');
 
-    $products = Product::paginate(10);
-    return view('productpage',  compact('products'),  ['categories' => $categories], ['distinctCategories' => $distinctCategories]);
+
+    $productCount = Product::count();
+
+    // Get unique product names
+    $uniqueProductNames = Product::distinct()->pluck('name');
+
+    $productCounts = [];
+    foreach ($uniqueProductNames as $name) {
+        $count = Product::where('name', $name)->count();
+        $productCounts[$name] = $count;
+    }
+    $products = [];
+    foreach ($uniqueProductNames as $name) {
+        $product = Product::where('name', $name)->first();
+        $products[] = $product;
+    }
+
+    // dd($uniqueProductNames); // Debugging statement
+
+    return view('productpage', compact('products', 'categories', 'distinctCategories', 'productCounts', 'uniqueProductNames'));
 });
 
 
@@ -107,9 +137,17 @@ Route::get('/products',function(){
 // CART ROUTE
 Route::get('/cart', function () {
     $cartItems = Cart::all();
-    return view('shopping-cart', ['cartItems'=> $cartItems]);
+    
+    // Iterate over each cart item and fetch the corresponding product details
+    foreach ($cartItems as $cartItem) {
+        // Retrieve the product details based on the product ID in the cart item
+        $product = Product::find($cartItem->product_id);
+        
+        // Assign the product price to the cart item
+        $cartItem->price = $product->price; 
+    }
+    return view('cart', ['cartItems'=> $cartItems]);
 });
-
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
 Route::get('/cart/subtotal', [CartController::class, 'subtotal'])->name('subtotal');

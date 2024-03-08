@@ -88,7 +88,7 @@
     </div>
     @include('partials.footer')
     <script src="{{ asset('js/script.js') }}"></script>
-    <script src="{{ asset('js/productpage.js') }}"></script>
+    <script src="js/nav.js"></script>
 </body>
 
 </html>
