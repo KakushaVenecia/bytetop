@@ -15,6 +15,7 @@ class ProductController extends Controller
     {
         $products = Product::all();
         return view('admindashboard.create')->with('products', $products);
+        
     }
 
     public function store(Request $request)
@@ -117,7 +118,6 @@ class ProductController extends Controller
     public function index()
 {
     $products = Product::select('id', 'name')->distinct()->get();
-    dd($products);
     return view('admindashboard.create', compact('products'));
 }
 public function getProductDescription(Request $request)
@@ -139,15 +139,30 @@ public function getProductDescription(Request $request)
 public function dashboard()
 {
     $productCount = Product::count();
-    $products = Product::all();
+
+    // Get unique product names
+    $uniqueProductNames = Product::distinct()->pluck('name');
+
+    $productCounts = [];
+    foreach ($uniqueProductNames as $name) {
+        $count = Product::where('name', $name)->count();
+        $productCounts[$name] = $count;
+    }
+
+    // Paginate the products
+    $products = Product::paginate(7);
+
+    // Fetch all users
     $users = User::all();
 
     // Return the view with all necessary data
     return view('admindashboard.dashboard', [
         'productCount' => $productCount,
+        'uniqueProductNames' => $uniqueProductNames,
+        'productCounts' => $productCounts,
         'products' => $products,
-        'users' => $users,
-    ]);
-}
+        'users' => $users,]);
+    }
+
 
 }

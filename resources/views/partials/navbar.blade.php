@@ -83,7 +83,9 @@
     
     <div class="nav-links"> 
         <a href="/products">Products</a>
-        <a href="/cartpage"> Cart <i class="fas fa-shopping-cart"></i> </a>
+        {{-- <a href="/cartpage"> Cart <i class="fas fa-shopping-cart"></i> </a> --}}
+        <a href="/cartpage"> Cart <i class="fas fa-shopping-cart"></i> <span id="cartCount"></span></a>
+
         
         @auth
             <div class="dropdown">
@@ -108,6 +110,7 @@
         @endauth
     </div>
 </nav>
+<script src="js/nav.js"></script>
 </body>
 </html>
 
