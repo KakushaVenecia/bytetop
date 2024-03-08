@@ -7,9 +7,11 @@ use App\Models\Product;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
+use App\Http\Controllers\product\ProductDetailsController;
 use App\Models\Cart;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RegController;
+use App\Models\Order;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,8 +88,40 @@ Route::post('/Search', [SearchController::class, 'findSearch']);
 
 // from front end for intergration
 Route::get('/cartpage', function(){
-    return view ('cart');
+    $userId = session('user_id');
+
+    // Check if the user ID is available
+    if ($userId) {
+        // Find the user's incomplete order
+        $order = Order::where('user_id', $userId)->whereNull('completed_at')->first();
+
+        
+
+        // If an incomplete order exists, get the associated cart items
+        if ($order) {
+            $cartItems = Cart::where('order_id', $order->id)->get();
+
+            $totalPrice = $cartItems->sum(function ($item) {
+                return $item->product->price * $item->quantity;
+            });
+
+            $totalCount = $cartItems->sum(function ($item) {
+                return $item->quantity;
+            });
+
+            return view('shopping-cart', ['cartItems' => $cartItems , 'total_price' => $totalPrice , 'total_count'=>  $totalCount ]);
+        } else {
+            // If no incomplete order exists, you may want to handle this case accordingly
+            return view('shopping-cart', ['cartItems' => [], 'total_price' => 0]);
+        }
+    } else {
+        // If the user ID is not found in the session, return a response indicating that they need to log in
+        return redirect('/login')->with('error', 'User is not authenticated. Please log in.');
+    }
 });
+
+Route::delete('/cart/delete/{id}', [CartController::class, 'removeFromCart'])->name('removeFromCart');
+
 
 Route::get('/checkout', function(){
     return view ('checkout');
@@ -102,6 +136,7 @@ Route::get('/products',function(){
     return view('productpage',  compact('products'),  ['categories' => $categories], ['distinctCategories' => $distinctCategories]);
 });
 
+Route::get('/product/{id}/', [ProductDetailsController::class, 'show'])->name('product.show');
 
 
 // CART ROUTE
@@ -113,6 +148,7 @@ Route::get('/cart', function () {
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
 Route::get('/cart/subtotal', [CartController::class, 'subtotal'])->name('subtotal');
+Route::post('/cart/update', [CartController::class, 'updateQuantity'])->name('cart.update');
 
 
 

@@ -1,16 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
-</head>
-<body>
-    @include('partials.navbar')
-<section class="section-area">
+@extends('layouts.app')
 
+
+@section('meta')
+<link rel="stylesheet" href="{{ asset('css/cart.css') }}">
+<meta name="csrf-token" content="{{ csrf_token() }}">
+@endsection
+
+@section('content')
+
+<div class="container">
+    
+<section class="section-area">
+    
     @if(auth()->check())
         <div class="cart-header">
             <div class="heading">
@@ -32,8 +33,7 @@
         </div>
 
         @foreach ($cartItems as $cartItem)
-            <div class="item-content">
-                <div class="grid-vertical-align">
+            <div class="item-content" id="cart_item_{{ $cartItem->id }}">
                     <div class="a-checkbox">
                         <label>
                             <input type="checkbox" name="" value="">
@@ -61,31 +61,37 @@
                             </li>
 
                             <div class="item-price">
-                                <span class="a-medium a-color-base sc-price sc-white-space-nowrap  a-text-bold">£{{ $cartItem->product->price }}</span>
-                                <p class="a-spacing-small"></p>
+                                Price : <span class="a-medium a-color-base sc-price sc-white-space-nowrap  a-text-bold">£{{ $cartItem->product->price }}</span>
+                                <p class="a-spacing-small "></p>
+                                Subtotal : <span id="subtotal_{{ $cartItem->id }}">£{{ number_format($cartItem->product->price * $cartItem->quantity) }}</span> 
+                            </div>
+
+                            <div class="item-quantity">
+                                <input type="number" min="1" max="10" id="quantity_{{ $cartItem->id }}" value="{{ $cartItem->quantity }}" />
+                                <button class="btn btn-primary" onclick="updateQuantity('{{ $cartItem->id }}')">Update</button>
+                                <button class="btn btn-danger" onclick="removeCartItem('{{ $cartItem->id }}')"><i class="fa fa-trash"></i></button>
                             </div>
 
                             <!-- Additional product details and actions -->
                             <!-- Add your dynamic content here -->
                         </ul>
                     </div>
-                </div>
             </div>
-            <div>
-                <hr class="white-line">
-            </div>
+            
         @endforeach
 
         <div data-name="Subtotals" class="subtotal-activecart">
-            <span id="subtotal" class="size-medium number-of-items">
-                Subtotal ({{ $cartItems->count() }} item):
-            </span>
+            <div id="subtotal" class="size-medium number-of-items">
+                Count:  <span id="products_count">{{ $total_count }}</span> item
+            </div>
+            <div  class="size-medium number-of-items">
+                Total : <span id="total_price">£ {{ number_format($total_price) }}</span> 
+            </div>
             <!-- Display the total price -->
-            <!-- <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£{{ $totalPrice }}</span></span> -->
         </div>
 
-        <div class="checkout">
-            <button type="button" id="proceed">Proceed to checkout</button>
+        <div class="">
+            <button class="btn btn-secondary" type="button" id="proceed">Proceed to checkout</button>
         </div>
 
         <div id="sc-active-cart" data-name="Active Cart" class="a-cardui sc-card-style sc-list sc-java-remote-feature celwidget sc-grid-view sc-grid-full-width sc-card-spacing-top-none" data-a-card-type="basic" data-csa-c-id="7ntulj-7bkkll-myg7rt-qbt35a" data-cel-widget="sc-active-cart">
@@ -98,9 +104,8 @@
     @endif
 
 </section>
-@include('partials.footer')
-<script src="{{ asset('js/cart.js') }}"></script>
-<script src="{{ asset('js/productpage.js') }}"></script>
+</div>
 
-</body>
-</html>
+<script src="{{ asset('js/cart.js') }}"></script>
+
+@endsection

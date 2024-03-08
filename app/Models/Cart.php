@@ -18,6 +18,7 @@ class Cart extends Model
         'user_id',
         'product_id',
         'quantity',
+        'order_id'
     ];
 
     /**
@@ -34,5 +35,10 @@ class Cart extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
     }
 }

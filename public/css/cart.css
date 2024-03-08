@@ -1,8 +1,4 @@
 
-body {
-    margin: 8rem;
-}
-
 
 .heading{
     font-size: 1.5rem;
@@ -27,7 +23,7 @@ body {
 }
 
 .itemsprice{
-    margin-left: 48rem;
+    /* margin-left: 48rem; */
     float: right;
     width: 15%;
     font-size: 20px;
@@ -35,6 +31,9 @@ body {
 .item-content {
     display: flex;
     margin-top: 10px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+
 }
 
 .item {
@@ -42,13 +41,19 @@ body {
     width: 50rem;
 }
 
-img{
-    width:200px;
-    height: 200px;
+.sc-product-image{
+    width:100px;
+    height: 100px;
+}
+
+.item-quantity{
+    display: flex;
+    gap: 5px;
 }
 
 .item-price {
     margin-top: 10px;
+    width: 100%;
 }
 
 .item-product-title{
@@ -64,7 +69,7 @@ img{
 
 .sc-price {
     color: black;
-    margin-left: 60rem;
+    /* margin-left: 60rem; */
 }
 
 .product-availability {
@@ -85,14 +90,15 @@ img{
 }
 
 .section-area {
-    width:90%;
+    width:100%;
+
     margin:auto;
     margin-top: 20px;
     margin-bottom: 20px;
     background-color: #ffffff;
     border: solid 1px;
-    overflow: auto;
-    padding: 20px 0 15px 0;
+    /* overflow: auto; */
+    padding: 20px;
 }
 
 .white-space-nowrap {
@@ -108,14 +114,14 @@ img{
 .size-medium {
     font-size: 20px;
     line-height: 24px!important;
-    margin-left: 64rem;
+    /* margin-left: 64rem; */
 }
 .text-bold {
     font-weight: 700!important;
 }
 
 .a-medium {
-    margin-left: 58rem;
+    /* margin-left: 58rem; */
     font-size: 20px;
     font-weight: 700;
 }
@@ -248,7 +254,7 @@ img{
     font-size: 25px;
     font-weight: 600;
     transition: all 0.5s ease;
-    margin-left: 61rem;
+    /* margin-left: 61rem; */
     margin-top: 5rem;
 
 }
@@ -264,8 +270,8 @@ img{
     line-height: 19px;
     margin-bottom: 14px;
     margin-top: 0;
-    width: 80rem;
-    margin-left: 0.5rem;
+    /* width: 80rem; */
+    /* margin-left: 0.5rem; */
 }
 
 button#proceed{
