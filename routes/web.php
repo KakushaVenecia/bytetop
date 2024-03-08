@@ -92,9 +92,9 @@ Route::post('/Search', [SearchController::class, 'findSearch']);
 
 
 // from front end for intergration
-Route::get('/cartpage', function(){
-    return view ('cart');
-});
+// Route::get('/cartpage', function(){
+//     return view ('cart');
+// });
 
 Route::get('/checkout', function(){
     return view ('checkout');
@@ -135,7 +135,7 @@ Route::get('/products', function() {
 
 
 // CART ROUTE
-Route::get('/cart', function () {
+Route::get('/cartpage', function () {
     $cartItems = Cart::all();
     
     // Iterate over each cart item and fetch the corresponding product details
@@ -148,6 +148,7 @@ Route::get('/cart', function () {
     }
     return view('cart', ['cartItems'=> $cartItems]);
 });
+
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
 Route::get('/cart/subtotal', [CartController::class, 'subtotal'])->name('subtotal');
