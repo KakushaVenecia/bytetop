@@ -173,8 +173,6 @@ Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'des
 Route::post('/shipping-address', [ShippingAddressController::class, 'store'])->name('shipping-address.store');
 
 
-
-
 // Landing page routes
 Route::get('/productpage', function(){
     // $products = Product::all();

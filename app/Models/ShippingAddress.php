@@ -15,6 +15,6 @@ class ShippingAddress extends Model
         'address',
         'city',
         'country',
-        'postal code',
+        'postal_code',
     ];
 }

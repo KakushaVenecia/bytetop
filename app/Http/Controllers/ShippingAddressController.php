@@ -16,7 +16,7 @@ class ShippingAddressController extends Controller
     }
 
     public function store(Request $request)
-    {
+    { dd($request);
         // Validate request data
         $validatedData = $request->validate([
             'user_id' => 'required',
@@ -30,6 +30,6 @@ class ShippingAddressController extends Controller
         $shippingAddress = ShippingAddress::create($validatedData);
 
         // Redirect to the index page with a success message
-        return redirect()->route('shipping-address.index')->with('success', 'Shipping address created successfully');
+        return redirect()->route('shop')->with('success', 'Shipping address created successfully');
     }
 }
