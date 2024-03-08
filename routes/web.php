@@ -136,7 +136,8 @@ Route::get('/products', function() {
 
 // CART ROUTE
 Route::get('/cartpage', function () {
-    $cartItems = Cart::all();
+    $userId = auth()->id(); 
+    $cartItems = Cart::where('user_id', $userId)->get();
     
     // Iterate over each cart item and fetch the corresponding product details
     foreach ($cartItems as $cartItem) {

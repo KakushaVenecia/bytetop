@@ -55,7 +55,6 @@ class CartController extends Controller
         return ''; 
     }
 
-
 public function subtotal(){
     $userId = session('user_id');
 
