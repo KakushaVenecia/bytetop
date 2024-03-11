@@ -19,6 +19,7 @@ header h1{
     position: relative;
     display: inline-block;
     cursor: pointer;
+    z-index: 999;
 }
 
 .user-icon {
