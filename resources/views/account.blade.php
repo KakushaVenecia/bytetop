@@ -3,14 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/account.css">
+    {{-- <link rel="stylesheet" href="css/account.css"> --}}
+    <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     
     <title>Your Page Title</title>
 </head>
-<body>
+<style>
+    *{
+        margin:0px;
+    }
+.header {
+    background-color: #001E2C;
+    color: white;
+    padding: 10px;
+    text-align: right;
+}
 
+.user-profile {
+    position: relative;
+}
+
+.user-icon {
+    cursor: pointer;
+}
+
+.profile-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: none;
+}
+
+.profile-menu a {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.profile-menu a:hover {
+    background-color: orange;
+    color: #001E2C;
+}
+
+/* Main header */
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Main content */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.account-sections {
+    width: 45%;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    height: 150px;
+}
+
+.inner-content {
+    text-align: center;
+    line-height: 1.5; /* Adjust line height as needed */
+    margin-bottom: 20px; /* Add margin between lines */
+}
+
+.inner-content h2,
+.inner-content p {
+    margin: 0; /* Remove default margins for heading and paragraph */
+}
+
+.edit-text, .edit-order {
+    cursor: pointer;
+    color: blue;
+    display: inline-block; 
+    margin-left: 10px;
+}
+
+.blurbackground {
+    filter: blur(2px);
+}
+
+/* Popups */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: 999;
+    display: none;
+   
+}
+
+#addressForm{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: 999;
+    display: none;
+    width: 80%; /* Adjust the width as needed */
+    max-width: 600px; /* Set a maximum width to prevent it from becoming too wide */
+    max-height: 80%; /* Set a maximum height to prevent it from becoming too tall */
+    overflow-y: auto; /
+}
+
+.popup-content {
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    background-color: orange;
+    color: #040404;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 1;
+    transition: background-color 0.3s ease;
+}
+
+a:hover{
+    background-color: orange;
+    color: white;
+}
+.close:hover {
+    background-color: #999;
+}
+
+/* Form styling */
+.container {
+    width: 100%;
+    padding: 16px;
+    background-color: white;
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
+
+label {
+    margin-top: 6px;
+    display: block;
+    font-weight: bold;
+}
+.blurbackground{
+    filter:none;
+}
+
+.blurbackground {
+    filter: blur(2px); /* Apply the blur effect */
+}
+
+.btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+.col-25 {
+    float: left;
+    width: 45%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+    </style>
+<body>
+@include('partials.navbar')
 <div class="header">
     <div class="user-profile" onmouseover="showMenu()" onmouseout="hideMenu()" onclick="toggleMenu()">
         <span class="user-icon"><i class="fas fa-user"></i></span>
@@ -24,47 +233,48 @@
         </div>
     </div>
 </div>
-
-
-
-
 <header>
     <h1>Your Account</h1>
 </header>
-
-<main class = "blurbackground">
-    
-<section class="account-sections" id="Orders">
-        <h2>Orders</h2>
-        <p>Track, return, cancel an order</p>
-        <div class="edit-order" onclick="openPopup('ordersPopup')">See your order history ></div>
+<main class="blurbackground">
+    <section class="account-sections top-left" id="Orders">
+        <div class="inner-content">
+            <h2>Orders</h2>
+            <p>Track, return, cancel an order</p>
+            <div class="edit-order" onclick="openPopup('ordersPopup')">See your order history &gt;</div>
+        </div>
     </section>
 
-    <section class="account-sections" id="LoginSecurity">
-        <h2>Login &amp; Security</h2>
-        <p>Manage password, email, and mobile number</p>
-        <div class="edit-text" onclick="openPopup('loginsecurityPopup')">Edit</div>
+    <section class="account-sections top-right" id="LoginSecurity">
+        <div class="inner-content">
+            <h2>Login &amp; Security</h2>
+            <p>Manage password, email, and mobile number</p>
+            <div class="edit-text" onclick="openPopup('loginsecurityPopup')">Edit</div>
+        </div>
     </section>
 
-    <section class="account-sections" id="Address">
-        <h2>Addresses</h2>
-        <p>Edit, remove, or set the default address</p>
-        <div class="edit-text" onclick="openPopup('addressPopup')">Edit</div>
+    <section class="account-sections bottom-left" id="Address">
+        <div class="inner-content">
+            <h2>Addresses</h2>
+            <p>Edit, remove, or set the default address</p>
+            <div class="edit-text" onclick="openPopup('addressPopup')">Edit</div>
+        </div>
     </section>
 
-    <section class="account-sections" id="Payments">
-        <h2>Payments</h2>
-        <p>Manage or add payment methods and view your transactions</p>
-        <div class="edit-text" onclick="openPopup('paymentsPopup')">Edit</div>
+    <section class="account-sections bottom-right" id="Payments">
+        <div class="inner-content">
+            <h2>Payments</h2>
+            <p>Manage or add payment methods and view your transactions</p>
+            <div class="edit-text" onclick="openPopup('paymentsPopup')">Edit</div>
+        </div>
     </section>
-
 </main>
 
 <div class="popup" id="ordersPopup">
     <div class="popup-content">
         <span class="close" onclick="closePopup('ordersPopup')">&times;</span>
-        <div class="as-l-container"><div class="rs-ol-wrapper"><h1 class="rs-ol-heading">Products you’ve ordered.</h1><p5 class="callout-copy">Only purchases from the last 18 months will be shown here.</p5></div></div>
-        <div class="row as-l-container"><p6 class="rs-order-link rs-noitem"><span class="rs-space-after">Can’t see your order?</span></p6></div>
+        <div class="as-l-container"><div class="rs-ol-wrapper"><h1 class="rs-ol-heading">Products you've ordered.</h1><p5 class="callout-copy">Only purchases from the last 18 months will be shown here.</p5></div></div>
+        <div class="row as-l-container"><p6 class="rs-order-link rs-noitem"><span class="rs-space-after">Can't see your order?</span></p6></div>
     </div>
     <hr class="blue-line">
     <a class="find">Don't Worry. Find it now....</a>
@@ -121,7 +331,7 @@
 
         <div class="form-group">
             <label for="password">Password</label>
-            <input type="password1" id="password" name="password" value="**********" disabled>
+            <input type="password1" id="password" name="password" value="" disabled>
             <button type="button" id="editPassword" class="edit-btn" onclick="openEditPopup('editPasswordPopup')">Change</button>
         </div>
     </form>
