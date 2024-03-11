@@ -14,8 +14,6 @@
     @include('partials.navbar')
    
     <!-- <img class="slide" src="{{asset('images/header.webp')}}" alt="" srcset=""> -->
-
-   
     <section class="hero">
     <link rel="preload" as="image" href="https://source.unsplash.com/300x360?0" />
     <link rel="preload" as="image" href="https://source.unsplash.com/300x360?1" />
