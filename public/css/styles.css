@@ -32,10 +32,10 @@ input[type="text"] {
     padding: 10px;
 }
 
-.slide{
-    height: 40rem;
-    width: 100%;
-}
+/* .slide{ */
+    /* height: 40rem; */
+    /* width: 100%; */
+/* } */
 
 button  {
     background-color: 
@@ -312,45 +312,12 @@ a{
     text-align-last: start !important;
 }
 
-
-
-
-
-
-
-    h1 {
-  font-size: 3em;
-  font-weight: 1000;
-  margin: 0em;
-}
-p {
-  font-size: 1.2em;
-  margin: 2em;
-}
-
-.btn {
-  margin: 0.5em;
-  font-size: 1em;
-  padding: 1em;
-  background-color: white;
-  color: #555;
-  border-radius: 3px;
-  cursor: pointer;
-  border: 1px solid #0004;
-  display: inline-block;
-  text-decoration: none;
-}
-.btn:hover {
-  background: black;
-  color: white;
-  border: 1px solid #fff;
-}
 /* ========== .hero background... ========== */
 .hero {
   color: white;
-  /* aspect-ratio: 16 / 9; */
+   /* aspect-ratio: 16 / 9;   */
   background-color: #558;
-  background-image: url(https://source.unsplash.com/350x360?0);
+  background-image: url(https://source.unsplash.com/300x360?0);
   background-size: cover;
   background-position: center;
 
@@ -380,7 +347,7 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center
   padding: 10vw;
 }
 
