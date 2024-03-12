@@ -11,6 +11,7 @@ use App\Models\Cart;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RegController;
 use App\Http\Controllers\ShippingAddressController;
+use App\Http\Controllers\API\InviteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,7 @@ Route::get('password/reset', [RegController::class, 'showLinkRequestForm'])->nam
 Route::post('password/email', [RegController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::get('password/reset/{token}', [RegController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [RegController::class, 'reset'])->name('password.update');
+
 
 
 
@@ -92,11 +94,6 @@ Route::post('/Search', [SearchController::class, 'findSearch']);
 
 
 
-// from front end for intergration
-// Route::get('/cartpage', function(){
-//     return view ('cart');
-// });
-
 Route::get('/checkout', function(){
     return view ('checkout');
 });
@@ -106,7 +103,7 @@ Route::get('/checkout', function(){
 
 Route::get('/products', function() {
     // Fetch all distinct categories from the products table
-    $categories = ['Laptops', 'Computers', 'Accessories'];
+    $categories = ['Laptops', 'Computers','Laptop Accessories', 'All in One Desktops', 'Computer Monitors' ];
     
     // Fetch distinct categories from the products table
     $distinctCategories = Product::distinct()->pluck('category');
@@ -193,3 +190,9 @@ Route::get('/ordersuccess', function(){
 Route::get('/account', function(){
     return view ('account');
 });
+
+
+Route::post('/admin/invite', [InviteController::class, 'invite'])->name('invite.send');
+Route::get('/admin/invite', function(){
+    return view('admindashboard.invite');
+})->name('admin.invite.form');

@@ -5,10 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\User;
 use App\Notifications\AdminWelcomeEmail;
-use App\Notifications\WelcomeEmail;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Carbon;
+
 
 class InitializeDatabase extends Command
 {
@@ -38,7 +36,8 @@ class InitializeDatabase extends Command
             'name' => 'Bytetop Admin',
             'email' => 'kakushavenecia@gmail.com',
             'password' => bcrypt($password),
-            'role' => 'admin',
+            'role' => 'super_admin',
+            'status'=>'active',
             'email_verification_token' => $token, // Generate email verification token
         ]);
     

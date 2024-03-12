@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <title>Bytetop</title>
 </head>
@@ -21,7 +22,6 @@
                     <li><a href="#" onclick="showOrders()">Orders</a><span class="icon"><i class="fa fa-heart"></i></span></li>
                     <li><a href="#" onclick="showSettings()">Settings</a><span class="icon"><i class="fa fa-heart"></i></span></li>
                     <li><a href="#" onclick="showNotifications()">Notifications</a><span class="icon"><i class="fa fa-heart"></i></span></li>
-                    <!-- Add more sidebar links as needed -->
                 </ul>
             </div>
         </nav>
@@ -40,7 +40,7 @@
             <p>This is the dashboard content.</p>
             <h2>Products: {{ $productCount }}</h2>
             {{-- <button><a href=""> Create Product</a></button> --}}
-            <button><a href="/products">Go to the products page</a></button>
+            <button><a href="/productpage">Go to the products page</a></button>
         </div> 
         <div id="products">
             <h1>Products</h1>
@@ -83,22 +83,27 @@
             </div>
             {{ $products->links() }}
         </div>
-        
-          
-
-            
         <div id="customers" style="display: none;">
             <!-- Customers content -->
             <h1>Customers</h1>
-            <p>This is the customers content.</p>
-            @foreach ($users as $user)
-                <div>
-                    <h2>{{ $user->name }}</h2>
-                    <p>Email: {{ $user->email }}</p>
-                    <p>Role: {{ $user ->role }}</p>
-                    <!-- Add other customer details here -->
-                </div>
-            @endforeach
+                    <p>This is the customers content.</p>
+                    @foreach ($users as $user)
+                    <div>
+                <h2>{{ $user->name }}</h2>
+                <p>Email: {{ $user->email }}</p>
+                @if(auth()->user()->role == 'admin')
+                    @if($user->role == 'customer')
+                        <h3>Customer List:</h3>
+                        <ul>
+                            <li>{{ $user->name }} - {{ $user->email }}</li>
+                            <!-- Add other customer details here -->
+                        </ul>
+                    @endif
+              
+                @endif
+            </div>
+        @endforeach
+           
         </div>
         
         <div id="orders" style="display: none;">
@@ -112,7 +117,7 @@
             <h1>Settings</h1>
             <p>This is the settings content.</p>
             <button>Edit Settings</button>
-            <button>Invite Admins</button>
+            <a href="{{ route('admin.invite.form') }}"><button>Invite Admins</button></a>
         </div>
         
         <div id="notifications" style="display: none;">

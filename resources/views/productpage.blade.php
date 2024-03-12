@@ -89,7 +89,7 @@
         </div>
     </main>
     @include('partials.footer')
-    <script src="js/productpage.js"></script>
+    {{-- <script src="js/productpage.js"></script> --}}
     <script >
 
 
@@ -118,6 +118,7 @@
             priceLabel.textContent = `£0 to £${value}`;
         }
         function openModal(name, description, price, imageSrc) {
+            console.log("buttttl;klk;k;")
     const modal = document.getElementById('myModal');
     const productName = document.getElementById('modalProductName');
     const productDescription = document.getElementById('modalProductDescription');
