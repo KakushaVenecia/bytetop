@@ -25,18 +25,17 @@
                      <input type="range" id="priceRange" min="0" max="5000" step="1" value="5000" oninput="updatePriceLabel(this.value)">
                      <label for="priceRange" id="priceLabel">£0 to £5000</label>
             </div>
-
             <div class="category-section">
                 <h2>BRAND</h2>
                 <ul>
-                    <li><input type="checkbox" id="brand-abc"><label for="brand-abc">Apple</label></li>
-                    <li><input type="checkbox" id="brand-xyz"><label for="brand-xyz">Asus</label></li>
-                    <li><input type="checkbox" id="brand-hp"><label for="brand-hp">HP</label></li>
-                    <li><input type="checkbox" id="brand-dell"><label for="brand-dell">Dell</label></li>
-                    <li><input type="checkbox" id="brand-lenovo"><label for="brand-lenovo">Lenovo</label></li>
+                    @foreach($uniqueProductNames as $name)
+                        <li>
+                            <input type="checkbox" id="brand-{{ strtolower($name) }}" value="{{ $name }}" class="brand-checkbox">
+                            <label for="brand-{{ strtolower($name) }}">{{ $name }}</label>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
-
             <div class="category-section">
                 <h2>TYPE</h2>
                 <ul>
@@ -55,35 +54,42 @@
                 <p><a href="#" onclick="showProducts('all')">All Products</a></p>
             </div>
             <div id="myModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <div class="modal-details">
-                    <img id="modalProductImage" alt="Product Image" class="modal-image">
-                    <div class="product-info">
-                        <h2 id="modalProductName"></h2>
-                        <p id="modalProductDescription"></p>
-                        <p id="modalProductPrice"></p>
+                <div class="modal-content">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <div class="modal-details">
+                        <img id="modalProductImage" alt="Product Image" class="modal-image">
+                        <div class="product-info">
+                            <h2 id="modalProductName"></h2>
+                            <p id="modalProductDescription"></p>
+                            <p id="modalProductPrice"></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div id="productDetails"></div>
-            <div class="product-container" id="productContainer">
-                @foreach($products as $product)
-                    <div class="product" data-category="{{ $product->category }}"> <!-- Add data-category attribute to each product -->
-                        <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
-                        <h2><a href="/product/{{ $product->id }}">{{ $product->name }}</a></h2>
-                        <p>{{ $product->description }}</p>
-                        <p>Price: £{{ $product->price }}</p>
-                        <button onclick="openModal('{{ $product->name }}', '{{ $product->description }}', '{{ $product->price }}', '{{ asset('storage/images/' . $product->image) }}')">View</button>
-                        <button class="btn-add" data-product-id="{{ $product->id }}" >Add to Cart</button>
-                    </div>
-                @endforeach
+            <div id="productDetails">
+                @foreach($uniqueProductNames as $name)
+                <div class="product">
+                    <h2>{{ $name }}</h2>
+                    @php
+                        // Get the product details from the $products array
+                        $product = collect($products)->firstWhere('name', $name);
+                        $count = $productCounts[$name] ?? 0; // If count doesn't exist, default to 0
+                    @endphp
+                    <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $name }}" class="product-image">
+                    <p>{{ $product->description }}</p>
+                    <p>Price: £{{ $product->price }}</p>
+                    <p>Stock: {{ $count }}</p>
+                    {{-- Add to cart button --}}
+                    <button onclick="openModal('{{ $product->name }}', '{{ $product->description }}', '{{ $product->price }}', '{{ asset('storage/images/' . $product->image) }}')">View</button>
+                    <button class="btn-add" data-product-id="{{ $product->id }}">Add to Cart</button>
+                </div>
+            @endforeach
+            
             </div>
         </div>
     </main>
     @include('partials.footer')
-    <script src="js/productpage.js"></script>
+    {{-- <script src="js/productpage.js"></script> --}}
     <script >
 
 
@@ -112,24 +118,26 @@
             priceLabel.textContent = `£0 to £${value}`;
         }
         function openModal(name, description, price, imageSrc) {
-        const modal = document.getElementById('myModal');
-        const productName = document.getElementById('modalProductName');
-        const productDescription = document.getElementById('modalProductDescription');
-        const productPrice = document.getElementById('modalProductPrice');
-        const productImage = document.getElementById('modalProductImage');
+            console.log("buttttl;klk;k;")
+    const modal = document.getElementById('myModal');
+    const productName = document.getElementById('modalProductName');
+    const productDescription = document.getElementById('modalProductDescription');
+    const productPrice = document.getElementById('modalProductPrice');
+    const productImage = document.getElementById('modalProductImage');
 
-        productName.textContent = name;
-        productDescription.textContent = description;
-        productPrice.textContent = `Price: £${price}`;
-        productImage.src = imageSrc;
+    productName.textContent = name;
+    productDescription.textContent = description;
+    productPrice.textContent = `Price: £${price}`;
+    productImage.src = imageSrc;
 
-        modal.style.display = 'block';
-    }
+    modal.style.display = 'block';
+}
 
     function closeModal() {
         const modal = document.getElementById('myModal');
         modal.style.display = 'none';
     }
 </script>
+<script src="js/nav.js"></script>
 </body>
 </html>

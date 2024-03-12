@@ -11,7 +11,8 @@ use App\Http\Controllers\product\ProductDetailsController;
 use App\Models\Cart;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RegController;
-use App\Models\Order;
+use App\Http\Controllers\ShippingAddressController;
+use App\Http\Controllers\API\InviteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,7 @@ Route::post('password/reset', [RegController::class, 'reset'])->name('password.u
 
 
 
+
 // Delete these views
 
 
@@ -74,6 +76,13 @@ Route::get('/get-product-description', [ProductController::class, 'getProductDes
 
 
 
+
+
+
+
+
+
+
 // Verification
 Route::view('/verify-success', 'verification.verify-success')->name('verification.success');
 Route::view('/verify-error', 'verification.verify-error')->name('verification.error');
@@ -86,63 +95,58 @@ Route::post('/Search', [SearchController::class, 'findSearch']);
 
 
 
-// from front end for intergration
-Route::get('/cartpage', function(){
-    $userId = session('user_id');
-
-    // Check if the user ID is available
-    if ($userId) {
-        // Find the user's incomplete order
-        $order = Order::where('user_id', $userId)->whereNull('completed_at')->first();
-
-        
-
-        // If an incomplete order exists, get the associated cart items
-        if ($order) {
-            $cartItems = Cart::where('order_id', $order->id)->get();
-
-            $totalPrice = $cartItems->sum(function ($item) {
-                return $item->product->price * $item->quantity;
-            });
-
-            $totalCount = $cartItems->sum(function ($item) {
-                return $item->quantity;
-            });
-
-            return view('shopping-cart', ['cartItems' => $cartItems , 'total_price' => $totalPrice , 'total_count'=>  $totalCount ]);
-        } else {
-            // If no incomplete order exists, you may want to handle this case accordingly
-            return view('shopping-cart', ['cartItems' => [], 'total_price' => 0]);
-        }
-    } else {
-        // If the user ID is not found in the session, return a response indicating that they need to log in
-        return redirect('/login')->with('error', 'User is not authenticated. Please log in.');
-    }
-});
-
-Route::delete('/cart/delete/{id}', [CartController::class, 'removeFromCart'])->name('removeFromCart');
-
-
 Route::get('/checkout', function(){
     return view ('checkout');
 });
-Route::get('/products',function(){
-     // Fetch all distinct categories from the products table
-     $categories = ['Laptops', 'Computers', 'Accessories'];
-     // Fetch distinct categories from the products table
+
+
+
+
+Route::get('/products', function() {
+    // Fetch all distinct categories from the products table
+    $categories = ['Laptops', 'Computers','Laptop Accessories', 'All in One Desktops', 'Computer Monitors' ];
+    
+    // Fetch distinct categories from the products table
     $distinctCategories = Product::distinct()->pluck('category');
 
-    $products = Product::paginate(10);
-    return view('productpage',  compact('products'),  ['categories' => $categories], ['distinctCategories' => $distinctCategories]);
+
+    $productCount = Product::count();
+
+    // Get unique product names
+    $uniqueProductNames = Product::distinct()->pluck('name');
+
+    $productCounts = [];
+    foreach ($uniqueProductNames as $name) {
+        $count = Product::where('name', $name)->count();
+        $productCounts[$name] = $count;
+    }
+    $products = [];
+    foreach ($uniqueProductNames as $name) {
+        $product = Product::where('name', $name)->first();
+        $products[] = $product;
+    }
+
+    // dd($uniqueProductNames); // Debugging statement
+
+    return view('productpage', compact('products', 'categories', 'distinctCategories', 'productCounts', 'uniqueProductNames'));
 });
 
-Route::get('/product/{id}/', [ProductDetailsController::class, 'show'])->name('product.show');
 
 
 // CART ROUTE
-Route::get('/cart', function () {
-    $cartItems = Cart::all();
-    return view('shopping-cart', ['cartItems'=> $cartItems]);
+Route::get('/cartpage', function () {
+    $userId = auth()->id(); 
+    $cartItems = Cart::where('user_id', $userId)->get();
+    
+    // Iterate over each cart item and fetch the corresponding product details
+    foreach ($cartItems as $cartItem) {
+        // Retrieve the product details based on the product ID in the cart item
+        $product = Product::find($cartItem->product_id);
+        
+        // Assign the product price to the cart item
+        $cartItem->price = $product->price; 
+    }
+    return view('cart', ['cartItems'=> $cartItems]);
 });
 
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
@@ -165,9 +169,8 @@ Route::put('/orders/{order_id}/items/{id}', [OrderItemController::class, 'update
 Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'destroy'])->name('orderItems.destroy');
 
 
-
-
-
+// Route for submitting the shipping address form
+Route::post('/shipping-address', [ShippingAddressController::class, 'store'])->name('shipping-address.store');
 
 
 // Landing page routes
@@ -189,3 +192,9 @@ Route::get('/ordersuccess', function(){
 Route::get('/account', function(){
     return view ('account');
 });
+
+
+Route::post('/admin/invite', [InviteController::class, 'invite'])->name('invite.send');
+Route::get('/admin/invite', function(){
+    return view('admindashboard.invite');
+})->name('admin.invite.form');

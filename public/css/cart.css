@@ -1,3 +1,17 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.5;
+    letter-spacing: 1px; 
+
+}
+
+.container{
+    width: 90%;
+    margin: auto;
+}
 
 
 .heading{
@@ -23,7 +37,7 @@
 }
 
 .itemsprice{
-    /* margin-left: 48rem; */
+    margin-left: 4rem;
     float: right;
     width: 15%;
     font-size: 20px;
@@ -31,9 +45,7 @@
 .item-content {
     display: flex;
     margin-top: 10px;
-    width: 100%;
-    border-bottom: 1px solid #ccc;
-
+    width: 60%;
 }
 
 .item {
@@ -88,17 +100,26 @@
     margin-right: 10px;
     margin-right: 1.5rem;
 }
+section{
+    background-color: #ec1111;
+    width: 30%;
+    margin: auto;
+}
 
 .section-area {
-    width:100%;
-
+    width:60%;
     margin:auto;
     margin-top: 20px;
     margin-bottom: 20px;
-    background-color: #ffffff;
+    background-color: #ec1111;
     border: solid 1px;
-    /* overflow: auto; */
-    padding: 20px;
+    overflow: auto;
+    padding: 20px 0 15px 0;
+}
+
+.grid-vertical-align{
+    width:60%;
+    margin: auto;
 }
 
 .white-space-nowrap {

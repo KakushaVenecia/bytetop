@@ -77,26 +77,54 @@ class RegController extends Controller
     {
         return view('login');
     }
+
     public function login(Request $request)
+{
+    $credentials = $request->only('email', 'password');
 
-    {
-        $credentials = $request->only('email', 'password');
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user();
 
-        if (Auth::attempt($credentials)) {
-
-            $userId = Auth::id();
-
-            $cartCount = Cart::where('user_id', $userId)->count();
+        if ($user->role == 'super_admin' || $user->role == 'admin') {
             session()->put('authenticated', true);
-            session()->put('user_id', Auth::user()->id); 
-            session()->put('user_name', Auth::user()->name);
-            session()->put('cart_count', $cartCount);
-
-            return redirect()->route('landing')->with('success', 'Login successful');
-        } else {
-            return redirect()->back()->with('error', 'Invalid credentials')->withInput();
+            session()->put('user_id', $user->id); 
+            session()->put('user_name', $user->name);
+            return redirect()->route('dashboard')->with('success', 'Login successful');
         }
+
+        $userId = $user->id;
+        $cartCount = Cart::where('user_id', $userId)->count();
+        session()->put('authenticated', true);
+        session()->put('user_id', $user->id); 
+        session()->put('user_name', $user->name);
+        session()->put('cart_count', $cartCount);
+
+        return redirect()->route('landing')->with('success', 'Login successful');
+    } else {
+        return redirect()->back()->with('error', 'Invalid credentials')->withInput();
     }
+}
+
+    // public function login(Request $request)
+
+    // {
+    //     $credentials = $request->only('email', 'password');
+
+    //     if (Auth::attempt($credentials)) {
+
+    //         $userId = Auth::id();
+
+    //         $cartCount = Cart::where('user_id', $userId)->count();
+    //         session()->put('authenticated', true);
+    //         session()->put('user_id', Auth::user()->id); 
+    //         session()->put('user_name', Auth::user()->name);
+    //         session()->put('cart_count', $cartCount);
+
+    //         return redirect()->route('landing')->with('success', 'Login successful');
+    //     } else {
+    //         return redirect()->back()->with('error', 'Invalid credentials')->withInput();
+    //     }
+    // }
     public function logout(Request $request)
     {
   

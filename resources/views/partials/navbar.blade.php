@@ -14,8 +14,10 @@
     
     <div class="nav-links"> 
         <a href="/products">Products</a>
+        {{-- <a href="/cartpage"> Cart <i class="fas fa-shopping-cart"></i> </a> --}}
+        {{-- <span id="cartCount"> --}}
+            {{-- <span id="cartCount">{{ $cartCount }}< </span> --}}
         <a href="/cartpage"> Cart <i class="fas fa-shopping-cart"></i> </a>
-        
         @auth
             <div class="dropdown">
                 <a class="navbutton">Hello, {{ auth()->user()->name }} </a>
@@ -39,4 +41,7 @@
         @endauth
     </div>
 </nav>
+<script src="js/nav.js"></script>
+</body>
+</html>
 

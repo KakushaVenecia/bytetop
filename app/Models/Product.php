@@ -10,17 +10,19 @@ class Product extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'description',
-        'price',
-        'tags',
-        'image',
-        'category',
-        
+        'name', 'description', 'price', 'tags', 'image', 'category', 'user_id', 'quantity'
     ];
 
+    // Relationships
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    
     public function reviews()
     {
         return $this->hasMany(Review::class);
     }
 }
+

@@ -65,61 +65,22 @@ class CartController extends Controller
             return response()->json(['error' => 'User is not authenticated. Please log in.'], 401);
         }
     }
-
-
+    
     public function getCartCount()
     {
         $userId = session('user_id');
-
+        $cartCount = $this->getCartCount(); 
+    
         if ($userId) {
             $cartCount = Cart::where('user_id', $userId)->count();
-            return response()->json(['cart_count' => $cartCount]);
+            return $cartCount > 0 ? $cartCount : '';
         }
-
-        return response()->json(['cart_count' => '']);
+    
+        return ''; 
     }
 
-    public function updateQuantity(Request $request)
-    {
-        // Validate the incoming request
-        $validatedData = $request->validate([
-            'cart_item_id' => 'required|exists:carts,id',
-            'quantity' => 'required|integer|min:1',
-        ]);
-
-        // Find the cart item
-        $cartItem = Cart::findOrFail($validatedData['cart_item_id']);
-
-        // Update the quantity
-        $cartItem->update([
-            'quantity' => $validatedData['quantity'],
-        ]);
-
-        $subtotal = $cartItem->product->price * $validatedData['quantity'];
-
-        $cartItems = Cart::where('order_id', $cartItem->order_id)->get();
-        $totalPrice = $cartItems->sum(function ($item) {
-            return $item->product->price * $item->quantity;
-        });
-
-        
-        $totalCount = $cartItems->sum(function ($item) {
-            return $item->quantity;
-        });
-
-        return response()->json([
-            'message' => 'Quantity updated successfully',
-            'quantity' => $cartItem->quantity,
-            'subtotal' => number_format($subtotal, 2), // Format subtotal as needed
-            'total_price' => number_format($totalPrice, 2),
-            'products_count' => $totalCount,
-        ]);
-    }
-
-
-    public function subtotal()
-    {
-        $userId = session('user_id');
+public function subtotal(){
+    $userId = session('user_id');
 
         // Initialize subtotal variable
         $subtotal = 0;

@@ -122,5 +122,6 @@
     </div>
   </div>
   @include('partials.footer')
+      <script src="js/nav.js"></script>
 </body>
 </html>

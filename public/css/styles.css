@@ -32,10 +32,10 @@ input[type="text"] {
     padding: 10px;
 }
 
-.slide{
-    height: 40rem;
-    width: 100%;
-}
+/* .slide{ */
+    /* height: 40rem; */
+    /* width: 100%; */
+/* } */
 
 button  {
     background-color: 
@@ -311,3 +311,43 @@ a{
     text-align: start !important;
     text-align-last: start !important;
 }
+
+/* ========== .hero background... ========== */
+.hero {
+  color: white;
+   /* aspect-ratio: 16 / 9;   */
+  background-color: #558;
+  background-image: url(https://source.unsplash.com/300x360?0);
+  background-size: cover;
+  background-position: center;
+
+  /* https://cubic-bezier.com/#0,0,0,1 */
+  animation: slides calc(4 * 5s) cubic-bezier(0, 0, 0, 3) 5s infinite;
+  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+  animation-play-state: running;
+}
+
+@keyframes slides {
+  25% {
+    background-image: url(https://source.unsplash.com/300x300?0);
+  }
+  50% {
+    background-image: url(https://source.unsplash.com/300x300?1);
+  }
+  75% {
+    background-image: url(https://source.unsplash.com/300x300?2);
+  }
+}
+/* ========== .hero background. ========== */
+
+.hero .content-hero {
+  /* aspect-ratio: 16/9; */
+  text-align: center;
+  background-color: #0008;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10vw;
+}
+

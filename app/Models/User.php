@@ -1,14 +1,13 @@
 <?php
 
+
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements MustVerifyEmail, JWTSubject
+class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
@@ -18,12 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail, JWTSubject
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'confirmpassword',
-        'role', 
-        'email_verification_token'
+        'name', 'email', 'password', 'invited_by', 'status', 'role', 'email_verification_token'
     ];
 
     /**
@@ -32,18 +26,7 @@ class User extends Authenticatable implements MustVerifyEmail, JWTSubject
      * @var array
      */
     protected $hidden = [
-        'password',
-        'confirmpassword',
-        'remember_token',
-    ];
-
-    /**
-     * The attributes that should be guarded from mass assignment.
-     *
-     * @var array
-     */
-    protected $guarded = [
-        // Remove 'role' from the $guarded array
+        'password', 'remember_token',
     ];
 
     /**
@@ -54,16 +37,4 @@ class User extends Authenticatable implements MustVerifyEmail, JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    public function getJWTCustomClaims()
-    {
-        return [];
-    }
-    
 }
-
