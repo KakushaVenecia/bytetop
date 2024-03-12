@@ -11,6 +11,7 @@ use App\Models\Cart;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RegController;
 use App\Http\Controllers\ShippingAddressController;
+use App\Http\Controllers\API\InviteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,11 +94,6 @@ Route::post('/Search', [SearchController::class, 'findSearch']);
 
 
 
-// from front end for intergration
-// Route::get('/cartpage', function(){
-//     return view ('cart');
-// });
-
 Route::get('/checkout', function(){
     return view ('checkout');
 });
@@ -133,28 +129,6 @@ Route::get('/products', function() {
 
     return view('productpage', compact('products', 'categories', 'distinctCategories', 'productCounts', 'uniqueProductNames'));
 });
-// Route::get('/products', function() {
-//     // Fetch all distinct categories from the products table
-//     $categories = ['Laptops', 'Computers', 'Laptop Accessories', 'All in One Desktops', 'Computer Monitors'];
-    
-//     // Fetch distinct categories from the products table
-//     $distinctCategories = Product::distinct()->pluck('category');
-
-//     // Get unique product names
-//     $uniqueProductNames = Product::distinct()->pluck('name');
-
-//     $productCounts = [];
-//     foreach ($uniqueProductNames as $name) {
-//         $count = Product::where('name', $name)->count();
-//         $productCounts[$name] = $count;
-//     }
-
-//     // Fetch all products
-//     $products = Product::all();
-
-//     return view('productpage', compact('products', 'categories', 'distinctCategories', 'productCounts', 'uniqueProductNames'));
-// });
-
 
 
 
@@ -216,3 +190,9 @@ Route::get('/ordersuccess', function(){
 Route::get('/account', function(){
     return view ('account');
 });
+
+
+Route::post('/admin/invite', [InviteController::class, 'invite'])->name('invite.send');
+Route::get('/admin/invite', function(){
+    return view('admindashboard.invite');
+})->name('admin.invite.form');

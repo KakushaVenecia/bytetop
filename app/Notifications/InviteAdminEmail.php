@@ -3,6 +3,7 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -10,35 +11,60 @@ class InviteAdminEmail extends Notification
 {
     use Queueable;
 
-    protected $inviterName;
-    protected $email;
+    protected $token;
     protected $password;
+    protected $invitedById;
 
-    public function __construct($inviterName, $email, $password)
-{
-    $this->inviterName = $inviterName;
-    $this->email = $email;
-    $this->password = $password;
-}
+    /**
+     * Create a new notification instance.
+     *
+     * @return void
+     */
+    public function __construct($token, $password, $invitedById)
+    {
+        $this->token = $token;
+        $this->password = $password;
+        $this->invitedById = $invitedById;
+    }
 
+    /**
+     * Get the notification's delivery channels.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
     public function via($notifiable)
     {
         return ['mail'];
     }
 
+    /**
+     * Get the mail representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('Invitation to join ' . config('app.name') . ' as an admin')
+            ->subject('Invitation to Bytetop')
             ->line('Hello ' . $notifiable->name . ',')
-            ->line($this->inviterName . ' has invited you to join ' . config('app.name') . ' as an admin.')
-            ->line('We are delighted to welcome you to the ' . config('app.name') . ' family.')
-            ->line('Please click on the link below to accept the invitation and set up your account.')
-            ->action('Login Here', config('app.url') . '/login');
+            ->line('You have been invited to join Bytetop as an admin by ' . $notifiable->find($this->invitedById)->name . '.')
+            ->line('Your temporary password is: ' . $this->password)
+            ->action('Login Here', config('app.url') . '/login')
+            ->line('We Hope you will have fun at ByteTop!');
     }
 
+    /**
+     * Get the array representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return array
+     */
     public function toArray($notifiable)
     {
-        return [];
+        return [
+            //
+        ];
     }
 }

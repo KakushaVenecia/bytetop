@@ -5,10 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Models\User;
 use App\Notifications\AdminWelcomeEmail;
-use App\Notifications\WelcomeEmail;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Carbon;
+
 
 class InitializeDatabase extends Command
 {
