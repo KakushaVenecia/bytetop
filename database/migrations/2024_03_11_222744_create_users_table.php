@@ -18,8 +18,11 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->timestamps();
+            $table->unsignedBigInteger('invited_by')->nullable();
+            $table->string('status')->default('pending');
             $table->string('role')->default('customer');
+            $table->timestamps();
+            $table->string('email_verification_token')->nullable();
         });
     }
 
@@ -28,8 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        
         Schema::dropIfExists('users');
-        
     }
 };

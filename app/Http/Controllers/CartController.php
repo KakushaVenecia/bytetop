@@ -46,6 +46,7 @@ class CartController extends Controller
     public function getCartCount()
     {
         $userId = session('user_id');
+        $cartCount = $this->getCartCount(); 
     
         if ($userId) {
             $cartCount = Cart::where('user_id', $userId)->count();

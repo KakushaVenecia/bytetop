@@ -40,7 +40,7 @@
             <p>This is the dashboard content.</p>
             <h2>Products: {{ $productCount }}</h2>
             {{-- <button><a href=""> Create Product</a></button> --}}
-            <button><a href="/products">Go to the products page</a></button>
+            <button><a href="/productpage">Go to the products page</a></button>
         </div> 
         <div id="products">
             <h1>Products</h1>

@@ -49,6 +49,7 @@ Route::post('password/reset', [RegController::class, 'reset'])->name('password.u
 
 
 
+
 // Delete these views
 
 
@@ -106,7 +107,7 @@ Route::get('/checkout', function(){
 
 Route::get('/products', function() {
     // Fetch all distinct categories from the products table
-    $categories = ['Laptops', 'Computers', 'Accessories'];
+    $categories = ['Laptops', 'Computers','Laptop Accessories', 'All in One Desktops', 'Computer Monitors' ];
     
     // Fetch distinct categories from the products table
     $distinctCategories = Product::distinct()->pluck('category');
@@ -132,6 +133,28 @@ Route::get('/products', function() {
 
     return view('productpage', compact('products', 'categories', 'distinctCategories', 'productCounts', 'uniqueProductNames'));
 });
+// Route::get('/products', function() {
+//     // Fetch all distinct categories from the products table
+//     $categories = ['Laptops', 'Computers', 'Laptop Accessories', 'All in One Desktops', 'Computer Monitors'];
+    
+//     // Fetch distinct categories from the products table
+//     $distinctCategories = Product::distinct()->pluck('category');
+
+//     // Get unique product names
+//     $uniqueProductNames = Product::distinct()->pluck('name');
+
+//     $productCounts = [];
+//     foreach ($uniqueProductNames as $name) {
+//         $count = Product::where('name', $name)->count();
+//         $productCounts[$name] = $count;
+//     }
+
+//     // Fetch all products
+//     $products = Product::all();
+
+//     return view('productpage', compact('products', 'categories', 'distinctCategories', 'productCounts', 'uniqueProductNames'));
+// });
+
 
 
 
