@@ -28,7 +28,7 @@
     </div>
 
     <div class="content">
-        <div id="dashboard" style="display: none;">
+        <div id="dashboard"">
             <div class="user-bar" style="float: right">
                 @if(auth()->check())
                     <p>Hello, {{ auth()->user()->name }}</p>
@@ -39,21 +39,21 @@
             <button class="navbutton"><a href="{{ route('admin.products.create') }}">Create Product</a></button>
             <p>This is the dashboard content.</p>
             <h2>Products: {{ $productCount }}</h2>
-            {{-- <button><a href=""> Create Product</a></button> --}}
-            <button><a href="/productpage">Go to the products page</a></button>
+            <button><a href=""> Create Product</a></button>
+            <button><a href="/products">Go to the products page</a></button>
         </div> 
-        <div id="products">
+     <div id="products"  style="display: none">
             <h1>Products</h1>
             <div class="flex-table">
                 @foreach($uniqueProductNames as $name)
-                    @php
+                    @php 
                         $product = $products->firstWhere('name', $name);
                         $totalStock = $products->where('name', $name)->sum('quantity');
                     @endphp
                     <div class="flex-row">
-                        <div class="flex-cell">
+                        <div class="flex-cell"> 
                             <img width="100" src="{{ asset('storage/images/' . $product->image) }}" alt="Product Image">
-                        </div>
+                        </div> 
                         <div class="flex-cell">
                             <strong>{{ $product->name }}</strong>
                         </div>

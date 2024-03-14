@@ -5,13 +5,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.2/css/fontawesome.min.css" integrity="sha384-BY+fdrpOd3gfeRvTSMT+VUZmA728cfF9Z2G42xpaRkUGu2i3DyzpTURDo5A6CaLK" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
     <title>Login</title>
 </head>
 <style>
       body {
-  background: rgb(96, 145, 163)!important;
-  background: linear-gradient(180deg, rgba(96, 145, 163, 1) 40%, rgba(241, 247, 249, 1) 100%);
+  /* background:#001E2C;. */
+  background: rgb(96,145,163);
+    background: linear-gradient(180deg, rgba(96,145,163,1) 56%, rgba(241,247,249,1) 100%);  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,10 +22,17 @@
 .container {
   width: 350px;
   height: 400px;
-  background-color: #001E2C;
-  padding: 10px;
+  /* background: rgba( 0, 30, 44, 0.65 ); */
+  /* box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 15.5px );
+  -webkit-backdrop-filter: blur( 15.5px ); */
+   background:#001E2C;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  /* background-color: #001E2C;
+ 
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
   text-align: center; /* Center align content */
   display: flex;
   flex-direction: column;
@@ -87,6 +95,31 @@ button:hover {
     color: #fff;
     font-weight: 300;
 }
+
+#loginText {
+  overflow: hidden; /* Ensures that the text doesn't overflow */
+  border-right: 2px solid rgb(255, 255, 255); /* Simulate typing cursor */
+  white-space: nowrap; /* Prevents text from wrapping */
+  animation: typing 3s steps(4, end), untyping 3s steps(6, end) 3s infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 5em; /* Adjust the width  */
+  }
+}
+
+@keyframes untyping {
+  from {
+    width: 3em; /* Adjust the width  */
+  }
+  to {
+    width: 0;
+  }
+}
 </style>
 <body>
   
@@ -95,7 +128,9 @@ button:hover {
         <div class="logo">
         <a href="/" ><img src="/images/Logo.png" alt="Logo"></a> 
         </div>
-    <h1>Login</h1>
+    <div>
+    <h1 id="loginText">Login_</h1>
+  </div>
     
     <form method="POST" action="{{ route('tologin') }}">
         @csrf
@@ -121,4 +156,5 @@ button:hover {
     </form>
     </div>
 </body>
+<script src="js/login.js"></script>
 </html>
