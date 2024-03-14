@@ -8,8 +8,7 @@
                     <p>Hello, {{ auth()->user()->name }}</p>
                 @endif
             </div>
-            <!-- Dashboard content -->
-            <h1>Dashboard</h1>
+            <h3>Super Admin Dashboard</h3>
             <div>
             <div class="card-container">
         <div class="card">
@@ -49,12 +48,10 @@
                             <!-- Replace the sample data with your actual product data -->
                             <!-- @foreach($products as $product) -->
                             <tr>
-                                <td>Product Name </td>
-                                <!-- <td>{{ $product->price }}</td> -->
-                                <td>Product Price</td>
-                                <!-- <td>{{ $product->category }}</td> -->
-                                <td>Product category </td>
-                                <!-- <td>{{ $product->stock }}</td> -->
+                                <td>{{ $product->name }}</td> 
+                                <td>{{ $product->price }}</td> 
+                                <td>{{ $product->category }}</td> 
+                                {{-- <td>{{ $product->stock }}</td> --}}
                                 <td>Product stock </td>
                             </tr>
                             <!-- @endforeach -->
