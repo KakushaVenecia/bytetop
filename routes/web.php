@@ -71,6 +71,29 @@ Route::put('/admin/products/{id}', [ProductController::class, 'update'])->name('
 Route::delete('/admin/products/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
 Route::get('/admin/dashboard', [ProductController::class, 'dashboard'])->name('dashboard');
 Route::get('/get-product-description', [ProductController::class, 'getProductDescription'])->name('get-product-description');
+Route::get('/admin/allproducts' , function(){
+    return view ('admindashboard.products');
+})->name('admin.viewproducts');
+
+Route::get('/admin/all-users' , function(){
+    return view ('admindashboard.users');
+})->name('admin.viewusers');
+
+Route::get('/admin/all-orders' , function(){
+    return view ('admindashboard.orders');
+})->name('admin.vieworders');
+
+Route::get('/admin/settings' , function(){
+    return view ('admindashboard.settings');
+})->name('admin.viewsettings');
+
+Route::get('/admin/notifications' , function(){
+    return view ('admindashboard.notifications');
+})->name('admin.viewnotifications');
+
+Route::get('/admin/reports' , function(){
+    return view ('admindashboard.reports');
+})->name('admin.viewreports');
 
 
 
