@@ -282,7 +282,7 @@
                 <span id="subtotal" class="size-medium number-of-items">
                     Subtotal ({{ $cartItems->count() }} item):
                 </span>
-                <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£{{ $cartItem->price }}</span></span>
+                {{-- <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£{{ $cartItem->price }}</span></span> --}}
             </div>
             <div class="checkout">
                 <button type="button" id="proceed">Proceed to checkout</button>
