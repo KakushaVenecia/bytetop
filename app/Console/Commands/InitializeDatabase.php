@@ -33,8 +33,8 @@ class InitializeDatabase extends Command
         $password = Str::random(10);
         // Create initial administrative user
         $admin = User::create([
-            'name' => 'Bytetop Admin',
-            'email' => 'kakushavenecia@gmail.com',
+            'name' => 'Muh',
+            'email' => 'mj.babaie@gmail.com',
             'password' => bcrypt($password),
             'role' => 'super_admin',
             'status'=>'active',
