@@ -16,12 +16,13 @@
             </div>
             <div class="overflow-container">
                 <ul class="menu-dropdown">
-                    <li><a href="#" onclick="showDashboard()">Dashboard</a><span class="icon"><i class="fa fa-dashboard"></i></span></li>
-                    <li><a href="#" onclick="showProducts()">Products</a><span class="icon"><i class="fa fa-heart"></i></span></li>
-                    <li><a href="#" onclick="showCustomers()">Customers</a><span class="icon"><i class="fa fa-heart"></i></span></li>
-                    <li><a href="#" onclick="showOrders()">Orders</a><span class="icon"><i class="fa fa-heart"></i></span></li>
-                    <li><a href="#" onclick="showSettings()">Settings</a><span class="icon"><i class="fa fa-heart"></i></span></li>
-                    <li><a href="#" onclick="showNotifications()">Notifications</a><span class="icon"><i class="fa fa-heart"></i></span></li>
+                    <li><a href="#" onclick="showDashboard()">Dashboard</a><span class="icon"><i class="fa fa-dashboard" style="color:orange"></i></span></li>
+                    <li><a href="#" onclick="showProducts()">Products</a><span class="icon"><i class="fa-solid fa-bag-shopping" style="color:orange"></i></i></span></li>
+                    <li><a href="#" onclick="showCustomers()">Users</a><span class="icon"><i class="fa-solid fa-users" style="color:orange"></i></span></li>
+                    <li><a href="#" onclick="showOrders()">Orders</a><span class="icon"><i class="fa-solid fa-truck-fast" style="color:orange"></i></span></li>
+                    <li><a href="#" onclick="showSettings()">Settings</a><span class="icon"><i class="fa-solid fa-gear" style="color:orange"></i></span></li>
+                    <li><a href="#" onclick="showNotifications()">Notifications</a><span class="icon"><i class="fa-solid fa-envelope" style="color:orange"></i></span></li>
+                    <li><a href="#" onclick="showReports()">Reports</a><span class="icon"><i class="fa-solid fa-file" style="color:orange"></i></span></li>
                 </ul>
             </div>
         </nav>
@@ -125,6 +126,11 @@
             <h1>Notifications</h1>
             <p>This is the notifications content.</p>
         </div>
+        <div id="reports" style="display: none;">
+            <!-- Notifications content -->
+            <h1>Reports</h1>
+            <p>This is the reports content.</p>
+        </div>
     </div>
 </div>
 
@@ -153,6 +159,10 @@
         hideAll();
         document.getElementById('notifications').style.display = 'block';
     }
+    function showReports() {
+        hideAll();
+        document.getElementById('reports').style.display = 'block';
+    }
     function hideAll() {
         document.getElementById('dashboard').style.display = 'none';
         document.getElementById('products').style.display = 'none';
@@ -160,6 +170,7 @@
         document.getElementById('orders').style.display = 'none';
         document.getElementById('settings').style.display = 'none';
         document.getElementById('notifications').style.display = 'none';
+        document.getElementById('reports').style.display = 'none';
     }
     // Show the dashboard content by default on page load
     // showDashboard();
