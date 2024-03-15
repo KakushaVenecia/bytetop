@@ -20,56 +20,59 @@ class ProductController extends Controller
     }
 
     public function store(Request $request)
-    { 
-        // Validate the request data
-        $request->validate([
-            'name' => 'required|string',
-            'description' => 'required|string',
-            'price' => 'required|numeric',
-            'tags' => 'required|string',
-            'category' => 'required|string',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'quantity' => 'required|integer|min:1', 
-        ]);
-    
-        // Store the image
-        $image = $request->file('image');
-        $filename = $image->hashName();
-        $image->store('images', 'public');
-    
-        // Create an array with common fields for all products
-        $commonFields = [
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'price' => $request->input('price'),
-            'tags' => $request->input('tags'),
-            'category' => $request->input('category'),
-            'image' => $filename,
-            'user_id' => auth()->id(),
-        ];
-    
-        // Create multiple products based on quantity
-        for ($i = 0; $i < $request->quantity; $i++) {
-            Product::create($commonFields);
-        }
-         // Check if the product already exists
-        $productQuantity = ProductQuantity::where('product_name', $commonFields['name'])->first();
+{
+    // Validate the request data
+    $request->validate([
+        'name' => 'required|string',
+        'description' => 'required|string',
+        'price' => 'required|numeric',
+        'tags' => 'required|string',
+        'category' => 'required|string',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'quantity' => 'required|integer|min:1',
+    ]);
 
-        if ($productQuantity) {
-            // If the product exists, update its quantity
-            $productQuantity->quantity += $request->quantity;
-            $productQuantity->save();
-        } else {
-            // If the product doesn't exist, create a new entry
-            ProductQuantity::create([
-                'product_name' => $commonFields['name'],
-                'quantity' => $request->quantity,
-            ]);
-        }
-        // return redirect()->route('dashboard')->with('success', 'Products created successfully');
-        // Return a JSON response indicating success or failure
-         return response()->json(['success' => true, 'message' => 'Product created successfully']);
+    // Store the image
+    $image = $request->file('image');
+    $filename = $image->hashName();
+    $image->store('images', 'public');
+
+    // Create an array with common fields for all products
+    $commonFields = [
+        'name' => $request->input('name'),
+        'description' => $request->input('description'),
+        'price' => $request->input('price'),
+        'tags' => $request->input('tags'),
+        'category' => $request->input('category'),
+        'image' => $filename,
+        'user_id' => auth()->id(),
+    ];
+
+    // Create multiple products based on quantity
+    for ($i = 0; $i < $request->quantity; $i++) {
+        // Create product
+        Product::create($commonFields);
     }
+
+    // Check if the product already exists in ProductQuantity
+    $productQuantity = ProductQuantity::where('product_name', $commonFields['name'])->first();
+
+    if ($productQuantity) {
+        // If the product exists, update its quantity
+        $productQuantity->increment('quantity', $request->quantity);
+    } else {
+        // If the product doesn't exist, create a new entry
+        ProductQuantity::create([
+            'product_name' => $commonFields['name'],
+            'quantity' => $request->quantity,
+        ]);
+    }
+
+    // Return a JSON response indicating success
+    return response()->json(['success' => true, 'message' => 'Product created successfully']);
+}
+
+    
     
 
     public function edit($id)
@@ -93,9 +96,6 @@ class ProductController extends Controller
             'category' => 'required|string',
             
         ]);
-
-        
-
         // Find the product by ID
         $product = Product::findOrFail($id);
 
@@ -113,12 +113,9 @@ class ProductController extends Controller
             'price' => $request->input('price'),
             'tags' => $request->input('tags'),
             'category' => $request->input('category'),
-        
         ]);
-        
         return Redirect::route('dashboard')->with('success', 'Product updated successfully');
     }
-
     public function destroy($id)
     {
         // Find the product by ID and delete it
@@ -127,7 +124,6 @@ class ProductController extends Controller
 
         return Redirect::route('dashboard')->with('success', 'Product deleted successfully');
     }
-
     public function index()
 {
     $products = Product::select('id', 'name')->distinct()->get();

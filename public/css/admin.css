@@ -52,10 +52,10 @@
 }
 
 .menu ul {
-  margin: 0;
-  padding: 0;
+  margin: 5px;
+  padding: 5px;
+  line-height: 2rem;
   list-style: none;
-	
 }
 
 .open-panel {
@@ -239,13 +239,10 @@ html{
   z-index: 999;
 }
 
-/* Ensure content starts where the navbar ends */
-/* .new-wrapper {
-  position: absolute;
-  left: 250px; /* Adjust this value based on your navbar width */
-  /* width: calc(100% - 250px); Adjust this value based on your navbar width */
-  /* transition: transform .45s cubic-bezier(0.77, 0, 0.175, 1); */
-/* } */ 
+/* Ensure content starts where the navbar ends
+
+
+
 
 /* Ensure content and navbar are side by side */
 @media screen and (max-width: 992px) {
@@ -254,6 +251,12 @@ html{
       left: 0;
       width: 100%;
   }
+}
+.new-wrapper {
+  position: absolute;
+  left: 250px; 
+   width: calc(100% - 250px);
+   transition: transform .45s cubic-bezier(0.77, 0, 0.175, 1); 
 }
 
 .menu-dropdown {
@@ -548,10 +551,9 @@ sub {
 	top: .5ex;
 }
 
-
 p {
     font-size: 1em;
-    margin: 0 0 2em 0;
+    /* margin: 0 0 2em 0; */
 }
 
 article:last-of-type, p:last-of-type {
@@ -648,7 +650,7 @@ h1{
 }
 .card-icon {
   font-size: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
   color: orange;
 }
 .card-title {
@@ -657,8 +659,8 @@ h1{
   margin-bottom: 10px;
 }
 .card-value {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: q2px;
+
 }
 @media (min-width: 768px) {
   .card-container {
