@@ -14,10 +14,13 @@
     @include('partials.navbar')
    
     <!-- <img class="slide" src="{{asset('images/header.webp')}}" alt="" srcset=""> -->
+
+   
     <section class="hero">
-    <link rel="preload" as="image" href="https://unsplash.com/photos/macbook-pro-on-white-table-8krX0HkXw8c" />
-    <link rel="preload" as="image" href="https://unsplash.com/photos/turned-on-laptop-on-table-HyTwtsk8XqA" />
-    <link rel="preload" as="image" href="https://unsplash.com/photos/black-and-gray-laptop-computer-ykI7BeSWgMo" />
+    <link rel="preload" as="image" href="https://source.unsplash.com/300x360?0" />
+    <link rel="preload" as="image" href="https://source.unsplash.com/300x360?1" />
+    <link rel="preload" as="image" href="https://source.unsplash.com/300x360?2" />
+
   
     <div class="content-hero">
       <h1>ByteTop</h1>
@@ -25,7 +28,6 @@
       <a href="#" class="btn">Browse our cataloge</a>
     </div>
   </section>
-
     <div class="container">
         <h1>Product Catalogue</h1>
         <div class="deals">
