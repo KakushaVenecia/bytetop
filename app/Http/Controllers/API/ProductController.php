@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\ProductQuantity;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ProductController extends Controller
@@ -172,6 +173,48 @@ public function dashboard()
         'products' => $products,
         'users' => $users,]);
     }
+
+    public function getallusers()
+    {
+        // Fetch all users with pagination
+        $customers = User::paginate(7);
+    
+        // Get the route for the view users
+        $route = route('admin.viewusers');
+    
+
+        dd($customers);
+        // Return the view with all necessary data, including the route
+        return view('admindashboard.users')->with([
+            'users' => $customers,
+            'route' => $route,
+        ]);
+    }
+    
+public function allproducts()
+{
+    // Get unique product names with associated fields
+    $uniqueProducts = Product::select('name', 'description', 'price', 'tags', 'category')
+                             ->distinct()
+                             ->get();
+
+    // Paginate the unique products
+    $perPage = 7;
+    $currentPage = request()->get('page', 1); // Get the current page from the query string
+    $offset = ($currentPage - 1) * $perPage;
+    $uniqueProductsPaginated = array_slice($uniqueProducts->toArray(), $offset, $perPage);
+    $uniqueProductsPaginated = new LengthAwarePaginator($uniqueProductsPaginated, $uniqueProducts->count(), $perPage, $currentPage);
+    // Fetch all users
+    $users = User::all();
+
+    // Return the view with all necessary data
+    return view('admindashboard.products', [
+        'uniqueProducts' => $uniqueProductsPaginated,
+        'users' => $users,
+    ]);
+}
+
+
 
 
 }
