@@ -19,6 +19,7 @@
     color: white;
     padding: 10px;
     text-align: right;
+    height: 10rem;
 }
 
 .user-profile {
@@ -56,6 +57,7 @@ header {
     background-color: #f0f0f0;
     padding: 20px;
     text-align: center;
+    height: 10rem;
 }
 
 /* Main content */
@@ -108,8 +110,41 @@ main {
     border: 1px solid #ccc;
     z-index: 999;
     display: none;
+    width: 30rem;
+    height: 30rem;
    
 }
+
+
+.ordergroup {
+    margin-top: 2rem;
+}
+
+
+
+a.find {
+    font-size: 1.5rem;
+    /* padding: 3rem; */
+}
+
+
+hr.blue-line {
+    margin-bottom: 2rem;
+}
+
+
+.row.as-l-container {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+p5.callout-copy {
+    font-size: 1.3rem;
+}
+
+
 
 #addressForm{
     position: fixed;
@@ -175,8 +210,10 @@ label {
     display: block;
     font-weight: bold;
 }
+
 .blurbackground{
     filter:none;
+    filter: blur(2px);
 }
 
 .blurbackground {
@@ -217,22 +254,55 @@ label {
     clear: both;
 }
 
+
+h1 {
+    margin-top: 3rem;
+}
+
+
+h22.order-lookup-header {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+
+.group {
+    margin-left: 7rem;
+}
+
+.grp {
+    margin-left: 9rem;
+    margin-top: 1rem;
+}
+
+
+.grp button {
+    background-color: white;
+    border-radius: 12px;
+}
+
+.grp button:hover {
+    background-color: #f7890b; /* Changed to orange */
+    color: #000!important;
+}
+
+
     </style>
 <body>
 @include('partials.navbar')
-<div class="header">
-    <div class="user-profile" onmouseover="showMenu()" onmouseout="hideMenu()" onclick="toggleMenu()">
-        <span class="user-icon"><i class="fas fa-user"></i></span>
-        <div class="profile-menu" id="profileMenu" style="display: none;">
-            <a href="#" onclick="openPopup('Account')">Account</a>
-            <a href="#" onclick="openPopup('Orders')">Orders</a>
-            <a href="#" onclick="openPopup('LoginSecurity')">Login &amp; Security</a>
-            <a href="#" onclick="openPopup('Address')">Address</a>
-            <a href="#" onclick="openPopup('Payments')">Payments</a>
-            <a href="#" onclick="signOut()">Sign Out</a>
-        </div>
-    </div>
-</div>
+        <!-- <div class="header">
+            <div class="user-profile" onmouseover="showMenu()" onmouseout="hideMenu()" onclick="toggleMenu()">
+                <span class="user-icon"><i class="fas fa-user"></i></span>
+                <div class="profile-menu" id="profileMenu" style="display: none;">
+                    <a href="#" onclick="openPopup('Account')">Account</a>
+                    <a href="#" onclick="openPopup('Orders')">Orders</a>
+                    <a href="#" onclick="openPopup('LoginSecurity')">Login &amp; Security</a>
+                    <a href="#" onclick="openPopup('Address')">Address</a>
+                    <a href="#" onclick="openPopup('Payments')">Payments</a>
+                    <a href="#" onclick="signOut()">Sign Out</a>
+                </div>
+            </div>
+        </div>  -->
 <header>
     <h1>Your Account</h1>
 </header>
@@ -285,11 +355,10 @@ label {
 
 
     <div class="group">
-
+        <label>Order ID *</label>
         <input required="" type="text2" class="input">
         <span class="highlight"></span>
         <span class="bar"></span>
-        <label>Order ID *</label>
     </div>
 
     <div class= "grp">
@@ -491,77 +560,6 @@ label {
 <div class="popup" id="addressForm" style="display: none;">
     <div class="popup-content">
         <span class="close" onclick="closeAddressForm()">&times;</span>
-        
-       <!-- <div class="row">
-            <div class="column large-12">
-                <h2 id="edit-address-header" class="rs-account-addressoverlay-subheader typography-headline-reduced">Edit your shipping address.</h2>
-            </div>
-            <div class="column small-12 large-9 large-centered">
-                <div class="rs-settings-overlay-address-container">
-                    <div class="rf-form-layout-root">
-                        <div class="rf-form-layout rf-form-layout--fullwidth">
-                            <div class="rf-form-layout-section rf-form-layout-section--title">
-                               
-                                                        <div class="rf-form-layout-row rf-form-layout-row-combo--firstName">
-                                                            <div class="rf-form-layout-row-fields column small-12 large-12">
-                                                                <div class="row">
-                                                                    <div class="column large-12 small-12 rf-form-layout-field--firstName">
-                                                                        <div class="rf-form-layout-field">
-                                                                            <div class="">
-                                                                                <div class="form-textbox"> 
-                                                                                    <input id="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.firstName" name="firstName" type="text" class="form-textbox-input form-textbox-entered" aria-labelledby="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.firstName_label" aria-describedby="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.firstName_error " aria-invalid="false" maxlength="14" required="" aria-required="true" autocomplete="given-name" data-autom="form-field-firstName" value="">
-                                                                                    <span id="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.firstName_label" class="form-textbox-label" aria-hidden="true">First Name</span>
-                                                                                </div></div></div></div></div></div></div>
-                                                                                
-                                                                                <div class="rf-form-layout-row rf-form-layout-row-combo--lastName">
-                                                                                    <div class="rf-form-layout-row-fields column small-12 large-12">
-                                                                                        <div class="row">
-                                                                                            <div class="column large-12 small-12 rf-form-layout-field--lastName">
-                                                                                                <div class="rf-form-layout-field">
-                                                                                                    <div class="">
-                                                                                                        <div class="form-textbox"> 
-                                                                                                            <input id="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.lastName" name="lastName" type="text" class="form-textbox-input form-textbox-entered" aria-labelledby="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.lastName_label" aria-describedby="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.lastName_error " aria-invalid="false" maxlength="20" required="" aria-required="true" autocomplete="family-name" data-autom="form-field-lastName" value=""><span id="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.lastName_label" class="form-textbox-label" aria-hidden="true">Surname</span></div></div></div></div></div></div></div>
-                                                                                                            
-                                                                                                            <div class="rf-form-layout-row rf-form-layout-row-combo--street">
-                                                                                                                <div class="rf-form-layout-row-fields column small-12 large-12">
-                                                                                                                    <div class="row">
-                                                                                                                        <div class="column large-12 small-12 rf-form-layout-field--street">
-                                                                                                                            <div class="rf-form-layout-field">
-                                                                                                                                <div class="">
-                                                                                                                                    <div class="form-textbox">
-                                                                                                                                         <input id="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.street" name="street" type="text" class="form-textbox-input" aria-labelledby="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.street_label" aria-describedby="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.street_error " aria-invalid="false" maxlength="35" required="" aria-required="true" autocomplete="address-line1" data-autom="form-field-street" value="">
-                                                                                                                                         <span id="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.street_label" class="form-textbox-label" aria-hidden="true">Address Line 1</span></div></div></div></div></div></div></div>
-                                                                                                                                         
-                                                                                                                                         
-                                                                                                                                         <div class="rf-form-layout-row rf-form-layout-row-combo--city">
-                                                                                                                                            <div class="rf-form-layout-row-fields column small-12 large-12">
-                                                                                                                                                <div class="row">
-                                                                                                                                                    <div class="column large-12 small-12 rf-form-layout-field--city">
-                                                                                                                                                        <div class="rf-form-layout-field">
-                                                                                                                                                            <div class="">
-                                                                                                                                                                <div class="form-textbox"> 
-                                                                                                                                                                    <input id="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.city" name="city" type="text" class="form-textbox-input" aria-labelledby="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.city_label" aria-describedby="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.city_error " aria-invalid="false" maxlength="30" required="" aria-required="true" autocomplete="address-level2" data-autom="form-field-city" value=""><span id="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.city_label" class="form-textbox-label" aria-hidden="true">Town/City</span></div></div></div></div></div></div></div>
-                                                                                                                                                                    
-                                                                                                                                                                    <div class="rf-form-layout-row rf-form-layout-row-combo--county-and-postalCode">
-                                                                                                                                                                        <div class="rf-form-layout-row-fields column small-12 large-12 form-textbox-sidebyside">
-                                                                                                                                                                            <div class="row">
-                                                                                                                                                                                <div class="column large-6 small-12 rf-form-layout-field--county">
-                                                                                                                                                                                    <div class="rf-form-layout-field">
-                                                                                                                                                                                        <div class="">
-                                                                                                                                                                                            <div class="form-textbox"> 
-                                                                                                                                                                                                <input id="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.county" name="county" type="text" class="form-textbox-input" aria-labelledby="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.county_label" aria-describedby="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.county_error " aria-invalid="false" maxlength="20" aria-required="false" autocomplete="address-level2" data-autom="form-field-county" value=""><span id="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.county_label" class="form-textbox-label" aria-hidden="true" aria-label="County (Optional)">County (opt.)</span></div></div></div></div>
-                                                                                                                                                                                                
-                                                                                                                                                                                                <div class="column large-6 small-12 rf-form-layout-field--postalCode">
-                                                                                                                                                                                                    <div class="rf-form-layout-field">
-                                                                                                                                                                                                        <div class="">
-                                                                                                                                                                                                            <div class="form-textbox"> 
-                                                                                                                                                                                                                <input id="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.postalCode" name="postalCode" type="text" class="form-textbox-input" aria-labelledby="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.postalCode_label" aria-describedby="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.postalCode_error " aria-invalid="false" maxlength="8" required="" aria-required="true" autocomplete="postal-code" data-autom="form-field-postalCode" value=""><span id="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.postalCode_label" class="form-textbox-label" aria-hidden="true">Postcode</span></div></div></div></div></div></div></div></div></div></div></div><
-                                                                                                                                                                                                                
-                                                                                                                                                                                                                <div class="rs-account-overlay-change">
-                                                                                                                                                                                                                    <button id="home.customerAccount.shippingInfo.shippingAddress.editShippingAddress.editAddress.address-submit" type="button" class="rs-account-overlay-save form-button" data-autom="save-shippingAddress"><span>Save</span></button>
-                                                                                                                                                                                                                    <button type="button" class="as-buttonlink" data-autom="cancel-shippingAddress">Cancel</button></div></div></div>
-
--->
    
 
 <body1>

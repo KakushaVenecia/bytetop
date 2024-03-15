@@ -193,3 +193,7 @@ Route::get('/ordersuccess', function(){
 Route::get('/account', function(){
     return view ('account');
 });
+
+Route::get('/contactus', function(){
+    return view ('contactus');
+});

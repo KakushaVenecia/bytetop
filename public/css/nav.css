@@ -11,8 +11,9 @@ nav {
     background-color: #f8f9fa; 
 }
 
-.logo {
-    height: auto; /* Adjust as needed */
+.logo1 {
+    width: 150px;
+    height: 100px;
 }
 
 .search-container {
@@ -109,10 +110,7 @@ nav {
     margin-left: auto;
 }
 
-.logo {
-    width: 100px;
-    height: 100px;
-}
+
 
 /* Media query for smaller screens */
 @media screen and (max-width: 768px) {
