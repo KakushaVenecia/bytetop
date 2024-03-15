@@ -6,11 +6,59 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Products</title>
     <link rel="stylesheet" href="css/productpage.css">
-    <link rel="stylesheet" href="css/styles.css">
+    {{-- <link rel="stylesheet" href="css/styles.css"> --}}
 </head>
 <body onload="showProducts('all')"> <!-- Call showProducts function with 'all' argument on page load -->
     @include('partials.navbar')
+    <nav class="product-filter">
+        <h1>Laptops</h1>
+        <div class="sort">
+          <div class="collection-sort">
+            <label>Filter by:</label>
+            <select>
+            @foreach($uniqueProductNames as $name)
+              <option value="/">{{ $name }}</option>
+            @endforeach
+            </select>
+          </div>
+      
+          <div class="collection-sort">
+            <label>Sort by:</label>
+            <select>
+              <option value="/">Featured</option>
+            </select>
+          </div>
+      
+        </div>
+      
+      </nav>
+
+      
+
+
     <main>
+        <section class="products">
+            <!-- Iterate over unique product names -->
+            @foreach($uniqueProductNames as $name)
+            <div class="product-card">
+                <!-- Retrieve product details for the current product name -->
+                @php
+                    // Get the product details from the $products array
+                    $product = collect($products)->firstWhere('name', $name);
+                    $count = $productCounts[$name] ?? 0; // If count doesn't exist, default to 0
+                @endphp
+                <div class="product-image">
+                    <!-- Display product image -->
+                    <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $name }}" class="product-image">
+                </div>
+                <div class="product-info">
+                    <!-- Display product name and price -->
+                    <h5>{{ $name }}</h5>
+                    <h6> £{{ $product->price }}</h6>
+                </div>
+            </div>
+            @endforeach
+        </section>
         <div id="categories">
             <div class="category-section">
                 <h2>CATEGORIES</h2>
@@ -89,7 +137,7 @@
         </div>
     </main>
     @include('partials.footer')
-    {{-- <script src="js/productpage.js"></script> --}}
+    <script src="js/productpage.js"></script>
     <script >
 
 
