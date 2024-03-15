@@ -15,6 +15,7 @@ use App\Http\Controllers\API\InviteController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\product\ProductDetailsController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +81,8 @@ Route::post('/reset-password', [PasswordResetController::class, 'resetPassword']
 Route::get('/signup', function () {
     return view('register-user');
 });
+
+Route::post('/update-password', [UserController::class, 'updatePassword'])->name('update.password');
 
 
 
