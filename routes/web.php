@@ -121,7 +121,17 @@ Route::get('/checkout', function(){
     return view ('checkout');
 });
 
+Route::get('/laptoppage', function(){
+    return view ('laptoppage');
+});
 
+Route::get('/Computerspage', function(){
+    return view ('Computerspage');
+});
+
+Route::get('/Accessoriespage', function(){
+    return view ('Accessoriespage');
+});
 
 
 Route::get('/products', function() {
