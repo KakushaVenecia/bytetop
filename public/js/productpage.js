@@ -1,30 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Function to update the cart count
-    function updateCartCount() {
-        fetch('/cart/count')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch cart count.');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const cartCountElement = document.getElementById('cartCount');
-                if (cartCountElement) {
-                    // Extract cart_count value from the response JSON
-                    const cartCount = data.cart_count;
-                    // Update the cartCount element with the cart count value
-                    cartCountElement.textContent = cartCount;
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching cart count:', error.message);
-            });
-    }
-
-    // Call the updateCartCount function initially
-    updateCartCount();
+   
 
     const addToCartButtons = document.querySelectorAll('.btn-add');
 
@@ -32,17 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const productId = this.dataset.productId;
             console.log('Button clicked. Product ID:', productId); // Log the product ID
-            addToCart(productId);
+            addToCart(productId,this);
         });
     });
 
-    function addToCart(productId) {
+    function addToCart(productId,button) {
         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
         const payload = {
             product_id: productId,
             quantity: 1 // Set quantity to 1
         };
+
+        button.classList.add('loading');
+
 
         fetch('/cart/add', {
             method: 'POST',
@@ -52,7 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify(payload)
         })
-        .then(response => {
+        .then(async response => {
+            // console.log(await response.text());
+            button.classList.remove('loading');
+
             if (!response.ok) {
                 throw new Error('Failed to add item to cart.');
             }

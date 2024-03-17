@@ -12,6 +12,10 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RegController;
 use App\Http\Controllers\ShippingAddressController;
 use App\Http\Controllers\API\InviteController;
+use App\Http\Controllers\PasswordResetController;
+use App\Http\Controllers\product\ProductDetailsController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +31,8 @@ use App\Http\Controllers\API\InviteController;
 Route::get('/verify-email', [VerificationController::class, 'verify'])->name('verification.verify');
 
 // basic nav pages
-Route::get('/',function(){
-//  'orderItem'==App\Models\OrderItem::count();
+Route::get('/', function () {
+    //  'orderItem'==App\Models\OrderItem::count();
     return view('landing');
 })->name('landing');
 
@@ -38,29 +42,53 @@ Route::get('/',function(){
 // REGISTER 
 Route::get('/register', [RegController::class, 'showRegistrationForm'])->name('register');
 Route::post('/tosignin', [RegController::class, 'register'])->name('tosignin');
-Route::get('/login', [RegController::class,'showLoginForm'])->name('login');
+Route::get('/login', [RegController::class, 'showLoginForm'])->name('login');
 Route::post('/tologin', [RegController::class, 'login'])->name('tologin');
 Route::post('/logout', [RegController::class, 'logout'])->name('tologout');
-Route::get('/forgotpwd', function(){ return view ('forgotpwd');});
+Route::get('/forgotpwd', function () {
+    return view('forgotpwd');
+});
+
+
 Route::post('/forgot-password', [RegController::class, 'sendResetLinkEmail'])->name('forgot-password');
-Route::get('password/reset', [RegController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('password/email', [RegController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('password/reset/{token}', [RegController::class, 'showResetForm'])->name('password.reset');
-Route::post('password/reset', [RegController::class, 'reset'])->name('password.update');
 
+// Route::get('password/reset', [RegController::class, 'showLinkRequestForm'])->name('password.request');
+// Route::post('password/email', [RegController::class, 'sendResetLinkEmail'])->name('password.email');
+// Route::get('password/reset/{token}', [RegController::class, 'showResetForm'])->name('password.reset');
+// Route::post('password/reset', [RegController::class, 'reset'])->name('password.update');
 
+Route::get('/forgot-password', function () {
+    return view('forgotpwd');
+})->middleware('guest')->name('password.request');
+
+Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])
+    ->middleware('guest')
+    ->name('password.email');
+
+Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])
+    ->middleware('guest')
+    ->name('password.reset');
+
+Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])
+    ->middleware('guest')
+    ->name('password.update');
 
 
 // Delete these views
 
 
-Route::get('/signup', function() {  return view('register-user');});
+
+Route::get('/signup', function () {
+    return view('register-user');
+});
+
+Route::post('/update-password', [UserController::class, 'updatePassword'])->name('update.password');
 
 
 
 Route::view('/checkmail', 'checkmail');
-Route::get('/checkmail', function(){
-    return view ('checkmail');
+Route::get('/checkmail', function () {
+    return view('checkmail');
 });
 
 
@@ -108,17 +136,21 @@ Route::get('/admin/reports' , function(){
 // Verification
 Route::view('/verify-success', 'verification.verify-success')->name('verification.success');
 Route::view('/verify-error', 'verification.verify-error')->name('verification.error');
-Route::get('/verifyemail', function(){return view('verifyyouremail');});
+Route::get('/verifyemail', function () {
+    return view('verifyyouremail');
+});
 
 
-Route::get('/Search', function(){return view ('search');});
+Route::get('/Search', function () {
+    return view('search');
+});
 Route::post('/Search', [SearchController::class, 'findSearch']);
 
 
 
 
-Route::get('/checkout', function(){
-    return view ('checkout');
+Route::get('/checkout', function () {
+    return view('checkout');
 });
 
 Route::get('/laptoppage', function(){
@@ -134,10 +166,10 @@ Route::get('/Accessoriespage', function(){
 });
 
 
-Route::get('/products', function() {
+Route::get('/products', function () {
     // Fetch all distinct categories from the products table
-    $categories = ['Laptops', 'Computers','Laptop Accessories', 'All in One Desktops', 'Computer Monitors' ];
-    
+    $categories = ['Laptops', 'Computers', 'Laptop Accessories', 'All in One Desktops', 'Computer Monitors'];
+
     // Fetch distinct categories from the products table
     $distinctCategories = Product::distinct()->pluck('category');
 
@@ -163,27 +195,32 @@ Route::get('/products', function() {
     return view('productpage', compact('products', 'categories', 'distinctCategories', 'productCounts', 'uniqueProductNames'));
 });
 
+Route::get('/product/{id}', [ProductDetailsController::class, 'show'])->name('product.show');
+
+Route::post('/reviews/{productId}', [ReviewController::class, 'store'])->name('reviews.store');
+Route::post('/reviews/{reviewId}/reply', [ReviewController::class, 'reply'])->name('reviews.reply');
 
 
 // CART ROUTE
 Route::get('/cartpage', function () {
-    $userId = auth()->id(); 
+    $userId = auth()->id();
     $cartItems = Cart::where('user_id', $userId)->get();
-    
+
     // Iterate over each cart item and fetch the corresponding product details
     foreach ($cartItems as $cartItem) {
         // Retrieve the product details based on the product ID in the cart item
         $product = Product::find($cartItem->product_id);
-        
+
         // Assign the product price to the cart item
-        $cartItem->price = $product->price; 
+        $cartItem->price = $product->price;
     }
-    return view('cart', ['cartItems'=> $cartItems]);
+    return view('cart', ['cartItems' => $cartItems]);
 });
 
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
 Route::get('/cart/subtotal', [CartController::class, 'subtotal'])->name('subtotal');
+Route::post('/cart/update', [CartController::class, 'updateQuantity'])->name('cart.update');
 
 
 
@@ -205,27 +242,27 @@ Route::post('/shipping-address', [ShippingAddressController::class, 'store'])->n
 
 
 // Landing page routes
-Route::get('/productpage', function(){
+Route::get('/productpage', function () {
     // $products = Product::all();
     $products = Product::paginate(10);
     return view('shop', compact('products'));
 });
-Route::get('/about', function(){
-    return view ('about');
+Route::get('/about', function () {
+    return view('about');
 });
 
 
 
-Route::get('/ordersuccess', function(){
-    return view ('ordersuccess');
+Route::get('/ordersuccess', function () {
+    return view('ordersuccess');
 });
 
-Route::get('/account', function(){
-    return view ('account');
+Route::get('/account', function () {
+    return view('account');
 });
 
 
 Route::post('/admin/invite', [InviteController::class, 'invite'])->name('invite.send');
-Route::get('/admin/invite', function(){
+Route::get('/admin/invite', function () {
     return view('admindashboard.invite');
 })->name('admin.invite.form');
