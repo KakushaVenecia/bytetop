@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\ProductQuantity;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class ProductController extends Controller
@@ -19,7 +20,7 @@ class ProductController extends Controller
         return view('admindashboard.create')->with('products', $products);
         
     }
-
+    
     public function store(Request $request)
 {
     // Validate the request data
@@ -33,45 +34,87 @@ class ProductController extends Controller
         'quantity' => 'required|integer|min:1',
     ]);
 
+    // Generate a random model number
+    $modelNumber = Str::random(6); // Generates a 6-character alphanumeric string
+
+    // Create the product
+    $product = Product::create([
+        'model_number' => $modelNumber,
+    ]);
+
     // Store the image
     $image = $request->file('image');
     $filename = $image->hashName();
     $image->store('images', 'public');
 
-    // Create an array with common fields for all products
-    $commonFields = [
+    // Create the product detail
+    ProductQuantity::create([
+        'product_id' => $product->id,
         'name' => $request->input('name'),
         'description' => $request->input('description'),
         'price' => $request->input('price'),
         'tags' => $request->input('tags'),
         'category' => $request->input('category'),
         'image' => $filename,
-        'user_id' => auth()->id(),
-    ];
-
-    // Create multiple products based on quantity
-    for ($i = 0; $i < $request->quantity; $i++) {
-        // Create product
-        Product::create($commonFields);
-    }
-
-    // Check if the product already exists in ProductQuantity
-    $productQuantity = ProductQuantity::where('product_name', $commonFields['name'])->first();
-
-    if ($productQuantity) {
-        // If the product exists, update its quantity
-        $productQuantity->increment('quantity', $request->quantity);
-    } else {
-        // If the product doesn't exist, create a new entry
-        ProductQuantity::create([
-            'product_name' => $commonFields['name'],
-            'quantity' => $request->quantity,
-        ]);
-    }
+        'quantity' => $request->input('quantity'),
+        'rating' => null, // You can set rating if available
+    ]);
 
     // Return a JSON response indicating success
     return response()->json(['success' => true, 'message' => 'Product created successfully']);
 }
+//     public function store(Request $request)
+// {
+//     // Validate the request data
+//     $request->validate([
+//         'name' => 'required|string',
+//         'description' => 'required|string',
+//         'price' => 'required|numeric',
+//         'tags' => 'required|string',
+//         'category' => 'required|string',
+//         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+//         'quantity' => 'required|integer|min:1',
+//     ]);
+
+//     // Store the image
+//     $image = $request->file('image');
+//     $filename = $image->hashName();
+//     $image->store('images', 'public');
+
+//     // Create an array with common fields for all products
+//     $commonFields = [
+//         'name' => $request->input('name'),
+//         'description' => $request->input('description'),
+//         'price' => $request->input('price'),
+//         'tags' => $request->input('tags'),
+//         'category' => $request->input('category'),
+//         'image' => $filename,
+//         'user_id' => auth()->id(),
+//     ];
+
+//     // Create multiple products based on quantity
+//     for ($i = 0; $i < $request->quantity; $i++) {
+//         // Create product
+//         Product::create($commonFields);
+//     }
+
+//     // Check if the product already exists in ProductQuantity
+//     $productQuantity = ProductQuantity::where('product_name', $commonFields['name'])->first();
+
+//     if ($productQuantity) {
+//         // If the product exists, update its quantity
+//         $productQuantity->increment('quantity', $request->quantity);
+//     } else {
+//         // If the product doesn't exist, create a new entry
+//         ProductQuantity::create([
+//             'product_name' => $commonFields['name'],
+//             'quantity' => $request->quantity,
+//         ]);
+//     }
+
+//     // Return a JSON response indicating success
+//     return response()->json(['success' => true, 'message' => 'Product created successfully']);
+// }
 
     
     
@@ -148,70 +191,71 @@ public function getProductDescription(Request $request)
 
 public function dashboard()
 {
-    $productCount = Product::count();
+    // $productCount = Product::count();
 
-    // Get unique product names
-    $uniqueProductNames = Product::distinct()->pluck('name');
+    // // Get unique product names
+    // $uniqueProductNames = Product::distinct()->pluck('name');
 
-    $productCounts = [];
-    foreach ($uniqueProductNames as $name) {
-        $count = Product::where('name', $name)->count();
-        $productCounts[$name] = $count;
-    }
+    // $productCounts = [];
+    // foreach ($uniqueProductNames as $name) {
+    //     $count = Product::where('name', $name)->count();
+    //     $productCounts[$name] = $count;
+    // }
 
-    // Paginate the products
-    $products = Product::paginate(7);
+    // // Paginate the products
+    // $products = Product::paginate(7);
 
-    // Fetch all users
-    $users = User::all();
+    // // Fetch all users
+    // $users = User::all();
 
-    // Return the view with all necessary data
-    return view('admindashboard.dashboard', [
-        'productCount' => $productCount,
-        'uniqueProductNames' => $uniqueProductNames,
-        'productCounts' => $productCounts,
-        'products' => $products,
-        'users' => $users,]);
-    }
+    // // Return the view with all necessary data
+    // return view('admindashboard.dashboard', [
+    //     'productCount' => $productCount,
+    //     'uniqueProductNames' => $uniqueProductNames,
+    //     'productCounts' => $productCounts,
+    //     'products' => $products,
+    //     'users' => $users,]);
+    // }
 
-    public function getallusers()
-    {
-        // Fetch all users with pagination
-        $customers = User::paginate(7);
+    // public function getallusers()
+    // {
+    //     // Fetch all users with pagination
+    //     $customers = User::paginate(7);
     
-        // Get the route for the view users
-        $route = route('admin.viewusers');
+    //     // Get the route for the view users
+        $route = route('dashboard');
     
 
-        dd($customers);
-        // Return the view with all necessary data, including the route
-        return view('admindashboard.users')->with([
-            'users' => $customers,
+    //     dd($customers);
+    //     // Return the view with all necessary data, including the route
+        return view('admindashboard.dashboard')->with([
+            // 'users' => $customers,
             'route' => $route,
         ]);
     }
     
 public function allproducts()
 {
-    // Get unique product names with associated fields
-    $uniqueProducts = Product::select('name', 'description', 'price', 'tags', 'category')
-                             ->distinct()
-                             ->get();
+//     // Get unique product names with associated fields
+//     $uniqueProducts = Product::select('name', 'description', 'price', 'tags', 'category')
+//                              ->distinct()
+//                              ->get();
 
-    // Paginate the unique products
-    $perPage = 7;
-    $currentPage = request()->get('page', 1); // Get the current page from the query string
-    $offset = ($currentPage - 1) * $perPage;
-    $uniqueProductsPaginated = array_slice($uniqueProducts->toArray(), $offset, $perPage);
-    $uniqueProductsPaginated = new LengthAwarePaginator($uniqueProductsPaginated, $uniqueProducts->count(), $perPage, $currentPage);
-    // Fetch all users
-    $users = User::all();
+// //    $stock = ProductQuantity::                          
 
-    // Return the view with all necessary data
-    return view('admindashboard.products', [
-        'uniqueProducts' => $uniqueProductsPaginated,
-        'users' => $users,
-    ]);
+//     // Paginate the unique products
+//     $perPage = 7;
+//     $currentPage = request()->get('page', 1); // Get the current page from the query string
+//     $offset = ($currentPage - 1) * $perPage;
+//     $uniqueProductsPaginated = array_slice($uniqueProducts->toArray(), $offset, $perPage);
+//     $uniqueProductsPaginated = new LengthAwarePaginator($uniqueProductsPaginated, $uniqueProducts->count(), $perPage, $currentPage);
+//     // Fetch all users
+//     $users = User::all();
+
+//     // Return the view with all necessary data
+    return view('admindashboard.products');
+//         
+
 }
 
 

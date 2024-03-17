@@ -19,7 +19,7 @@
         <div class="card">
             <div class="card-icon"><i class="fas fa-box"></i></div>
             <div class="card-title">Total Products</div>
-            <div class="card-value">{{$productCount}}</div>
+            {{-- <div class="card-value">{{$productCount}}</div> --}}
         </div>
         <div class="card">
             <div class="card-icon"><i class="fas fa-users"></i></div>
@@ -46,15 +46,15 @@
                         <!-- Table body -->
                         <tbody>
                             <!-- Replace the sample data with your actual product data -->
-                            <!-- @foreach($products as $product) -->
+                            {{-- <!-- @foreach($products as $product) -->
                             <tr>
                                 <td>{{ $product->name }}</td> 
                                 <td>{{ $product->price }}</td> 
                                 <td>{{ $product->category }}</td> 
                                 {{-- <td>{{ $product->stock }}</td> --}}
-                                <td>Product stock </td>
+                                {{-- <td>Product stock </td> --}}
                             </tr>
-                            <!-- @endforeach -->
+                            {{-- <!-- @endforeach --> --}} --}}
                         </tbody>
                     </table>
                 </div>
