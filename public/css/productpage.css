@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -30,25 +30,24 @@ a:hover{
     margin-right: 10px;
     padding: 5px;
     width: 300px; /* Set a fixed width for each product */
-    display: grid; /* Use flexbox */
-    flex-direction: row;
-    justify-content: space-between; /* Distribute space evenly between children */
-    text-align: center; /* Center align content */
-}
-
-.product img {
+    /* display: grid; /* Use flexbox */
+    /* flex-direction: row; */
+    /* justify-content: space-between; Distribute space evenly between children */
+    /* text-align: center; Center align content */
+/* } */
+/* .product img {
     width: 100%; /* Make the image fill the container */
-    height: 200px; /* Maintain aspect ratio */
-    max-height: 200px; /* Limit the maximum height of the image */
-    object-fit: fit; /* Scale the image while preserving its aspect ratio */
-}
+    /* height: 200px; Maintain aspect ratio */
+    /* max-height: 200px; Limit the maximum height of the image */
+    /* object-fit: fit; Scale the image while preserving its aspect ratio */
+/* } */
 
-#products {
+/* #products {
     width: 75%;
     padding: 20px;
-}
+} */
 
-.category-section {
+/* .category-section {
     margin-bottom: 15px;
 }
 
@@ -69,8 +68,8 @@ a:hover{
     color: #333;
     text-decoration: none;
     font-weight: bold;
-}
-
+} */
+/* 
 .breadcrumb a:hover {
     text-decoration: underline;
     color: orange;
@@ -93,15 +92,15 @@ a:hover{
     border-radius: 5px;
     white-space: nowrap;
     padding: 1.1rem 2rem; /* Adjusted padding */
-    transition: all .2s linear;
-}
+    /* transition: all .2s linear; */
+/* } */ 
 
-.btn:hover {
+/* .btn:hover {
     color: #fff;
     background-color: #f7890b;
-}
+} */
 
-.btn-add {
+/* .btn-add {
     grid-column: 3;
     grid-row: 4 / 5;
     align-self: center;
@@ -113,6 +112,10 @@ a:hover{
     background-color: #f7890b;
 }
 .modal {
+} */
+
+
+/* .modal {
     display: none;
     position: fixed;
     z-index: 999;
@@ -157,5 +160,76 @@ a:hover{
     top: 10px;
     right: 10px;
     cursor: pointer;
+} */ */
+
+
+
+
+.product-filter {
+    background-color: aqua!important;
+    display:flex;
+  }
+
+.product-filter h1 {
+    flex-grow: 1;
+  }
+
+.sort {
+    display: flex;
 }
 
+.collection-sort {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .product-card {
+    padding: 2%;
+    flex-grow: 1;
+    flex-basis: 16%;
+  
+    display: flex; /* so child elements can use flexbox ! */
+  }
+  .product-image img {
+    max-width: 60%;
+  }
+
+  .product-info {
+    margin-top: auto;
+  }
+
+  /* .products .product-card:first-child, 
+.products .product-card:nth-child(2) {
+  flex: 2 46%;
+} */
+  @media (max-width: 920px) {
+    .product-card {
+      flex: 1 21%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .product-card {
+      flex: 1 46%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-filter {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .product-filter {
+      flex-direction: column;
+    }
+    .sort {
+      align-self: flex-start;
+    }
+  }
