@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\ProductQuantity;
 use Illuminate\Support\Facades\Redirect;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -51,7 +52,20 @@ class ProductController extends Controller
         for ($i = 0; $i < $request->quantity; $i++) {
             Product::create($commonFields);
         }
-    
+         // Check if the product already exists
+        $productQuantity = ProductQuantity::where('product_name', $commonFields['name'])->first();
+
+        if ($productQuantity) {
+            // If the product exists, update its quantity
+            $productQuantity->quantity += $request->quantity;
+            $productQuantity->save();
+        } else {
+            // If the product doesn't exist, create a new entry
+            ProductQuantity::create([
+                'product_name' => $commonFields['name'],
+                'quantity' => $request->quantity,
+            ]);
+        }
         // return redirect()->route('dashboard')->with('success', 'Products created successfully');
         // Return a JSON response indicating success or failure
          return response()->json(['success' => true, 'message' => 'Product created successfully']);
@@ -104,7 +118,6 @@ class ProductController extends Controller
         
         return Redirect::route('dashboard')->with('success', 'Product updated successfully');
     }
-
 
     public function destroy($id)
     {
