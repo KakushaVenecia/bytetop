@@ -45,7 +45,7 @@ form {
   height: fit-content; 
 }
 img {
-  width: 100px;
+  width: 150px;
   height:100px;
   margin: 0px;
 }
@@ -126,7 +126,7 @@ button:hover {
     <div class="container"> 
       
         <div class="logo">
-        <a href="/" ><img src="/images/Logo.png" alt="Logo"></a> 
+        <a href="/" ><img src="/images/Bytetoplogo.png" alt="Logo"></a> 
         </div>
     <div>
     <h1 id="loginText">Login_</h1>
