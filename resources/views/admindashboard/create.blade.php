@@ -18,9 +18,6 @@
                         <label for="product-name" class="inline-block text-lg mb-2">Select Product</label>
                         <select name="product-name" id="product-name" class="border border-gray-200 rounded p-2 w-full">
                             <option value="">Select a product</option>
-                            @php
-                                $uniqueNames = [];
-                            @endphp
                             @foreach ($products as $product)
                                 @if (!in_array($product->name, $uniqueNames))
                                     <option value="{{ $product->name }}">{{ $product->name }}</option>

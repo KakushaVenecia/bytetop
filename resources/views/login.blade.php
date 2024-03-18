@@ -139,7 +139,7 @@ button:hover {
         <input type="email" id="email" name="email" required placeholder="Enter your Email">
         <br>
         <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required placeholder="Enter Your email">
+        <input type="password" id="password" name="password" required placeholder="Enter Your password">
         <br>
         @if (session()->has('error'))
         <div style="color: red;">{{ session('error') }}</div>

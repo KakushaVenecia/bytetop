@@ -5,7 +5,6 @@
 <div class="content">
 <div id="products">
             <h1>Products</h1>
-
             <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary float-left">Product Lists</h6>
 </div>

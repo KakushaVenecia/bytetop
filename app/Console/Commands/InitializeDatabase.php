@@ -33,6 +33,7 @@ class InitializeDatabase extends Command
         $password = Str::random(10);
         // Create initial administrative user
         $admin = User::create([
+
             'name' => 'Mairaj Khan',
             'email' => 'khan.mairaj78@gmail.com',
             'password' => bcrypt($password),

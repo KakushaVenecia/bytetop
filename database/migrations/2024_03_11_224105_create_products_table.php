@@ -6,37 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateProductsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->text('description');
-            $table->decimal('price', 10, 2);
-            $table->string('tags');
-            $table->string('image')->default('');
-            $table->enum('category', ['Laptops', 'Laptop Accessories', 'Desktops', 'Computer Monitors', 'All in One Desktops']);
-            $table->unsignedBigInteger('user_id');
-            $table->integer('quantity')->default(0); 
+            $table->string('model_number')->unique();
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('products');
     }
 }
-
