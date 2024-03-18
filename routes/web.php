@@ -219,3 +219,6 @@ Route::post('/admin/invite', [InviteController::class, 'invite'])->name('invite.
 Route::get('/admin/invite', function(){
     return view('admindashboard.invite');
 })->name('admin.invite.form');
+Route::get('/contactus', function(){
+    return view ('contactus');
+});

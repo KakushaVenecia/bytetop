@@ -20,7 +20,7 @@
 }
 .container {
   width: 350px;
-  height: 400px;
+  height: 450px;
   background-color: #001E2C;
   padding: 10px;
   border-radius: 10px;
@@ -37,7 +37,7 @@ form {
   height: fit-content; 
 }
 img {
-  width: 100px;
+  width: 150px;
   height:100px;
   margin: 0px;
 }
@@ -93,7 +93,7 @@ button:hover {
     <div class="container"> 
       
         <div class="logo">
-        <a href="/" ><img src="/images/Logo.png" alt="Logo"></a> 
+        <a href="/" ><img src="/images/Bytetoplogo.png" alt="Logo"></a> 
         </div>
     <h1>Login</h1>
     

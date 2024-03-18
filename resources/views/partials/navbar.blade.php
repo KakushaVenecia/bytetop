@@ -11,7 +11,7 @@
 <body>
    <nav>
     <div class="logo" href="{{ route('landing') }}"> 
-        <img class="logo" src="/images/Logo.png" alt="Logo">
+        <img class="logo1" src="/images/Bytetoplogo.png" alt="Logo">
     </div>
     
     <div class="search-container">
@@ -70,8 +70,8 @@
 </head>
 <body>
 <nav>
-    <div class="logo" href="{{ route('landing') }}"> 
-        <img class="logo" src="/images/Logo.png" alt="Logo">
+    <div class="logo1" href="{{ route('landing') }}"> 
+        <img class="logo1" src="/images/Bytetoplogo.png" alt="Logo">
     </div>
     
     <div class="search-container">
