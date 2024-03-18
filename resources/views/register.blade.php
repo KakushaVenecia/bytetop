@@ -17,9 +17,15 @@
   height: 100vh;
   margin: 0;
 }
+
+
+hr.white-line {
+    width: 23rem;
+}
+
 .container {
-  width: 400px;
-  height: fit-content;
+  width: 25rem;
+  height: 40rem;
   background-color: #001E2C;
   padding: 2px;
   border-radius: 10px;
@@ -35,7 +41,7 @@ form {
   height: fit-content; 
 }
 img {
-  width: 100px;
+  width: 150px;
   height:100px;
   margin: 0px;
 }
@@ -90,7 +96,7 @@ button:hover {
 <body>
     <div class="container"> 
         <div class="logo">
-        <a href="/" ><img src="/images/Logo.png" alt="Logo"></a> 
+        <a href="/" ><img src="/images/Bytetoplogo.png" alt="Logo"></a> 
         </div>
         <form method="POST" action="{{ route('tosignin') }}">
             @csrf
