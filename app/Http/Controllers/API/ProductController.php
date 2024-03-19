@@ -34,14 +34,21 @@ class ProductController extends Controller
         'quantity' => 'required|integer|min:1',
     ]);
 
-    // Generate a random model number
-    $modelNumber = Str::random(6); // Generates a 6-character alphanumeric string
-
     // Create the product
-    $product = Product::create([
-        'model_number' => $modelNumber,
-        'name'=> $request->input('name')
-    ]);
+    for ($i = 0; $i < $request->quantity; $i++) {
+        $modelNumber = 'PROD-' . Str::random(6); // Example of a prefix and a random suffix
+        
+        // Ensure the generated model number is unique
+        while (Product::where('model_number', $modelNumber)->exists()) {
+            $modelNumber = 'PROD-' . Str::random(6);
+        }
+    
+        $product = Product::create([
+            'model_number' => $modelNumber,
+            'name' => $request->input('name')
+        ]);
+    }
+   
 
     // Store the image
     $image = $request->file('image');

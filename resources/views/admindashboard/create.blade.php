@@ -19,10 +19,10 @@
                         <select name="product-name" id="product-name" class="border border-gray-200 rounded p-2 w-full">
                             <option value="">Select a product</option>
                             @foreach ($products as $product)
-                                @if (!in_array($product->name, $uniqueNames))
+                                @if (!($product->name))
                                     <option value="{{ $product->name }}">{{ $product->name }}</option>
                                     @php
-                                        $uniqueNames[] = $product->name;
+                                       $product->name;
                                     @endphp
                                 @endif
                             @endforeach
