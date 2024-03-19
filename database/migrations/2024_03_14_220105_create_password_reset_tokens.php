@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_items', function (Blueprint $table) {
+        Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('email')->unique();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -22,6 +24,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_items');
+        Schema::dropIfExists('password_reset_tokens');
     }
 };
+
+

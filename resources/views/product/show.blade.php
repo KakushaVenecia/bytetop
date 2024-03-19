@@ -1,4 +1,4 @@
-{{-- <!-- resources/views/products/show.blade.php -->
+<!-- resources/views/products/show.blade.php -->
 @extends('layouts.app')
 
 @section('content')
@@ -33,9 +33,27 @@
         <!-- Individual Review -->
         <div class="card mt-3">
             <div class="card-body " style="text-align:left; width:100%; ">
-                <h5 class="card-title"><strong>{{ $review->user_name }}</strong></h5>
+                <h5 class="card-title"><strong>{{ $review->user->name }}</strong></h5>
                 <p class="card-text">{{ $review->content }}</p>
                 <p class="card-text"><small class="text-muted">Rating: {{ $review->rating }}/5</small></p>
+                @if ($review->admin_reply)
+                <div class="admin-reply alert alert-info">
+                    <strong>Admin Reply:</strong>
+                    <p>{{ $review->admin_reply }}</p>
+                </div>
+                @endif
+
+                @if(auth()->user() && auth()->user()->isAdmin())
+                <form method="post" action="{{ route('reviews.reply', ['reviewId' => $review->id]) }}">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="replyContent" class="form-label">Reply</label>
+                        <textarea class="form-control" id="replyContent" name="reply_content" rows="2" required>{{ $review->admin_reply }}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Reply</button>
+                </form>
+                @endif
+
             </div>
         </div>
         @empty
@@ -79,4 +97,4 @@
         });
     </script>
 </div>
-@endsection --}}
+@endsection

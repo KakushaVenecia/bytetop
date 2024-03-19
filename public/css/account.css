@@ -1301,7 +1301,7 @@ h01 {
    }
 
    .blurbackground {
-    filter: blur(50%);
+    /* filter: blur(50%); */
     background-color:  rgb(208, 206, 206);
     color: #080000;
     transition: filter 0.3s ease;

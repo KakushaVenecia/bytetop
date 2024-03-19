@@ -1,4 +1,9 @@
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,11 +12,15 @@
     <title>Nav</title>
     <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/nav.css">
+    <title>Navigation</title>
+</head>
+<body>
 </head>
 <body>
    <nav>
-    <div class="logo" href="{{ route('landing') }}"> 
-        <img class="logo1" src="/images/Bytetoplogo.png" alt="Logo">
+    <div class="logo">
+        <a href="{{ route('landing') }}">
+            <img class="logo1" src="/images/Bytetoplogo.png" alt="Logo">
     </div>
     
     <div class="search-container">
@@ -72,6 +81,7 @@
 <nav>
     <div class="logo1" href="{{ route('landing') }}"> 
         <img class="logo1" src="/images/Bytetoplogo.png" alt="Logo">
+        </a>
     </div>
     
     <div class="search-container">
@@ -82,14 +92,21 @@
     </div>
     
     <div class="nav-links"> 
-        <a href="/products">Products</a>
-        {{-- <a href="/cartpage"> Cart <i class="fas fa-shopping-cart"></i> </a> --}}
-        <a href="/cartpage"> Cart <i class="fas fa-shopping-cart"></i> <span id="cartCount"></span></a>
-
+        <div class="dropdown">
+            <a href="/products" class="dropbtn">Products</a>
+            <div class="dropdown-content">
+                <a href="{{ route('Laptops') }}">Laptops</a>
+                <a href="{{ route('Computers') }}">Computers</a>
+                <a href="{{ route('Accessories') }}">Accessories</a>
+                <a href="{{ route('Monitors') }}">Monitors</a>
+                <a href="{{ route('All-in-one') }}">All in one Desktops</a>
+            </div>
+        </div>
+        <a href="/cartpage">Cart <i class="fas fa-shopping-cart"></i></a>
         
         @auth
             <div class="dropdown">
-                <a class="navbutton">Hello, {{ auth()->user()->name }} </a>
+                <a class="navbutton">Hello, {{ auth()->user()->name }}</a>
                 <div class="dropdown-content">
                     <div class="dropdown-links">
                         <a href="/account"><i class="fas fa-user"></i> My Account</a>
@@ -113,4 +130,3 @@
 <script src="js/nav.js"></script>
 </body>
 </html>
-

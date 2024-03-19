@@ -1,26 +1,21 @@
 <?php
 
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
-        'name',
-        'description',
-        'price',
-        'tags',
-        'image',
-        'category',
-        
+        'model_number',
+        'name'
     ];
 
-    public function reviews()
+    public function details()
     {
-        return $this->hasMany(Review::class);
+        return $this->hasMany(ProductQuantity::class);
     }
 }
+
+

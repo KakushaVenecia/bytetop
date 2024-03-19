@@ -1,4 +1,4 @@
-{{-- <footer style="background-color:#001E2C; padding: 3em 4em 2em; text-align: center;">
+<!-- {{-- <footer style="background-color:#001E2C; padding: 3em 4em 2em; text-align: center;">
     <div class="row" style="max-width: 90%; margin: 20x auto; display: flex; justify-content: space-around; color: #fff; border-bottom: 1px solid #cecece;">
         <div class="col-3">
             <div class="link-cat">
@@ -82,4 +82,66 @@
                 </div>
     </div>
 
-</footer>
+</footer> -->
+
+<footer class="footer-distributed">
+
+			<div class="footer-left">
+
+				<h3>Byte<span>Top</span></h3>
+
+				<p class="footer-links">
+					<a href="#" class="link-1">Home</a>
+					
+					<a href="#">Track Order</a>
+
+                    <a href="#">Products</a>
+				
+					<a href="#">About</a>
+					
+					<a href="#">Blog</a>
+					
+					<a href="#">Contact</a>
+				</p>
+
+				<p class="footer-company-name">Bytetop © 2024</p>
+			</div>
+
+			<div class="footer-center">
+
+				<div>
+					<i class="fa fa-map-marker"></i>
+					<p><span>Birmingham</span> Aston University</p>
+				</div>
+
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>+44.555.555.5555</p>
+				</div>
+
+				<div>
+					<i class="fa fa-envelope"></i>
+					<p><a href="mailto:support@company.com">support@bytetop.com</a></p>
+				</div>
+
+			</div>
+
+			<div class="footer-right">
+
+				<p class="footer-company-about">
+					<span>About the company</span>
+					Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+				</p>
+
+				<div class="footer-icons">
+
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-linkedin"></i></a>
+					<a href="#"><i class="fa fa-github"></i></a>
+
+				</div>
+
+			</div>
+
+		</footer>

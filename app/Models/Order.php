@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
-    protected $fillable = ['user_id', 'total'];
+    protected $fillable = ['user_id', 'completed_at'];
 
     public function items()
     {
-        return $this->hasMany(OrderItem::class);
+        return $this->hasMany(Cart::class);
     }
+    
 }

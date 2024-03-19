@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +14,8 @@
     <title>Your Page Title</title>
 </head>
 <style>
-    *{
-        margin:0px;
+    * {
+        margin: 0px;
     }
 .header {
     background-color: #001E2C;
@@ -53,35 +54,35 @@ h4 {
 
 
 
-.user-profile {
-    position: relative;
-}
+    .user-profile {
+        position: relative;
+    }
 
-.user-icon {
-    cursor: pointer;
-}
+    .user-icon {
+        cursor: pointer;
+    }
 
-.profile-menu {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-    display: none;
-}
+    .profile-menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 10px;
+        display: none;
+    }
 
-.profile-menu a {
-    display: block;
-    color: #333;
-    text-decoration: none;
-    padding: 5px 10px;
-}
+    .profile-menu a {
+        display: block;
+        color: #333;
+        text-decoration: none;
+        padding: 5px 10px;
+    }
 
-.profile-menu a:hover {
-    background-color: orange;
-    color: #001E2C;
-}
+    .profile-menu a:hover {
+        background-color: orange;
+        color: #001E2C;
+    }
 
 /* Main header */
 header {
@@ -111,23 +112,27 @@ main {
 
 }
 
-.inner-content {
-    text-align: center;
-    line-height: 1.5; /* Adjust line height as needed */
-    margin-bottom: 20px; /* Add margin between lines */
-}
+    .inner-content {
+        text-align: center;
+        line-height: 1.5;
+        /* Adjust line height as needed */
+        margin-bottom: 20px;
+        /* Add margin between lines */
+    }
 
-.inner-content h2,
-.inner-content p {
-    margin: 0; /* Remove default margins for heading and paragraph */
-}
+    .inner-content h2,
+    .inner-content p {
+        margin: 0;
+        /* Remove default margins for heading and paragraph */
+    }
 
-.edit-text, .edit-order {
-    cursor: pointer;
-    color: blue;
-    display: inline-block; 
-    margin-left: 10px;
-}
+    .edit-text,
+    .edit-order {
+        cursor: pointer;
+        color: blue;
+        display: inline-block;
+        margin-left: 10px;
+    }
 
 .blurbackground {
     filter: blur(5px);
@@ -188,54 +193,58 @@ p5.callout-copy {
 
 
 
-#addressForm{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    z-index: 999;
-    display: none;
-    width: 80%; /* Adjust the width as needed */
-    max-width: 600px; /* Set a maximum width to prevent it from becoming too wide */
-    max-height: 80%; /* Set a maximum height to prevent it from becoming too tall */
-    overflow-y: auto; /
-}
+    #addressForm {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border: 1px solid #ccc;
+        z-index: 999;
+        display: none;
+        width: 80%;
+        /* Adjust the width as needed */
+        max-width: 600px;
+        /* Set a maximum width to prevent it from becoming too wide */
+        max-height: 80%;
+        /* Set a maximum height to prevent it from becoming too tall */
+        overflow-y: auto;/
+    }
 
-.popup-content {
-    position: relative;
-}
+    .popup-content {
+        position: relative;
+    }
 
-.close {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    cursor: pointer;
-    background-color: orange;
-    color: #040404;
-    padding: 5px;
-    border-radius: 50%;
-    font-size: 16px;
-    line-height: 1;
-    transition: background-color 0.3s ease;
-}
+    .close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+        background-color: orange;
+        color: #040404;
+        padding: 5px;
+        border-radius: 50%;
+        font-size: 16px;
+        line-height: 1;
+        transition: background-color 0.3s ease;
+    }
 
-a:hover{
-    background-color: orange;
-    color: white;
-}
-.close:hover {
-    background-color: #999;
-}
+    a:hover {
+        background-color: orange;
+        color: white;
+    }
 
-/* Form styling */
-.container {
-    width: 100%;
-    padding: 16px;
-    background-color: white;
-}
+    .close:hover {
+        background-color: #999;
+    }
+
+    /* Form styling */
+    .container {
+        width: 100%;
+        padding: 16px;
+        background-color: white;
+    }
 
 input[type=text], textarea {
     width: 100%;
@@ -263,6 +272,17 @@ input[type=text], textarea {
     filter: blur(5px); /* Apply the blur effect */
 }
 
+    .btn {
+        /* background-color: #4CAF50; */
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        width: 100%;
+        margin-top: 10px;
+        font-size: 16px;
+    }
 .btn {
     padding: 10px 20px;
     text-decoration: none;
@@ -277,21 +297,24 @@ input[type=text], textarea {
     font-weight: 600;
 }
 
+    .btn:hover {
+        background-color: #45a049;
+    }
 .btn:hover {
     background-color: orange;
 }
 
-.col-25 {
-    float: left;
-    width: 45%;
-    margin-top: 6px;
-}
+    .col-25 {
+        float: left;
+        width: 45%;
+        margin-top: 6px;
+    }
 
-.col-75 {
-    float: left;
-    width: 75%;
-    margin-top: 6px;
-}
+    .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+    }
 
 .row:after {
     content: "";
@@ -626,21 +649,26 @@ footer{
         </div>
     </section>
 
-    <section class="account-sections top-right" id="LoginSecurity">
-        <div class="inner-content">
-            <h2>Login &amp; Security</h2>
-            <p>Manage password, email, and mobile number</p>
-            <div class="edit-text" onclick="openPopup('loginsecurityPopup')">Edit</div>
-        </div>
-    </section>
+        <section class="account-sections top-right" id="LoginSecurity">
+            <div class="inner-content">
+                <h2>Login &amp; Security</h2>
+                <p>Manage password, email, and mobile number</p>
+                <div class="edit-text" onclick="openPopup('loginsecurityPopup')">Edit</div>
+                <div class="edit-text" data-toggle="modal" data-target="#changePasswordModal">Change Password</div>
 
-    <section class="account-sections bottom-left" id="Address">
-        <div class="inner-content">
-            <h2>Addresses</h2>
-            <p>Edit, remove, or set the default address</p>
-            <div class="edit-text" onclick="openPopup('addressPopup')">Edit</div>
-        </div>
-    </section>
+            </div>
+        </section>
+
+        @include('partials.change_password_modal')
+
+
+        <section class="account-sections bottom-left" id="Address">
+            <div class="inner-content">
+                <h2>Addresses</h2>
+                <p>Edit, remove, or set the default address</p>
+                <div class="edit-text" onclick="openPopup('addressPopup')">Edit</div>
+            </div>
+        </section>
 
     <section class="account-sections bottom-right" id="Payments">
         <div class="inner-content">
@@ -675,95 +703,95 @@ footer{
         <span class="bar"></span>
     </div>
 
-    <div class= "grp">
-        <button> Order loopup </button>
+            <div class="grp">
+                <button> Order loopup </button>
+            </div>
+
+        </div>
     </div>
 
-</div>
-</div>
 
 
 
 
+    <div class="popup" id="loginsecurityPopup" style="display: none;">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('loginsecurityPopup')">&times;</span>
 
-<div class="popup" id="loginsecurityPopup" style="display: none;">
-    <div class="popup-content">
-        <span class="close" onclick="closePopup('loginsecurityPopup')">&times;</span>
-        
-        <body2>
-        <div class="container1">
-    <h0>Login & Security</h0>
-    <form action="#" method="post">
-        <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text1" id="name" name="name" value="ByteTop" disabled>
-            <button type="button" id="changeName" class="edit-btn" onclick="openEditPopup('editNamePopup')">Change</button>
+            <body2>
+                <div class="container1">
+                    <h0>Login & Security</h0>
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text1" id="name" name="name" value="ByteTop" disabled>
+                            <button type="button" id="changeName" class="edit-btn" onclick="openEditPopup('editNamePopup')">Change</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email1" id="email" name="email" value="Bytetop@gmail.com" disabled>
+                            <button type="button" id="editEmail" class="edit-btn" onclick="openEditPopup('editEmailPopup')">Change</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="mobile">Mobile Number</label>
+                            <input type="tel1" id="mobile" name="mobile" placeholder="Add your mobile number" disabled>
+                            <button type="button" id="editMobile" class="edit-btn" onclick="openEditPopup('editMobilePopup')">Add</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password1" id="password" name="password" value="" disabled>
+                            <button type="button" id="editPassword" class="edit-btn" onclick="openEditPopup('editPasswordPopup')">Change</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Edit Name Popup -->
+                <div id="editNamePopup" class="edit-popup" style="display: none">
+                    <span class="close" onclick="closePopup('editNamePopup')">&times;</span>
+
+                    <h01>Change your name</h01>
+                    <div class="namecontainer">
+                        <div class="message">Make sure that you click the Save Changes button when you have finished...</div>
+
+                        <div class="namegroup">
+                            <input required="" type="text2" class="input">
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>New name *</label>
+                        </div>
+
+                        <div class="namegrp">
+                            <button type="button" onclick="updateField('name', 'newName')">Save changes</button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </body2>
+
         </div>
-
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email1" id="email" name="email" value="Bytetop@gmail.com" disabled>
-            <button type="button" id="editEmail" class="edit-btn" onclick="openEditPopup('editEmailPopup')">Change</button>
-        </div>
-
-        <div class="form-group">
-            <label for="mobile">Mobile Number</label>
-            <input type="tel1" id="mobile" name="mobile" placeholder="Add your mobile number" disabled>
-            <button type="button" id="editMobile" class="edit-btn" onclick="openEditPopup('editMobilePopup')">Add</button>
-        </div>
-
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password1" id="password" name="password" value="" disabled>
-            <button type="button" id="editPassword" class="edit-btn" onclick="openEditPopup('editPasswordPopup')">Change</button>
-        </div>
-    </form>
-</div>
-
-<!-- Edit Name Popup -->
-<div id="editNamePopup" class="edit-popup" style="display: none">
-    <span class="close" onclick="closePopup('editNamePopup')">&times;</span>
-
-    <h01>Change your name</h01>
-    <div class="namecontainer">
-        <div class="message">Make sure that you click the Save Changes button when you have finished...</div>
-        
-        <div class="namegroup">
-            <input required="" type="text2" class="input">
-            <span class="highlight"></span>
-            <span class="bar"></span>
-            <label>New name *</label>
-        </div>
-
-        <div class= "namegrp">
-            <button type="button" onclick="updateField('name', 'newName')">Save changes</button>
-        </div>
-        
     </div>
-</div>
 
+    <div class="popup" id="addressPopup" style="display: none;">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup('addressPopup')">&times;</span>
+            <div class="address_container">
+                <h4>Your Address</h4>
+                <div class="dotted-box">
+                    <div class="add-address">
+                        <div class="address_box">
+                            <span class="plus-icon" onclick="openAddressForm()">+ Add Address</span>
 
-</body2>
-        
-    </div>
-</div>
-
-<div class="popup" id="addressPopup" style="display: none;">
-    <div class="popup-content">
-        <span class="close" onclick="closePopup('addressPopup')">&times;</span>
-        <div class="address_container">
-            <h4>Your Address</h4>
-            <div class="dotted-box">
-                <div class="add-address">
-                    <div class="address_box">
-                        <span class="plus-icon" onclick="openAddressForm()">+ Add Address</span>
-
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 <div class="popup2" id="paymentsPopup" style="display: none;">
@@ -772,7 +800,7 @@ footer{
 
     <div class="popup-content">
 
-        <div class="payment_col-50">
+            <div class="payment_col-50">
 
     <h3>Add your Payment details...</h3>
     <hr class="white-line">
@@ -857,20 +885,20 @@ footer{
                   </div>
                 </div>
 
-              </div>
-            </form>
-          </div>
-          </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
-          <div class="button-container">
-            <button class="cancel-btn">Cancel</button>
-            <button class="add-card-btn">Add Your Card</button>
+                <div class="button-container">
+                    <button class="cancel-btn">Cancel</button>
+                    <button class="add-card-btn">Add Your Card</button>
+                </div>
+
+            </div>
+
         </div>
-
-</div>
-
     </div>
-</div>
 
 
 <div class="popup" id="addressForm" style="display: none;">
@@ -878,7 +906,7 @@ footer{
         <span class="close" onclick="closeAddressForm()">&times;</span>
    
 
-<body1>
+            <body1>
 
 <div class="row">
   <div class="col-75">
@@ -899,32 +927,32 @@ footer{
             <label for="city"><i class="fa fa-institution"></i>Town/City</label>
             <input type="text" id="city" name="city" placeholder="Birmingham">
 
-            <div class="row">
-              <div class="col-50">
-                <label for="state">Country</label>
-                <input type="text" id="state" name="state" placeholder="ENG">
-              </div>
-              <div class="col-50">
-                <label for="zip">Postcode</label>
-                <input type="text" id="zip" name="zip" placeholder="">
-              </div>
-            </div>
-          </div>
+                                        <div class="row">
+                                            <div class="col-50">
+                                                <label for="state">Country</label>
+                                                <input type="text" id="state" name="state" placeholder="ENG">
+                                            </div>
+                                            <div class="col-50">
+                                                <label for="zip">Postcode</label>
+                                                <input type="text" id="zip" name="zip" placeholder="">
+                                            </div>
+                                        </div>
+                                    </div>
 
-          
-          
-        </div>
-        <input type="submit" value="Add address" class="btn">
-      </form>
-    </div>
-  </div>
-  
-</div>
+
+
+                                </div>
+                                <input type="submit" value="Add address" class="btn">
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
 
 </body1>
 
-</div>
-</div>
+        </div>
+    </div>
 
 
 
@@ -934,4 +962,5 @@ footer{
 <script src="js/account.js"></script>
 @include('partials.footer')
 </body>
+
 </html>

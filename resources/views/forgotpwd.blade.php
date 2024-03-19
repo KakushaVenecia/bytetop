@@ -19,7 +19,7 @@
   <hr class="white-line">
 
   <p>That's ok, It happens!</p>
-  <form method="POST" action="{{ route('forgot-password') }}">
+  <form method="POST" action="{{ route('password.email') }}">
     @csrf 
     <p>Enter your email address</p>
     <input type="email" id="email" name="email" placeholder="Email address">

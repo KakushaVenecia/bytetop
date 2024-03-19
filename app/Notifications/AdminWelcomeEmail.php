@@ -32,8 +32,9 @@ class AdminWelcomeEmail extends Notification
             ->line('Here are your credentials:')
             ->line('Email: ' . $this->email)
             ->line('Password: ' . $this->password)
-            ->line('Please log in  via using these credentials and remember to change your password for security reasons.');
-    }
+            ->line('Please log in  via using these credentials and remember to change your password for security reasons.')
+            ->action('Login Here', config('app.url') . '/login');
+        }
 
     public function toArray($notifiable)
     {
