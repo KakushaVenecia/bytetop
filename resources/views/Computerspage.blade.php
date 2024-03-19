@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Computers</title>
-    <link rel="stylesheet" href="css/Computerspage.css">
+    <link rel="stylesheet" href="css/Accessoriespage.css"> 
+    <link rel="stylesheet" href="css/styles.css"> 
     
 </head>
 <body onload="showComputers()">
     @include('partials.navbar')
-    <main>
+    <h2>Computers</h2>
+    <main class="container">
         <div id="filters">
             <div class="filter-section">
                 <h2>Brands</h2>
@@ -80,67 +82,94 @@
                 </ul>
             </div>
         </div>
-
-        <div id="computers">
-        
-            <!-- Container for displaying computers -->
-        </div>
-
         <div class="products">
-            <h3>Computers</h3>
-            <div class="product">
-                <img src="/images/computerimg.png" alt="Computer">
-                <h3></h3>
-                <p>Brand: Dell</p>
-                <p>Price: $1200</p>
-                <p>RAM: 8GB</p>
-                <p>Processor: Intel Core i5</p>
-                <p>Storage: 256GB SSD</p>
-                <p>Operating System: Windows</p>
+                <div class="product">
+                    <img src="/images/computerimg.png" alt="Computer">
+                    <h3></h3>
+                    <div class="product-details">
+                        <p>Brand: Dell</p>
+                        <p>Price: $1200</p>
+                        <p>RAM: 8GB</p>
+                        <p>Processor: Intel Core i5</p>
+                        <p>Storage: 256GB SSD</p>
+                        <p>Operating System: Windows</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="/images/computerimg.png" alt="Computer">
+                    <h3></h3>
+                    <div class="product-details">
+                        <p>Brand: Dell</p>
+                        <p>Price: $1200</p>
+                        <p>RAM: 8GB</p>
+                        <p>Processor: Intel Core i5</p>
+                        <p>Storage: 256GB SSD</p>
+                        <p>Operating System: Windows</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="/images/computerimg.png" alt="Computer">
+                    <h3></h3>
+                    <div class="product-details">
+                        <p>Brand: Dell</p>
+                        <p>Price: $1200</p>
+                        <p>RAM: 8GB</p>
+                        <p>Processor: Intel Core i5</p>
+                        <p>Storage: 256GB SSD</p>
+                        <p>Operating System: Windows</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="/images/computerimg.png" alt="Computer">
+                    <h3></h3>
+                    <div class="product-details">
+                        <p>Brand: Dell</p>
+                        <p>Price: $1200</p>
+                        <p>RAM: 8GB</p>
+                        <p>Processor: Intel Core i5</p>
+                        <p>Storage: 256GB SSD</p>
+                        <p>Operating System: Windows</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="/images/computerimg.png" alt="Computer">
+                    <h3></h3>
+                    <div class="product-details">
+                        <p>Brand: Dell</p>
+                        <p>Price: $1200</p>
+                        <p>RAM: 8GB</p>
+                        <p>Processor: Intel Core i5</p>
+                        <p>Storage: 256GB SSD</p>
+                        <p>Operating System: Windows</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="/images/computerimg.png" alt="Computer">
+                    <h3></h3>
+                    <div class="product-details">
+                        <p>Brand: Dell</p>
+                        <p>Price: $1200</p>
+                        <p>RAM: 8GB</p>
+                        <p>Processor: Intel Core i5</p>
+                        <p>Storage: 256GB SSD</p>
+                        <p>Operating System: Windows</p>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="/images/computerimg.png" alt="Computer">
+                    <h3></h3>
+                    <div class="product-details">
+                        <p>Brand: Dell</p>
+                        <p>Price: $1200</p>
+                        <p>RAM: 8GB</p>
+                        <p>Processor: Intel Core i5</p>
+                        <p>Storage: 256GB SSD</p>
+                        <p>Operating System: Windows</p>
+                    </div>
+                </div>
             </div>
-            <div class="product">
-                <img src="computer2.jpg" alt="Computer">
-                <h3></h3>
-                <p>Brand: HP</p>
-                <p>Price: $1000</p>
-                <p>RAM: 16GB</p>
-                <p>Processor: AMD Ryzen 7</p>
-                <p>Storage: 512GB SSD</p>
-                <p>Operating System: Windows</p>
-            </div>
-            <div class="product">
-                <img src="computer3.jpg" alt="Computer">
-                <h3></h3>
-                <p>Brand: Apple</p>
-                <p>Price: $2000</p>
-                <p>RAM: 16GB</p>
-                <p>Processor: Intel Core i7</p>
-                <p>Storage: 1TB HDD + 256GB SSD</p>
-                <p>Operating System: macOS</p>
-            </div>
-            <div class="product">
-                <img src="computer4.jpg" alt="Computer">
-                <h3></h3>
-                <p>Brand: ASUS</p>
-                <p>Price: $1500</p>
-                <p>RAM: 32GB</p>
-                <p>Processor: Intel Core i9</p>
-                <p>Storage: 2TB HDD</p>
-                <p>Operating System: Windows</p>
-            </div>
-            <div class="product">
-                <img src="computer5.jpg" alt="Computer">
-                <h3></h3>
-                <p>Brand: Acer</p>
-                <p>Price: $900</p>
-                <p>RAM: 8GB</p>
-                <p>Processor: AMD Ryzen 5</p>
-                <p>Storage: 1TB HDD</p>
-                <p>Operating System: Linux</p>
-            </div>
-            <!-- Repeat similar structure for other computers -->
-        </div>
     </main>
+    @include('partials.footer')
 <script src="js/Computerspage.js"> </script>    
 </body>
 </html>

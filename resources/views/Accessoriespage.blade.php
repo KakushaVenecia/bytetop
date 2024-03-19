@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computer Accessories</title>
-    <link rel="stylesheet" href="css/Accessoriespage.css">   
+    <link rel="stylesheet" href="css/Accessoriespage.css"> 
+    <link rel="stylesheet" href="css/styles.css">   
+
 </head>
 <body onload="showAccessories()">
     @include('partials.navbar')
+    <h2>Accessories</h2>
     <main class="container">
         <div id="filters">
             <div class="filter-section">
@@ -48,9 +51,6 @@
                 </ul>
             </div>
         </div>
-       
-        <h2>Accessories</h2>
-    
         
         <div class="products">
             <div class="product">
@@ -119,6 +119,7 @@
         </div>
     </div> 
 </main>
+@include('partials.footer')
 <script>
     function updatePriceLabel(value) {
         const priceLabel = document.getElementById('priceLabel');
