@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
   <link rel="stylesheet" href="{{ asset('css/404.css') }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>About Us Section</title>
+  <title>ERROR PAGE</title>
 </head>
 <body>
 @include('partials.navbar')
@@ -27,9 +27,6 @@
     </div>
 
     </div>
-
-
-
 
 
     @include('partials.footer')

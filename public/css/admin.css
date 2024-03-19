@@ -727,3 +727,110 @@ h1{
 .orders{
   padding: 10px;
 }
+
+
+
+
+/* USERS  */
+
+#myInput {
+  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+
+#myTable {
+  border-collapse: collapse; /* Collapse borders */
+  width: 100%; /* Full-width */
+  border: 1px solid #ddd; /* Add a grey border */
+  font-size: 18px; /* Increase font-size */
+}
+
+#myTable th, #myTable td {
+  text-align: left; /* Left-align text */
+  padding: 12px; /* Add padding */
+}
+
+#myTable tr {
+  /* Add a bottom border to all table rows */
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  /* Add a grey background color to the table header and on hover */
+  background-color: #f1f1f1;
+}
+
+
+
+/* ORDERS TABLE  */
+
+a {
+  color: #28acd7;
+  text-decoration: none;
+}
+
+.my_account_orders {
+  border-collapse: collapse;
+  border-spacing: 0;
+  /* max-width: 600px; */
+  width: 100%;
+}
+
+.my_account_orders th {
+  text-align: left;
+}
+
+tr {
+  border-bottom: 1px solid #ccc;
+}
+
+th,
+td {
+  padding: 6px;
+}
+
+@media 
+only screen and (max-width: 600px) {
+  /* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+  
+  /* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+  
+  td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 35%; 
+	}
+  
+  td:last-child { 
+		 border-width: 0;
+	}
+  
+  td:before { 
+     content: attr(data-title);
+     color: #ccc;
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+}
