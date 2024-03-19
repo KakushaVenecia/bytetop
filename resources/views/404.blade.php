@@ -32,6 +32,11 @@
 		}
 }
 
+body {
+	min-height: 100vh;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+}
 
 .container {
 	display: flex;
