@@ -155,18 +155,23 @@ Route::get('/checkout', function () {
     return view('checkout');
 });
 
-Route::get('/laptoppage', function(){
-    return view ('laptoppage');
-});
+Route::get('/Laptops', function(){
+    return view ('categories.laptop');
+})->name('Laptops');;
+Route::get('/Computers', function(){
+    return view ('categories.computers');
+})->name('Computers');
 
-Route::get('/Computerspage', function(){
-    return view ('Computerspage');
-});
+Route::get('/Accessories', function(){
+    return view ('categories.accessories');
+})->name('Accessories');
 
-Route::get('/Accessoriespage', function(){
-    return view ('Accessoriespage');
-});
-
+Route::get('/All-in-one', function(){
+    return view ('categories.all-in-one');
+})->name('All-in-one');;
+Route::get('/Monitors', function(){
+    return view ('categories.monitors');
+})->name('Monitors');;;
 
 Route::get('/products', function () {
     // Fetch all distinct categories from the products table

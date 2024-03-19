@@ -95,9 +95,11 @@
         <div class="dropdown">
             <a href="/products" class="dropbtn">Products</a>
             <div class="dropdown-content">
-                <a href="/laptops">Laptops</a>
-                <a href="/pcs">Computers</a>
-                <a href="/accessories">Accessories</a>
+                <a href="{{ route('Laptops') }}">Laptops</a>
+                <a href="{{ route('Computers') }}">Computers</a>
+                <a href="{{ route('Accessories') }}">Accessories</a>
+                <a href="{{ route('Monitors') }}">Monitors</a>
+                <a href="{{ route('All-in-one') }}">All in one Desktops</a>
             </div>
         </div>
         <a href="/cartpage">Cart <i class="fas fa-shopping-cart"></i></a>

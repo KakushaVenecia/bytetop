@@ -60,6 +60,7 @@
                     <p>Brand: Logitech</p>
                     <p>Price: $50</p>
                     <p>Rating: 4.5 stars</p>
+                    <button class="btn btn-add">Add to Cart</button>
                 </div>
             </div>
             <div class="product">
@@ -78,6 +79,7 @@
                     <p>Brand: Logitech</p>
                     <p>Price: $50</p>
                     <p>Rating: 4.5 stars</p>
+                    <button class="btn btn-add">Add to Cart</button>
                 </div>
             </div>
             <div class="product">
@@ -87,6 +89,7 @@
                     <p>Brand: Logitech</p>
                     <p>Price: $50</p>
                     <p>Rating: 4.5 stars</p>
+                    <button class="btn btn-add">Add to Cart</button>
                 </div>
             </div>
             <div class="product">
@@ -96,6 +99,7 @@
                     <p>Brand: Logitech</p>
                     <p>Price: $50</p>
                     <p>Rating: 4.5 stars</p>
+                    <button class="btn btn-add">Add to Cart</button>
                 </div>
             </div>
             <div class="product">
@@ -105,6 +109,7 @@
                     <p>Brand: Logitech</p>
                     <p>Price: $50</p>
                     <p>Rating: 4.5 stars</p>
+                    <button class="btn btn-add">Add to Cart</button>
                 </div>
             </div>
             <div class="product">
@@ -114,6 +119,7 @@
                     <p>Brand: Logitech</p>
                     <p>Price: $50</p>
                     <p>Rating: 4.5 stars</p>
+                    <button class="btn btn-add">Add to Cart</button>
                 </div>
             </div>
         </div>
