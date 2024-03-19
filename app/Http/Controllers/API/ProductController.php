@@ -40,6 +40,7 @@ class ProductController extends Controller
     // Create the product
     $product = Product::create([
         'model_number' => $modelNumber,
+        'name'=> $request->input('name')
     ]);
 
     // Store the image
