@@ -7,10 +7,11 @@
     {{-- <link rel="stylesheet" href="css/account.css"> --}}
     <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
+    
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-
-    <title>Account</title>
+    
+    <title>Your Page Title</title>
 </head>
 <style>
     * {
@@ -23,6 +24,35 @@
     text-align: right;
     height: 10rem;
 }
+
+.dotted-box {
+    font-size: 1.2rem;
+    margin: 2rem;
+    border: black;
+    cursor: pointer;
+    border-style: dashed;
+    height: 266px;
+    width: 320px;
+    border-width: 2px;
+    box-sizing: border-box;
+    border-color: #C7C7C7;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.address_container {
+    padding: 5rem;
+}
+
+h4 {
+    font-size: 2rem;
+    margin-bottom: 2rem
+}
+
+
+
 
     .user-profile {
         position: relative;
@@ -62,22 +92,25 @@ header {
     height: 10rem;
 }
 
-    /* Main content */
-    main {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        padding: 20px;
-    }
+/* Main content */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 6rem;
+    font-size: 1.2rem;
+}
 
-    .account-sections {
-        width: 45%;
-        background-color: #f9f9f9;
-        border: 1px solid #ccc;
-        padding: 20px;
-        margin-bottom: 20px;
-        height: 150px;
-    }
+.account-sections {
+    width: 45%;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    height: 150px;
+    border-radius: 12px;
+
+}
 
     .inner-content {
         text-align: center;
@@ -101,9 +134,9 @@ header {
         margin-left: 10px;
     }
 
-    .blurbackground {
-        filter: blur(2px);
-    }
+.blurbackground {
+    filter: blur(5px);
+}
 
 /* Popups */
 .popup {
@@ -205,17 +238,15 @@ p5.callout-copy {
         background-color: white;
     }
 
-    input[type=text],
-    select,
-    textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        resize: vertical;
-        margin-top: 6px;
-        margin-bottom: 16px;
-    }
+input[type=text], textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-top: 6px;
+    margin-bottom: 16px;
+}
 
 label {
     margin-top: 6px;
@@ -225,12 +256,12 @@ label {
 
 .blurbackground{
     filter:none;
-    filter: blur(2px);
+    filter: blur(5px);
 }
 
-    .blurbackground {
-        /* filter: blur(2px); Apply the blur effect */
-    }
+.blurbackground {
+    filter: blur(5px); /* Apply the blur effect */
+}
 
     .btn {
         /* background-color: #4CAF50; */
@@ -268,7 +299,8 @@ label {
 
 
 h1 {
-    margin-top: 3rem;
+    margin-top: 2rem;
+    font-size: 3rem;
 }
 
 
@@ -297,6 +329,261 @@ h22.order-lookup-header {
     background-color: #f7890b; /* Changed to orange */
     color: #000!important;
 }
+
+
+
+
+
+.popup1 .close {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    cursor: pointer;
+    background-color: orange;
+    color: #040404;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 1;
+    transition: background-color 0.3s ease;
+    margin-right: 1rem;
+
+}
+
+
+.popup1 .close:hover {
+    background-color: #999;
+}
+
+.popup1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: 999;
+    display: none;
+    width: 30rem;
+    height: 40rem;
+   
+}
+
+.popup2 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: 999;
+    display: none;
+    width: 35rem;
+    height: 43rem;
+   
+}
+
+
+
+.popup2 .close {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    cursor: pointer;
+    background-color: orange;
+    color: #040404;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 1;
+    transition: background-color 0.3s ease;
+    margin-right: 1rem;
+
+}
+
+
+.popup2 .close:hover {
+    background-color: #999;
+}
+
+
+h3 {
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+
+
+.payment__cc {
+    padding-top: 2rem;
+}
+
+
+.Card__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.card {
+    padding-top: 2rem;
+}
+
+.title {
+    font-size: 1.2rem;
+    padding-bottom: .5rem;
+}
+
+input.input.txt.text-validated {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+input.input2.txt {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+
+
+hr.white-line {
+    margin: 1rem;
+}
+
+.information {
+    font-size: 1.2rem;
+}
+
+
+select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    
+}
+
+input.input1.txt {
+    font-size: .9rem;
+    width: 5rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.button-container {
+    text-align: right;
+}
+
+
+button.cancel-btn {
+    margin-top: 2rem;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    
+}
+
+button.cancel-btn:hover {
+    background-color: orange;
+}
+
+
+button.add-card-btn {
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: large;
+}
+
+
+button.add-card-btn:hover {
+    background-color: orange;
+}
+
+
+
+
+/* FOOTER STYLES */
+footer{
+    /* position: absolute; */
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background: #111;
+   height: auto;
+   width: 100vw;
+   padding-top: 40px;
+   color: #fff;
+   }
+   
+   .footer-content {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       flex-direction: column;
+       text-align: center;
+   }
+   
+   .footer-content h3 {
+       font-size: 2.1rem;
+       font-weight: 500;
+       text-transform: capitalize;
+       line-height: 3rem;
+   }
+   .footer-content p {
+       max-width: 500px;
+       margin: 10px auto;
+       line-height: 28px;
+       font-size: 14px;
+       color: #cacdd2;
+   }
+   .socials {
+       list-style: none;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin: 1rem 0 3rem 0;
+   }
+   .socials li {
+       margin: 0 10px;
+   }
+   
+   .footer-bottom {
+       background: #000;
+       width: 100vw;
+       padding: 20px;
+       padding-bottom: 40px;
+       text-align: center;
+   }
+   .footer-menu {
+       float: right;
+   }
+   .footer-menu ul {
+       display: flex;
+   }
+   
+   a{
+       list-style: none!important;
+   }
+   
+   ::marker {
+       list-style: none!important;
+       unicode-bidi: isolate;
+       font-variant-numeric: tabular-nums;
+       text-transform: none;
+       text-indent: 0px !important;
+       text-align: start !important;
+       text-align-last: start !important;
+   }
+
+
 
 
     </style>
@@ -348,14 +635,17 @@ h22.order-lookup-header {
             </div>
         </section>
 
-        <section class="account-sections bottom-right" id="Payments">
-            <div class="inner-content">
-                <h2>Payments</h2>
-                <p>Manage or add payment methods and view your transactions</p>
-                <div class="edit-text" onclick="openPopup('paymentsPopup')">Edit</div>
-            </div>
-        </section>
-    </main>
+    <section class="account-sections bottom-right" id="Payments">
+        <div class="inner-content">
+            <h2>Payments</h2>
+            <p>Manage or add payment methods and view your transactions</p>
+            <div class="edit-text" onclick="openPopup('paymentsPopup')">Edit</div>
+        </div>
+    </section>
+</main>
+
+
+
 
     <div class="popup" id="ordersPopup">
         <div class="popup-content">
@@ -476,94 +766,96 @@ h22.order-lookup-header {
     </div>
 
 
-    <div class="popup" id="paymentsPopup" style="display: none;">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('paymentsPopup')">&times;</span>
+<div class="popup2" id="paymentsPopup" style="display: none;">
+
+    <span class="close" onclick="closePopup('paymentsPopup')">&times;</span>
+
+    <div class="popup-content">
 
             <div class="payment_col-50">
 
-                <h3>Add your Payment details...</h3>
-                <hr class="white-line">
-                <div class="info">
-                    Changes to this payment information will apply to your account and will affect your purchases.
-                </div>
+    <h3>Add your Payment details...</h3>
+    <hr class="white-line">
+    <div class = "information"> 
+        Changes to this payment information will apply to your account and will affect your purchases.
+    </div>
+    
+    <div class="payment__cc">
+            <div class="Card__title">
+              <i class="icon icon-user"></i>Payment Method
+            </div>
 
-                <div class="payment__cc">
-                    <div class="Card__title">
-                        <i class="icon icon-user"></i>Payment Method
+          <div class="card">
+            <form>
+              <div class="form__cc">
+                <div class="row">
+                  <div class="field">
+                    <div class="title">Card Number
+                    <i class="fa-brands fa-cc-visa" style="color:navy;"></i>
+                    <i class="fa-brands fa-cc-amex" style="color:blue;"></i>
+                    <i class="fa-brands fa-cc-mastercard" style="color:red;"></i>
+                    <i class="fa-brands fa-cc-discover" style="color:orange;"></i>
                     </div>
-
-                    <div class="card">
-                        <form>
-                            <div class="form__cc">
-                                <div class="row">
-                                    <div class="field">
-                                        <div class="title">Card Number
-                                            <i class="fa-brands fa-cc-visa" style="color:navy;"></i>
-                                            <i class="fa-brands fa-cc-amex" style="color:blue;"></i>
-                                            <i class="fa-brands fa-cc-mastercard" style="color:red;"></i>
-                                            <i class="fa-brands fa-cc-discover" style="color:orange;"></i>
-                                        </div>
-                                        <input type="text1" class="input1 txt text-validated" value="" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="field small">
-                                        <div class="title">Expiry Date
-                                        </div>
-                                        <select class="input1 ddl">
-                                            <option selected>01</option>
-                                            <option>02</option>
-                                            <option>03</option>
-                                            <option>04</option>
-                                            <option>05</option>
-                                            <option>06</option>
-                                            <option>07</option>
-                                            <option>08</option>
-                                            <option>09</option>
-                                            <option>10</option>
-                                            <option>11</option>
-                                            <option>12</option>
-                                        </select>
-                                        <select class="input1 ddl">
-                                            <option>2024</option>
-                                            <option>2025</option>
-                                            <option>2026</option>
-                                            <option>2027</option>
-                                            <option>2028</option>
-                                            <option selected>2029</option>
-                                            <option>2030</option>
-                                            <option>2031</option>
-                                            <option>2032</option>
-                                            <option>2033</option>
-                                            <option>2034</option>
-                                            <option>2035</option>
-                                            <option>2036</option>
-                                            <option>2037</option>
-                                            <option>2038</option>
-                                            <option>2039</option>
-                                            <option>2040</option>
-                                            <option>2041</option>
-                                            <option>2042</option>
-                                            <option>2043</option>
-                                            <option>2044</option>
-
-                                        </select>
-                                    </div>
-                                    <div class="field small">
-                                        <div class="title">Security Code (CVV/CVC)
-                                            <span class="numberCircle">?</span>
-                                        </div>
-                                        <input type="text1" class="input1 txt" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="field">
-                                        <div class="title">Name on Card
-                                        </div>
-                                        <input type="text1" class="input1 txt" />
-                                    </div>
-                                </div>
+                    <input type="text1" class="input txt text-validated" value="" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="field small">
+                    <div class="title">Expiry Date
+                    </div>
+                    <select class="input1 ddl">
+                      <option selected>01</option>
+                      <option>02</option>
+                      <option>03</option>
+                      <option>04</option>
+                      <option>05</option>
+                      <option>06</option>
+                      <option>07</option>
+                      <option>08</option>
+                      <option>09</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                    </select>
+                    <select class="input1 ddl">
+                      <option>2024</option>
+                      <option>2025</option>
+                      <option>2026</option>
+                      <option>2027</option>
+                      <option>2028</option>
+                      <option selected>2029</option>
+                      <option>2030</option>
+                      <option>2031</option>
+                      <option>2032</option>
+                      <option>2033</option>
+                      <option>2034</option>
+                      <option>2035</option>
+                      <option>2036</option>
+                      <option>2037</option>
+                      <option>2038</option>
+                      <option>2039</option>
+                      <option>2040</option>
+                      <option>2041</option>
+                      <option>2042</option>
+                      <option>2043</option>
+                      <option>2044</option>
+                      
+                    </select>
+                  </div>
+                  <div class="field small">
+                    <div class="title">Security Code (CVV/CVC)
+                      <span class="numberCircle">?</span>
+                    </div>
+                    <input type="text1" class="input1 txt" />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="field">
+                    <div class="title">Name on Card
+                    </div>
+                    <input type="text1" class="input2 txt" />
+                  </div>
+                </div>
 
                             </div>
                         </form>
@@ -588,24 +880,24 @@ h22.order-lookup-header {
 
             <body1>
 
-                <div class="row">
-                    <div class="col-75">
-                        <div class="container">
-                            <form action="/action_page.php">
-
-                                <div class="row">
-                                    <div class="col-50">
-                                        <h> Shipping Address </h>
-                                        <label for="fname"><i class="fa fa-user"></i> First Name</label>
-                                        <input type="text" id="fname" name="firstname" placeholder="Byte">
-                                        <label for="lname"><i class="fa fa-user"></i> Last Name</label>
-                                        <input type="text" id="lname" name="lastname" placeholder="Top">
-                                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                                        <input type="text" id="email" name="email" placeholder="Bytetop@example.com">
-                                        <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                                        <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
-                                        <label for="city"><i class="fa fa-institution"></i>Town/City</label>
-                                        <input type="text" id="city" name="city" placeholder="Birmingham">
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+      
+        <div class="row">
+          <div class="col-50">
+            <h3> Shipping Address </h3>
+            <label for="fname"><i class="fa fa-user"></i> First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Byte">
+            <label for="lname"><i class="fa fa-user"></i> Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Top">
+            <label for="email"><i class="fa fa-envelope"></i> Email</label>
+            <input type="text" id="email" name="email" placeholder="Bytetop@example.com">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+            <label for="city"><i class="fa fa-institution"></i>Town/City</label>
+            <input type="text" id="city" name="city" placeholder="Birmingham">
 
                                         <div class="row">
                                             <div class="col-50">
@@ -629,13 +921,7 @@ h22.order-lookup-header {
 
                 </div>
 
-            </body1>
-
-
-
-
-
-
+</body1>
 
         </div>
     </div>
@@ -645,10 +931,8 @@ h22.order-lookup-header {
 
 
 
-    <script src="js/account.js"></script>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="js/account.js"></script>
+@include('partials.footer')
 </body>
 
 </html>
