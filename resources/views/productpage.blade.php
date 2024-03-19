@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Products</title>
     <link rel="stylesheet" href="css/productpage.css">
-    {{-- <link rel="stylesheet" href="css/styles.css"> --}}
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body onload="showProducts('all')"> <!-- Call showProducts function with 'all' argument on page load -->
     @include('partials.navbar')
@@ -16,9 +16,9 @@
           <div class="collection-sort">
             <label>Filter by:</label>
             <select>
-            @foreach($uniqueProductNames as $name)
+            {{-- @foreach($uniqueProductNames as $name)
               <option value="/">{{ $name }}</option>
-            @endforeach
+            @endforeach --}}
             </select>
           </div>
       
@@ -39,7 +39,7 @@
     <main>
         <section class="products">
             <!-- Iterate over unique product names -->
-            @foreach($uniqueProductNames as $name)
+            {{-- @foreach($uniqueProductNames as $name)
             <div class="product-card">
                 <!-- Retrieve product details for the current product name -->
                 @php
@@ -57,15 +57,15 @@
                     <h6> £{{ $product->price }}</h6>
                 </div>
             </div>
-            @endforeach
+            @endforeach --}}
         </section>
         <div id="categories">
             <div class="category-section">
                 <h2>CATEGORIES</h2>
                 <ul>
-                    @foreach($categories as $category)
+                    {{-- @foreach($categories as $category)
                         <li><a href="#" onclick="showProducts('{{ $category }}')">{{ $category }}</a></li>
-                    @endforeach
+                    @endforeach --}}
                 </ul>
             </div>
             <div class="category-section">
@@ -76,12 +76,12 @@
             <div class="category-section">
                 <h2>BRAND</h2>
                 <ul>
-                    @foreach($uniqueProductNames as $name)
+                    {{-- @foreach($uniqueProductNames as $name)
                         <li>
                             <input type="checkbox" id="brand-{{ strtolower($name) }}" value="{{ $name }}" class="brand-checkbox">
                             <label for="brand-{{ strtolower($name) }}">{{ $name }}</label>
                         </li>
-                    @endforeach
+                    @endforeach --}}
                 </ul>
             </div>
             <div class="category-section">
@@ -115,7 +115,7 @@
                 </div>
             </div>
             <div id="productDetails">
-                @foreach($uniqueProductNames as $name)
+                {{-- @foreach($uniqueProductNames as $name)
                 <div class="product">
                     <h2>{{ $name }}</h2>
                     @php
@@ -128,10 +128,10 @@
                     <p>Price: £{{ $product->price }}</p>
                     <p>Stock: {{ $count }}</p>
                     {{-- Add to cart button --}}
-                    <button onclick="openModal('{{ $product->name }}', '{{ $product->description }}', '{{ $product->price }}', '{{ asset('storage/images/' . $product->image) }}')">View</button>
+                    {{-- <button onclick="openModal('{{ $product->name }}', '{{ $product->description }}', '{{ $product->price }}', '{{ asset('storage/images/' . $product->image) }}')">View</button>
                     <button class="btn-add" data-product-id="{{ $product->id }}">Add to Cart</button>
                 </div>
-            @endforeach
+            @endforeach --}} 
             
             </div>
         </div>

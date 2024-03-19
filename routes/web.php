@@ -170,31 +170,32 @@ Route::get('/Accessoriespage', function(){
 
 Route::get('/products', function () {
     // Fetch all distinct categories from the products table
-    $categories = ['Laptops', 'Computers', 'Laptop Accessories', 'All in One Desktops', 'Computer Monitors'];
+    // $categories = ['Laptops', 'Computers', 'Laptop Accessories', 'All in One Desktops', 'Computer Monitors'];
 
     // Fetch distinct categories from the products table
-    $distinctCategories = Product::distinct()->pluck('category');
+    // $distinctCategories = Product::distinct()->pluck('category');
 
 
-    $productCount = Product::count();
+    // $productCount = Product::count();
 
-    // Get unique product names
-    $uniqueProductNames = Product::distinct()->pluck('name');
+    // // Get unique product names
+    // $uniqueProductNames = Product::distinct()->pluck('name');
 
-    $productCounts = [];
-    foreach ($uniqueProductNames as $name) {
-        $count = Product::where('name', $name)->count();
-        $productCounts[$name] = $count;
-    }
-    $products = [];
-    foreach ($uniqueProductNames as $name) {
-        $product = Product::where('name', $name)->first();
-        $products[] = $product;
-    }
+    // $productCounts = [];
+    // foreach ($uniqueProductNames as $name) {
+    //     $count = Product::where('name', $name)->count();
+    //     $productCounts[$name] = $count;
+    // }
+    // $products = [];
+    // foreach ($uniqueProductNames as $name) {
+    //     $product = Product::where('name', $name)->first();
+    //     $products[] = $product;
+    // }
 
     // dd($uniqueProductNames); // Debugging statement
 
-    return view('productpage', compact('products', 'categories', 'distinctCategories', 'productCounts', 'uniqueProductNames'));
+    // return view('productpage', compact('products', 'categories', 'distinctCategories', 'productCounts', 'uniqueProductNames'));
+    return view ('productpage');
 });
 
 Route::get('/product/{id}', [ProductDetailsController::class, 'show'])->name('product.show');
