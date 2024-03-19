@@ -1,4 +1,10 @@
+body{
+    min-height: 100vh;
+}
 
+footer{
+    position: absolute!important;
+}
         .container {
             display: flex;
             flex-direction: row;
@@ -12,6 +18,11 @@
         }
        h2{
         text-align: center;
+        color: #00668a;
+       }
+
+       h2:hover{
+        color: #331200;
        }
     
     .products {
@@ -20,6 +31,8 @@
         flex-wrap: wrap;
         justify-content: space-between;
         margin-bottom: 20px;
+        text-align: center;
+        padding-bottom: 10px;
     }
     .product {
         flex: 1 0 calc(25% - 20px); /* Four products per row */

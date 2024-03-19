@@ -46,7 +46,7 @@ nav {
     color: #555;
     background-color: #fff;
     border: 1px solid black; /* Added border */
-    border-radius: 25px;
+    border-radius: 2 5px;
     cursor: pointer;
     margin-right: 10px;
     font-size: large;
@@ -87,11 +87,11 @@ nav {
 
 .dropdown-links a,
 .dropdown-links form {
-    padding: 4px 14px; /* Add padding to links and buttons */
+    padding: 4px 10px; /* Add padding to links and buttons */
     text-decoration: none; /* Remove underline from links */
     color: #000; /* Set color for links */
     display: block; /* Make links and buttons block elements */
-    width: 100%; /* Set width to 100% */
+    width: 50%; /* Set width to 100% */
     border: none;
 }
 
@@ -122,4 +122,35 @@ nav {
     .search-container {
         margin-top: 10px; /* Add margin between sections */
     }
+}
+
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 110px;
+    box-shadow: 0px 8px 16px 0px rgba(23, 113, 141, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
