@@ -6,6 +6,8 @@
     {{-- <link rel="stylesheet" href="css/account.css"> --}}
     <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
+    
 
     
     <title>Your Page Title</title>
@@ -21,6 +23,35 @@
     text-align: right;
     height: 10rem;
 }
+
+.dotted-box {
+    font-size: 1.2rem;
+    margin: 2rem;
+    border: black;
+    cursor: pointer;
+    border-style: dashed;
+    height: 266px;
+    width: 320px;
+    border-width: 2px;
+    box-sizing: border-box;
+    border-color: #C7C7C7;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.address_container {
+    padding: 5rem;
+}
+
+h4 {
+    font-size: 2rem;
+    margin-bottom: 2rem
+}
+
+
+
 
 .user-profile {
     position: relative;
@@ -65,7 +96,8 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 20px;
+    padding: 6rem;
+    font-size: 1.2rem;
 }
 
 .account-sections {
@@ -75,6 +107,8 @@ main {
     padding: 20px;
     margin-bottom: 20px;
     height: 150px;
+    border-radius: 12px;
+
 }
 
 .inner-content {
@@ -96,7 +130,7 @@ main {
 }
 
 .blurbackground {
-    filter: blur(2px);
+    filter: blur(5px);
 }
 
 /* Popups */
@@ -195,7 +229,7 @@ a:hover{
     background-color: white;
 }
 
-input[type=text], select, textarea {
+input[type=text], textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -213,11 +247,11 @@ label {
 
 .blurbackground{
     filter:none;
-    filter: blur(2px);
+    filter: blur(5px);
 }
 
 .blurbackground {
-    filter: blur(2px); /* Apply the blur effect */
+    filter: blur(5px); /* Apply the blur effect */
 }
 
 .btn {
@@ -256,7 +290,8 @@ label {
 
 
 h1 {
-    margin-top: 3rem;
+    margin-top: 2rem;
+    font-size: 3rem;
 }
 
 
@@ -285,6 +320,261 @@ h22.order-lookup-header {
     background-color: #f7890b; /* Changed to orange */
     color: #000!important;
 }
+
+
+
+
+
+.popup1 .close {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    cursor: pointer;
+    background-color: orange;
+    color: #040404;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 1;
+    transition: background-color 0.3s ease;
+    margin-right: 1rem;
+
+}
+
+
+.popup1 .close:hover {
+    background-color: #999;
+}
+
+.popup1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: 999;
+    display: none;
+    width: 30rem;
+    height: 40rem;
+   
+}
+
+.popup2 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    z-index: 999;
+    display: none;
+    width: 35rem;
+    height: 43rem;
+   
+}
+
+
+
+.popup2 .close {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    cursor: pointer;
+    background-color: orange;
+    color: #040404;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 16px;
+    line-height: 1;
+    transition: background-color 0.3s ease;
+    margin-right: 1rem;
+
+}
+
+
+.popup2 .close:hover {
+    background-color: #999;
+}
+
+
+h3 {
+    font-size: 2rem;
+    margin-top: 2rem;
+}
+
+
+
+.payment__cc {
+    padding-top: 2rem;
+}
+
+
+.Card__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.card {
+    padding-top: 2rem;
+}
+
+.title {
+    font-size: 1.2rem;
+    padding-bottom: .5rem;
+}
+
+input.input.txt.text-validated {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+input.input2.txt {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+
+
+hr.white-line {
+    margin: 1rem;
+}
+
+.information {
+    font-size: 1.2rem;
+}
+
+
+select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    
+}
+
+input.input1.txt {
+    font-size: .9rem;
+    width: 5rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.button-container {
+    text-align: right;
+}
+
+
+button.cancel-btn {
+    margin-top: 2rem;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    
+}
+
+button.cancel-btn:hover {
+    background-color: orange;
+}
+
+
+button.add-card-btn {
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: large;
+}
+
+
+button.add-card-btn:hover {
+    background-color: orange;
+}
+
+
+
+
+/* FOOTER STYLES */
+footer{
+    /* position: absolute; */
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background: #111;
+   height: auto;
+   width: 100vw;
+   padding-top: 40px;
+   color: #fff;
+   }
+   
+   .footer-content {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       flex-direction: column;
+       text-align: center;
+   }
+   
+   .footer-content h3 {
+       font-size: 2.1rem;
+       font-weight: 500;
+       text-transform: capitalize;
+       line-height: 3rem;
+   }
+   .footer-content p {
+       max-width: 500px;
+       margin: 10px auto;
+       line-height: 28px;
+       font-size: 14px;
+       color: #cacdd2;
+   }
+   .socials {
+       list-style: none;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin: 1rem 0 3rem 0;
+   }
+   .socials li {
+       margin: 0 10px;
+   }
+   
+   .footer-bottom {
+       background: #000;
+       width: 100vw;
+       padding: 20px;
+       padding-bottom: 40px;
+       text-align: center;
+   }
+   .footer-menu {
+       float: right;
+   }
+   .footer-menu ul {
+       display: flex;
+   }
+   
+   a{
+       list-style: none!important;
+   }
+   
+   ::marker {
+       list-style: none!important;
+       unicode-bidi: isolate;
+       font-variant-numeric: tabular-nums;
+       text-transform: none;
+       text-indent: 0px !important;
+       text-align: start !important;
+       text-align-last: start !important;
+   }
+
+
 
 
     </style>
@@ -339,6 +629,9 @@ h22.order-lookup-header {
         </div>
     </section>
 </main>
+
+
+
 
 <div class="popup" id="ordersPopup">
     <div class="popup-content">
@@ -452,15 +745,17 @@ h22.order-lookup-header {
 </div>
 
 
-<div class="popup" id="paymentsPopup" style="display: none;">
+<div class="popup2" id="paymentsPopup" style="display: none;">
+
+    <span class="close" onclick="closePopup('paymentsPopup')">&times;</span>
+
     <div class="popup-content">
-        <span class="close" onclick="closePopup('paymentsPopup')">&times;</span>
 
         <div class="payment_col-50">
 
     <h3>Add your Payment details...</h3>
     <hr class="white-line">
-    <div class = "info"> 
+    <div class = "information"> 
         Changes to this payment information will apply to your account and will affect your purchases.
     </div>
     
@@ -480,7 +775,7 @@ h22.order-lookup-header {
                     <i class="fa-brands fa-cc-mastercard" style="color:red;"></i>
                     <i class="fa-brands fa-cc-discover" style="color:orange;"></i>
                     </div>
-                    <input type="text1" class="input1 txt text-validated" value="" />
+                    <input type="text1" class="input txt text-validated" value="" />
                   </div>
                 </div>
                 <div class="row">
@@ -537,7 +832,7 @@ h22.order-lookup-header {
                   <div class="field">
                     <div class="title">Name on Card
                     </div>
-                    <input type="text1" class="input1 txt" />
+                    <input type="text1" class="input2 txt" />
                   </div>
                 </div>
 
@@ -571,7 +866,7 @@ h22.order-lookup-header {
       
         <div class="row">
           <div class="col-50">
-            <h> Shipping Address </h>
+            <h3> Shipping Address </h3>
             <label for="fname"><i class="fa fa-user"></i> First Name</label>
             <input type="text" id="fname" name="firstname" placeholder="Byte">
             <label for="lname"><i class="fa fa-user"></i> Last Name</label>
@@ -607,12 +902,6 @@ h22.order-lookup-header {
 
 </body1>
 
-
-
-
-
-
-
 </div>
 </div>
 
@@ -622,6 +911,6 @@ h22.order-lookup-header {
 
 
 <script src="js/account.js"></script>
-
+@include('partials.footer')
 </body>
 </html>

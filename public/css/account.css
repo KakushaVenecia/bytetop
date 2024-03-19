@@ -1397,7 +1397,8 @@ margin-left: 10px;
 }
 
 .blurbackground {
-filter: blur(2px);
+filter: blur(3px);
+padding: 6rem;
 }
 
 /* Popups */
@@ -1463,7 +1464,7 @@ padding: 16px;
 background-color: white;
 }
 
-input[type=text], select, textarea {
+input[type=text], textarea {
 width: 100%;
 padding: 12px;
 border: 1px solid #ccc;
@@ -1519,3 +1520,46 @@ content: "";
 display: table;
 clear: both;
 }
+
+.information {
+    padding-top: 2rem;
+    font-size: 1.2rem;
+}
+
+.payment__cc {
+    padding-top: 2rem;
+}
+
+
+.Card__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.card {
+    padding-top: 2rem;
+}
+
+.title {
+    font-size: 1.5rem;
+    padding-bottom: .5rem;
+}
+
+input.input.txt.text-validated {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+input.input2.txt {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+}
+
+
+hr.white-line {
+    margin: 1rem;
+}
+
+
+
