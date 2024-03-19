@@ -15,7 +15,7 @@ html, body {
 
 .products{
     width: 250px;
-    height: 250px;
+    height: fit-content;
 }
 
 
@@ -54,9 +54,9 @@ button  {
   /* Add some padding inside the card container */
   .container {
    width: 90%;
-   margin: 40px auto;
+   margin: 5px auto;
    padding-top: 20px;
-   padding-top: 20px;
+   padding-bottom: 20px;
   }
 
   .deals{
@@ -236,9 +236,6 @@ h1{
     font-weight: bold;
 }
 
-
-
-
 /* FOOTER STYLES */
 footer{
 position: absolute;
@@ -282,7 +279,7 @@ color: #fff;
 }
 
 .footer-distributed h3 span{
-	color:  lightseagreen;
+	color:  orange;
 }
 
 /* Footer links */
@@ -431,6 +428,11 @@ color: #fff;
 	}
 
 }
+
+
+
+
+
 
 /* ========== .hero background... ========== */
 .hero {
