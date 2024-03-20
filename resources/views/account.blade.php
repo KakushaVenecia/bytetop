@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{-- <link rel="stylesheet" href="css/account.css"> --}}
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
@@ -149,8 +150,8 @@ main {
     border: 1px solid #ccc;
     z-index: 999;
     display: none;
-    width: 30rem;
-    height: 30rem;
+    width: 35rem;
+    height: 35rem;
    
 }
 
@@ -159,11 +160,19 @@ main {
     margin-top: 2rem;
 }
 
+.group {
+    margin-left: 7rem;
+    margin-top: 1.6rem;
+    font-size: 1.3rem;
+    display:flex;
+}
+
 
 
 a.find {
-    font-size: 1.5rem;
-    /* padding: 3rem; */
+    font-size: 1rem;
+    color:#BA1A1A;
+    font-weight: 600;
 }
 
 
@@ -246,12 +255,13 @@ input[type=text], textarea {
     resize: vertical;
     margin-top: 6px;
     margin-bottom: 16px;
+    font-size:1.2rem;
 }
 
-label {
+.col-50 label {
     margin-top: 6px;
     display: block;
-    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .blurbackground{
@@ -274,10 +284,26 @@ label {
         margin-top: 10px;
         font-size: 16px;
     }
+.btn {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-left: 7rem;
+    font-size: large;
+    margin-top: 2rem;
+    font-weight: 600;
+}
 
     .btn:hover {
         background-color: #45a049;
     }
+.btn:hover {
+    background-color: orange;
+}
 
     .col-25 {
         float: left;
@@ -300,7 +326,8 @@ label {
 
 h1 {
     margin-top: 2rem;
-    font-size: 3rem;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 
@@ -310,19 +337,21 @@ h22.order-lookup-header {
 }
 
 
-.group {
-    margin-left: 7rem;
-}
+
 
 .grp {
-    margin-left: 9rem;
-    margin-top: 1rem;
+    margin-left: 17rem;
+    margin-top: 2rem;
 }
 
 
 .grp button {
-    background-color: white;
-    border-radius: 12px;
+    padding: 5px 10px;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: large;
 }
 
 .grp button:hover {
@@ -412,6 +441,7 @@ h22.order-lookup-header {
 h3 {
     font-size: 2rem;
     margin-top: 2rem;
+    margin-bottom:2rem;
 }
 
 
@@ -583,6 +613,12 @@ footer{
        text-align-last: start !important;
    }
 
+   input.input7 {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-left: 1rem;
+}
+
 
 
 
@@ -647,30 +683,23 @@ footer{
 
 
 
-    <div class="popup" id="ordersPopup">
-        <div class="popup-content">
-            <span class="close" onclick="closePopup('ordersPopup')">&times;</span>
-            <div class="as-l-container">
-                <div class="rs-ol-wrapper">
-                    <h1 class="rs-ol-heading">Products you've ordered.</h1>
-                    <p5 class="callout-copy">Only purchases from the last 18 months will be shown here.</p5>
-                </div>
-            </div>
-            <div class="row as-l-container">
-                <p6 class="rs-order-link rs-noitem"><span class="rs-space-after">Can't see your order?</span></p6>
-            </div>
-        </div>
-        <hr class="blue-line">
-        <a class="find">Don't Worry. Find it now....</a>
-        <div class="ordergroup">
-            <div class="head">
-                <h22 class="order-lookup-header">Order Lookup</h22>
-            </div>
+<div class="popup" id="ordersPopup">
+    <div class="popup-content">
+        <span class="close" onclick="closePopup('ordersPopup')">&times;</span>
+        <div class="as-l-container"><div class="rs-ol-wrapper"><h1 class="rs-ol-heading">Products you've ordered.</h1><p5 class="callout-copy">Only purchases from the last 3 months will be shown here.</p5></div></div>
+        <div class="row as-l-container"><p6 class="rs-order-link rs-noitem"><span class="rs-space-after">Can't see your order?</span></p6></div>
+    </div>
+    <hr class="blue-line">
+    <a class="find">Don't Worry. Find it now....</a>
+<div class = "ordergroup">
+    <div class="head">
+        <h22 class="order-lookup-header">Order Lookup</h22>
+    </div>
 
 
     <div class="group">
         <label>Order ID *</label>
-        <input required="" type="text2" class="input">
+        <input required="" type="text2" class="input7">
         <span class="highlight"></span>
         <span class="bar"></span>
     </div>
