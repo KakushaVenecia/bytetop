@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\ProductDetail;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
-use App\Models\ProductQuantity;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
@@ -56,7 +56,7 @@ class ProductController extends Controller
     $image->store('images', 'public');
 
     // Create the product detail
-    ProductQuantity::create([
+    ProductDetail::create([
         'product_id' => $product->id,
         'name' => $request->input('name'),
         'description' => $request->input('description'),
