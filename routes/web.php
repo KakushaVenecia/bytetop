@@ -270,6 +270,11 @@ Route::get('/account', function () {
 });
 
 
+Route::get('/orderspage', function () {
+    return view('orderspage');
+});
+
+
 Route::post('/admin/invite', [InviteController::class, 'invite'])->name('invite.send');
 Route::get('/admin/invite', function () {
     return view('admindashboard.invite');
