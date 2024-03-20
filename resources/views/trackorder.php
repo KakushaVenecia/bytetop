@@ -8,14 +8,12 @@
 </head>
 <body>
 <div class="container">
-<div class="d-flex">
+
                 <h5>ORDER <span class="text-primary font-weight-bold">#R86F854G7665</span></h5>
-            </div>
-            <div class="d-flex flex-column text-sm-right">
                 <p class="mb-0">Expected Arrival <span>02 April 2024</span></p>
-            </div>
-  <div class="row">
-						<div class="col-12 col-md-10 hh-grayBox pt45 pb20">
+            
+  <!-- <div class="row"> -->
+						
 							<div class="row justify-content-between">
 
 								<div class="order-tracking completed">

@@ -275,6 +275,11 @@ Route::get('/orderspage', function () {
 });
 
 
+Route::get('/trackorder', function () {
+    return view('trackorder');
+});
+
+
 Route::post('/admin/invite', [InviteController::class, 'invite'])->name('invite.send');
 Route::get('/admin/invite', function () {
     return view('admindashboard.invite');
