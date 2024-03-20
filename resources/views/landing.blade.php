@@ -61,7 +61,7 @@
                 </div>
             <div class="card">
                 <h3><b>All in one Desktops Product Catalogue</b></h3>
-                <img class="card-img" src="{{ asset('images/Keyboard.webp') }}" alt="keyboard">
+                <img class="card-img" src="{{ asset('images/all in one Desktop.AVIF') }}" alt="all in one Desktop">
                 <div class="more">
                     <button class="btn btn-add">View More</button>
                 </div>        
