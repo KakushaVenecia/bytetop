@@ -167,3 +167,9 @@ $('input[ng-model="cvv"]').on('focus', function(){
  });
   
  $("input[name='expiry-data']").mask("00 / 00");
+
+
+ document.getElementById('verifyButton').addEventListener('click', function() {
+    // Navigate to the verifynumber page
+    window.location.href = 'http://127.0.0.1:8000/verifynumber'; // Change to the correct URL
+});
