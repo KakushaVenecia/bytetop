@@ -12,13 +12,8 @@
   <div class="container">
     <form action="/action_page.php">
       <div class="form-group">
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" name="firstname" placeholder="Enter Your name.." required>
-      </div>
-
-      <div class="form-group">
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" name="lastname" placeholder="Enter Your last name.." required>
+        <label for="Fname">Full Name</label>
+        <input type="text" id="Fname" name="Fullname" placeholder="Enter Your Name.." required>
       </div>
 
       <div class="form-group">

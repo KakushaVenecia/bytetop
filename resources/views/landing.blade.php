@@ -35,13 +35,15 @@
                 <div class="more">
                     <button  class="btn btn-add">View More</button>
                 </div>
-            </div>
-            <div class="card">
-                <h3><b>PC Product Catalogue</b></h3>
-                <img class="card-img" src="{{ asset('images/PC.jpeg') }}" alt="PC">
-                <div class="more">
-                    <button  class="btn btn-add">View More</button>
                 </div>
+            <div class="card">
+                <h3><b>Computers Product Catalogue</b></h3>
+                <img class="card-img" src="{{ asset('images/computerimg.png') }}" alt="computerimg">
+                <div class="more">
+                    <button class="btn btn-add">View More</button>
+                </div>
+           
+                
             </div>
             <div class="card">
                 <h3><b>Accesories Product Catalogue</b></h3>
@@ -49,6 +51,20 @@
                 <div class="more">
                     <button class="btn btn-add">View More</button>
                 </div>
+                </div>
+            <div class="card">
+                <h3><b>Monitors Product Catalogue</b></h3>
+                <img class="card-img" src="{{ asset('images/Monitor.jpg') }}" alt="Monitor">
+                <div class="more">
+                    <button class="btn btn-add">View More</button>
+                </div>
+                </div>
+            <div class="card">
+                <h3><b>All in one Desktops Product Catalogue</b></h3>
+                <img class="card-img" src="{{ asset('images/Keyboard.webp') }}" alt="keyboard">
+                <div class="more">
+                    <button class="btn btn-add">View More</button>
+                </div>        
             </div>
         </div>
     </div>
