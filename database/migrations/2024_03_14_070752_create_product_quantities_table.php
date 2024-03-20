@@ -10,8 +10,7 @@ class CreateProductQuantitiesTable extends Migration
     {
         Schema::create('product_quantities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->string('name');
+            $table->string('name')->unique();
             $table->string('description');
             $table->decimal('price', 10, 2);
             $table->string('tags');
