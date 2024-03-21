@@ -55,8 +55,8 @@
                                     <td>{{ $product->name }}</td> 
                                     <td>{{ $product->price }}</td> 
                                     <td>{{ $product->category }}</td> 
-                                    {{-- <td>{{ $product->stock }}</td> --}}
-                                    <td>Product stock </td>
+                                    <td>{{ $product->quantity }}</td>
+                                    {{-- <td>$product->quantity </td> --}}
                                 </tr>
                                 <!-- @endforeach -->
                             </tbody>
