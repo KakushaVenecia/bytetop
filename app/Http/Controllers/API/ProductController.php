@@ -7,16 +7,16 @@ use App\Models\ProductDetail;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Redirect;;
 use Illuminate\Support\Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
+
 
 class ProductController extends Controller
 {
     public function create()
     {
-        $products = Product::all();
+        $products = ProductDetail::all();
         return view('admindashboard.create')->with('products', $products);
         
     }
@@ -130,7 +130,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         
-        $product = Product::findOrFail($id);
+        $product = ProductDetail::findOrFail($id);
         return view('admindashboard.edit', compact('product'));
         
     }
@@ -149,7 +149,7 @@ class ProductController extends Controller
             
         ]);
         // Find the product by ID
-        $product = Product::findOrFail($id);
+        $product = ProductDetail::findOrFail($id);
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -169,13 +169,31 @@ class ProductController extends Controller
         return Redirect::route('dashboard')->with('success', 'Product updated successfully');
     }
     public function destroy($id)
-    {
-        // Find the product by ID and delete it
-        $product = Product::findOrFail($id);
-        $product->delete();
+{
+    // Find the product by ID
+    $product = ProductDetail::findOrFail($id);
 
-        return Redirect::route('dashboard')->with('success', 'Product deleted successfully');
+    // Get the name of the product
+    $name = $product->name;
+
+    // Find the corresponding product in the Product table using the name and delete it
+    $productToDelete = Product::where('name', $name)->first();
+    if ($productToDelete) {
+        $productToDelete->delete();
     }
+
+    // Find the corresponding product detail by name and decrement its quantity
+    $productDetail = ProductDetail::where('name', $name)->first();
+    if ($productDetail) {
+        // Reduce the quantity by 1 (assuming decrementing the quantity by 1 when deleting a product)
+        if ($productDetail->quantity > 0) {
+            $productDetail->quantity--;
+            $productDetail->save();
+        }
+    }
+
+    return redirect()->route('dashboard')->with('success', 'Product deleted successfully');
+}
     public function index()
 {
     $products = Product::select('id', 'name')->distinct()->get();
@@ -199,10 +217,10 @@ public function getProductDescription(Request $request)
 
 public function dashboard()
 {
-    // $productCount = Product::count();
+    $productCount = Product::count();
 
-    // // Get unique product names
-    // $uniqueProductNames = Product::distinct()->pluck('name');
+    // Get unique product names
+    // $products = Product::distinct()->pluck('name');
 
     // $productCounts = [];
     // foreach ($uniqueProductNames as $name) {
@@ -211,7 +229,7 @@ public function dashboard()
     // }
 
     // // Paginate the products
-    // $products = Product::paginate(7);
+    $products = ProductDetail::paginate(7);
 
     // // Fetch all users
     // $users = User::all();
@@ -237,13 +255,28 @@ public function dashboard()
     //     dd($customers);
     //     // Return the view with all necessary data, including the route
         return view('admindashboard.dashboard')->with([
-            // 'users' => $customers,
+            'productCount' => $productCount,
+            'products' => $products,
             'route' => $route,
         ]);
     }
     
 public function allproducts()
 {
+
+    $products = ProductDetail::paginate(30);
+    $productQuantities = [];
+    foreach ($products as $product) {
+        $productName = $product->name;
+        $quantity = Product::where('name', $productName)->count();
+        $productQuantities[$productName] = $quantity;
+    }
+    // $productCount = ProductDetail::select('name', DB::raw('count(*) as count'), DB::raw('sum(quantity) as total_quantity'))
+    // ->groupBy('name')
+    // ->get();
+
+   
+    
 //     // Get unique product names with associated fields
 //     $uniqueProducts = Product::select('name', 'description', 'price', 'tags', 'category')
 //                              ->distinct()
@@ -261,7 +294,11 @@ public function allproducts()
 //     $users = User::all();
 
 //     // Return the view with all necessary data
-    return view('admindashboard.products');
+    return view('admindashboard.products')->with([
+        'products' => $products,
+        'productQuantities' => $productQuantities,
+       
+    ]);
 //         
 
 }
