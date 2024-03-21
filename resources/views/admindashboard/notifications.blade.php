@@ -1,6 +1,18 @@
 @extends('admindashboard.layout')
 @section('title', 'Notifications')
 @section('content')
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ asset('css/admin.notifications.css') }}">  
+
+    <title>Title of your HTML page</title>
+</head>
+<body>
+
 <div class="buttons">
         <button onclick="notifySuccess()">
         Success
@@ -14,19 +26,11 @@
 </div>
 
 <div id="notification-area">
-        <div class="notification success">
-                This is demo success notification
-        </div>
-        <div class="notification error">
-                This is demo error notification
-        </div>
-        <div class="notification info">
-                This is demo info notification
-        </div>
-</div>
+     </div>
 
-
-
+    <script src="/public/js/admin.notifications.js"></script>
+</body>
+</html>
 
 
 
