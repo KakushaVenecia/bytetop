@@ -1,65 +1,45 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    margin-left: 25rem
+    margin: 0;
+    padding: 0;
+    background:#00668A;
   }
-  
-  
-  .form-group {
-    margin-bottom: 10px;
-  }
-  
-  label {
-    font-weight: bold;
-  }
-  
-  
-  
-  input[type=submit] {
-    background-color: #f2f2f2;
-    color: #0a0909;
-    padding: 12px 20px;
-    border: 1px solid;
-    cursor: pointer;
-    font-size: 1.2rem;
-    font-weight: 600;
-}
-  
-  input[type=submit]:hover {
-    background-color: orange;
-  }
- 
   
   .container {
-    width: 50rem;
-    margin: 20px;
+    width: 50%;
+    margin: auto;
     padding: 20px;
     border-radius: 5px;
-    background-color: #f2f2f2;
+    background-color: #001E2C;
   }
   
   .form-group {
     margin-bottom: 16px;
-    display: grid;
   }
   
   label {
     font-weight: bold;
-    font-size: 1.45em;
+    font-size: 1.30em;
+    color: white;
   }
   
-  input[type=text], input[type=email], input[type=tel] {
-    width: 45%;
+  input[type=text],
+  input[type=email],
+  input[type=tel] {
+    width: 25rem;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
     margin-top: 6px;
     resize: vertical;
+    display: flex;
   }
 
 
-  textarea{
-    width: 85%;
+
+  textarea {
+    width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -113,13 +93,28 @@ h1, h2, h3, h4, h5, h6 {
     resize: vertical;
   }
   
+
+  input[type=submit] {
+    background-color: #f2f2f2;
+    color: #0a0909;
+    padding: 12px 20px;
+    border: 1px solid;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    width: 20%;
+    margin-left: 15rem;
+    border-radius: 25px;
+  }
+  
+  input[type=submit]:hover {
+    background-color: orange;
+  }
+
   h3 {
-    display: block;
-    font-size: 2.17em;
-    color: #00668A;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+    font-size: 2em;
+    color: #f9fafb;
     font-weight: bold;
-}
+    text-align: center;
+  }
+  
