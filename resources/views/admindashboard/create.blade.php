@@ -49,7 +49,7 @@
                         <option value="">Select a Product Category</option>
                         <option value="Laptops" @if(old('category') == 'Laptops') selected @endif>Laptops</option>
                         <option value="Computers" @if(old('category') == 'Computers') selected @endif>Computers</option>
-                        <option value="Laptop Accessories" @if(old('category') == 'Laptop Accessories') selected @endif>Accessories</option>
+                        <option value="Accessories" @if(old('category') == 'Accessories') selected @endif>Accessories</option>
                         <option value="Computer Monitors" @if(old('category') == 'Computer Monitors') selected @endif>Laptops</option>
                         <option value="All in One Desktops" @if(old('category') == 'All in One Desktops') selected @endif>Laptops</option>
 
