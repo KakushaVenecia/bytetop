@@ -23,9 +23,9 @@ function notifySuccess(){
 }
 
 function notifyError(){
-    notify("success", "this is dummy error notification message");
+    notify("error", "this is dummy error notification message");
 }
 
 function notifyInfo(){
-    notify("success", "this is dummy info notification message");
+    notify("info", "this is dummy info notification message");
 }
