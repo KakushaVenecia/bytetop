@@ -71,61 +71,6 @@ class ProductController extends Controller
     // Return a JSON response indicating success
     return response()->json(['success' => true, 'message' => 'Product created successfully']);
 }
-//     public function store(Request $request)
-// {
-//     // Validate the request data
-//     $request->validate([
-//         'name' => 'required|string',
-//         'description' => 'required|string',
-//         'price' => 'required|numeric',
-//         'tags' => 'required|string',
-//         'category' => 'required|string',
-//         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-//         'quantity' => 'required|integer|min:1',
-//     ]);
-
-//     // Store the image
-//     $image = $request->file('image');
-//     $filename = $image->hashName();
-//     $image->store('images', 'public');
-
-//     // Create an array with common fields for all products
-//     $commonFields = [
-//         'name' => $request->input('name'),
-//         'description' => $request->input('description'),
-//         'price' => $request->input('price'),
-//         'tags' => $request->input('tags'),
-//         'category' => $request->input('category'),
-//         'image' => $filename,
-//         'user_id' => auth()->id(),
-//     ];
-
-//     // Create multiple products based on quantity
-//     for ($i = 0; $i < $request->quantity; $i++) {
-//         // Create product
-//         Product::create($commonFields);
-//     }
-
-//     // Check if the product already exists in ProductQuantity
-//     $productQuantity = ProductQuantity::where('product_name', $commonFields['name'])->first();
-
-//     if ($productQuantity) {
-//         // If the product exists, update its quantity
-//         $productQuantity->increment('quantity', $request->quantity);
-//     } else {
-//         // If the product doesn't exist, create a new entry
-//         ProductQuantity::create([
-//             'product_name' => $commonFields['name'],
-//             'quantity' => $request->quantity,
-//         ]);
-//     }
-
-//     // Return a JSON response indicating success
-//     return response()->json(['success' => true, 'message' => 'Product created successfully']);
-// }
-
-    
-    
 
     public function edit($id)
     {
@@ -137,6 +82,8 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+
+    
          // Debug: Dump the product ID received in the request
         // Validate the request data
         $request->validate([
@@ -146,10 +93,12 @@ class ProductController extends Controller
             'tags' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category' => 'required|string',
+            'quantity' =>'required|integer|min:1',
             
         ]);
         // Find the product by ID
         $product = ProductDetail::findOrFail($id);
+       
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -165,7 +114,10 @@ class ProductController extends Controller
             'price' => $request->input('price'),
             'tags' => $request->input('tags'),
             'category' => $request->input('category'),
+            'quantity' => $request->input('quantity'),
+
         ]);
+
         return Redirect::route('dashboard')->with('success', 'Product updated successfully');
     }
     public function destroy($id)
@@ -211,6 +163,26 @@ public function getProductDescription(Request $request)
         return response()->json(['description' => $product->description]);
     } else {
         // If the product is not found, return a JSON response with a 404 status code
+        return response()->json(['error' => 'Product not found'], 404);
+    }
+}
+
+
+public function getStockQuantity(Request $request){
+    $productName = $request->query('name');
+
+    // Retrieve the product detail record based on the product name
+    $productDetail = ProductDetail::where('name', $productName)->first();
+
+    // Check if the product detail record exists
+    if ($productDetail) {
+        // If the record exists, return its ID and the sum of quantities
+        return response()->json([
+            'id' => $productDetail->id,
+            'quantity' => $productDetail->quantity
+        ]);
+    } else {
+        // If the record doesn't exist, return an error message
         return response()->json(['error' => 'Product not found'], 404);
     }
 }
