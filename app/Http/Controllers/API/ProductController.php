@@ -317,8 +317,7 @@ public function allproducts()
         'products' => $products,
         'productQuantities' => $productQuantities,
        
-    ]);
-//         
+    ]);        
 
 }
 
