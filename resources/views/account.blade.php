@@ -4,640 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{-- <link rel="stylesheet" href="css/account.css"> --}}
+    <link rel="stylesheet" href="css/account.css">
     <link rel="stylesheet" href="css/styles.css">
-    <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
-    
-
-    
+    <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>  
     <title>Your Page Title</title>
 </head>
-<style>
-    * {
-        margin: 0px;
-    }
-.header {
-    background-color: #001E2C;
-    color: white;
-    padding: 10px;
-    text-align: right;
-    height: 10rem;
-}
 
-.dotted-box {
-    font-size: 1.2rem;
-    margin: 2rem;
-    border: black;
-    cursor: pointer;
-    border-style: dashed;
-    height: 266px;
-    width: 320px;
-    border-width: 2px;
-    box-sizing: border-box;
-    border-color: #C7C7C7;
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-}
 
 
-.address_container {
-    padding: 5rem;
-}
-
-h4 {
-    font-size: 2rem;
-    margin-bottom: 2rem
-}
-
-
-
-
-    .user-profile {
-        position: relative;
-    }
-
-    .user-icon {
-        cursor: pointer;
-    }
-
-    .profile-menu {
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        padding: 10px;
-        display: none;
-    }
-
-    .profile-menu a {
-        display: block;
-        color: #333;
-        text-decoration: none;
-        padding: 5px 10px;
-    }
-
-    .profile-menu a:hover {
-        background-color: orange;
-        color: #001E2C;
-    }
-
-/* Main header */
-header {
-    background-color: #f0f0f0;
-    padding: 20px;
-    text-align: center;
-    height: 10rem;
-}
-
-/* Main content */
-main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 6rem;
-    font-size: 1.2rem;
-}
-
-.account-sections {
-    width: 45%;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 20px;
-    height: 150px;
-    border-radius: 12px;
-
-}
-
-    .inner-content {
-        text-align: center;
-        line-height: 1.5;
-        /* Adjust line height as needed */
-        margin-bottom: 20px;
-        /* Add margin between lines */
-    }
-
-    .inner-content h2,
-    .inner-content p {
-        margin: 0;
-        /* Remove default margins for heading and paragraph */
-    }
-
-    .edit-text,
-    .edit-order {
-        cursor: pointer;
-        color: blue;
-        display: inline-block;
-        margin-left: 10px;
-    }
-
-.blurbackground {
-    filter: blur(5px);
-}
-
-/* Popups */
-.popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    z-index: 999;
-    display: none;
-    width: 35rem;
-    height: 35rem;
-   
-}
-
-
-.ordergroup {
-    margin-top: 2rem;
-}
-
-.group {
-    margin-left: 7rem;
-    margin-top: 1.6rem;
-    font-size: 1.3rem;
-    display:flex;
-}
-
-
-
-a.find {
-    font-size: 1rem;
-    color:#BA1A1A;
-    font-weight: 600;
-}
-
-
-hr.blue-line {
-    margin-bottom: 2rem;
-}
-
-
-.row.as-l-container {
-    font-size: 1.2rem;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
-
-p5.callout-copy {
-    font-size: 1.3rem;
-}
-
-
-
-    #addressForm {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #fff;
-        padding: 20px;
-        border: 1px solid #ccc;
-        z-index: 999;
-        display: none;
-        width: 80%;
-        /* Adjust the width as needed */
-        max-width: 600px;
-        /* Set a maximum width to prevent it from becoming too wide */
-        max-height: 80%;
-        /* Set a maximum height to prevent it from becoming too tall */
-        overflow-y: auto;/
-    }
-
-    .popup-content {
-        position: relative;
-    }
-
-    .close {
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        cursor: pointer;
-        background-color: orange;
-        color: #040404;
-        padding: 5px;
-        border-radius: 50%;
-        font-size: 16px;
-        line-height: 1;
-        transition: background-color 0.3s ease;
-    }
-
-    a:hover {
-        background-color: orange;
-        color: white;
-    }
-
-    .close:hover {
-        background-color: #999;
-    }
-
-    /* Form styling */
-    .container {
-        width: 100%;
-        padding: 16px;
-        background-color: white;
-    }
-
-input[type=text], textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    font-size:1.2rem;
-}
-
-.col-50 label {
-    margin-top: 6px;
-    display: block;
-    font-size: 1.2rem;
-}
-
-.blurbackground{
-    filter:none;
-    filter: blur(5px);
-}
-
-.blurbackground {
-    filter: blur(5px); /* Apply the blur effect */
-}
-
-    .btn {
-        /* background-color: #4CAF50; */
-        color: white;
-        padding: 16px 20px;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-        width: 100%;
-        margin-top: 10px;
-        font-size: 16px;
-    }
-.btn {
-    padding: 10px 20px;
-    text-decoration: none;
-    color: black;
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 25px;
-    cursor: pointer;
-    margin-left: 7rem;
-    font-size: large;
-    margin-top: 2rem;
-    font-weight: 600;
-}
-
-    .btn:hover {
-        background-color: #45a049;
-    }
-.btn:hover {
-    background-color: orange;
-}
-
-    .col-25 {
-        float: left;
-        width: 45%;
-        margin-top: 6px;
-    }
-
-    .col-75 {
-        float: left;
-        width: 75%;
-        margin-top: 6px;
-    }
-
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-
-h1 {
-    margin-top: 2rem;
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-}
-
-
-h22.order-lookup-header {
-    font-size: 2rem;
-    font-weight: 600;
-}
-
-
-
-
-.grp {
-    margin-left: 17rem;
-    margin-top: 2rem;
-}
-
-
-.grp button {
-    padding: 5px 10px;
-    background-color: #fff;
-    border: 1px solid black;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: large;
-}
-
-.grp button:hover {
-    background-color: #f7890b; /* Changed to orange */
-    color: #000!important;
-}
-
-
-
-
-
-.popup1 .close {
-    position: absolute;
-    top: 20px;
-    right: 5px;
-    cursor: pointer;
-    background-color: orange;
-    color: #040404;
-    padding: 5px;
-    border-radius: 50%;
-    font-size: 16px;
-    line-height: 1;
-    transition: background-color 0.3s ease;
-    margin-right: 1rem;
-
-}
-
-
-.popup1 .close:hover {
-    background-color: #999;
-}
-
-.popup1 {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    z-index: 999;
-    display: none;
-    width: 30rem;
-    height: 40rem;
-   
-}
-
-.popup2 {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    z-index: 999;
-    display: none;
-    width: 35rem;
-    height: 43rem;
-   
-}
-
-
-
-.popup2 .close {
-    position: absolute;
-    top: 20px;
-    right: 5px;
-    cursor: pointer;
-    background-color: orange;
-    color: #040404;
-    padding: 5px;
-    border-radius: 50%;
-    font-size: 16px;
-    line-height: 1;
-    transition: background-color 0.3s ease;
-    margin-right: 1rem;
-
-}
-
-
-.popup2 .close:hover {
-    background-color: #999;
-}
-
-
-h3 {
-    font-size: 2rem;
-    margin-top: 2rem;
-    margin-bottom:2rem;
-}
-
-
-
-.payment__cc {
-    padding-top: 2rem;
-}
-
-
-.Card__title {
-    font-size: 1.5rem;
-    font-weight: 600;
-}
-
-.card {
-    padding-top: 2rem;
-}
-
-.title {
-    font-size: 1.2rem;
-    padding-bottom: .5rem;
-}
-
-input.input.txt.text-validated {
-    font-size: 1.2rem;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-input.input2.txt {
-    font-size: 1.2rem;
-    padding: 0.5rem;
-}
-
-
-hr.white-line {
-    margin: 1rem;
-}
-
-.information {
-    font-size: 1.2rem;
-}
-
-
-select {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-    margin-bottom: 16px;
-    font-size: 1.1rem;
-    
-}
-
-input.input1.txt {
-    font-size: .9rem;
-    width: 5rem;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-.button-container {
-    text-align: right;
-}
-
-
-button.cancel-btn {
-    margin-top: 2rem;
-    padding: 5px 10px;
-    background-color: #fff;
-    border: 1px solid black;
-    border-radius: 25px;
-    cursor: pointer;
-    
-}
-
-button.cancel-btn:hover {
-    background-color: orange;
-}
-
-
-button.add-card-btn {
-    padding: 5px 10px;
-    background-color: #fff;
-    border: 1px solid black;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: large;
-}
-
-
-button.add-card-btn:hover {
-    background-color: orange;
-}
-
-
-
-
-/* FOOTER STYLES */
-footer{
-    /* position: absolute; */
-   bottom: 0;
-   left: 0;
-   right: 0;
-   background: #111;
-   height: auto;
-   width: 100vw;
-   padding-top: 40px;
-   color: #fff;
-   }
-   
-   .footer-content {
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       flex-direction: column;
-       text-align: center;
-   }
-   
-   .footer-content h3 {
-       font-size: 2.1rem;
-       font-weight: 500;
-       text-transform: capitalize;
-       line-height: 3rem;
-   }
-   .footer-content p {
-       max-width: 500px;
-       margin: 10px auto;
-       line-height: 28px;
-       font-size: 14px;
-       color: #cacdd2;
-   }
-   .socials {
-       list-style: none;
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       margin: 1rem 0 3rem 0;
-   }
-   .socials li {
-       margin: 0 10px;
-   }
-   
-   .footer-bottom {
-       background: #000;
-       width: 100vw;
-       padding: 20px;
-       padding-bottom: 40px;
-       text-align: center;
-   }
-   .footer-menu {
-       float: right;
-   }
-   .footer-menu ul {
-       display: flex;
-   }
-   
-   a{
-       list-style: none!important;
-   }
-   
-   ::marker {
-       list-style: none!important;
-       unicode-bidi: isolate;
-       font-variant-numeric: tabular-nums;
-       text-transform: none;
-       text-indent: 0px !important;
-       text-align: start !important;
-       text-align-last: start !important;
-   }
-
-   input.input7 {
-    font-size: 1.2rem;
-    padding: 0.5rem;
-    margin-left: 1rem;
-}
-
-
-
-
-    </style>
-<body>
 @include('partials.navbar')
-        <!-- <div class="header">
-            <div class="user-profile" onmouseover="showMenu()" onmouseout="hideMenu()" onclick="toggleMenu()">
-                <span class="user-icon"><i class="fas fa-user"></i></span>
-                <div class="profile-menu" id="profileMenu" style="display: none;">
-                    <a href="#" onclick="openPopup('Account')">Account</a>
-                    <a href="#" onclick="openPopup('Orders')">Orders</a>
-                    <a href="#" onclick="openPopup('LoginSecurity')">Login &amp; Security</a>
-                    <a href="#" onclick="openPopup('Address')">Address</a>
-                    <a href="#" onclick="openPopup('Payments')">Payments</a>
-                    <a href="#" onclick="signOut()">Sign Out</a>
-                </div>
-            </div>
-        </div>  -->
+
+<body>
+        
 <header>
     <h1>Your Account</h1>
 </header>
@@ -655,12 +33,9 @@ footer{
                 <h2>Login &amp; Security</h2>
                 <p>Manage password, email, and mobile number</p>
                 <div class="edit-text" onclick="openPopup('loginsecurityPopup')">Edit</div>
-                <div class="edit-text" data-toggle="modal" data-target="#changePasswordModal">Change Password</div>
-
             </div>
         </section>
 
-        @include('partials.change_password_modal')
 
 
         <section class="account-sections bottom-left" id="Address">
@@ -715,67 +90,154 @@ footer{
 
 
 
+
+
+
+
     <div class="popup" id="loginsecurityPopup" style="display: none;">
         <div class="popup-content">
             <span class="close" onclick="closePopup('loginsecurityPopup')">&times;</span>
 
-            <body2>
+            <div class="loginpopup">
                 <div class="container1">
                     <h0>Login & Security</h0>
                     <form action="#" method="post">
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text1" id="name" name="name" value="ByteTop" disabled>
-                            <button type="button" id="changeName" class="edit-btn" onclick="openEditPopup('editNamePopup')">Change</button>
+                            <button type="button" id="changeName" class="edit-btn" onclick="openEditPopup('editNamePopup')">Edit</button>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email1" id="email" name="email" value="Bytetop@gmail.com" disabled>
-                            <button type="button" id="editEmail" class="edit-btn" onclick="openEditPopup('editEmailPopup')">Change</button>
+                            <button type="button" id="editEmail" class="edit-btn" onclick="openEditPopup('editEmailPopup')">Update</button>
                         </div>
 
                         <div class="form-group">
-                            <label for="mobile">Mobile Number</label>
+                            <label for="mobile">Number</label>
                             <input type="tel1" id="mobile" name="mobile" placeholder="Add your mobile number" disabled>
                             <button type="button" id="editMobile" class="edit-btn" onclick="openEditPopup('editMobilePopup')">Add</button>
                         </div>
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password1" id="password" name="password" value="" disabled>
+                            <input type="password1" id="password" name="password" value="userpassword" disabled>
                             <button type="button" id="editPassword" class="edit-btn" onclick="openEditPopup('editPasswordPopup')">Change</button>
                         </div>
                     </form>
                 </div>
 
+
+
                 <!-- Edit Name Popup -->
                 <div id="editNamePopup" class="edit-popup" style="display: none">
                     <span class="close" onclick="closePopup('editNamePopup')">&times;</span>
-
                     <h01>Change your name</h01>
                     <div class="namecontainer">
                         <div class="message">Make sure that you click the Save Changes button when you have finished...</div>
-
                         <div class="namegroup">
+                        <label>New name *</label>
                             <input required="" type="text2" class="input">
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label>New name *</label>
                         </div>
-
                         <div class="namegrp">
                             <button type="button" onclick="updateField('name', 'newName')">Save changes</button>
                         </div>
-
                     </div>
                 </div>
 
 
-            </body2>
+
+                <div id="editEmailPopup" class="edit-popup" style="display: none">
+                    <span class="close" onclick="closePopup('editEmailPopup')">&times;</span>
+                    <h01>Change your email address</h01>
+                    <div class="namecontainer">
+                        <div class="message">Enter the new email address you would like to associate with your account below.</div>
+                        <div class="namegroup">
+                        <label>New email address*</label>
+                            <input required="" type="text2" class="input">
+                        </div>
+                        <div class="namegrp">
+                            <button id="verifyButton" type="button" >Verify</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div id="editMobilePopup" class="edit-popup" style="display: none">
+                    <span class="close" onclick="closePopup('editMobilePopup')">&times;</span>
+                    <h01>Add mobile number</h01>
+                    <div class="namecontainer">
+                        <div class="message">Enter the new mobile number you would like to associate with your account below...   We will send a One Time Password (OTP) to that number.</div>
+                        <div class="namegroup">
+                        <label>Mobile number *</label>
+                            <input required="" type="text2" class="input">
+                        </div>
+                        <div class="namegrp">
+                            <button id="verifyButton" type="button" >Verify</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="editPasswordPopup" class="edit-popup" style="display: none">
+                    <span class="close" onclick="closePopup('editPasswordPopup')">&times;</span>
+                    
+                        <div class="modal" id="changePasswordModal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Change Password</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                       
+                                        <form method="post" action="{{ route('update.password') }}">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label for="current_password">Current Password</label>
+                                                <input type="password" class="form-control" id="current_password" name="current_password" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="new_password">New Password</label>
+                                                <input type="password" class="form-control" id="new_password" name="new_password" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="confirm_password">Confirm Password</label>
+                                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                                            </div>
+                                            <button type="submit" class="btn-primary">Save changes</button>
+                                        </form>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+
+
+
+</div>
 
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
     <div class="popup" id="addressPopup" style="display: none;">
         <div class="popup-content">
@@ -793,6 +255,14 @@ footer{
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
 
 
 <div class="popup2" id="paymentsPopup" style="display: none;">
@@ -902,13 +372,18 @@ footer{
     </div>
 
 
+
+
+
+
+
+
+
+
 <div class="popup" id="addressForm" style="display: none;">
     <div class="popup-content">
         <span class="close" onclick="closeAddressForm()">&times;</span>
-   
-
-            <body1>
-
+            <div class= "addresform">
 <div class="row">
   <div class="col-75">
     <div class="container">
@@ -939,9 +414,6 @@ footer{
                                             </div>
                                         </div>
                                     </div>
-
-
-
                                 </div>
                                 <input type="submit" value="Add address" class="btn">
                             </form>
@@ -950,15 +422,10 @@ footer{
 
                 </div>
 
-</body1>
+</div>
 
         </div>
     </div>
-
-
-
-
-
 
 <script src="js/account.js"></script>
 @include('partials.footer')
