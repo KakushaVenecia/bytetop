@@ -13,10 +13,10 @@ class PaymentController extends Controller
     { dd($request);
         // Validate request data
         $validatedData = $request->validate([
-            'card_number' => 'required',
+            'card_number' => 'required|integer|min 16|max 16',
             'expiry_date' => 'required',
-            'security_code' => 'required',
-            'name' => 'required',
+            'security_code' => 'required|integer|min 3|max 3',
+            'name' => 'required|string',
         ]);
 
         // Create a new shipping address
