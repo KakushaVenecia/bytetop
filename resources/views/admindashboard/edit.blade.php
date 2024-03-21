@@ -105,6 +105,10 @@ a{
             <label for="category">Category:</label><br>
             <input type="text" id="category" name="category" value="{{ $product->category }}" required><br>
         </div>
+        <div class="mb-6">
+            <label for="quantity" class="inline-block text-lg mb-2">Quantity</label>
+         <input type="number" class="border border-gray-200 rounded p-2 w-full" name="quantity"  id="quantity" value="{{ $product->quantity }}" placeholder="Enter quantity">
+        </div>
 
         <div>
             <button type="submit">Update Product</button>

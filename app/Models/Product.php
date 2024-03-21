@@ -14,7 +14,7 @@ class Product extends Model
 
     public function details()
     {
-        return $this->hasMany(ProductQuantity::class);
+        return $this->hasMany(Product::class);
     }
 }
 
