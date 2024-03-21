@@ -427,8 +427,6 @@
         </div>
     </div>
 
-
-
 <script src="js/account.js"></script>
 @include('partials.footer')
 </body>
