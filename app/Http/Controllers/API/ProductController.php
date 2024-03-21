@@ -7,16 +7,16 @@ use App\Models\ProductDetail;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\User;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Redirect;;
 use Illuminate\Support\Str;
 use Tymon\JWTAuth\Facades\JWTAuth;
+
 
 class ProductController extends Controller
 {
     public function create()
     {
-        $products = Product::all();
+        $products = ProductDetail::all();
         return view('admindashboard.create')->with('products', $products);
         
     }
@@ -71,72 +71,19 @@ class ProductController extends Controller
     // Return a JSON response indicating success
     return response()->json(['success' => true, 'message' => 'Product created successfully']);
 }
-//     public function store(Request $request)
-// {
-//     // Validate the request data
-//     $request->validate([
-//         'name' => 'required|string',
-//         'description' => 'required|string',
-//         'price' => 'required|numeric',
-//         'tags' => 'required|string',
-//         'category' => 'required|string',
-//         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-//         'quantity' => 'required|integer|min:1',
-//     ]);
-
-//     // Store the image
-//     $image = $request->file('image');
-//     $filename = $image->hashName();
-//     $image->store('images', 'public');
-
-//     // Create an array with common fields for all products
-//     $commonFields = [
-//         'name' => $request->input('name'),
-//         'description' => $request->input('description'),
-//         'price' => $request->input('price'),
-//         'tags' => $request->input('tags'),
-//         'category' => $request->input('category'),
-//         'image' => $filename,
-//         'user_id' => auth()->id(),
-//     ];
-
-//     // Create multiple products based on quantity
-//     for ($i = 0; $i < $request->quantity; $i++) {
-//         // Create product
-//         Product::create($commonFields);
-//     }
-
-//     // Check if the product already exists in ProductQuantity
-//     $productQuantity = ProductQuantity::where('product_name', $commonFields['name'])->first();
-
-//     if ($productQuantity) {
-//         // If the product exists, update its quantity
-//         $productQuantity->increment('quantity', $request->quantity);
-//     } else {
-//         // If the product doesn't exist, create a new entry
-//         ProductQuantity::create([
-//             'product_name' => $commonFields['name'],
-//             'quantity' => $request->quantity,
-//         ]);
-//     }
-
-//     // Return a JSON response indicating success
-//     return response()->json(['success' => true, 'message' => 'Product created successfully']);
-// }
-
-    
-    
 
     public function edit($id)
     {
         
-        $product = Product::findOrFail($id);
+        $product = ProductDetail::findOrFail($id);
         return view('admindashboard.edit', compact('product'));
         
     }
 
     public function update(Request $request, $id)
     {
+
+    
          // Debug: Dump the product ID received in the request
         // Validate the request data
         $request->validate([
@@ -146,10 +93,12 @@ class ProductController extends Controller
             'tags' => 'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category' => 'required|string',
+            'quantity' =>'required|integer|min:1',
             
         ]);
         // Find the product by ID
-        $product = Product::findOrFail($id);
+        $product = ProductDetail::findOrFail($id);
+       
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -165,17 +114,38 @@ class ProductController extends Controller
             'price' => $request->input('price'),
             'tags' => $request->input('tags'),
             'category' => $request->input('category'),
+            'quantity' => $request->input('quantity'),
+
         ]);
+
         return Redirect::route('dashboard')->with('success', 'Product updated successfully');
     }
     public function destroy($id)
-    {
-        // Find the product by ID and delete it
-        $product = Product::findOrFail($id);
-        $product->delete();
+{
+    // Find the product by ID
+    $product = ProductDetail::findOrFail($id);
 
-        return Redirect::route('dashboard')->with('success', 'Product deleted successfully');
+    // Get the name of the product
+    $name = $product->name;
+
+    // Find the corresponding product in the Product table using the name and delete it
+    $productToDelete = Product::where('name', $name)->first();
+    if ($productToDelete) {
+        $productToDelete->delete();
     }
+
+    // Find the corresponding product detail by name and decrement its quantity
+    $productDetail = ProductDetail::where('name', $name)->first();
+    if ($productDetail) {
+        // Reduce the quantity by 1 (assuming decrementing the quantity by 1 when deleting a product)
+        if ($productDetail->quantity > 0) {
+            $productDetail->quantity--;
+            $productDetail->save();
+        }
+    }
+
+    return redirect()->route('dashboard')->with('success', 'Product deleted successfully');
+}
     public function index()
 {
     $products = Product::select('id', 'name')->distinct()->get();
@@ -197,12 +167,32 @@ public function getProductDescription(Request $request)
     }
 }
 
+
+public function getStockQuantity(Request $request){
+    $productName = $request->query('name');
+
+    // Retrieve the product detail record based on the product name
+    $productDetail = ProductDetail::where('name', $productName)->first();
+
+    // Check if the product detail record exists
+    if ($productDetail) {
+        // If the record exists, return its ID and the sum of quantities
+        return response()->json([
+            'id' => $productDetail->id,
+            'quantity' => $productDetail->quantity
+        ]);
+    } else {
+        // If the record doesn't exist, return an error message
+        return response()->json(['error' => 'Product not found'], 404);
+    }
+}
+
 public function dashboard()
 {
-    // $productCount = Product::count();
+    $productCount = Product::count();
 
-    // // Get unique product names
-    // $uniqueProductNames = Product::distinct()->pluck('name');
+    // Get unique product names
+    // $products = Product::distinct()->pluck('name');
 
     // $productCounts = [];
     // foreach ($uniqueProductNames as $name) {
@@ -211,7 +201,7 @@ public function dashboard()
     // }
 
     // // Paginate the products
-    // $products = Product::paginate(7);
+    $products = ProductDetail::paginate(7);
 
     // // Fetch all users
     // $users = User::all();
@@ -237,13 +227,28 @@ public function dashboard()
     //     dd($customers);
     //     // Return the view with all necessary data, including the route
         return view('admindashboard.dashboard')->with([
-            // 'users' => $customers,
+            'productCount' => $productCount,
+            'products' => $products,
             'route' => $route,
         ]);
     }
     
 public function allproducts()
 {
+
+    $products = ProductDetail::paginate(30);
+    $productQuantities = [];
+    foreach ($products as $product) {
+        $productName = $product->name;
+        $quantity = Product::where('name', $productName)->count();
+        $productQuantities[$productName] = $quantity;
+    }
+    // $productCount = ProductDetail::select('name', DB::raw('count(*) as count'), DB::raw('sum(quantity) as total_quantity'))
+    // ->groupBy('name')
+    // ->get();
+
+   
+    
 //     // Get unique product names with associated fields
 //     $uniqueProducts = Product::select('name', 'description', 'price', 'tags', 'category')
 //                              ->distinct()
@@ -261,7 +266,11 @@ public function allproducts()
 //     $users = User::all();
 
 //     // Return the view with all necessary data
-    return view('admindashboard.products');
+    return view('admindashboard.products')->with([
+        'products' => $products,
+        'productQuantities' => $productQuantities,
+       
+    ]);
 //         
 
 }

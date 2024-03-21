@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const defaultProductDescription = document.getElementById('default-product-description');
     const customProductDescriptionSection = document.getElementById('custom-description-section');
     const productDescriptionTextarea = document.getElementById('product-description');
+    const productQuantity = document.getElementById('quantity')
 
     productNameSelect.addEventListener('change', function() {
         const selectedValue = this.value;
@@ -28,6 +29,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 .catch(error => {
                     console.error('Error fetching product description:', error);
                 });
+
+        
+                fetch(`/get-product-quantity?name=${selectedValue}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Update the product quantity input with the fetched quantity
+                        productQuantity.value = data.quantity;
+                    })
+                    .catch(error => {
+                        console.error('Error fetching product quantity:', error);
+                    });
         }
     });
 
@@ -48,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const customDescriptionInput = document.getElementById('custom-description');
             formData.set('name', customNameInput.value);
             formData.set('description', customDescriptionInput.value);
+
         }
 
         // Send form data to the server
