@@ -504,8 +504,10 @@ body {
   }
 
   h2 {
-    font-size: 3rem;
+    font-size: 2rem;
   }
+
+  
   .product-content {
     width: 100%;
     height: 100%;
@@ -560,3 +562,26 @@ body {
     background-image: url('desktops.jpg'); 
   }
   
+
+  /* Existing CSS */
+/* Add responsive styles here */
+@media screen and (max-width: 768px) {
+    .container {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .product {
+        width: 70%; /* Adjust as needed */
+        max-width: 250px; /* Adjust as needed */
+        margin-right: 10px; /* Adjust as needed */
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px; /* Adjust as needed */
+    }
+}
+
+

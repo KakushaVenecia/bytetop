@@ -29,63 +29,61 @@
   
   
   <div class="container" id="productContainer">
-    <div class="product laptops">
-      <button class="arrow left">&lt;</button>
-      <div class="product-content">
-        <a href="laptops.html">
-          <h2>Laptops Catalogues</h2>
-          <p> Here you find the Best Laptops.</p>
-          <p> Click here to view more...</p>
-        </a>
-      </div>
-      <button class="arrow right">&gt;</button>
+  <div class="product laptops">
+    <button class="arrow left">&lt;</button>
+    <div class="product-content">
+      <a href="laptops.html">
+        <h2>Laptops Catalogues</h2>
+        <p> Here you find the Best Laptops.</p>
+        <p> Click here to view more...</p>
+      </a>
     </div>
-    <div class="product computers">
-      <button class="arrow left">&lt;</button>
-      <div class="product-content">
-        <a href="computers.html">
-          <h2>Computers Catalogues</h2>
-          <p> Here you find the Best Computers.</p>
-          <p> Click here to view more...</p>
-        </a>
-      </div>
-      <button class="arrow right">&gt;</button>
-    </div>
-    <div class="product accessories">
-      <button class="arrow left">&lt;</button>
-      <div class="product-content">
-        <a href="accessories.html">
-          <h2>Accessories Catalogues</h2>
-          <p> Here you find the Best Accessories.</p>
-          <p> Click here to view more...</p>
-        </a>
-      </div>
-      <button class="arrow right">&gt;</button>
-    </div>
-    <div class="product monitors">
-      <button class="arrow left">&lt;</button>
-      <div class="product-content">
-        <a href="monitors.html">
-          <h2>Monitors Catalogues</h2>
-          <p> Here you find the Best Monitors.</p>
-          <p> Click here to view more...</p>
-        </a>
-      </div>
-      <button class="arrow right">&gt;</button>
-    </div>
-    <div class="product desktops">
-      <button class="arrow left">&lt;</button>
-      <div class="product-content">
-        <a href="desktops.html">
-          <h2>All in one Desktops Catalogues</h2>
-          <p> Here you find the Best All in one Desktops.</p>
-          <p> Click here to view more...</p>
-        </a>
-      </div>
-      <button class="arrow right">&gt;</button>
-    </div>
+    <button class="arrow right">&gt;</button>
   </div>
-
+  <div class="product computers">
+    <button class="arrow left">&lt;</button>
+    <div class="product-content">
+      <a href="computers.html">
+        <h2>Computers Catalogues</h2>
+        <p> Here you find the Best Computers.</p>
+        <p> Click here to view more...</p>
+      </a>
+    </div>
+    <button class="arrow right">&gt;</button>
+  </div>
+  <div class="product accessories">
+    <button class="arrow left">&lt;</button>
+    <div class="product-content">
+      <a href="accessories.html">
+        <h2>Accessories Catalogues</h2>
+        <p> Here you find the Best Accessories.</p>
+        <p> Click here to view more...</p>
+      </a>
+    </div>
+    <button class="arrow right">&gt;</button>
+  </div>
+  <div class="product monitors">
+    <button class="arrow left">&lt;</button>
+    <div class="product-content">
+      <a href="monitors.html">
+        <h2>Monitors Catalogues</h2>
+        <p> Here you find the Best Monitors.</p>
+        <p> Click here to view more...</p>
+      </a>
+    </div>
+    <button class="arrow right">&gt;</button>
+  </div>
+  <div class="product desktops">
+    <button class="arrow left">&lt;</button>
+    <div class="product-content">
+      <a href="desktops.html">
+        <h2>All in one Desktops Catalogues</h2>
+        <p> Here you find the Best All in one Desktops.</p>
+        <p> Click here to view more...</p>
+      </a>
+    </div>
+    <button class="arrow right">&gt;</button>
+  </div>
 
 
     </div>
