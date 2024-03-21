@@ -7,8 +7,7 @@
     {{-- <link rel="stylesheet" href="css/account.css"> --}}
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
+    
     
 
     
@@ -349,7 +348,6 @@ h22.order-lookup-header {
     padding: 5px 10px;
     background-color: #fff;
     border: 1px solid black;
-    border-radius: 25px;
     cursor: pointer;
     font-size: large;
 }
@@ -457,7 +455,24 @@ h3 {
 }
 
 .card {
-    padding-top: 2rem;
+    
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 2rem ;
+    border-radius: 12px;
+
+}
+
+
+.card:hover{
+    background-color : orange;
 }
 
 .title {
@@ -509,7 +524,6 @@ input.input1.txt {
 
 
 button.cancel-btn {
-    margin-top: 2rem;
     padding: 5px 10px;
     background-color: #fff;
     border: 1px solid black;
@@ -619,11 +633,208 @@ footer{
     margin-left: 1rem;
 }
 
+.form-group {
+    margin-bottom: 10px;
+    margin-top: 3rem;
+    width: 32rem;
+}
+
+
+.form-group label {
+    font-size: 1.4rem;
+    text-align: left;
+}
+
+.form-group input[type="text1"] {
+    border: 1.5px solid rgba(16, 17, 17, 0.576);
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-right: 2rem;
+    margin-left:  2.5rem;
+}
+
+
+.form-group input[type="email1"]
+{
+    border: 1.5px solid rgba(16, 17, 17, 0.576);
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-right: 2rem;
+    margin-left: 2.5rem;
+}
+
+.form-group input[type="tel1"]
+{
+    border: 1.5px solid rgba(16, 17, 17, 0.576);
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-right: 2rem;
+    margin-left : 1.3rem;
+}
+
+.form-group input[type="password1"]
+{
+    border: 1.5px solid rgba(16, 17, 17, 0.576);
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-right: 2rem;
+    margin-left: .5rem;
+}
 
 
 
-    </style>
+.form-group button[type="button"] {
+    background-color: #00668A;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px 10px;
+    width: 5rem;
+    height: 2rem;
+
+}
+
+.form-group button[type="button"]:hover {
+    background-color: #00668A;
+}
+
+
+h0 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+
+.container1 {
+    margin: 50px auto;
+    padding: 20px;
+    text-align: left;
+}
+
+
+div#editNamePopup, 
+div#editMobilePopup, 
+div#editEmailPopup,
+div#editPasswordPopup
+ {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 5rem 30px;
+    border: 1px solid #ccc;
+    z-index: 999;
+    width: 35rem;
+    height: 35rem;
+}
+
+
+
+
+
+h01 {
+    font-size: 2rem;
+    font-weight: 600;
+    
+}
+
+.message {
+    font-size: 1.2rem;
+    margin: 2rem;
+}
+
+
+input.input {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-left: 1rem;
+}
+
+.namegroup label {
+    font-size: 1.5rem;
+}
+
+.namegroup {
+    margin-left: 2rem;
+}
+
+.namegrp {
+    padding: 3rem 12rem;
+}
+
+
+
+.namegrp button {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 2 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: large;
+    width: 9rem;
+}
+
+.namegrp button:hover
+{
+    background-color: orange;
+}
+
+
+h5.modal-title {
+    font-size: 2.5rem;
+}
+
+
+input#current_password {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-left: 1rem;
+}
+
+input#new_password {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-left: 2.5rem;
+}
+
+
+input#confirm_password {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    margin-left: 0.3rem;
+}
+
+
+.btn-primary {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    background-color: #fff;
+    border: 1px solid black;
+    /* cursor: pointer; */
+    margin-right: 10px;
+    font-size: 1.1rem;
+    width: 9rem;
+    margin: 3rem 11rem;
+
+}
+
+.btn-primary:hover{
+    background-color: orange;
+}
+
+
+
+</style>
+
+
 <body>
+
 @include('partials.navbar')
         <!-- <div class="header">
             <div class="user-profile" onmouseover="showMenu()" onmouseout="hideMenu()" onclick="toggleMenu()">
@@ -655,12 +866,9 @@ footer{
                 <h2>Login &amp; Security</h2>
                 <p>Manage password, email, and mobile number</p>
                 <div class="edit-text" onclick="openPopup('loginsecurityPopup')">Edit</div>
-                <div class="edit-text" data-toggle="modal" data-target="#changePasswordModal">Change Password</div>
-
             </div>
         </section>
 
-        @include('partials.change_password_modal')
 
 
         <section class="account-sections bottom-left" id="Address">
@@ -715,6 +923,10 @@ footer{
 
 
 
+
+
+
+
     <div class="popup" id="loginsecurityPopup" style="display: none;">
         <div class="popup-content">
             <span class="close" onclick="closePopup('loginsecurityPopup')">&times;</span>
@@ -726,56 +938,139 @@ footer{
                         <div class="form-group">
                             <label for="name">Name</label>
                             <input type="text1" id="name" name="name" value="ByteTop" disabled>
-                            <button type="button" id="changeName" class="edit-btn" onclick="openEditPopup('editNamePopup')">Change</button>
+                            <button type="button" id="changeName" class="edit-btn" onclick="openEditPopup('editNamePopup')">Edit</button>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email1" id="email" name="email" value="Bytetop@gmail.com" disabled>
-                            <button type="button" id="editEmail" class="edit-btn" onclick="openEditPopup('editEmailPopup')">Change</button>
+                            <button type="button" id="editEmail" class="edit-btn" onclick="openEditPopup('editEmailPopup')">Update</button>
                         </div>
 
                         <div class="form-group">
-                            <label for="mobile">Mobile Number</label>
+                            <label for="mobile">Number</label>
                             <input type="tel1" id="mobile" name="mobile" placeholder="Add your mobile number" disabled>
                             <button type="button" id="editMobile" class="edit-btn" onclick="openEditPopup('editMobilePopup')">Add</button>
                         </div>
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password1" id="password" name="password" value="" disabled>
+                            <input type="password1" id="password" name="password" value="userpassword" disabled>
                             <button type="button" id="editPassword" class="edit-btn" onclick="openEditPopup('editPasswordPopup')">Change</button>
                         </div>
                     </form>
                 </div>
 
+
+
                 <!-- Edit Name Popup -->
                 <div id="editNamePopup" class="edit-popup" style="display: none">
                     <span class="close" onclick="closePopup('editNamePopup')">&times;</span>
-
                     <h01>Change your name</h01>
                     <div class="namecontainer">
                         <div class="message">Make sure that you click the Save Changes button when you have finished...</div>
-
                         <div class="namegroup">
+                        <label>New name *</label>
                             <input required="" type="text2" class="input">
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label>New name *</label>
                         </div>
-
                         <div class="namegrp">
                             <button type="button" onclick="updateField('name', 'newName')">Save changes</button>
                         </div>
-
                     </div>
                 </div>
+
+
+
+                <div id="editEmailPopup" class="edit-popup" style="display: none">
+                    <span class="close" onclick="closePopup('editEmailPopup')">&times;</span>
+                    <h01>Change your email address</h01>
+                    <div class="namecontainer">
+                        <div class="message">Enter the new email address you would like to associate with your account below.</div>
+                        <div class="namegroup">
+                        <label>New email address*</label>
+                            <input required="" type="text2" class="input">
+                        </div>
+                        <div class="namegrp">
+                            <button id="verifyButton" type="button" >Verify</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div id="editMobilePopup" class="edit-popup" style="display: none">
+                    <span class="close" onclick="closePopup('editMobilePopup')">&times;</span>
+                    <h01>Add mobile number</h01>
+                    <div class="namecontainer">
+                        <div class="message">Enter the new mobile number you would like to associate with your account below...   We will send a One Time Password (OTP) to that number.</div>
+                        <div class="namegroup">
+                        <label>Mobile number *</label>
+                            <input required="" type="text2" class="input">
+                        </div>
+                        <div class="namegrp">
+                            <button id="verifyButton" type="button" >Verify</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="editPasswordPopup" class="edit-popup" style="display: none">
+                    <span class="close" onclick="closePopup('editPasswordPopup')">&times;</span>
+                    
+                        <div class="modal" id="changePasswordModal" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Change Password</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                       
+                                        <form method="post" action="{{ route('update.password') }}">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label for="current_password">Current Password</label>
+                                                <input type="password" class="form-control" id="current_password" name="current_password" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="new_password">New Password</label>
+                                                <input type="password" class="form-control" id="new_password" name="new_password" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="confirm_password">Confirm Password</label>
+                                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                                            </div>
+                                            <button type="submit" class="btn-primary">Save changes</button>
+                                        </form>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+
 
 
             </body2>
 
         </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
     <div class="popup" id="addressPopup" style="display: none;">
         <div class="popup-content">
@@ -793,6 +1088,14 @@ footer{
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
 
 
 <div class="popup2" id="paymentsPopup" style="display: none;">
@@ -902,13 +1205,18 @@ footer{
     </div>
 
 
+
+
+
+
+
+
+
+
 <div class="popup" id="addressForm" style="display: none;">
     <div class="popup-content">
         <span class="close" onclick="closeAddressForm()">&times;</span>
-   
-
             <body1>
-
 <div class="row">
   <div class="col-75">
     <div class="container">
@@ -939,9 +1247,6 @@ footer{
                                             </div>
                                         </div>
                                     </div>
-
-
-
                                 </div>
                                 <input type="submit" value="Add address" class="btn">
                             </form>
@@ -954,9 +1259,6 @@ footer{
 
         </div>
     </div>
-
-
-
 
 
 

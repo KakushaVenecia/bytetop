@@ -694,13 +694,19 @@ body2 {
 }
 
 .container1 {
-    background-color: #f0f4f7;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    
     margin: 50px auto;
     padding: 20px;
-    text-align: center;
+    text-align: left;
 }
+
+
+h0 {
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+
 
 .form-group {
     margin-bottom: 10px;
@@ -782,10 +788,7 @@ body2 {
 }
 
 
-h0 {
-    font-size: 2rem;
-    font-weight: 600;
-}
+
 
 
 
@@ -1132,13 +1135,6 @@ h3{
 }
 
 
-h01 {
-    font-size: 2rem;
-    font-weight: 600;
-    padding-bottom: 2rem;
-    padding-left: 2rem;
-}
-
 .namecontainer {
     padding: 3rem;
     
@@ -1148,158 +1144,9 @@ h01 {
     padding-bottom: 2rem;
 }
 
-/*.namecontainer label{
-    font-size: 1.1rem;
-}
 
-.namecontainer button {
-    font-size: 1.1rem;
-    margin-top: 3rem;
-    border-radius: 6px;
-    width: 9rem;
-    height: 2rem;
-    background-color: #00668A;
-}*/
-
-.namegroup {
-    position: relative;
-    margin-top: 3rem;
-    width: 15rem;
-}
    
-   .namegroup input {
-    font-size: 16px;
-    padding: 10px 10px 10px 5px;
-    display: block;
-    width: 200px;
-    border: none;
-    border-bottom: 1px solid #515151;
-    background: transparent;
-   }
-
-   .namegroup input[type=text2] {
-    font-size: 1rem;
-}
    
-   .namegroup input:focus {
-    outline: none;
-   }
-   
-   .namegroup label {
-    color: #999;
-    font-size: 18px;
-    font-weight: normal;
-    position: absolute;
-    pointer-events: none;
-    left: 5px;
-    top: 10px;
-    transition: 0.2s ease all;
-    -moz-transition: 0.2s ease all;
-    -webkit-transition: 0.2s ease all;
-   }
-   
-   .namegroup input:focus ~ label, .group input:valid ~ label {
-    top: -20px;
-    font-size: 14px;
-    color: #00668A;
-   }
-   
-   .bar {
-    position: relative;
-    display: block;
-    width: 200px;
-   }
-   
-   .bar:before, .bar:after {
-    content: '';
-    height: 2px;
-    width: 0;
-    bottom: 1px;
-    position: absolute;
-    background: #00668A;
-    transition: 0.2s ease all;
-    -moz-transition: 0.2s ease all;
-    -webkit-transition: 0.2s ease all;
-   }
-   
-   .bar:before {
-    left: 50%;
-   }
-   
-   .bar:after {
-    right: 50%;
-   }
-   
-   .namegroup input:focus ~ .bar:before, .namegroup input:focus ~ .bar:after {
-    width: 50%;
-   }
-   
-   .highlight {
-    position: absolute;
-    height: 60%;
-    width: 100px;
-    top: 25%;
-    left: 0;
-    pointer-events: none;
-    opacity: 0.5;
-   }
-   
-   .namegroup input:focus ~ .highlight {
-    animation: inputHighlighter 0.3s ease;
-   }
-   
-   @keyframes inputHighlighter {
-    from {
-     background: #5264AE;
-    }
-   
-    to {
-     width: 0;
-     background: transparent;
-    }
-   }
-
-.namegrp button {
-    padding: 10px 20px;
-    border: unset;
-    border-radius: 15px;
-    color: #070606;
-    z-index: 1;
-    background: #e8e8e8;
-    position: relative;
-    font-weight: 600;
-    font-size: 14px;
-    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-    transition: all 250ms;
-    overflow: hidden;
-    margin-top: 2.5rem;
-    cursor: pointer;
-    margin-left: 12.5rem;
-}
-   
-   .namegrp button::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 0;
-    border-radius: 15px;
-    background-color: #00668A;
-    z-index: -1;
-    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
-    transition: all 250ms
-   }
-   
-   .namegrp button:hover {
-    color: #e8e8e8;
-   }
-   
-   .namegrp button:hover::before {
-    width: 100%;
-   }
-
    .blurbackground {
     /* filter: blur(50%); */
     background-color:  rgb(208, 206, 206);
@@ -1479,6 +1326,8 @@ margin-top: 6px;
 display: block;
 font-weight: bold;
 }
+
+
 .blurbackground{
 filter:none;
 }
