@@ -128,9 +128,9 @@ class RegController extends Controller
     public function logout(Request $request)
     {
   
-    Auth::logout(); // Clear authentication status
-
-    $request->session()->invalidate();
+        Auth::logout(); // Clear the user's session
+        $request->session()->invalidate(); // Invalidate the session
+        $request->session()->regenerateToken();
 
     return redirect()->route('landing');
     }
