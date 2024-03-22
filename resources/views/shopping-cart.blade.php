@@ -72,8 +72,7 @@
                                 <button class="btn btn-danger" onclick="removeCartItem('{{ $cartItem->id }}')"><i class="fa fa-trash"></i></button>
                             </div>
 
-                            <!-- Additional product details and actions -->
-                            <!-- Add your dynamic content here -->
+                            
                         </ul>
                     </div>
             </div>
@@ -87,7 +86,7 @@
             <div  class="size-medium number-of-items">
                 Total : <span id="total_price">£ {{ number_format($total_price) }}</span> 
             </div>
-            <!-- Display the total price -->
+            
         </div>
 
         <div class="">
@@ -96,7 +95,7 @@
 
         <div id="sc-active-cart" data-name="Active Cart" class="a-cardui sc-card-style sc-list sc-java-remote-feature celwidget sc-grid-view sc-grid-full-width sc-card-spacing-top-none" data-a-card-type="basic" data-csa-c-id="7ntulj-7bkkll-myg7rt-qbt35a" data-cel-widget="sc-active-cart">
             <div class="a-cardui-body a-scroller-none">
-                <!-- Add your dynamic content here -->
+                
             </div>
         </div>
     @else

@@ -26,7 +26,7 @@
     
     <hr>
     
-    <!-- Order Items Table -->
+   
     <table>
         <thead>
             <tr>

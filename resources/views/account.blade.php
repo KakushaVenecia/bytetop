@@ -274,18 +274,29 @@
             <div class="payment_col-50">
 
     <h3>Add your Payment details...</h3>
+    <h4>Card Details</h4>
+    <div style= "margin-bottom :1px"class="cards">
+          @foreach ($paymentCards as $paymentCard)
+                <p class="Card number">{{ $paymentCard->card_number }}</p>
+                <p class="Expiry month">{{ $paymentCard->expiry_month }}</p>
+                <p class="Expiry year">{{ $paymentCard->expiry_year }}</p>
+                <p class="Security code">{{ $paymentCard->security_code }}</p>
+                <p class="Name">{{ $paymentCard->name }}</p>
+        </div>
+    @endforeach
+    
     <hr class="white-line">
     <div class = "information"> 
         Changes to this payment information will apply to your account and will affect your purchases.
     </div>
+   
     
     <div class="payment__cc">
             <div class="Card__title">
               <i class="icon icon-user"></i>Payment Method
             </div>
-
-          <div class="card">
-            <form>
+          <form method="POST" action="{{ route('add-card-btn') }}">
+                        @csrf
               <div class="form__cc">
                 <div class="row">
                   <div class="field">
@@ -295,14 +306,13 @@
                     <i class="fa-brands fa-cc-mastercard" style="color:red;"></i>
                     <i class="fa-brands fa-cc-discover" style="color:orange;"></i>
                     </div>
-                    <input type="text1" class="input txt text-validated" value="" />
+                    <input type="text" name="card_number" class="input txt text-validated" value="" />
                   </div>
                 </div>
                 <div class="row">
                   <div class="field small">
                     <div class="title">Expiry Date
-                    </div>
-                    <select class="input1 ddl">
+                    <select name="expiry_month" class="input1 ddl">
                       <option selected>01</option>
                       <option>02</option>
                       <option>03</option>
@@ -316,7 +326,7 @@
                       <option>11</option>
                       <option>12</option>
                     </select>
-                    <select class="input1 ddl">
+                    <select name="expiry_year" class="input1 ddl">
                       <option>2024</option>
                       <option>2025</option>
                       <option>2026</option>
@@ -338,34 +348,34 @@
                       <option>2042</option>
                       <option>2043</option>
                       <option>2044</option>
-                      
                     </select>
+                    </div>
                   </div>
                   <div class="field small">
                     <div class="title">Security Code (CVV/CVC)
                       <span class="numberCircle">?</span>
                     </div>
-                    <input type="text1" class="input1 txt" />
+                    <input type="text" name="security_code" class="input1 txt" />
+            </div>
                   </div>
                 </div>
                 <div class="row">
                   <div class="field">
                     <div class="title">Name on Card
                     </div>
-                    <input type="text1" class="input2 txt" />
+                    <input type="text" name="name" class="input2 txt" />
                   </div>
                 </div>
 
-                            </div>
+            </div>
+                    <div class="button-container">
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="add-card-btn">Add Your Card</button>
+            </form>
+                </div>
                         </form>
                     </div>
                 </div>
-
-                <div class="button-container">
-                    <button class="cancel-btn">Cancel</button>
-                    <button class="add-card-btn">Add Your Card</button>
-                </div>
-
             </div>
 
         </div>

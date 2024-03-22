@@ -9,6 +9,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Models\Cart;
+use App\Models\Payment;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RegController;
 use App\Http\Controllers\ShippingAddressController;
@@ -17,6 +18,7 @@ use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\product\ProductDetailsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -258,7 +260,9 @@ Route::get('/ordersuccess', function () {
 });
 
 Route::get('/account', function () {
-    return view('account');
+    $userId = auth()->id();
+    $paymentCards = Payment::where('user_id', $userId)->get();
+    return view('account', compact('paymentCards'));
 });
 
 
@@ -283,3 +287,6 @@ Route::get('/admin/invite', function () {
 Route::get('/contactus', function(){
     return view ('contactus');
 });
+
+
+Route::post('/account', [PaymentController::class, 'store'])->name('add-card-btn');

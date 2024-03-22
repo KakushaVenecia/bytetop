@@ -17,7 +17,7 @@
     <div class="search-container">
         <input type="text" id="searchInput" class="search-input" placeholder="Search...">
         <button class="search-button" onclick="performSearch()">
-            <i class="fas fa-search"></i> <!-- Font Awesome search icon -->
+            <i class="fas fa-search"></i> 
         </button>
     </div>
     
