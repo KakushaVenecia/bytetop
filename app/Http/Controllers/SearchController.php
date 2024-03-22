@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductDetail;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -24,8 +25,7 @@ class SearchController extends Controller
     public function findSearch()
     {			
         $search = request()->input("search");		
-                //dd($search);
-        $test = Product::where ( 'name', 'LIKE', '%' . $search . '%' )->orWhere ( 'description', 'LIKE', '%' . $search . '%' )->get ();
+        $test = ProductDetail::where ( 'name', 'tag','LIKE', '%' . $search . '%' )->orWhere ( 'description', 'LIKE', '%' . $search . '%' )->get ();
     if (count ( $test ) > 0)
     return view ('Search')->withTest($test)->withQuery ($search);
     else

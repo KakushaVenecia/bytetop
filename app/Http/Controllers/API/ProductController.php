@@ -82,9 +82,6 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-
-    
-         // Debug: Dump the product ID received in the request
         // Validate the request data
         $request->validate([
             'name' => 'required|string|max:255',
@@ -96,9 +93,7 @@ class ProductController extends Controller
             'quantity' =>'required|integer|min:1',
             
         ]);
-        // Find the product by ID
         $product = ProductDetail::findOrFail($id);
-       
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -106,20 +101,72 @@ class ProductController extends Controller
             $image->storeAs('public/images', $imageName); // Store in the 'storage/app/public/images' directory
             $product->image = $imageName;
         }
+        
+        // Retrieve the current quantity and name of the product from the ProductDetail table
+        $productDetail = ProductDetail::findOrFail($id);
+        $currentQuantity = $productDetail->quantity;
+        $productName = $productDetail->name;
 
-        // Update the product
-        $product->update([
-            'name' => $request->input('name'),
-            'description' => $request->input('description'),
-            'price' => $request->input('price'),
-            'tags' => $request->input('tags'),
-            'category' => $request->input('category'),
-            'quantity' => $request->input('quantity'),
+        // Retrieve the requested quantity from the request
+        $requestQuantity = $request->input('quantity');
 
+if ($requestQuantity >= $currentQuantity) {
+    // Calculate the difference in quantity
+    $quantityDifference = $requestQuantity - $currentQuantity;
+
+    // Update the ProductDetail table 
+    $productDetail->update([
+        'name' => $request->input('name'),
+        'description' => $request->input('description'),
+        'price' => $request->input('price'),
+        'tags' => $request->input('tags'),
+        'category' => $request->input('category'), 
+        'quantity' => $requestQuantity,
+        'image' => $imageName
+    ]);
+
+    // Create additional products in the Product table
+    for ($i = 0; $i < $quantityDifference; $i++) {
+        $modelNumber = 'PROD-' . Str::random(6); 
+        
+        //  generated model number is unique
+        while (Product::where('model_number', $modelNumber)->exists()) {
+            $modelNumber = 'PROD-' . Str::random(6);
+        }
+    
+        Product::create([
+            'model_number' => $modelNumber,
+            'name' => $request->input('name')
         ]);
-
-        return Redirect::route('dashboard')->with('success', 'Product updated successfully');
     }
+
+    return Redirect::route('dashboard')->with('success', 'Product updated successfully');
+        } else {
+            // Calculate the difference in quantity
+            $quantityDifference = $currentQuantity - $requestQuantity;
+
+            // Update the ProductDetail table with the new quantity
+            $productDetail->update([
+                'name' => $request->input('name'),
+                'description' => $request->input('description'),
+                'price' => $request->input('price'),
+                'tags' => $request->input('tags'),
+                'category' => $request->input('category'), 
+                'quantity' => $requestQuantity,
+                'image' => $imageName
+            ]);
+
+            // Find all products with the same name and update their names
+        Product::where('name', $productName)->update(['name' => $request->input('name')]);
+
+    // Remove rows from the Product table based on the quantity difference
+        Product::where('name', $productName)->take($quantityDifference)->delete();
+
+            return Redirect::route('dashboard')->with('success', 'Product updated successfully');
+        }
+    }
+
+
     public function destroy($id)
 {
     // Find the product by ID
@@ -270,8 +317,7 @@ public function allproducts()
         'products' => $products,
         'productQuantities' => $productQuantities,
        
-    ]);
-//         
+    ]);        
 
 }
 

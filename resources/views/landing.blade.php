@@ -1,94 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/fontawesome.css') }}">
-  
-    <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
-    <title>Document</title>
-</head>
 
-<body>
-    @include('partials.navbar')
-   
-    {{-- <!-- <img class="slide" src="{{asset('images/header.webp')}}" alt="" srcset=""> --> --}}
-    {{-- <section class="hero"> --}}
-    {{-- <link rel="preload" as="image" href="https://source.unsplash.com/300x360?0" />
-    <link rel="preload" as="image" href="https://source.unsplash.com/300x360?1" />
-    <link rel="preload" as="image" href="https://source.unsplash.com/300x360?2" /> --}}
-
-  
-    {{-- <div class="content-hero">
-      <h1>ByteTop</h1>
-      <p>Get Amazing Products at Student Friendly Pricesr</p>
-      <a href="#" class="btn">Browse our cataloge</a>
-    </div>
-  </section> --}} 
-  
-  
-  <div class="container" id="productContainer">
-    <div class="product laptops">
-      <button class="arrow left">&lt;</button>
-      <div class="product-content">
-        <a href="laptops.html">
-          <h2>Laptops Catalogues</h2>
-          <p> Here you find the Best Laptops.</p>
-          <p> Click here to view more...</p>
-        </a>
+<script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{{ asset('css/landing.css') }}">
+<title>Landing</title>
+@include('partials.navbar')
+<div class="slider-container">
+  <div class="slider">
+    <div class="slide">
+      <img src="{{ asset('images/33353.jpg') }}" alt="Image 1">
+      <div class="text-overlay">
+        <h2>Laptops Catalogues</h2>
+        <p> Here you find the Best Laptops.</p>
+        <p> Click here to view more...</p>
       </div>
-      <button class="arrow right">&gt;</button>
     </div>
-    <div class="product computers">
-      <button class="arrow left">&lt;</button>
-      <div class="product-content">
-        <a href="computers.html">
-          <h2>Computers Catalogues</h2>
-          <p> Here you find the Best Computers.</p>
-          <p> Click here to view more...</p>
-        </a>
+    <div class="slide">
+      <img src="{{ asset('images/143023.jpg') }}" alt="Image 1">
+      <div class="text-overlay">
+        <h2>Computers Catalogues</h2>
+        <p> Here you find the Best Computers.</p>
+        <p> Click here to view more...</p>
       </div>
-      <button class="arrow right">&gt;</button>
     </div>
-    <div class="product accessories">
-      <button class="arrow left">&lt;</button>
-      <div class="product-content">
-        <a href="accessories.html">
-          <h2>Accessories Catalogues</h2>
-          <p> Here you find the Best Accessories.</p>
-          <p> Click here to view more...</p>
-        </a>
+    <div class="slide">
+      <img src="{{ asset('images/2150713961.jpg') }}" alt="Image 3">
+      <div class="text-overlay">
+        <h2>Accessories Catalogues</h2>
+        <p> Here you find the Best Accessories.</p>
+        <p> Click here to view more...</p>
       </div>
-      <button class="arrow right">&gt;</button>
     </div>
-    <div class="product monitors">
-      <button class="arrow left">&lt;</button>
-      <div class="product-content">
-        <a href="monitors.html">
-          <h2>Monitors Catalogues</h2>
-          <p> Here you find the Best Monitors.</p>
-          <p> Click here to view more...</p>
-        </a>
+    <div class="slide">
+      <img src="{{ asset('images/2150706387.jpg') }}" alt="Image 3">
+      <div class="text-overlay">
+        <h2>Monitors Catalogues</h2>
+        <p> Here you find the Best Monitors.</p>
+        <p> Click here to view more...</p>
       </div>
-      <button class="arrow right">&gt;</button>
     </div>
-    <div class="product desktops">
-      <button class="arrow left">&lt;</button>
-      <div class="product-content">
-        <a href="desktops.html">
-          <h2>All in one Desktops Catalogues</h2>
-          <p> Here you find the Best All in one Desktops.</p>
-          <p> Click here to view more...</p>
-        </a>
+    <div class="slide">
+      <img src="{{ asset('images/all-in-one.jpg') }}" alt="Image 3">
+      <div class="text-overlay">
+        <h2>All in one Desktops Catalogues</h2>
+        <p> Here you find the Best All in one Desktops.</p>
+        <p> Click here to view more...</p>
       </div>
-      <button class="arrow right">&gt;</button>
     </div>
   </div>
-
-
-
-    </div>
+</div>
     <h1>Popular Deals</h1>
     <div class="grid-container">
         <div class="grid-item">
@@ -135,9 +94,4 @@
         </div>
     </div>
     @include('partials.footer')
-    <script src="{{ asset('js/script.js') }}"></script>
-    <script src="js/nav.js"></script>
-    <script src="js/landing.js"></script>
-</body>
-
-</html>
+<script src="js/landing.js"></script>

@@ -53,77 +53,20 @@
         </div>
         
         <div class="products">
-            <div class="product">
-                <img src="keyboard1.jpg" alt="Keyboard">
-                <div class="product-details">
-                    <h3>Keyboard</h3>
-                    <p>Brand: Logitech</p>
-                    <p>Price: $50</p>
-                    <p>Rating: 4.5 stars</p>
-                    <button class="btn btn-add">Add to Cart</button>
+        @foreach($products as $product)
+                <div class="product">
+                    <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}">
+                    <h3>{{ $product->name }}</h3>
+                    <div class="product-details">
+                        <p>Brand: {{ $product->brand }}</p>
+                        <p>Price: ${{ $product->price }}</p>
+                        <p>Storage: {{ $product->storage }}</p>
+                        <p>Operating System: {{ $product->operating_system }}</p>
+                        <button class="btn btn-add">Add to Cart</button>
+                    </div>
                 </div>
+            @endforeach
             </div>
-            <div class="product">
-                <img src="keyboard1.jpg" alt="Keyboard">
-                <div class="product-details">
-                    <h3>Keyboard</h3>
-                    <p>Brand: Logitech</p>
-                    <p>Price: $50</p>
-                    <p>Rating: 4.5 stars</p>
-                </div>
-            </div>
-            <div class="product">
-                <img src="keyboard1.jpg" alt="Keyboard">
-                <div class="product-details">
-                    <h3>Keyboard</h3>
-                    <p>Brand: Logitech</p>
-                    <p>Price: $50</p>
-                    <p>Rating: 4.5 stars</p>
-                    <button class="btn btn-add">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product">
-                <img src="mouse1.jpg" alt="Mouse">
-                <div class="product-details">
-                    <h3>Mouse</h3>
-                    <p>Brand: Logitech</p>
-                    <p>Price: $50</p>
-                    <p>Rating: 4.5 stars</p>
-                    <button class="btn btn-add">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product">
-                <img src="mouse1.jpg" alt="Mouse">
-                <div class="product-details">
-                    <h3>Mouse</h3>
-                    <p>Brand: Logitech</p>
-                    <p>Price: $50</p>
-                    <p>Rating: 4.5 stars</p>
-                    <button class="btn btn-add">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product">
-                <img src="mouse1.jpg" alt="Mouse">
-                <div class="product-details">
-                    <h3>Mouse</h3>
-                    <p>Brand: Logitech</p>
-                    <p>Price: $50</p>
-                    <p>Rating: 4.5 stars</p>
-                    <button class="btn btn-add">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product">
-                <img src="mouse1.jpg" alt="Mouse">
-                <div class="product-details">
-                    <h3>Mouse</h3>
-                    <p>Brand: Logitech</p>
-                    <p>Price: $50</p>
-                    <p>Rating: 4.5 stars</p>
-                    <button class="btn btn-add">Add to Cart</button>
-                </div>
-            </div>
-        </div>
-    </div> 
 </main>
 @include('partials.footer')
 <script>
