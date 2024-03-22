@@ -13,10 +13,14 @@
 </head>
 <body>
 
+
 <div class="container">
-  <h2>Forgot</h2>
-  <h3>Password</h3>
+<img src="/images/Bytetoplogo.png" alt="Logo">
+
+  <h2>Forgot Password</h2>
+  
   <hr class="white-line">
+  
 <div class="happen">
   <p>That's ok, It happens!</p>
 
