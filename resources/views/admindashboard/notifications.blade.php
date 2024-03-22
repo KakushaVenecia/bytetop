@@ -8,7 +8,7 @@
     <div class="inbox-sidebar">
         <h2>Inbox</h2>
         <ul class="inbox-menu">
-            <li><a href="#" id="inbox-tab">Inbox (10)</a></li>
+            <li><a href="#" id="inbox-tab">Inbox (3)</a></li>
             <li><a href="#" id="notifications-tab">Notifications</a></li>
         </ul>
     </div>

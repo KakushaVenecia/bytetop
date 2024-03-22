@@ -77,7 +77,7 @@ body {
     font-weight: bold;
 }
 
-.message-preview, .message-full {
+.message-preview, .message-full, .notification-preview, .notification-full {
     background-color: #f0f0f0;
     padding: 20px;
     border: 1px solid #ccc;
