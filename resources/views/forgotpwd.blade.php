@@ -17,11 +17,15 @@
   <h2>Forgot</h2>
   <h3>Password</h3>
   <hr class="white-line">
-
+<div class="happen">
   <p>That's ok, It happens!</p>
+
+  </div>
   <form method="POST" action="{{ route('password.email') }}">
     @csrf 
+    <div class = "email">
     <p>Enter your email address</p>
+  </div>
     <input type="email" id="email" name="email" placeholder="Email address">
     <p id="error-message" class="error-message">@error('email') {{ $message }} @enderror</p>
     <div>
