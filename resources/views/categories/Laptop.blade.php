@@ -83,97 +83,19 @@
             </div>
         </div>
         <div class="products">
+        @foreach($products as $product)
                 <div class="product">
-                    <img src="/images/computerimg.png" alt="Computer">
-                    <h3></h3>
+                    <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}">
+                    <h3>{{ $product->name }}</h3>
                     <div class="product-details">
-                        <p>Brand: Dell</p>
-                        <p>Price: $1200</p>
-                        <p>RAM: 8GB</p>
-                        <p>Processor: Intel Core i5</p>
-                        <p>Storage: 256GB SSD</p>
-                        <p>Operating System: Windows</p>
+                        <p>Brand: {{ $product->brand }}</p>
+                        <p>Price: ${{ $product->price }}</p>
+                        <p>Storage: {{ $product->storage }}</p>
+                        <p>Operating System: {{ $product->operating_system }}</p>
                         <button class="btn btn-add">Add to Cart</button>
                     </div>
                 </div>
-                <div class="product">
-                    <img src="/images/computerimg.png" alt="Computer">
-                    <h3></h3>
-                    <div class="product-details">
-                        <p>Brand: Dell</p>
-                        <p>Price: $1200</p>
-                        <p>RAM: 8GB</p>
-                        <p>Processor: Intel Core i5</p>
-                        <p>Storage: 256GB SSD</p>
-                        <p>Operating System: Windows</p>
-                        <button class="btn btn-add">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="/images/computerimg.png" alt="Computer">
-                    <h3></h3>
-                    <div class="product-details">
-                        <p>Brand: Dell</p>
-                        <p>Price: $1200</p>
-                        <p>RAM: 8GB</p>
-                        <p>Processor: Intel Core i5</p>
-                        <p>Storage: 256GB SSD</p>
-                        <p>Operating System: Windows</p>
-                        <button class="btn btn-add">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="/images/computerimg.png" alt="Computer">
-                    <h3></h3>
-                    <div class="product-details">
-                        <p>Brand: Dell</p>
-                        <p>Price: $1200</p>
-                        <p>RAM: 8GB</p>
-                        <p>Processor: Intel Core i5</p>
-                        <p>Storage: 256GB SSD</p>
-                        <p>Operating System: Windows</p>
-                        <button class="btn btn-add">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="/images/computerimg.png" alt="Computer">
-                    <h3></h3>
-                    <div class="product-details">
-                        <p>Brand: Dell</p>
-                        <p>Price: $1200</p>
-                        <p>RAM: 8GB</p>
-                        <p>Processor: Intel Core i5</p>
-                        <p>Storage: 256GB SSD</p>
-                        <p>Operating System: Windows</p>
-                        <button class="btn btn-add">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="/images/computerimg.png" alt="Computer">
-                    <h3></h3>
-                    <div class="product-details">
-                        <p>Brand: Dell</p>
-                        <p>Price: $1200</p>
-                        <p>RAM: 8GB</p>
-                        <p>Processor: Intel Core i5</p>
-                        <p>Storage: 256GB SSD</p>
-                        <p>Operating System: Windows</p>
-                        <button class="btn btn-add">Add to Cart</button>
-                    </div>
-                </div>
-                <div class="product">
-                    <img src="/images/computerimg.png" alt="Computer">
-                    <h3></h3>
-                    <div class="product-details">
-                        <p>Brand: Dell</p>
-                        <p>Price: $1200</p>
-                        <p>RAM: 8GB</p>
-                        <p>Processor: Intel Core i5</p>
-                        <p>Storage: 256GB SSD</p>
-                        <p>Operating System: Windows</p>
-                        <button class="btn btn-add">Add to Cart</button>
-                    </div>
-                </div>
+            @endforeach
             </div>
     </main>
     @include('partials.footer')

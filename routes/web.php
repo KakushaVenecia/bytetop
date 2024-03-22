@@ -156,23 +156,11 @@ Route::get('/checkout', function () {
     return view('checkout');
 });
 
-Route::get('/Laptops', function(){
-    return view ('categories.laptop');
-})->name('Laptops');;
-Route::get('/Computers', function(){
-    return view ('categories.computers');
-})->name('Computers');
-
-Route::get('/Accessories', function(){
-    return view ('categories.accessories');
-})->name('Accessories');
-
-Route::get('/All-in-one', function(){
-    return view ('categories.all-in-one');
-})->name('All-in-one');;
-Route::get('/Monitors', function(){
-    return view ('categories.monitors');
-})->name('Monitors');;;
+Route::get('/Laptops', [ProductDetailsController::class, 'getLaptops'])->name('Laptops');
+Route::get('/Computers', [ProductDetailsController::class, 'getComputers'])->name('Computers');
+Route::get('/Accessories', [ProductDetailsController::class, 'getAccessories'])->name('Accessories');
+Route::get('/Monitors', [ProductDetailsController::class, 'getMonitors'])->name('Monitors');
+Route::get('/All-in-one', [ProductDetailsController::class, 'getAllInOne'])->name('All-in-one');
 
 Route::get('/products', function () {
     // Fetch all distinct categories from the products table

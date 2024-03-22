@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -63,9 +63,9 @@
             <div class="category-section">
                 <h2>CATEGORIES</h2>
                 <ul>
-                    {{-- @foreach($categories as $category)
-                        <li><a href="#" onclick="showProducts('{{ $category }}')">{{ $category }}</a></li>
-                    @endforeach --}}
+                    <!-- {{-- @foreach($categories as $category)
+                     <li><a href="#" onclick="showProducts('{{ $category }}')">{{ $category }}</a></li> -->
+                    <!-- @endforeach --}} --> 
                 </ul>
             </div>
             <div class="category-section">
@@ -75,13 +75,13 @@
             </div>
             <div class="category-section">
                 <h2>BRAND</h2>
-                <ul>
+                <!-- <ul>
                     {{-- @foreach($uniqueProductNames as $name)
                         <li>
                             <input type="checkbox" id="brand-{{ strtolower($name) }}" value="{{ $name }}" class="brand-checkbox">
                             <label for="brand-{{ strtolower($name) }}">{{ $name }}</label>
                         </li>
-                    @endforeach --}}
+                    @endforeach --}} -->
                 </ul>
             </div>
             <div class="category-section">
@@ -114,7 +114,7 @@
                     </div>
                 </div>
             </div>
-            <div id="productDetails">
+            <!-- <div id="productDetails">
                 {{-- @foreach($uniqueProductNames as $name)
                 <div class="product">
                     <h2>{{ $name }}</h2>
@@ -131,7 +131,7 @@
                     {{-- <button onclick="openModal('{{ $product->name }}', '{{ $product->description }}', '{{ $product->price }}', '{{ asset('storage/images/' . $product->image) }}')">View</button>
                     <button class="btn-add" data-product-id="{{ $product->id }}">Add to Cart</button>
                 </div>
-            @endforeach --}} 
+            @endforeach --}}  -->
             
             </div>
         </div>
@@ -188,4 +188,4 @@
 </script>
 <script src="js/nav.js"></script>
 </body>
-</html>
+</html> -->
