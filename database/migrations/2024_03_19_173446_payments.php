@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('card_number');
-            $table->unsignedBigInteger('expiry_date');
+            $table->unsignedBigInteger('expiry_month')->default(01);
+            $table->unsignedBigInteger('expiry_year')->default(2029);
             $table->integer('security_code')->default(1);
+            $table->string('name');
             $table->timestamps();
 
         });
