@@ -160,7 +160,7 @@ input[type="text"] {
 }
 
 .text-validated {
- /* border-color: #7dc855; */
+ 
   background-image: url("../images/icon-tick.png");
   background-repeat: no-repeat;
   background-position: right 18px center;
@@ -374,13 +374,13 @@ input[type="text"] {
 
 
 .payment__type--selected {
-  border: 2px solid #7dc855; /* Replace "yourColor" with the desired color for the border */
+  border: 2px solid #7dc855;
 }
 
 .payment__type--selected .payment__title,
 .payment__type--selected .payment__info {
-  color: black; /* Replace "#333" with the desired dark color for the content */
-}
+  color: black; 
+} 
 
 
 .name {

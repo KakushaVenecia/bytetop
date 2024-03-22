@@ -17,7 +17,7 @@ function removeCartItem(cartItemId) {
                 throw new Error('Failed to update cart item');
             }
     
-            // Corrected variable name
+            
             const cartItemInput = document.getElementById(`cart_item_${cartItemId}`);
     
             if (cartItemInput) {
@@ -56,7 +56,7 @@ function updateQuantity(cartItemId) {
 
         const payload = {
             cart_item_id: cartItemId,
-            quantity: newQuantity // Set quantity to 1
+            quantity: newQuantity 
         };
 
         fetch('/cart/update', {
@@ -76,9 +76,9 @@ function updateQuantity(cartItemId) {
             return response.json();
         })
         .then(data => {
-            // Update the quantity input value in case the server modified it
+            
             quantityInput.value = data.quantity;
-            // Update the subtotal element
+            
             const subtotalElement = document.getElementById('subtotal_'+cartItemId);
             if (subtotalElement) {
 
