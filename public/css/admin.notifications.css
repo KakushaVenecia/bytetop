@@ -12,7 +12,7 @@ body {
 
 .inbox-sidebar {
     width: 250px;
-    background-color: skyblue; /* Change background color to sky blue */
+    background-color: skyblue;
     padding: 20px;
 }
 
@@ -36,7 +36,7 @@ body {
     display: block;
     padding: 10px;
     border-radius: 5px;
-    transition: background-color 0.3s ease; /* Add transition for smooth hover effect */
+    transition: background-color 0.3s ease;
 }
 
 .inbox-menu li a:hover {
@@ -67,11 +67,16 @@ body {
     font-weight: bold;
 }
 
-.message-preview {
-    background-color: #fff;
+.message-preview, .message-full {
+    background-color: #f0f0f0;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.message-body {
+    font-size: 16px;
 }
 
 .message-header {

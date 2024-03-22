@@ -26,34 +26,41 @@
     document.addEventListener("DOMContentLoaded", function() {
         const messages = [
             {
-                preview: "Stock arrived",
+                serial: 1,
+                preview: "Stock arrived - Feb 20, 2024 10:00 AM",
                 full: "Hi Bytetop Team,\n\nYour Order number 22394 containing Keyboards x 10pcs @ £20 each  has been successfully delivered at the  Bytetop Warehouse on 20 February 2024.\n\nThank you again for doing business with us. We hope to have the pleasure of serving you again in the future.\n\nBest regards,\nJohn"
             },
             {
-                preview: "Stock arrived",
+                serial: 2,
+                preview: "Stock arrived - Feb 19, 2024 09:30 AM",
                 full: "Hi Bytetop Team,\n\nYour Order number 1291 containing Monitors x 23pcs @ £50 each  has been successfully delivered at the  Bytetop Warehouse on 19 February 2024.\n\nThank you again for doing business with us. We hope to have the pleasure of serving you again in the future.\n\nBest regards,\nJohn"
             },
             {
-                preview: "Stock arrived",
+                serial: 3,
+                preview: "Stock arrived - Feb 13, 2024 03:15 PM",
                 full: "Hi Bytetop Team,\n\nYour Order number 44562 containing CPU x 19pcs @ £60 each  has been successfully delivered at the  Bytetop Warehouse on 13 February 2024.\n\nThank you again for doing business with us. We hope to have the pleasure of serving you again in the future.\n\nBest regards,\nJohn"
             }
         ];
 
         const notifications = [
             {
-                preview: "2 pcs of Dell Keyboard left.",
+                serial: 1,
+                preview: "2 pcs of Dell Keyboard left. - Mar 18, 2024 11:45 AM",
                 full: "This is to notify you that you have only 2 pieces of Dell Keyboard left. Thank you"
             },
             {
-                preview: "1 pcs of HP monitor left.",
+                serial: 2,
+                preview: "1 pcs of HP monitor left. - Mar 17, 2024 01:20 PM",
                 full: "This is to notify you that you have only 1 piece of HP monitor left. Thank you"
             },
             {
-                preview: "5 pcs of HP Pavillion Laptop left.",
+                serial: 3,
+                preview: "5 pcs of HP Pavillion Laptop left. - Mar 16, 2024 09:10 AM",
                 full: "This is to notify you that you have only 5 pieces of HP Pavillion Laptop left. Thank you"
             },
             {
-                preview: "4 pcs of Apple MacBook Pro A1990 left.",
+                serial: 4,
+                preview: "4 pcs of Apple MacBook Pro A1990 left. - Mar 15, 2024 04:30 PM",
                 full: "This is to notify you that you have only 4 pieces of Apple MacBook Pro A1990 left. Thank you"
             }
         ];
@@ -66,7 +73,7 @@
             messages.forEach((message, index) => {
                 const messageItem = document.createElement("div");
                 messageItem.classList.add("message-item");
-                messageItem.textContent = message.preview;
+                messageItem.textContent = `${message.serial}. ${message.preview}`;
                 messageItem.addEventListener("click", () => {
                     showFullMessage(message.full);
                 });
@@ -75,7 +82,7 @@
         };
 
         const showFullMessage = (fullMessage) => {
-            messagePreview.innerHTML = `<div class="message-body"><p>${fullMessage}</p></div>`;
+            messagePreview.innerHTML = `<div class="full-message"><p>${fullMessage}</p></div>`;
         };
 
         const notificationList = document.getElementById("message-list");
@@ -85,8 +92,8 @@
             notificationList.innerHTML = "";
             notifications.forEach((notification, index) => {
                 const notificationItem = document.createElement("div");
-                notificationItem.classList.add("message-item");
-                notificationItem.textContent = notification.preview;
+                notificationItem.classList.add("notification-item");
+                notificationItem.textContent = `${notification.serial}. ${notification.preview}`;
                 notificationItem.addEventListener("click", () => {
                     showFullNotification(notification.full);
                 });
@@ -95,7 +102,7 @@
         };
 
         const showFullNotification = (fullNotification) => {
-            notificationPreview.innerHTML = `<div class="message-body"><p>${fullNotification}</p></div>`;
+            notificationPreview.innerHTML = `<div class="full-notification"><p>${fullNotification}</p></div>`;
         };
 
         document.getElementById("inbox-tab").addEventListener("click", () => {
