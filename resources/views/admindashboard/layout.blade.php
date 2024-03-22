@@ -21,8 +21,7 @@
                     <li><a href="{{ route('admin.viewusers') }}">Users</a><span class="icon"><i class="fa-solid fa-users" style="color:orange"></i></span></li>
                     <li><a href="{{ route('admin.vieworders') }}" >Orders</a><span class="icon"><i class="fa-solid fa-truck-fast" style="color:orange"></i></span></li>
                     <li><a href="{{ route('admin.viewsettings') }}">Settings</a><span class="icon"><i class="fa-solid fa-gear" style="color:orange"></i></span></li>
-                    <li><a href="{{ route('admin.viewnotifications') }}">Notifications</a><span class="icon"><i class="fa-solid fa-envelope" style="color:orange"></i></span></li>
-                    <li><a href="{{ route('admin.viewreports') }}">Reports</a><span class="icon"><i class="fa-solid fa-file" style="color:orange"></i></span></li>
+                    <li><a href="{{ route('admin.viewnotifications') }}">Notifications</a><span class="icon"><i class="fa-solid fa-envelope" style="color:orange"></i></span></li>                   
                 </ul>
             </div>
         </nav>
