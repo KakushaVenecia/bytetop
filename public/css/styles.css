@@ -1,8 +1,9 @@
 *{margin: 0;
     font-family: 'Cormorant Garamond', serif;
     box-sizing: border-box;
+    margin: 0;
+   
 }
-
 
 html, body {
     min-height: 100vh;
@@ -13,10 +14,11 @@ html, body {
 }
 
 
-.products{
+
+/* .products{
     width: 250px;
     height: fit-content;
-}
+} */
 
 
 .search-container {
@@ -32,10 +34,6 @@ input[type="text"] {
     padding: 10px;
 }
 
-/* .slide{ */
-    /* height: 40rem; */
-    /* width: 100%; */
-/* } */
 
 button  {
     background-color: 
@@ -44,8 +42,6 @@ button  {
  
 } 
 
-
-  
   /* On mouse-over, add a deeper shadow */
   .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
@@ -112,364 +108,7 @@ button  {
 }
 
 
-/* GRID  */
-
-
-.grid-container {
-    width:90%;
-    margin: 40px auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Adjust min and max width as needed */
-    grid-auto-rows: auto; /* Automatically adjust row height */
-    grid-gap: 20px; /* Adjust as needed */
-  }
-  
-  .grid-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border: 1px solid #ccc; /* Optional border */
-    padding: 20px;
-  }
-
-.body-title{
-  grid-column: 2 / -2;
-	grid-row: 3 / 4;
-/* 	align-self: end; */
-}
-
-.body-content{
-	grid-column: 2 / -2;
-	grid-row: 4/ 6;
-	align-self: center;
-	border-right: 1px solid rgb(127,127,127);
-	padding-top: .50em;
-}
-
-.btn{
-	font-family: 'Cormorant Garamond', serif;
-	font-size: 14px;
-	display: inline-block;
-	outline: 0;
-	border: none;
-	background: #fff;
-	font-weight: 500;
-	cursor: pointer;
-	letter-spacing: .1em;
-	text-decoration: none; 
-	text-transform: uppercase;
-	line-height: 100%;
-	border: 1px solid black !important;
-	border-radius: 5px;
-	white-space: nowrap;
-	padding: 1.100rem 2rem;
-	transition: all .2s linear;
-}
-
-.btn:hover{
-	color: #fff;
-	background-color: #f7890b;
-}
-
-.btn-add{
-	grid-column: 3;
-	grid-row: 4 / 5;
-	align-self: center;
-}
-
-img {
-  max-width: 100%;
-  height: auto; /* Maintain aspect ratio */
-}
-h1{
-    text-align: center;
-}
-
-.item-image {
-    width: 200px; /* Adjust the width as needed */
-    height: 200px; /* Adjust the height as needed */
-}
-
-
-/* product page  */
-
-
-.product-grid {
-    width: 80%;
-    margin:auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Adjust the number of columns as needed */
-    gap: 20px; /* Adjust the gap between grid items */
-}
-
-.product-card {
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-.product-image {
-    width: 100%;
-    height: auto;
-}
-
-.product-details {
-    padding: 20px;
-}
-
-.product-name {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.product-description {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #001E2C;
-}
-
-.product-price {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-/* FOOTER STYLES */
-footer{
-position: absolute !important;
-left: 0;
-right: 0;
-background: #111;
-height: auto;
-width: 100vw;
-padding-top: 40px;
-color: #fff;
-}
-.footer-distributed{
-	background: #111;
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
-	box-sizing: border-box;
-	width: 100%;
-	text-align: left;
-	font: bold 16px sans-serif;
-	padding: 55px 50px;
-}
-
-.footer-distributed .footer-left,
-.footer-distributed .footer-center,
-.footer-distributed .footer-right{
-	display: inline-block;
-	vertical-align: top;
-}
-
-/* Footer left */
-
-.footer-distributed .footer-left{
-	width: 40%;
-}
-
-/* The company logo */
-
-.footer-distributed h3{
-	color:  #ffffff;
-	font: normal 36px 'Open Sans', cursive;
-	margin: 0;
-}
-
-.footer-distributed h3 span{
-	color:  orange;
-}
-
-/* Footer links */
-
-.footer-distributed .footer-links{
-	color:  #ffffff;
-	margin: 20px 0 12px;
-	padding: 0;
-}
-
-.footer-distributed .footer-links a{
-	display:inline-block;
-	line-height: 1.8;
-  font-weight:400;
-	text-decoration: none;
-	color:  inherit;
-}
-
-.footer-distributed .footer-company-name{
-	color:  #fff;
-	font-size: 14px;
-	font-weight: normal;
-	margin: 0;
-}
-
-/* Footer Center */
-
-.footer-distributed .footer-center{
-	width: 35%;
-}
-
-.footer-distributed .footer-center i{
-	background-color:  #33383b;
-	color: #ffffff;
-	font-size: 25px;
-	width: 38px;
-	height: 38px;
-	border-radius: 50%;
-	text-align: center;
-	line-height: 42px;
-	margin: 10px 15px;
-	vertical-align: middle;
-}
-
-.footer-distributed .footer-center i.fa-envelope{
-	font-size: 17px;
-	line-height: 38px;
-}
-
-.footer-distributed .footer-center p{
-	display: inline-block;
-	color: #ffffff;
-  font-weight:400;
-	vertical-align: middle;
-	margin:0;
-}
-
-.footer-distributed .footer-center p span{
-	display:block;
-	font-weight: normal;
-	font-size:14px;
-	line-height:2;
-}
-
-.footer-distributed .footer-center p a{
-	color:  lightseagreen;
-	text-decoration: none;;
-}
-
-.footer-distributed .footer-links a:before {
-  content: "|";
-  font-weight:300;
-  font-size: 20px;
-  left: 0;
-  color: #fff;
-  display: inline-block;
-  padding-right: 5px;
-}
-
-.footer-distributed .footer-links .link-1:before {
-  content: none;
-}
-
-/* Footer Right */
-
-.footer-distributed .footer-right{
-	width: 20%;
-}
-
-.footer-distributed .footer-company-about{
-	line-height: 20px;
-	color:  #fff;;
-	font-size: 13px;
-	font-weight: normal;
-	margin: 0;
-}
-
-.footer-distributed .footer-company-about span{
-	display: block;
-	color:  #ffffff;
-	font-size: 14px;
-	font-weight: bold;
-	margin-bottom: 20px;
-}
-
-.footer-distributed .footer-icons{
-	margin-top: 25px;
-}
-
-.footer-distributed .footer-icons a{
-	display: inline-block;
-	width: 35px;
-	height: 35px;
-	cursor: pointer;
-	background-color:  #33383b;
-	border-radius: 2px;
-
-	font-size: 20px;
-	color: #ffffff;
-	text-align: center;
-	line-height: 35px;
-
-	margin-right: 3px;
-	margin-bottom: 5px;
-}
-
-/* If you don't want the footer to be responsive, remove these media queries */
-
-@media (max-width: 880px) {
-
-	.footer-distributed{
-		font: bold 14px sans-serif;
-	}
-
-	.footer-distributed .footer-left,
-	.footer-distributed .footer-center,
-	.footer-distributed .footer-right{
-		display: block;
-		width: 100%;
-		margin-bottom: 40px;
-		text-align: center;
-	}
-
-	.footer-distributed .footer-center i{
-		margin-left: 0;
-	}
-
-}
 
 
 
-
-
-
-/* ========== .hero background... ========== */
-.hero {
-  color: white;
-   /* aspect-ratio: 16 / 9;   */
-  background-color: #558;
-  background-image: url(https://source.unsplash.com/300x360?0);
-  background-size: cover;
-  background-position: center;
-
-  /* https://cubic-bezier.com/#0,0,0,1 */
-  animation: slides calc(4 * 5s) cubic-bezier(0, 0, 0, 3) 5s infinite;
-  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
-  animation-play-state: running;
-}
-
-@keyframes slides {
-  25% {
-    background-image: url(https://source.unsplash.com/300x300?0);
-  }
-  50% {
-    background-image: url(https://source.unsplash.com/300x300?1);
-  }
-  75% {
-    background-image: url(https://source.unsplash.com/300x300?2);
-  }
-}
-/* ========== .hero background. ========== */
-
-.hero .content-hero {
-  /* aspect-ratio: 16/9; */
-  text-align: center;
-  background-color: #0008;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10vw;
-}
 
