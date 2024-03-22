@@ -13,11 +13,7 @@
                 <h1>Email Verification</h1>
                 <label for="verification-code"><b>Enter Verification Code</b></label>
                 <p>To verify your email, we've sent a Verification code to userbytetop@gmail.com </p>
-                <!-- <input type="text" placeholder="Enter the code sent to your email" name="verification-code" required> -->
                 
-                <!-- <div class="clearfix">
-                    <button type="submit" class="emailbtn">Verify Email</button>
-                </div> -->
 
                 <p>Already have an account? <a href="/login">Login</a></p>
             </div>

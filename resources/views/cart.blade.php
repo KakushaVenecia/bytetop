@@ -173,14 +173,12 @@
                         <p>Quantity: {{ $cartItem->quantity }}</p>
                     </div>
                     <div class="item-actions">
-                        <!-- Add any actions you want for each item, such as removing from cart -->
+                        
                     </div>
                 </div>
             @endforeach
         </div>
-        <!-- Your cart items display goes here -->
-        <!-- I'm omitting it for brevity, but you can include your cart items loop here -->
-
+        
         <div data-name="Subtotals" class="subtotal-activecart">
             <span id="subtotal" class="size-medium number-of-items">
                
@@ -194,7 +192,7 @@
 
         <div id="sc-active-cart" data-name="Active Cart" class="a-cardui sc-card-style sc-list sc-java-remote-feature celwidget sc-grid-view sc-grid-full-width sc-card-spacing-top-none" data-a-card-type="basic" data-csa-c-id="7ntulj-7bkkll-myg7rt-qbt35a" data-cel-widget="sc-active-cart">
             <div class="a-cardui-body a-scroller-none">
-                <!-- Add your dynamic content here -->
+                
             </div>
         </div>
     @else
@@ -227,11 +225,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
     <style>
-        /* Simple container style */
+        
         .container {
-            max-width: 1200px; /* Adjust as needed */
-            margin: 0 auto; /* Center the container */
-            padding: 0 20px; /* Add some padding for spacing */
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 20px;
         }
     </style>
 </head>
@@ -289,7 +287,7 @@
             </div>
             <div id="sc-active-cart" data-name="Active Cart" class="a-cardui sc-card-style sc-list sc-java-remote-feature celwidget sc-grid-view sc-grid-full-width sc-card-spacing-top-none" data-a-card-type="basic" data-csa-c-id="7ntulj-7bkkll-myg7rt-qbt35a" data-cel-widget="sc-active-cart">
                 <div class="a-cardui-body a-scroller-none">
-                    <!-- Add your dynamic content here -->
+                    
                 </div>
             </div>
         @else
