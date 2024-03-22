@@ -2,6 +2,8 @@
 @section('title', 'Notifications')
 @section('content')
 
+<link rel="stylesheet" href="{{ asset('css/admin.notifications.css') }}">
+
     <div class="inbox-container">
         <div class="inbox-sidebar">
             <h2>Inbox</h2>
