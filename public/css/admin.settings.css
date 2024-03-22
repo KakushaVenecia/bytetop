@@ -48,11 +48,12 @@
 }
 
 .container{
-    width: 100%;
+    width: 800px;
     background-color: white;
     padding: 30px;
     box-shadow: 0 2px 16px rgba(0,0,0,.1);
     border-radius: 20px;
+    margin: auto;
 }
 
 .tab_box{
@@ -102,7 +103,7 @@
 
 .line{
     position: absolute;
-    top: 62px;
+    top: 210px;
     left: 17px;
     width: 90px;
     height: 5px;
@@ -110,5 +111,5 @@
     border-radius: 10px;
     transition: all .3s ease-in-out; 
 }
-  
-  
+
+ 

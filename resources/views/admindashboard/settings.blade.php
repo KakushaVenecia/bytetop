@@ -61,7 +61,7 @@
                 <p>This is Support tab</p>
             </div>
         </div>
-    </div>
-
+    </div>    
+    <script src="{{ asset('js/admin.settings.js') }}"></script>   
 </html>
 @endsection
