@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monitors</title>
-    <link rel="stylesheet" href="css/Accessoriespage.css"> 
-    <link rel="stylesheet" href="css/styles.css">   
+    <link rel="stylesheet" href="css/Accessoriespage.css">
+    <link rel="stylesheet" href="css/styles.css">
 
 </head>
+
 <body onload="showAccessories()">
     @include('partials.navbar')
     <h2>Monitors</h2>
@@ -26,11 +28,11 @@
                 <a href="#">See more</a>
             </div>
             <div class="category-section">
-            <h21>PRICE</h21>
-            <input type="range" id="priceRange" min="0" max="5000" step="1" value="5000" oninput="updatePriceLabel(this.value)">
-            <label for="priceRange" id="priceLabel">£0 to £5000</label>
-        </div>
-        <div class="filter-section">
+                <h21>PRICE</h21>
+                <input type="range" id="priceRange" min="0" max="5000" step="1" value="5000" oninput="updatePriceLabel(this.value)">
+                <label for="priceRange" id="priceLabel">£0 to £5000</label>
+            </div>
+            <div class="filter-section">
                 <h2>Brand</h2>
                 <ul>
                     <li><input type="checkbox" id="brand-logitech"><label for="brand-logitech">Logitech</label></li>
@@ -51,30 +53,32 @@
                 </ul>
             </div>
         </div>
-        
-        <div class="products">
-        @foreach($products as $product)
-                <div class="product">
-                    <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}">
-                    <h3>{{ $product->name }}</h3>
-                    <div class="product-details">
-                        <p>Brand: {{ $product->brand }}</p>
-                        <p>Price: ${{ $product->price }}</p>
-                        <p>Storage: {{ $product->storage }}</p>
-                        <p>Operating System: {{ $product->operating_system }}</p>
-                        <button class="btn btn-add">Add to Cart</button>
-                    </div>
-                </div>
-            @endforeach
-            </div>
-</main>
-@include('partials.footer')
-<script>
-    function updatePriceLabel(value) {
-        const priceLabel = document.getElementById('priceLabel');
-        priceLabel.textContent = `£0 to £${value}`;
-    }
-</script>    
-</body>
-</html>
 
+        <div class="products">
+            @foreach($products as $product)
+            <div class="product">
+                <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}">
+                <h3><a href="{{ route('product.show' , $product->id) }}">{{ $product->name }}</a></h3>
+                <div class="product-details">
+                    <p>Brand: {{ $product->brand }}</p>
+                    <p>Price: ${{ $product->price }}</p>
+                    <p>Storage: {{ $product->storage }}</p>
+                    <p>Operating System: {{ $product->operating_system }}</p>
+                   
+                    <button class="btn btn-add">Add to Cart</button>
+                </div>
+            </div>
+
+            @endforeach
+        </div>
+    </main>
+    @include('partials.footer')
+    <script>
+        function updatePriceLabel(value) {
+            const priceLabel = document.getElementById('priceLabel');
+            priceLabel.textContent = `£0 to £${value}`;
+        }
+    </script>
+</body>
+
+</html>
