@@ -7,8 +7,6 @@
     <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">  
 </head>
-
-
 <body>
     <div class="container"> 
         <div class="logo">
