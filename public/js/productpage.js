@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     addToCartButtons.forEach(button => {
         button.addEventListener('click', function() {
             const productId = this.dataset.productId;
-            console.log('Button clicked. Product ID:', productId); // Log the product ID
+            console.log('Button clicked. Product ID:', productId); 
             addToCart(productId,this);
         });
     });
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const payload = {
             product_id: productId,
-            quantity: 1 // Set quantity to 1
+            quantity: 1 
         };
 
         button.classList.add('loading');
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
             body: JSON.stringify(payload)
         })
         .then(async response => {
-            // console.log(await response.text());
+            
             button.classList.remove('loading');
 
             if (!response.ok) {
@@ -42,10 +42,10 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             if (data.error) {
-                // Handle case where item is already in the cart
+                
                 alert(data.error);
             } else {
-                // Update cart count in navbar
+                
                 updateCartCount();
                 console.log('Item added to cart:', data);
             }

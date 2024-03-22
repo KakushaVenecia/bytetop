@@ -1,5 +1,5 @@
 
-        /* Global styles */
+        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -19,7 +19,7 @@
             padding: 0;
         }
 
-        /* Filters section */
+        
         #filters {
             width: 25%;
             float: left;
@@ -41,7 +41,7 @@
             margin-bottom: 5px;
         }
 
-        /* Laptops section */
+        
         #laptops {
             width: 50%;
             float: left;
@@ -58,11 +58,11 @@
             border: 1px solid rgb(222, 222, 222);
             margin-right: 10px;
             padding: 5px;
-            /* width: 300px; */
+           
             display: grid;
             flex-direction: row;
             justify-content: space-between;
-            /* text-align: center; */
+            
             margin-bottom: 2rem;
         }
 
@@ -79,8 +79,7 @@
             margin: 5px 0;
         }
 
-        /* Navbar and footer */
-        /* Define styles for navbar and footer */
+       
         img {
             overflow-clip-margin: content-box;
             overflow: clip;
