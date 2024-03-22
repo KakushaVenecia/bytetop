@@ -15,7 +15,7 @@ function autoScroll() {
       // Calculate the position to scroll to
       const scrollAmount = -slideWidth * counter;
       slider.style.transform = `translateX(${scrollAmount}px)`;
-    }, 3000); // Adjust the interval time (milliseconds)
+    }, 4000); // Adjust the interval time (milliseconds)
   }
   
   autoScroll();
