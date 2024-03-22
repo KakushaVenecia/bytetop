@@ -14,62 +14,97 @@
     </div>
     <div class="inbox-content">
         <div class="message-list" id="message-list">
-            <!-- Message items will be dynamically populated here -->
+            <!-- Message items will be added dynamically -->
         </div>
         <div class="message-preview" id="message-preview">
-            <!-- Message preview will be dynamically populated here -->
+            <!-- Message preview will be added dynamically -->
         </div>
     </div>
 </div>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        // Notification button click event
-        document.getElementById("notifications-tab").addEventListener("click", function(event) {
-            event.preventDefault(); // Prevent default link behavior
-            
-            // Simulate fetching notifications data (replace with actual AJAX call)
-            const notificationsData = [
-                { sender: "John Doe", subject: "Notification 1", date: "Mar 20, 2024", body: "Notification 1 body content." },
-                { sender: "Alice Smith", subject: "Notification 2", date: "Mar 19, 2024", body: "Notification 2 body content." },
-                // Add more notifications as needed
-            ];
-            
-            // Generate notification list HTML
-            const notificationListHTML = notificationsData.map(notification => `
-                <div class="message-item">
-                    <div class="message-sender">${notification.sender}</div>
-                    <div class="message-subject">${notification.subject}</div>
-                    <div class="message-date">${notification.date}</div>
-                </div>
-            `).join("");
-            
-            // Populate message list with notifications
-            document.getElementById("message-list").innerHTML = notificationListHTML;
-            
-            // Select the first notification by default
-            const firstNotification = notificationsData[0];
-            showNotificationPreview(firstNotification);
+        const messages = [
+            {
+                preview: "Stock arrived",
+                full: "Hi Bytetop Team,\n\nYour Order number 22394 containing Keyboards x 10pcs @ £20 each  has been successfully delivered at the  Bytetop Warehouse on 20 February 2024.\n\nThank you again for doing business with us. We hope to have the pleasure of serving you again in the future.\n\nBest regards,\nJohn"
+            },
+            {
+                preview: "Stock arrived",
+                full: "Hi Bytetop Team,\n\nYour Order number 1291 containing Monitors x 23pcs @ £50 each  has been successfully delivered at the  Bytetop Warehouse on 19 February 2024.\n\nThank you again for doing business with us. We hope to have the pleasure of serving you again in the future.\n\nBest regards,\nJohn"
+            },
+            {
+                preview: "Stock arrived",
+                full: "Hi Bytetop Team,\n\nYour Order number 44562 containing CPU x 19pcs @ £60 each  has been successfully delivered at the  Bytetop Warehouse on 13 February 2024.\n\nThank you again for doing business with us. We hope to have the pleasure of serving you again in the future.\n\nBest regards,\nJohn"
+            }
+        ];
+
+        const notifications = [
+            {
+                preview: "2 pcs of Dell Keyboard left.",
+                full: "This is to notify you that you have only 2 pieces of Dell Keyboard left. Thank you"
+            },
+            {
+                preview: "1 pcs of HP monitor left.",
+                full: "This is to notify you that you have only 1 piece of HP monitor left. Thank you"
+            },
+            {
+                preview: "5 pcs of HP Pavillion Laptop left.",
+                full: "This is to notify you that you have only 5 pieces of HP Pavillion Laptop left. Thank you"
+            },
+            {
+                preview: "4 pcs of Apple MacBook Pro A1990 left.",
+                full: "This is to notify you that you have only 4 pieces of Apple MacBook Pro A1990 left. Thank you"
+            }
+        ];
+
+        const messageList = document.getElementById("message-list");
+        const messagePreview = document.getElementById("message-preview");
+
+        const populateMessages = () => {
+            messageList.innerHTML = "";
+            messages.forEach((message, index) => {
+                const messageItem = document.createElement("div");
+                messageItem.classList.add("message-item");
+                messageItem.textContent = message.preview;
+                messageItem.addEventListener("click", () => {
+                    showFullMessage(message.full);
+                });
+                messageList.appendChild(messageItem);
+            });
+        };
+
+        const showFullMessage = (fullMessage) => {
+            messagePreview.innerHTML = `<div class="message-body"><p>${fullMessage}</p></div>`;
+        };
+
+        const notificationList = document.getElementById("message-list");
+        const notificationPreview = document.getElementById("message-preview");
+
+        const populateNotifications = () => {
+            notificationList.innerHTML = "";
+            notifications.forEach((notification, index) => {
+                const notificationItem = document.createElement("div");
+                notificationItem.classList.add("message-item");
+                notificationItem.textContent = notification.preview;
+                notificationItem.addEventListener("click", () => {
+                    showFullNotification(notification.full);
+                });
+                notificationList.appendChild(notificationItem);
+            });
+        };
+
+        const showFullNotification = (fullNotification) => {
+            notificationPreview.innerHTML = `<div class="message-body"><p>${fullNotification}</p></div>`;
+        };
+
+        document.getElementById("inbox-tab").addEventListener("click", () => {
+            populateMessages();
         });
-        
-        // Function to show message preview
-        function showNotificationPreview(notification) {
-            const previewHTML = `
-                <div class="message-header">
-                    <div class="message-header-left">
-                        <div class="message-header-sender">${notification.sender}</div>
-                        <div class="message-header-subject">${notification.subject}</div>
-                    </div>
-                    <div class="message-header-right">
-                        <div class="message-header-date">${notification.date}</div>
-                    </div>
-                </div>
-                <div class="message-body">
-                    <p>${notification.body}</p>
-                </div>
-            `;
-            document.getElementById("message-preview").innerHTML = previewHTML;
-        }
+
+        document.getElementById("notifications-tab").addEventListener("click", () => {
+            populateNotifications();
+        });
     });
 </script>
 
