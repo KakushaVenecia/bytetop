@@ -1,48 +1,21 @@
-const container = document.getElementById('productContainer');
-const products = document.querySelectorAll('.product');
-const productWidth = products[0].offsetWidth + 20; // Considering margin-right: 20px
-const numProducts = products.length;
-const scrollDuration = 3000; // Adjust scroll duration as needed
-
-let currentIndex = 0;
-let reverse = false;
-
-products.forEach((product, index) => {
-  const prevButton = product.querySelector('.arrow.left');
-  const nextButton = product.querySelector('.arrow.right');
-
-  prevButton.addEventListener('click', () => scrollProduct(index - 1));
-  nextButton.addEventListener('click', () => scrollProduct(index + 1));
-});
-
-function scrollProduct(index) {
-  currentIndex = (index + numProducts) % numProducts; // Wrap around to the beginning or end
-
-  container.scrollTo({
-    left: productWidth * currentIndex,
-    behavior: 'smooth'
-  });
-}
-
+// Auto-scroll function
 function autoScroll() {
-  setInterval(() => {
-    if (!reverse) {
-      currentIndex++;
-      if (currentIndex >= numProducts) {
-        reverse = true;
+    const slider = document.querySelector('.slider');
+    const slides = document.querySelectorAll('.slide');
+    const slideWidth = slides[0].offsetWidth;
+    
+    let counter = 0;
+    
+    // Scroll interval
+    setInterval(() => {
+      counter++;
+      if (counter === slides.length) {
+        counter = 0; // Reset counter if it reaches the end
       }
-    } else {
-      currentIndex--;
-      if (currentIndex <= 0) {
-        reverse = false;
-      }
-    }
-
-    container.scrollTo({
-      left: productWidth * currentIndex,
-      behavior: 'smooth'
-    });
-  }, scrollDuration);
-}
-
-autoScroll(); // Start auto-scrolling
+      // Calculate the position to scroll to
+      const scrollAmount = -slideWidth * counter;
+      slider.style.transform = `translateX(${scrollAmount}px)`;
+    }, 3000); // Adjust the interval time (milliseconds)
+  }
+  
+  autoScroll();

@@ -19,7 +19,7 @@
                 <div class="card">
                     <div class="box">
                         <div class="card-icon2"><i class="fas fa-box"></i></div> 
-                        <h1>53</h1>
+                        <h1>{{$productCount}}</h1>
                         <h3>Products</h3>
                     </div>
                     

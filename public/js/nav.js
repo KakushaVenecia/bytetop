@@ -9,7 +9,18 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('Error fetching cart count:', error);
         });
-});
 
+    
+        var productsLink = document.getElementById("products-link");
+        var productsDropdown = document.getElementById("products-dropdown");
+
+        productsLink.addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent the default action of the link
+            
+            // Toggle the "show" class on the dropdown menu
+            productsDropdown.classList.toggle("show");
+        });
+
+});
 
 

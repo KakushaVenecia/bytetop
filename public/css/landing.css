@@ -1,142 +1,85 @@
+
+
+
 *{margin: 0;
-    font-family: 'Cormorant Garamond', serif;
-    box-sizing: border-box;
-}
-
-
-html, body {
-    min-height: 100vh;
-    margin: 0;
-    padding: 0;
-    display: block;
-
-}
-
-
-.products{
-    width: 250px;
-    height: fit-content;
-}
-
-
-.search-container {
-    display: flex;
-    max-width: 30rem;
-    flex: 1;
-    justify-content: center;
-    margin-right: 20px;
-}
-
-input[type="text"] {
-    flex: 1;
-    padding: 10px;
-}
-
-/* .slide{ */
-    /* height: 40rem; */
-    /* width: 100%; */
-/* } */
-
-button  {
-    background-color: 
-    #00668A;
-    text-decoration: none;
+  font-family: 'Cormorant Garamond', serif;
+  box-sizing: border-box;
+  margin: 0;
  
-} 
-
-
-  
-  /* On mouse-over, add a deeper shadow */
-  .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
-  
-  /* Add some padding inside the card container */
-  .container {
-   width: 90%;
-   margin: 5px auto;
-   padding-top: 20px;
-   padding-bottom: 20px;
-  }
-
-  .deals{
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .card {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center items horizontally */
-    text-align: center; 
-    margin-right: 20px;/* Center text horizontally */
-    margin-bottom: 20px; 
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;/* Add margin between cards */
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  
-  .card-img {
-
-    width: 80%; /*Resize image to 80% of card width*/
-    max-width: 55rem; /* Set maximum width for the image */
-    height: auto; /* Maintain aspect ratio */
-  }
- 
-
-.more{
-    margin:0;
-    justify-content: center;
-    text-align: center;
 }
 
-.h3{
-    text-align: center;
-    margin: 20px !important;;
+.slider-container {
+  width: 100%; 
+  overflow: hidden; 
+  position: relative;
+  height: 50vh; 
+}
+
+/* Styles for the slider */
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+  height: 100%; 
+}
+
+/* Styles for the individual slides */
+.slide {
+  flex: 0 0 auto;
+  width: 100%; 
+  position: relative; 
+}
+
+/* Ensure images fill the available space */
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Styles for the text overlay */
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.45); /* Adjust the background color and opacity */
+  padding: 20px;
+  text-align: center;
+  color: #000; 
+  width: 60%; 
 }
 
 
-.quicklinks ul.topbar{
-    display:flex ;
-    justify-content: space-around;
-    color: #ffffff;
-    align-content: center;
 
+h1{
+  margin-top: 10px;
 }
-
-.deal{
-    display: flex;
-    background-color: red;
-    margin-bottom: 3rem;
-}
-
 
 /* GRID  */
 
 
 .grid-container {
-    width:90%;
-    margin: 40px auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Adjust min and max width as needed */
-    grid-auto-rows: auto; /* Automatically adjust row height */
-    grid-gap: 20px; /* Adjust as needed */
-  }
-  
-  .grid-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border: 1px solid #ccc; /* Optional border */
-    padding: 20px;
-  }
+  width:90%;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Adjust min and max width as needed */
+  grid-auto-rows: auto; /* Automatically adjust row height */
+  grid-gap: 20px; /* Adjust as needed */
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #ccc; /* Optional border */
+  padding: 20px;
+}
 
 .body-title{
-  grid-column: 2 / -2;
-	grid-row: 3 / 4;
+grid-column: 2 / -2;
+grid-row: 3 / 4;
 /* 	align-self: end; */
 }
 
@@ -149,42 +92,42 @@ button  {
 }
 
 .btn{
-	font-family: 'Cormorant Garamond', serif;
-	font-size: 14px;
-	display: inline-block;
-	outline: 0;
-	border: none;
-	background: #fff;
-	font-weight: 500;
-	cursor: pointer;
-	letter-spacing: .1em;
-	text-decoration: none; 
-	text-transform: uppercase;
-	line-height: 100%;
-	border: 1px solid black !important;
-	border-radius: 5px;
-	white-space: nowrap;
-	padding: 1.100rem 2rem;
-	transition: all .2s linear;
+font-family: 'Cormorant Garamond', serif;
+font-size: 14px;
+display: inline-block;
+outline: 0;
+border: none;
+background: #fff;
+font-weight: 500;
+cursor: pointer;
+letter-spacing: .1em;
+text-decoration: none; 
+text-transform: uppercase;
+line-height: 100%;
+border: 1px solid black !important;
+border-radius: 5px;
+white-space: nowrap;
+padding: 1.100rem 2rem;
+transition: all .2s linear;
 }
 
 .btn:hover{
-	color: #fff;
-	background-color: #f7890b;
+color: #fff;
+background-color: #f7890b;
 }
 
 .btn-add{
-	grid-column: 3;
-	grid-row: 4 / 5;
-	align-self: center;
+grid-column: 3;
+grid-row: 4 / 5;
+align-self: center;
 }
 
 img {
-  max-width: 100%;
-  height: auto; /* Maintain aspect ratio */
+max-width: 100%;
+height: auto; /* Maintain aspect ratio */
 }
 h1{
-    text-align: center;
+  text-align: center;
 }
 
 .item-image {
