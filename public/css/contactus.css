@@ -225,12 +225,14 @@
     }
   }
   
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 600px)
+   {
     .screen-body {
       padding: 40px;
     }
   
-    .screen-body-item {
+    .screen-body-item 
+      {
       padding: 0;
-    }
-  }
+    }
+}
