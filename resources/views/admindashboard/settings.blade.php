@@ -53,9 +53,31 @@
     </div>
         </div>
         
-        <div id="add-bank" class="tabcontent">
-            <h1>Add Bank Settings</h1>
-            <p>This is the add bank settings content.</p>
+        <div id="add-bank" class="tabcontent">        
+    <div class="card">
+        <div class="card-header">Add Bank Account or Card</div>
+        <div class="card-body">
+            <div class="bank-info">
+                <i class="fas fa-university"></i>
+                <span class="bank-name">Bank of America</span>
+                <span class="bank-account-number">***************3628</span>
+                <span class="verified">Verified</span>
+            </div>
+            <button class="manage-button">Manage</button>
+            <hr class="separator">
+            <div class="card-info">
+                <i class="fas fa-credit-card"></i>
+                <span class="card-name">Master Card</span>
+                <span class="card-number">***************1121</span>
+                <span class="verified">Verified</span>
+            </div>
+            <button class="manage-button">Manage</button>
+            <div class="buttons">
+                <button class="blue-button">Add New Bank</button>
+                <button class="blue-button">Add New Card</button>
+            </div>
+        </div>
+    </div>
         </div>
         
         

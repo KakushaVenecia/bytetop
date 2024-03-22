@@ -4,70 +4,73 @@
 
 <link rel="stylesheet" href="{{ asset('css/admin.notifications.css') }}">
 
-    <div class="inbox-container">
-        <div class="inbox-sidebar">
-            <h2>Inbox</h2>
-            <ul class="inbox-menu">
-                <li class="active"><a href="#">Inbox (10)</a></li>
-                <li><a href="#">Sent</a></li>
-                <li><a href="#">Drafts</a></li>
-                <li><a href="#">Trash</a></li>
-            </ul>
+<div class="inbox-container">
+    <div class="inbox-sidebar">
+        <h2>Inbox</h2>
+        <ul class="inbox-menu">
+            <li><a href="#" id="inbox-tab">Inbox (10)</a></li>
+            <li><a href="#" id="notifications-tab">Notifications</a></li>
+        </ul>
+    </div>
+    <div class="inbox-content">
+        <div class="message-list" id="message-list">
+            <!-- Message items will be dynamically populated here -->
         </div>
-        <div class="inbox-content">
-            <div class="message-list">
+        <div class="message-preview" id="message-preview">
+            <!-- Message preview will be dynamically populated here -->
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Notification button click event
+        document.getElementById("notifications-tab").addEventListener("click", function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            
+            // Simulate fetching notifications data (replace with actual AJAX call)
+            const notificationsData = [
+                { sender: "John Doe", subject: "Notification 1", date: "Mar 20, 2024", body: "Notification 1 body content." },
+                { sender: "Alice Smith", subject: "Notification 2", date: "Mar 19, 2024", body: "Notification 2 body content." },
+                // Add more notifications as needed
+            ];
+            
+            // Generate notification list HTML
+            const notificationListHTML = notificationsData.map(notification => `
                 <div class="message-item">
-                    <div class="message-sender">John Doe</div>
-                    <div class="message-subject">Regarding Project Update</div>
-                    <div class="message-date">Oct 20, 2023</div>
+                    <div class="message-sender">${notification.sender}</div>
+                    <div class="message-subject">${notification.subject}</div>
+                    <div class="message-date">${notification.date}</div>
                 </div>
-                <div class="message-item">
-                    <div class="message-sender">Alice Smith</div>
-                    <div class="message-subject">Meeting Reminder</div>
-                    <div class="message-date">Oct 19, 2023</div>
-                </div>
-                <!-- More message items -->
-            </div>
-            <div class="message-preview">
+            `).join("");
+            
+            // Populate message list with notifications
+            document.getElementById("message-list").innerHTML = notificationListHTML;
+            
+            // Select the first notification by default
+            const firstNotification = notificationsData[0];
+            showNotificationPreview(firstNotification);
+        });
+        
+        // Function to show message preview
+        function showNotificationPreview(notification) {
+            const previewHTML = `
                 <div class="message-header">
                     <div class="message-header-left">
-                        <div class="message-header-sender">John Doe</div>
-                        <div class="message-header-subject">Regarding Project Update</div>
+                        <div class="message-header-sender">${notification.sender}</div>
+                        <div class="message-header-subject">${notification.subject}</div>
                     </div>
                     <div class="message-header-right">
-                        <div class="message-header-date">Oct 20, 2023</div>
+                        <div class="message-header-date">${notification.date}</div>
                     </div>
                 </div>
                 <div class="message-body">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                    <p>${notification.body}</p>
                 </div>
-            </div>
-        </div>
-    </div>
+            `;
+            document.getElementById("message-preview").innerHTML = previewHTML;
+        }
+    });
+</script>
 
-
-<script src="{{ asset('js/notifications.js') }}"></script> 
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        @endsection
+@endsection

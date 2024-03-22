@@ -42,6 +42,11 @@ body {
     background-color: #ddd;
 }
 
+.inbox-menu li a:hover {
+    background-color: #ddd;
+    color: #000;
+}
+
 .inbox-content {
     flex: 1;
     padding: 20px;
