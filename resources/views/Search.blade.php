@@ -1,11 +1,4 @@
-<!doctype html>
-<html>
-<head>
-<style>
 
-</style>
-</head>
-<body>
 <form method="post" action="/Search">				
 <input type="text" name= "search">
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -25,5 +18,3 @@
 @else
     <h1>No Products Found</h1>
 @endif
-</body>
-</html>

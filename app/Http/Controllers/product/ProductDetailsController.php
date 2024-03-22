@@ -15,7 +15,6 @@ class ProductDetailsController extends Controller
 
         return view('product.show', compact('product'));
     }
-
     public function getLaptops() {
         $products = ProductDetail::where('category', 'Laptops')->paginate(20);
         return view('categories.laptop', compact('products'));
@@ -26,7 +25,13 @@ class ProductDetailsController extends Controller
     }
     public function getAccessories() {
         $products = ProductDetail::where('category', 'Accessories')->paginate(20);
-        return view('categories.accessories', compact('products'));
+        $productQuantities = [];
+        foreach ($products as $product) {
+            $productName = $product->name;
+            $quantity = Product::where('name', $productName)->count();
+            $productQuantities[$productName] = $quantity;
+        }
+        return view('categories.accessories', compact('products','productQuantities'));
     }
     public function getMonitors() {
         $products = ProductDetail::where('category', 'Monitors')->paginate(20);
@@ -35,6 +40,6 @@ class ProductDetailsController extends Controller
     public function getAllInOne() {
         $products = ProductDetail::where('category', 'All-in-one')->paginate(20);
         return view('categories.all-in-one', compact('products'));
-    }
+    }    
 }
 

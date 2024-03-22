@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Accessories</title>
-    <link rel="stylesheet" href="css/Accessoriespage.css"> 
-    <link rel="stylesheet" href="css/styles.css">   
-
-</head>
-<body onload="showAccessories()">
+ <title>Accessories</title>
+    <link rel="stylesheet" href="css/categories.css"> 
     @include('partials.navbar')
     <h2>Accessories</h2>
     <main class="container">
@@ -51,29 +42,40 @@
                 </ul>
             </div>
         </div>
-        
-        <div class="products">
-        @foreach($products as $product)
-                <div class="product">
+            <div class="products">
+                @foreach($products as $product)
+                <div class="product" data-product-id="{{ $product->id }}">
                     <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}">
-                    <h3>{{ $product->name }}</h3>
+                    <h3>Brand {{ $product->name }}</h3>
                     <div class="product-details">
-                        <p>Brand: {{ $product->brand }}</p>
+                        <p>Description {{ $product->description }}</p>
                         <p>Price: ${{ $product->price }}</p>
-                        <p>Storage: {{ $product->storage }}</p>
-                        <p>Operating System: {{ $product->operating_system }}</p>
-                        <button class="btn btn-add">Add to Cart</button>
+                        @php
+                            $productName = $product->name;
+                            $productCount = $productQuantities[$productName] ?? 0;
+                        @endphp
+                        @if($productCount > 2)
+                            <span class="badge badge-success">In Stock:  {{ $productCount }}</span>
+                        @else
+                            <span class="badge badge-danger">Low Stock: ({{ $productCount }})</span>
+                        @endif
+                        <!-- Form for adding product to cart -->
+                        <form action="{{ route('cart.add') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_name" value="{{ $product->name }}">
+                            <input type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="price" value="{{ $product->price }}"> <!-- Include the price -->
+                            <button type="submit" class="btn btn-add-cart">Add to Cart</button>
+                        </form>
+                        
                     </div>
                 </div>
             @endforeach
+            
             </div>
+            
+        </div>
 </main>
 @include('partials.footer')
-<script>
-    function updatePriceLabel(value) {
-        const priceLabel = document.getElementById('priceLabel');
-        priceLabel.textContent = `£0 to £${value}`;
-    }
-</script>    
-</body>
-</html>
+{{-- <script src="js/categories.js"></script> --}}
+

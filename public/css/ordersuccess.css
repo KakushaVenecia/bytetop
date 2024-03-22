@@ -26,6 +26,7 @@
     outline: none;
     cursor: pointer;
     border-radius: 32px;
+    mask-image: -webkit-radial-gradient(white, black);
     -webkit-mask-image: -webkit-radial-gradient(white, black);
     -webkit-tap-highlight-color: transparent;
     overflow: hidden;

@@ -255,43 +255,32 @@
             </div>
             <div class="item-content">
                 @foreach($cartItems as $cartItem)
-                    <div class="grid-vertical-align">
-                        <h3>{{ $cartItem->product->name }}</h3>
-                        <p>Price: £{{ $cartItem->price }}</p>
-                        <p>Quantity: {{ $cartItem->quantity }}</p>
-                        <div class="action-links">
-                            <span class="action-quantity" data-old-value="1" {{ $cartItem->quantity }} data-action="quantity">
-                            <div class="quantity"><div class="quantity_align"><button class="decrement" disabled=""> - </button><div class="number_align"><input type="text" class="numberstatus" value="1" aria-autocomplete="list"></div><button class="increment"> + </button></div></div>
-                            <span data-action="delete" data-feature-id="delete" class="a-size-small action-delete">
-                                    <span class="a-declarative" data-action="sc-item-action" data-csa-c-type="widget" data-csa-c-func-deps="aui-da-sc-item-action" data-sc-item-action="{&quot;action&quot;:&quot;delete&quot;,&quot;itemID&quot;:&quot;e152fe26-1561-4ce4-814a-25a9581bc240&quot;,&quot;itemType&quot;:&quot;active&quot;,&quot;isFresh&quot;:0,&quot;isWishListItem&quot;:0}" data-csa-c-id="ftwnvr-nd2a2j-g1sujt-b32anf">
-                                        <input name="submit.delete.e152fe26-1561-4ce4-814a-25a9581bc240" value="Delete" data-action="delete" aria-label="Delete HP Laptop PC 15s-fq5021sa | Intel Core i5-1235U Processor | 8GB RAM | 256GB SSD | Intel UHD Graphics | 15.6 inch Full HD 16:9 display | Windows 11 Home | Natural Silver" type="submit" class="a-color-link">
-                                    </span>
-                                </span>
-            
-                                
+                <div class="grid-vertical-align">
+                  <img src="{{ asset('storage/images/' . $cartItem->productDetail->image) }}" alt="{{ $cartItem->name }}">
+                    <p>Name: {{ $cartItem->name }}</p>
+                    <p>Price: {{ $cartItem->price }}</p>
+                    <p>Quantity: {{ $cartItem->quantity }}</p>
+                    <div class="action-links">
+                        <span class="action-quantity" data-old-value="1" data-action="quantity">
+                            <div class="quantity">
+                                <div class="quantity_align">
+                                    <button class="decrement" disabled=""> - </button>
+                                    <div class="number_align">
+                                        <input type="text" class="numberstatus" value="{{ $cartItem->quantity }}" aria-autocomplete="list">
+                                    </div>
+                                    <button class="increment"> + </button>
+                                </div>
+                            </div>
+                        </span>
+                        <span data-action="delete" data-feature-id="delete" class="a-size-small action-delete">
+                            <span class="a-declarative" data-action="sc-item-action" data-csa-c-type="widget" data-csa-c-func-deps="aui-da-sc-item-action" data-sc-item-action="{&quot;action&quot;:&quot;delete&quot;,&quot;itemID&quot;:&quot;e152fe26-1561-4ce4-814a-25a9581bc240&quot;,&quot;itemType&quot;:&quot;active&quot;,&quot;isFresh&quot;:0,&quot;isWishListItem&quot;:0}" data-csa-c-id="ftwnvr-nd2a2j-g1sujt-b32anf">
+                                <input name="submit.delete.e152fe26-1561-4ce4-814a-25a9581bc240" value="Delete" data-action="delete" aria-label="Delete HP Laptop PC 15s-fq5021sa | Intel Core i5-1235U Processor | 8GB RAM | 256GB SSD | Intel UHD Graphics | 15.6 inch Full HD 16:9 display | Windows 11 Home | Natural Silver" type="submit" class="a-color-link">
                             </span>
-                        </div>
+                        </span>
                     </div>
                 </div>
-                @endforeach
-            </div>
-            <div>
-                <hr class="white-line">
-            </div>
-            <div data-name="Subtotals" class="subtotal-activecart">
-                <span id="subtotal" class="size-medium number-of-items">
-                    Subtotal ({{ $cartItems->count() }} item):
-                </span>
-                {{-- <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£{{ $cartItem->price }}</span></span> --}}
-            </div>
-            <div class="checkout">
-                <button type="button" id="proceed">Proceed to checkout</button>
-            </div>
-            <div id="sc-active-cart" data-name="Active Cart" class="a-cardui sc-card-style sc-list sc-java-remote-feature celwidget sc-grid-view sc-grid-full-width sc-card-spacing-top-none" data-a-card-type="basic" data-csa-c-id="7ntulj-7bkkll-myg7rt-qbt35a" data-cel-widget="sc-active-cart">
-                <div class="a-cardui-body a-scroller-none">
-                    <!-- Add your dynamic content here -->
-                </div>
-            </div>
+            @endforeach
+            
         @else
             <div class="cart-header">
                 <div class="heading">
