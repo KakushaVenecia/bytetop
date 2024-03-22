@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Computers</title>
-    <link rel="stylesheet" href="css/Computerspage.css">
+    <link rel="stylesheet" href="css/Accessoriespage.css">
     
 </head>
 <body onload="showComputers()">

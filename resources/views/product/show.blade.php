@@ -1,4 +1,4 @@
-<!-- resources/views/products/show.blade.php -->
+
 @extends('layouts.app')
 
 @section('content')
@@ -30,7 +30,7 @@
         <h3>Customer Reviews</h3>
 
         @forelse($product->reviews as $review)
-        <!-- Individual Review -->
+       
         <div class="card mt-3">
             <div class="card-body " style="text-align:left; width:100%; ">
                 <h5 class="card-title"><strong>{{ $review->user->name }}</strong></h5>
@@ -63,7 +63,7 @@
 
         <hr class="my-5" />
 
-        <!-- Add Review Form -->
+        
         <div class="mt-3">
             <h5>Add Your Review</h5>
             <div class="row">
@@ -91,7 +91,7 @@
     </div>
 
     <script>
-        // Add event listener to the range input to update the output value
+       
         document.getElementById('reviewRating').addEventListener('input', function() {
             document.querySelector('output[for="reviewRating"]').textContent = this.value;
         });
