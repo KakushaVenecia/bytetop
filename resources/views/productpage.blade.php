@@ -1,14 +1,4 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Products</title>
-    <link rel="stylesheet" href="css/productpage.css">
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body onload="showProducts('all')"> <!-- Call showProducts function with 'all' argument on page load -->
+
     @include('partials.navbar')
     <nav class="product-filter">
         <h1>Laptops</h1>
@@ -38,21 +28,21 @@
 
     <main>
         <section class="products">
-            <!-- Iterate over unique product names -->
+            
             {{-- @foreach($uniqueProductNames as $name)
             <div class="product-card">
-                <!-- Retrieve product details for the current product name -->
+                
                 @php
                     // Get the product details from the $products array
                     $product = collect($products)->firstWhere('name', $name);
                     $count = $productCounts[$name] ?? 0; // If count doesn't exist, default to 0
                 @endphp
                 <div class="product-image">
-                    <!-- Display product image -->
+                    
                     <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $name }}" class="product-image">
                 </div>
                 <div class="product-info">
-                    <!-- Display product name and price -->
+                    
                     <h5>{{ $name }}</h5>
                     <h6> £{{ $product->price }}</h6>
                 </div>
@@ -62,11 +52,7 @@
         <div id="categories">
             <div class="category-section">
                 <h2>CATEGORIES</h2>
-                <ul>
-                    <!-- {{-- @foreach($categories as $category)
-                     <li><a href="#" onclick="showProducts('{{ $category }}')">{{ $category }}</a></li> -->
-                    <!-- @endforeach --}} --> 
-                </ul>
+                
             </div>
             <div class="category-section">
                 <h2>PRICE</h2>
@@ -75,14 +61,7 @@
             </div>
             <div class="category-section">
                 <h2>BRAND</h2>
-                <!-- <ul>
-                    {{-- @foreach($uniqueProductNames as $name)
-                        <li>
-                            <input type="checkbox" id="brand-{{ strtolower($name) }}" value="{{ $name }}" class="brand-checkbox">
-                            <label for="brand-{{ strtolower($name) }}">{{ $name }}</label>
-                        </li>
-                    @endforeach --}} -->
-                </ul>
+                
             </div>
             <div class="category-section">
                 <h2>TYPE</h2>
@@ -114,24 +93,7 @@
                     </div>
                 </div>
             </div>
-            <!-- <div id="productDetails">
-                {{-- @foreach($uniqueProductNames as $name)
-                <div class="product">
-                    <h2>{{ $name }}</h2>
-                    @php
-                        // Get the product details from the $products array
-                        $product = collect($products)->firstWhere('name', $name);
-                        $count = $productCounts[$name] ?? 0; // If count doesn't exist, default to 0
-                    @endphp
-                    <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $name }}" class="product-image">
-                    <p>{{ $product->description }}</p>
-                    <p>Price: £{{ $product->price }}</p>
-                    <p>Stock: {{ $count }}</p>
-                    {{-- Add to cart button --}}
-                    {{-- <button onclick="openModal('{{ $product->name }}', '{{ $product->description }}', '{{ $product->price }}', '{{ asset('storage/images/' . $product->image) }}')">View</button>
-                    <button class="btn-add" data-product-id="{{ $product->id }}">Add to Cart</button>
-                </div>
-            @endforeach --}}  -->
+            
             
             </div>
         </div>
@@ -142,19 +104,19 @@
 
 
         function showProducts(category) {
-            // Fetch and display products based on the category
+            
             if (category === 'all') {
-                // Show all products
+                
                 document.querySelectorAll('.product').forEach(function (product) {
                     product.style.display = 'block';
                 });
             } else {
-                // Hide all products
+                
                 document.querySelectorAll('.product').forEach(function (product) {
                     product.style.display = 'none';
                 });
 
-                // Show products matching the selected category
+                
                 document.querySelectorAll('.product[data-category="' + category + '"]').forEach(function (product) {
                     product.style.display = 'block';
                 });
