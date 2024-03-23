@@ -411,7 +411,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="submit" value="Add address" class="btn">
+                                <input type="submit" value="Add address" class="btn1">
                             </form>
                         </div>
                     </div>
