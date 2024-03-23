@@ -137,8 +137,8 @@ body {
 
 
 </style>
-<body>
 @include('partials.navbar')
+<body>
 <main class="error-page">
   <div class="container">
     <div class="eyes">
