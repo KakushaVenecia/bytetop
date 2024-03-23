@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminData;
 use App\Models\ProductDetail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ProductController;
@@ -10,6 +11,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Models\Cart;
 use App\Models\Payment;
+use App\Models\User;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RegController;
 use App\Http\Controllers\ShippingAddressController;
@@ -19,7 +21,7 @@ use App\Http\Controllers\product\ProductDetailsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaymentController;
-
+use App\Http\Controllers\AdminUserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -103,13 +105,21 @@ Route::get('/admin/dashboard', [ProductController::class, 'dashboard'])->name('d
 Route::get('/get-product-description', [ProductController::class, 'getProductDescription'])->name('get-product-description');
 Route::get('/get-product-quantity', [ProductController::class, 'getStockQuantity'])->name('get-product-quantity');
 Route::get('/admin/allproducts', [ProductController::class, 'allproducts'])->name('admin.viewproducts');
-Route::get('/admin/all-users', [ProductController::class, 'getallusers'])->name('admin.viewusers');
+
+
+
+
+
+
+// Define the route for deleting a user
+Route::delete('/admin/user/{user}', [AdminUserController::class, 'deleteUser'])->name('admin.deleteuser');
 // Route::get('/admin/allproducts' , function(){
 //     return view ('admindashboard.products');
 // })->name('admin.viewproducts');
 
 Route::get('/admin/all-users' , function(){
-    return view ('admindashboard.users');
+    $users = User::all();
+    return view ('admindashboard.users', compact('users'));
 })->name('admin.viewusers');
 
 Route::get('/admin/all-orders' , function(){
