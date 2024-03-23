@@ -45,8 +45,10 @@
         <div class="products">
             @foreach($products as $product)
                 <div class="product" data-product-id="{{ $product->id }}">
+                <a href="{{ route('product.show', $product->id) }}">
                     <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}">
-                    <h3><a href="{{ route('product.show' , $product->id) }}">{{ $product->name }}</a></h3>
+                    <h3 style="color: blue;">{{ $product->name }}</h3>
+                </a>
                     <div class="product-details">
                         <p>Description {{ $product->description }}</p>
                         <p>Price: ${{ $product->price }}</p>

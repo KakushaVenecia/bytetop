@@ -96,3 +96,34 @@ new Vue({
     }
   });
   
+
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+      // Get elements for saved card and new card options
+      var savedCardOption = document.querySelector(".opt");
+      var newCardOption = document.querySelector(".opt1");
+      // Get elements for saved card details and new card form
+      var savedCardDetails = document.querySelector(".card");
+      var newCardForm = document.querySelector("form");
+
+      // Hide the new card form initially
+      newCardForm.style.display = "none";
+
+      // Add click event listener to the new card option
+      newCardOption.addEventListener("click", function() {
+          // Show the new card form
+          newCardForm.style.display = "block";
+          // Hide the saved card details
+          savedCardDetails.style.display = "none";
+      });
+
+      // Add click event listener to the saved card option
+      savedCardOption.addEventListener("click", function() {
+          // Hide the new card form
+          newCardForm.style.display = "none";
+          // Show the saved card details
+          savedCardDetails.style.display = "block";
+      });
+  });
+

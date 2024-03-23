@@ -29,7 +29,7 @@
   .screen {
     position: relative;
     background: #001E2C;
-    border-radius: 15px;
+    border-radius:15px;
   }
   
   .screen:after {
@@ -87,7 +87,7 @@
     width: 3px;
     height: 3px;
     margin-left: 2px;
-    border-radius: 8px;
+    border-radius: 5px;
     background: #999;
   }
   

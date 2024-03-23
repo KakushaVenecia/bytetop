@@ -24,7 +24,7 @@ class UserController extends Controller
         ]);
 
         // Get the authenticated user
-        $user = User::user();
+        $user = Auth::user();
 
         // Check if the current password matches the user's password
         if (!Hash::check($request->input('current_password'), $user->password)) {
