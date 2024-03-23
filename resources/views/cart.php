@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -110,16 +110,12 @@
         </div>
     </div>
 </div>
-
-
-
-
 <div>
 <hr class="white-line">
 </div>
 <div data-name="Subtotals" class="subtotal-activecart">
     <span id="subtotal" class="size-medium number-of-items">
-        Subtotal:
+        Subtotal: ${{ $subtotal }}, ${{ $totalItems }}
     </span>
     <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£439.99</span></span>
 </div>
@@ -127,7 +123,8 @@
     <div class="checkout">
     <button type="button" id="proceed">Proceed to checkout</button>
         
-    </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          `
+    </div>
+
 
 
 </section>

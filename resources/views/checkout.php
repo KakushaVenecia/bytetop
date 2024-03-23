@@ -58,98 +58,133 @@
       </div>
 
     </div>
+
+
+    
+
+    
     <div class="discount"></div>
 
-    <div class="container">
+    <div class="container1">
       <div class="payment">
-
         <div class="payment__info">
-          <div class="payment__cc">
-            <div class="Card__title">
-              <i class="icon icon-user"></i>Card Details
+
+                          <div class="mainContainer">
+                    <div class="cardHolder">
+                      <div class="header">
+                        <div class="heading center"></div>
+                        <div class="stepHeading center">Payment Method</div>
+                        <div class="card">
+                          <div class="top part">
+                            <img src="/images/visa.jpeg" border="0" />
+                          </div>
+                          <div class="middle part">
+                            <div class="infoheader vcenter">CARD NUMBER</div>
+                            <div class="infocontent number vcenter">
+                              <div class="num center">****</div>
+                              <div class="num center">****</div>
+                              <div class="num center">4658</div>
+                              <div class="num center">****</div>
+                            </div>
+                          </div>
+                          <div class="bottom part">
+                            <div class="holderInfo">
+                              <div class="infoheader vcenter">CARD HOLDER</div>
+                              <div class="holdername ">JOHN DOE</div>
+                            </div>
+                            <div class="expDate">
+                              <div class="infoheader vcenter">EXP. DATE</div>
+                              <div class="infocontent date vcenter">09/2023</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <h5 class="center">OTHER PAYMENT OPTIONS</h5>
+                    <div class="options vcenter">
+                      <div class="opt">
+                        <div class="icon center">
+                        <img src="/images/visa.jpeg" border="0" />
+                        </div>
+                        <div class="optname center">Card 1</div>
+                      </div>
+                      <div class="opt">
+                        <div class="icon center">
+                        <img src="/images/mastercard-removebg-preview.png" border="0" />
+                        </div>
+                        <div class="optname center">Card2</div>
+                      </div>
+                      <div class="opt">
+                        <div class="icon center">
+                        </div>
+                        <div class="optname center">New Card</div>
+                      </div>
+                    </div>
+                    
+                  </div>
+
+        
+        <!-- <div class="payment__cc" id="paymentForm" style="display: ">
+
+                    
+                    <div class="payment-section">
+                    <h2>Pay with card</h2>
+        
+        <div class="saved-cards">
+            <div class="card">
+                <input type="radio" id="card1" name="card" >
+                <label for="card1">Visa **** 1234 </label> 
+                <p for = "card1"> Expires 06/2024</p>
+                <img src="visa-logo.png" alt="Visa Logo">
             </div>
 
-          <div class="card">
-            <form>
-              <div class="form__cc">
-                <div class="row">
-                  <div class="field">
-                    <div class="title">Card Number
-                    </div>
-                    <input type="text" class="input txt text-validated" value="" />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="field small">
-                    <div class="title">Expiry Date
-                    </div>
-                    <select class="input ddl">
-                      <option selected>01</option>
-                      <option>02</option>
-                      <option>03</option>
-                      <option>04</option>
-                      <option>05</option>
-                      <option>06</option>
-                      <option>07</option>
-                      <option>08</option>
-                      <option>09</option>
-                      <option>10</option>
-                      <option>11</option>
-                      <option>12</option>
-                    </select>
-                    <select class="input ddl">
-                      <option>01</option>
-                      <option>02</option>
-                      <option>03</option>
-                      <option>04</option>
-                      <option>05</option>
-                      <option>06</option>
-                      <option>07</option>
-                      <option>08</option>
-                      <option>09</option>
-                      <option>10</option>
-                      <option>11</option>
-                      <option>12</option>
-                      <option>13</option>
-                      <option>14</option>
-                      <option>15</option>
-                      <option selected>16</option>
-                      <option>17</option>
-                      <option>18</option>
-                      <option>19</option>
-                      <option>20</option>
-                      <option>21</option>
-                      <option>22</option>
-                      <option>23</option>
-                      <option>24</option>
-                      <option>25</option>
-                      <option>26</option>
-                      <option>27</option>
-                      <option>28</option>
-                      <option>29</option>
-                      <option>30</option>
-                      <option>31</option>
-                    </select>
-                  </div>
-                  <div class="field small">
-                    <div class="title">CVV Code
-                      <span class="numberCircle">?</span>
-                    </div>
-                    <input type="text" class="input txt" />
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="field">
-                    <div class="title">Name on Card
-                    </div>
-                    <input type="text" class="input txt" />
-                  </div>
-                </div>
+           
+            <div class="card">
+                <input type="radio" id="card1" name="card" >
+                <label for="card1">Visa **** 1234 </label>
+                 <p for = "card1">Expires 06/2024</p>
+                <img src="visa-logo.png" alt="Visa Logo">
+            </div>
 
-              </div>
-            </form>
-          </div>
-          </div>
+           
+            <div class="card">
+                <input type="radio" id="card1" name="card" >
+                <label for="card1">Visa **** 1234 </label>
+                 <p for = "card1">Expires 06/2024</p>
+                <img src="visa-logo.png" alt="Visa Logo">
+            </div>
+        </div>
+
+         <form>
+        <div class="input-group">
+        <div class = "userinput">
+        <input type="radio" id="card1" name="card" >
+        	<label for="card-number">Add new card</label>
+        </div>
+            
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" name="card-number" placeholder="•••• •••• •••• ••••">
+        </div>
+        <div class="input-group multi-input">
+            <div>
+                <label for="expiry-date">Expiry Date</label>
+                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM / YY">
+            </div>
+            <div>
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="•••">
+            </div>
+        </div>
+        <div class="input-group">
+            <label for="card-holder">Card Holder</label>
+            <input type="text" id="card-holder" name="card-holder" placeholder="Full Name">
+        </div>
+    </form>
+
+        
+    </div>
+                </div> -->
 
           <div class="payment__shipping">
             <div class="payment__title">
@@ -189,17 +224,19 @@
         </div>
       </div>
     </div>
-    <div class="container">
-      <div class="actions">
+              <!-- <div class="container">
+                    <div class="actions">
 
-        <a href="#" class="btn action__submit">Place your Order
-          <i class="icon icon-arrow-right-circle"></i>
-        </a>
-        <a href="#" class="backBtn" onclick="redirectToshop()">Go Back to Shop</a>
+                      <a href="#" class="btn action__submit">Place your Order
+                        <i class="icon icon-arrow-right-circle"></i>
+                      </a>
+                      <a href="#" class="backBtn" onclick="redirectToshop()">Go Back to Shop</a>
 
 
-      </div>
-  </section>
+                    </div>
+              </div> -->
+  
+    </section>
 
   </div>
   <script src="js/checkout.js"></script>

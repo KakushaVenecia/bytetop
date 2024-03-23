@@ -103,3 +103,15 @@ function updateQuantity(cartItemId) {
             console.error('Error updating quantity:', error.message);
         });
 }
+
+
+
+
+
+
+
+
+
+
+
+

@@ -280,3 +280,8 @@ Route::get('/admin/invite', function () {
 Route::get('/contactus', function(){
     return view ('contactus');
 });
+
+
+Route::get('/cart', function(){
+    return view ('cart');
+});

@@ -98,3 +98,26 @@ new Vue({
     }
   });
   
+
+
+
+  // Get the payment option radio buttons
+const savedCardOption = document.querySelector('#savedCardsSection input[type="radio"]');
+const newCardOption = document.querySelector('#paymentForm input[type="radio"]');
+
+// Get the payment form sections
+const savedCardsSection = document.getElementById('savedCardsSection');
+const paymentForm = document.getElementById('paymentForm');
+
+// Add event listeners to the payment option radio buttons
+savedCardOption.addEventListener('change', function() {
+    // Show saved card section and hide new card section
+    savedCardsSection.style.display = 'block';
+    paymentForm.style.display = 'none';
+});
+
+newCardOption.addEventListener('change', function() {
+    // Show new card section and hide saved card section
+    savedCardsSection.style.display = 'none';
+    paymentForm.style.display = 'block';
+});

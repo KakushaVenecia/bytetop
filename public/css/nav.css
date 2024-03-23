@@ -58,13 +58,16 @@
    color: orange!important;
   
   }
+
   .dropdown-menu a {
-      color: #fff; /* White text color */
-      display: flex;
-      background-color: #0a192f;
-      text-decoration: none; /* Remove underline */
-      flex-direction: column;
-  }
+    color: #fff;
+    display: flex;
+    background-color: #0a192f;
+    text-decoration: none;
+    flex-direction: column;
+    padding: 10px;
+}
+
   .dropdown-menu.show {
       display: block !important;
   }
