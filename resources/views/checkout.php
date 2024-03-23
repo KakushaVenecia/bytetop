@@ -101,7 +101,8 @@
                       </div>
                     </div>
                     
-                    <h5 class="center">OTHER PAYMENT OPTIONS</h5>
+                    <h5 class="center">PAYMENT OPTIONS</h5>
+                  
                     <div class="options vcenter">
                       <div class="opt">
                         <div class="icon center">
@@ -115,12 +116,13 @@
                         </div>
                         <div class="optname center">Card2</div>
                       </div>
-                      <div class="opt">
+                      </div>
+                      <div class="opt1">
                         <div class="icon center">
                         </div>
-                        <div class="optname center">New Card</div>
+                        <div class="optname1 center">New Card</div>
                       </div>
-                    </div>
+                    
                     
                   </div>
 
@@ -224,7 +226,7 @@
         </div>
       </div>
     </div>
-              <!-- <div class="container">
+              <div class="placeordercontainer">
                     <div class="actions">
 
                       <a href="#" class="btn action__submit">Place your Order
@@ -234,7 +236,7 @@
 
 
                     </div>
-              </div> -->
+              </div>
   
     </section>
 

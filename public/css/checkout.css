@@ -579,7 +579,7 @@ h5{
   width:250px;
   height:75px;
   margin:0 auto;
-  justify-content:space-between;
+  justify-content:space-evenly;
 }
 .options > .opt{
   height:75px;
@@ -600,7 +600,7 @@ h5{
   font-size:10px;
   color:#232323;
   letter-spacing:2px;
-  font-weight:bolder
+  font-weight:800;
 }
 .payment{
   height:80px;
@@ -632,3 +632,21 @@ h5{
 }
 
 
+.placeordercontainer {
+  margin-top: 40rem;
+}
+
+
+
+.optname1.center {
+  height: 3rem;
+  width: 10rem;
+  box-shadow: 0 0 10px #2323;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-left: 6rem;
+  font-weight: 600;
+}
