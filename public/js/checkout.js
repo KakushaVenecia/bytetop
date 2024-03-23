@@ -99,23 +99,31 @@ new Vue({
 
 
 
-  // Get the payment option radio buttons
-const savedCardOption = document.querySelector('#savedCardsSection input[type="radio"]');
-const newCardOption = document.querySelector('#paymentForm input[type="radio"]');
+  document.addEventListener("DOMContentLoaded", function() {
+      // Get elements for saved card and new card options
+      var savedCardOption = document.querySelector(".opt");
+      var newCardOption = document.querySelector(".opt1");
+      // Get elements for saved card details and new card form
+      var savedCardDetails = document.querySelector(".card");
+      var newCardForm = document.querySelector("form");
 
-// Get the payment form sections
-const savedCardsSection = document.getElementById('savedCardsSection');
-const paymentForm = document.getElementById('paymentForm');
+      // Hide the new card form initially
+      newCardForm.style.display = "none";
 
-// Add event listeners to the payment option radio buttons
-savedCardOption.addEventListener('change', function() {
-    // Show saved card section and hide new card section
-    savedCardsSection.style.display = 'block';
-    paymentForm.style.display = 'none';
-});
+      // Add click event listener to the new card option
+      newCardOption.addEventListener("click", function() {
+          // Show the new card form
+          newCardForm.style.display = "block";
+          // Hide the saved card details
+          savedCardDetails.style.display = "none";
+      });
 
-newCardOption.addEventListener('change', function() {
-    // Show new card section and hide saved card section
-    savedCardsSection.style.display = 'none';
-    paymentForm.style.display = 'block';
-});
+      // Add click event listener to the saved card option
+      savedCardOption.addEventListener("click", function() {
+          // Hide the new card form
+          newCardForm.style.display = "none";
+          // Show the saved card details
+          savedCardDetails.style.display = "block";
+      });
+  });
+

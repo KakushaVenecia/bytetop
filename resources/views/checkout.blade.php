@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/">
+    <link rel="stylesheet" href="css/checkout.css">
 </head>
+
+
 <body>
+
+@include('partials.navbar')
+
 <header>
     <div class="container">
       <div class="navigation">
 
-        <div class="logo">
-        <a href="#" id="back_to_cart" onclick="redirectToCart()">Back to cart</a>
-        </div>
+        
         
       </div>
       <div class="notification">
@@ -112,9 +115,11 @@
                       </div>
                       <div class="opt">
                         <div class="icon center">
-                        <img src="/images/mastercard-removebg-preview.png" border="0" />
+                          <div class = "mastercard"> 
+                        <img src="/images/mastercard.png" border="0" />
                         </div>
-                        <div class="optname center">Card2</div>
+</div>
+                        <div class="optname center">Card 2</div>
                       </div>
                       </div>
                       <div class="opt1">
@@ -127,38 +132,9 @@
                   </div>
 
         
-        <!-- <div class="payment__cc" id="paymentForm" style="display: ">
-
-                    
-                    <div class="payment-section">
-                    <h2>Pay with card</h2>
         
-        <div class="saved-cards">
-            <div class="card">
-                <input type="radio" id="card1" name="card" >
-                <label for="card1">Visa **** 1234 </label> 
-                <p for = "card1"> Expires 06/2024</p>
-                <img src="visa-logo.png" alt="Visa Logo">
-            </div>
 
-           
-            <div class="card">
-                <input type="radio" id="card1" name="card" >
-                <label for="card1">Visa **** 1234 </label>
-                 <p for = "card1">Expires 06/2024</p>
-                <img src="visa-logo.png" alt="Visa Logo">
-            </div>
-
-           
-            <div class="card">
-                <input type="radio" id="card1" name="card" >
-                <label for="card1">Visa **** 1234 </label>
-                 <p for = "card1">Expires 06/2024</p>
-                <img src="visa-logo.png" alt="Visa Logo">
-            </div>
-        </div>
-
-         <form>
+         <!-- <form>
         <div class="input-group">
         <div class = "userinput">
         <input type="radio" id="card1" name="card" >
@@ -182,11 +158,10 @@
             <label for="card-holder">Card Holder</label>
             <input type="text" id="card-holder" name="card-holder" placeholder="Full Name">
         </div>
-    </form>
+    </form> -->
 
         
-    </div>
-                </div> -->
+    
 
           <div class="payment__shipping">
         
@@ -228,9 +203,7 @@
                     <div class="actions">
 
                       <a href="#" class="btn action__submit">Place your Order
-                        <i class="icon icon-arrow-right-circle"></i>
                       </a>
-                      <a href="#" class="backBtn" onclick="redirectToshop()">Go Back to Shop</a>
 
 
                     </div>

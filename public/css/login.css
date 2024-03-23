@@ -71,6 +71,8 @@ button:hover {
 .error-message {
   color: red;
   font-size: 12px;
+  margin: 2rem;
+  font-weight: 600;
 }
 .info{
     padding: 5px;
