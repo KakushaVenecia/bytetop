@@ -88,11 +88,6 @@ Route::post('/update-password', [UserController::class, 'updatePassword'])->name
 
 
 
-Route::view('/checkmail', 'checkmail');
-Route::get('/checkmail', function () {
-    return view('checkmail');
-});
-
 
 Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
 Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store');

@@ -36,17 +36,15 @@ class CartController extends Controller
                 'price' => $price,
                 'user_id' => auth()->id(), // Get the authenticated user's ID
             ]);
+
     
             // Redirect the user back to the previous page with success message
             return redirect()->back()->with('success', 'Product added to cart successfully.');
         } catch (QueryException $e) {
-            // Handle the exception (e.g., log it)
-    
-            // Redirect the user to the landing page with an error message
+           
             return redirect()->back()->with('error', 'Failed to add product to cart. Please try again later.');
         }
     }
-
 
 
     public function getCartCount()
