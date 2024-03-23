@@ -1,5 +1,14 @@
-<title>Accessories</title>
-<link rel="stylesheet" href="css/categories.css"> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="css/categories.css">
+    <link rel="stylesheet" href="css/Accessoriespage.css">
+    <link rel="stylesheet" href="css/styles.css">
+<title>All in One Desktops</title>
 @include('partials.navbar')
 <h2>All in One Desktops</h2>
 <main class="container">
@@ -14,7 +23,6 @@
                 <li><input type="checkbox" id="category-headsets"><label for="category-headsets">Headsets</label></li>
                 <li><input type="checkbox" id="category-cables"><label for="category-cables">Cables</label></li>
             </ul>
-            <a href="#">See more</a>
         </div>
         <div class="category-section">
         <h21>PRICE</h21>
@@ -67,8 +75,7 @@
                 </div>
             </div>
         @endforeach
-    </div>
-    
+        {{ $products->links() }}
     </div>
 {{-- <script src="js/categories.js"></script> --}}
 </main>

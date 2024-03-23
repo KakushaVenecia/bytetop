@@ -55,6 +55,7 @@
                     </div>
                 </div>
             @endforeach
+            {{ $products->links() }}
         </div>
     </main>
     @include('partials.footer')
