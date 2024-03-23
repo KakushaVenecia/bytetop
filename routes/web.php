@@ -193,12 +193,12 @@ Route::get('/products', function () {
     // return view('productpage', compact('products', 'categories', 'distinctCategories', 'productCounts', 'uniqueProductNames'));
     return view ('productpage');
 });
-
-Route::get('/product/{id}', [ProductDetailsController::class, 'show'])->name('product.show');
-
-Route::post('/reviews/{productId}', [ReviewController::class, 'store'])->name('reviews.store');
-Route::post('/reviews/{reviewId}/reply', [ReviewController::class, 'reply'])->name('reviews.reply');
-
+// Define route for showing product details
+Route::get('/products/{id}', [ProductDetailsController::class, 'show'])->name('products.show');
+// Routes for submitting reviews and showing product details
+Route::post('/product/{productId}/review', [ReviewController::class, 'store'])->name('product.review.store');
+Route::post('/review/{reviewId}/reply', [ReviewController::class, 'reply'])->name('product.review.reply');
+Route::get('/product/{productId}', [ProductDetailsController::class, 'show'])->name('product.show');
 
 // CART ROUTE
 Route::get('/cartpage', function () {

@@ -86,13 +86,18 @@
         @foreach($products as $product)
                 <div class="product">
                     <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}">
-                    <h3>{{ $product->name }}</h3>
+                    <h3><a href="{{ route('product.show' , $product->id) }}">{{ $product->name }}</a></h3>
                     <div class="product-details">
                         <p>Brand: {{ $product->brand }}</p>
                         <p>Price: ${{ $product->price }}</p>
                         <p>Storage: {{ $product->storage }}</p>
                         <p>Operating System: {{ $product->operating_system }}</p>
+                       
                         <button class="btn btn-add">Add to Cart</button>
+                    </div>
+                    <!-- Add the review section for this product -->
+                    <div class="product-reviews">
+                          @include('product.review', ['product' => $product])
                     </div>
                 </div>
             @endforeach
