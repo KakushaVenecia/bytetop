@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+@include('partials.navbar')
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  
   <link rel="stylesheet" href="css/contactus.css">
+  
 </head>
 
 
@@ -52,6 +55,6 @@
     
   </div>
 </div>
-
+@include('partials.footer')
 </body>
 </html>

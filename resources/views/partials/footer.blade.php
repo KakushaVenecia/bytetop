@@ -10,14 +10,12 @@
 					<a href="#" class="link-1">Home</a>
 					
 					<a href="#">Track Order</a>
-
-                    <a href="#">Products</a>
 				
-					<a href="#">About</a>
+					<a href="/about">About</a>
 					
-					<a href="#">Blog</a>
+					<a href="/blog">Blog</a>
 					
-					<a href="#">Contact</a>
+					<a href="/contactus">Contact Us</a>
 				</p>
 
 				<p class="footer-company-name">Bytetop © 2024</p>

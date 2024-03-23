@@ -39,8 +39,9 @@ Route::get('/verify-email', [VerificationController::class, 'verify'])->name('ve
 Route::get('/', function () { //  'orderItem'==App\Models\OrderItem::count();
     return view('landing');
 })->name('landing');
-
-
+Route::get('/blog', function(){
+    return view('blog');
+});
 
 
 // REGISTER 

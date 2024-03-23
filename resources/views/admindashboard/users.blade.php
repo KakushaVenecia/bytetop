@@ -56,7 +56,7 @@
 }
 	h1 {
   display: inline;
-  font-family: "Times New Roman", Times, serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 30px;
   margin-top: 10px;
   margin-bottom: 40px;
@@ -177,44 +177,16 @@ table th,td {
 
 .button1 {background-color: #001E2C;}
 
-@media only screen and (max-width: 768px) {
-        .content {
-            padding: 0 10px;
-        }
-        .button {
-            margin: 10px 0;
-            float: none;
-        }
-        .search {
-            margin-top: 10px;
-            float: none;
-        }
-        .search-input {
-            width: 100%;
-        }
-        .id:after,
-        .name:after,
-        .email:after,
-        .phone-number:after,
-        .gender:after {
-            display: none;
-        }
-        table {
-            font-size: 14px;
-        }
-    }
 
-    @media only screen and (max-width: 480px) {
-        h1 {
-            font-size: 24px;
-        }
-        table {
-            font-size: 12px;
-        }
-        .button {
-            margin: 10px auto;
-            float: none;
-        }
-    }
+
+@media (max-width: 1024px) {
+	h1{
+		font-size: 20px;
+	}
+	button1{
+		font-size: 10px;
+	}
+}
+ 
 </style>
 @endsection
