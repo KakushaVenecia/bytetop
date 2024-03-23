@@ -57,9 +57,20 @@
       </div>
       <div class="navbar-cart">
         <a href="/cartpage"><i class="fas fa-shopping-cart"> </i>
-        @auth <span class="cart-count"> {{ $cartItems->count() }}</span> @endauth-
+        @auth 
+            @if (session()->has('cart_count'))
+                <span class="cart-count"> {{ session('cart_count') }}</span>
+            @else
+                @php
+                    $userId = session('user_id');
+                    $cartCount = App\Models\Cart::where('user_id', $userId)->count();
+                    session(['cart_count' => $cartCount]);
+                @endphp
+                <span class="cart-count"> {{ $cartCount }}</span>
+            @endif
+        @endauth
         </a>
-      </div>
+    </div>
     </div>
     <script src="{{ asset('js/nav.js') }}"></script> 
   </nav>

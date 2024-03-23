@@ -56,6 +56,8 @@ class RegController extends Controller
             'email_verification_token' => $verificationToken, // Save the verification token
         ]);
 
+        session()->put('email', $user->email); 
+        
         // Generate verification URL with JWT token
         $verificationUrl = URL::to('/verify-email') . '?token=' . $verificationToken;
 
@@ -105,26 +107,7 @@ class RegController extends Controller
     }
 }
 
-    // public function login(Request $request)
 
-    // {
-    //     $credentials = $request->only('email', 'password');
-
-    //     if (Auth::attempt($credentials)) {
-
-    //         $userId = Auth::id();
-
-    //         $cartCount = Cart::where('user_id', $userId)->count();
-    //         session()->put('authenticated', true);
-    //         session()->put('user_id', Auth::user()->id); 
-    //         session()->put('user_name', Auth::user()->name);
-    //         session()->put('cart_count', $cartCount);
-
-    //         return redirect()->route('landing')->with('success', 'Login successful');
-    //     } else {
-    //         return redirect()->back()->with('error', 'Invalid credentials')->withInput();
-    //     }
-    // }
     public function logout(Request $request)
     {
   
