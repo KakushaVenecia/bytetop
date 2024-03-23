@@ -1,60 +1,47 @@
-<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-<title>Cart</title>
+<style>
+
+    *{
+        margin: 0px;
+    
+    }
+    .container{
+        width:60%;
+        margin:auto;
+
+    }
+    .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.heading{
+    text-align: center;
+    margin-bottom: 2rem;
+    color: orange;
+}
+.item-details {
+    display: flex;
+    align-items: center;
+}
+
+.item-details img {
+    width: 100px; /* Adjust image width as needed */
+    margin-right: 20px;
+}
+
+.details {
+    text-align: left;
+}
+
+.quantity-price {
+    text-align: right;
+}
+
+</style>
 @include('partials.navbar')
 <div class="container">
-    @if(auth()->check())
-        <div class="cart-header">
-            <div class="heading">
-                <h1>Shopping Basket</h1>
-            </div>
-            <div class="arow">
-                No items selected.
-                <a id="select-all" class="link-normal" href="#">Select all items</a>
-                <span class="itemsprice">Price</span>
-            </div>
-        </div>
-        <div>
-            <hr class="white-line">
-        </div>
-        <div class="item-content">
-            @foreach($cartItems as $cartItem)
-            <div class="grid-vertical-align">
-                <img src="{{ asset('storage/images/' . $cartItem->productDetail->image) }}" alt="{{ $cartItem->name }}">
-                <p>Name: {{ $cartItem->name }}</p>
-                <p>Price: {{ $cartItem->price }}</p>
-                <p>Quantity:
-                    <span class="quantity-control">
-                        <button class="decrement" data-product-id="{{ $cartItem->id }}"> - </button>
-                        <input type="text" class="quantity-input" value="{{ $cartItem->quantity }}" readonly>
-                        <button class="increment" data-product-id="{{ $cartItem->id }}"> + </button>
-                    </span>
-                </p>
-                <div class="action-links">
-                    <span data-action="delete" data-feature-id="delete" class="a-size-small action-delete">
-                        <span class="a-declarative" data-action="sc-item-action">
-                            <input name="submit.delete.e152fe26-1561-4ce4-814a-25a9581bc240" value="Delete" data-action="delete" aria-label="Delete HP Laptop PC 15s-fq5021sa | Intel Core i5-1235U Processor | 8GB RAM | 256GB SSD | Intel UHD Graphics | 15.6 inch Full HD 16:9 display | Windows 11 Home | Natural Silver" type="submit" class="a-color-link">
-                        </span>
-                    </span>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        <div>
-            <hr class="white-line">
-        </div>
-        <div data-name="Subtotals" class="subtotal-activecart">
-            <span id="subtotal" class="size-medium number-of-items">
-                Subtotal ({{ $cartItems->count() }} item):
-                <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£<span id="total-price">{{ $totalPrice }}</span></span></span>
-            </span>
-        </div>
-        <div class="checkout">
-            <button type="button" id="proceed">Proceed to checkout</button>
-        </div>
-        <div id="sc-active-cart" data-name="Active Cart" class="a-cardui sc-card-style sc-list sc-java-remote-feature celwidget sc-grid-view sc-grid-full-width sc-card-spacing-top-none" data-a-card-type="basic">
-            <div class="a-cardui-body a-scroller-none"></div>
-        </div>
-    @else
+    @if($cartItems->isEmpty())
         <div class="cart-header">
             <div class="heading">
                 <h1>Shopping Basket</h1>
@@ -63,10 +50,84 @@
                 No items in cart. Please <a href="{{ route('login') }}">log in</a> to add items to cart.
             </div>
         </div>
+    @else
+        <div class="cart-header">
+            <div class="heading">
+                <h1>Shopping Basket</h1>
+            </div>
+            <div class="arow">
+                <p>Total items in cart: {{ $cartItems->count() }}</p>
+            </div>
+        </div>
+        <div>
+            <hr class="white-line">
+        </div>
+        <div class="item-content">
+            @foreach($cartItems as $cartItem)
+            <div class="cart-item" data-product-id="{{ $cartItem->id }}" data-max-quantity="{{ $cartItem->product_count }}">
+                <div class="item-details">
+                    <img src="{{ asset('storage/images/' . $cartItem->image) }}" alt="{{ $cartItem->name }}">
+                    <div class="details">
+                        <p>Name: {{ $cartItem->name }}</p>
+                        <p>Price: £ {{ $cartItem->price }}</p>
+                        <p>Available Items: <span class="available-quantity">{{ $cartItem->product_count }}</span></p>
+                    </div>
+                </div>
+                <div class="quantity-price">
+                    <p>Quantity:
+                        <span class="quantity-control">
+                            <!-- Increment and decrement buttons -->
+                            <button class="decrement"> - </button>
+                            <input type="text" class="quantity-input" value="{{ $cartItem->quantity }}" readonly>
+                            <button class="increment"> + </button>
+                        </span>
+                    </p>
+                    <div class="action-links">
+                        <form action="{{ route('cart.delete', $cartItem->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+        <div>
+            <hr class="white-line">
+        </div>
+        <div>
+            <p>Subtotal ({{ $cartItems->count() }} items): £ {{ $subtotal }}</p>
+        </div>
+        <div class="checkout" float="right">
+            <button href="{{ route('checkout') }}">Proceed to checkout</button>
+        </div>
     @endif
-</section>
 </div>
+</div>
+<button class="color-switcher" data-theme-color-switch>&#127769;</button>
+@include('partials.footer')
+<script>
+    document.querySelectorAll('.cart-item').forEach(function(item) {
+    const maxQuantity = parseInt(item.dataset.maxQuantity);
+    const quantityInput = item.querySelector('.quantity-input');
+    const availableQuantity = item.querySelector('.available-quantity').textContent;
 
-<script src="js/cart.js"></script>
-</body>
-</html>
+    item.querySelector('.increment').addEventListener('click', function() {
+        let currentQuantity = parseInt(quantityInput.value);
+        if (currentQuantity < maxQuantity) {
+            currentQuantity++;
+            quantityInput.value = currentQuantity;
+        }
+    });
+
+    item.querySelector('.decrement').addEventListener('click', function() {
+        let currentQuantity = parseInt(quantityInput.value);
+        if (currentQuantity > 1) {
+            currentQuantity--;
+            quantityInput.value = currentQuantity;
+        }
+    });
+});
+</script>
+

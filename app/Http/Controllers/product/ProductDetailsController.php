@@ -28,8 +28,6 @@ class ProductDetailsController extends Controller
         return view('product.show', compact('product', 'is_admin'));
     }
 
-
-
     public function getLaptops()
     {
         $products = ProductDetail::where('category', 'Laptops')->paginate(20);

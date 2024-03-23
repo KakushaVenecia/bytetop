@@ -12,44 +12,44 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    public function store(Request $request, $productId)
-{
-    $request->validate([
-        'content' => 'required|string',
-        'rating' => 'required|integer|min:0|max:5',
-    ]);
+    public function store(Request $request, $productName)
+    {
+        $request->validate([
+            'content' => 'required|string',
+            'rating' => 'required|integer|min:0|max:5',
+        ]);
 
-    $product = ProductDetail::findOrFail($productId); // Fetch the product
+        // $product = ProductDetail::findOrFail($productDetailId); // Fetch the product
+        $productDetail = ProductDetail::where('name', $productName)->firstOrFail();
 
-    $user = Auth::user();
+        $user = Auth::user();
 
-    $review = $product->reviews()->create([
-        'user_id' => $user->id,
-        'content' => $request->input('content'),
-        'rating' => $request->input('rating'),
-        'product_detail_id' => $productId,
-    ]);
+        $review = $productDetail->reviews()->create([
+            'user_id' => $user->id,
+            'content' => $request->input('content'),
+            'rating' => $request->input('rating'),
+            'product_detail_id' => $productDetail->id,
+        ]);
 
-    return redirect()->route('product.show', $productId)->with('success', 'Review submitted successfully!');
-
-}
-
-
-public function reply(Request $request, $reviewId)
-{
-    $request->validate([
-        'reply_content' => 'required|string',
-    ]);
-    $review = Review::findOrFail($reviewId);
-    $review->admin_reply = $request->input('reply_content');
-    $review->save();
-
-    // Fetch the related product for the review
-    $product = $review->productDetail;
+        return redirect()->route('product.show', $productDetail->id)->with('success', 'Review submitted successfully!');
+    }
 
 
-    return redirect()->route('product.show', ['productId' => $product->id])->with('success', 'Reply sent successfully!');
-}
+    public function reply(Request $request, $reviewId)
+    {
+        $request->validate([
+            'reply_content' => 'required|string',
+        ]);
+        $review = Review::findOrFail($reviewId);
+        $review->admin_reply = $request->input('reply_content');
+        $review->save();
+
+        // Fetch the related product for the review
+        $product = $review->productDetail;
+
+
+        return redirect()->route('product.show', ['productId' => $product->id])->with('success', 'Reply sent successfully!');
+    }
 
 
     public function showReviewPage($productId)

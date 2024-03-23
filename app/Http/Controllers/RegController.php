@@ -31,7 +31,7 @@ class RegController extends Controller
         'email.required' => 'The email field is required.',
         'email.email' => 'Please enter a valid email address.',
         'email.unique' => 'The email address is already in use.',
-        'password.required' => 'The password field is required.',
+        'password.required' => 'The password is required.',
         'password.min' => 'The password must be at least 8 characters long.',
         'password_confirmation.required' => 'Please confirm your password.',
         'password_confirmation.same' => 'The passwords do not match.',
@@ -64,8 +64,7 @@ class RegController extends Controller
         // Send welcome email with verification link
         $user->notify(new WelcomeEmail($verificationUrl));
 
-        // Flash success message
-        return redirect('/verifyemail')->with('success', 'Registration successful. Please check your email for verification.');
+        return redirect()->route('verifyyouremail')->with('success', 'Registration successful. Please check your email for verification.');
     } catch (\Exception $e) {
         // Log the detailed error message for debugging
         logger()->error('Failed to register user: ' . $e->getMessage());
@@ -79,41 +78,56 @@ class RegController extends Controller
     {
         return view('login');
     }
-
+    /**
+     * This function logs in the user.
+     *
+     * @param \Illuminate\Http\Request $request The request object.
+     * @return \Illuminate\Http\RedirectResponse Redirects the user after login.
+     */
     public function login(Request $request)
-{
-    $credentials = $request->only('email', 'password');
+    {
+        $credentials = $request->only('email', 'password');
+    
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+    
 
-    if (Auth::attempt($credentials)) {
-        $user = Auth::user();
-
-        // Check if the user's email is verified
-        if ($user->email_verified_at) {
-            // If the email is verified, proceed with login
-            if ($user->role == 'super_admin' || $user->role == 'admin') {
-                session()->put('authenticated', true);
-                session()->put('user_id', $user->id); 
-                session()->put('user_name', $user->name);
-                return redirect()->route('dashboard')->with('success', 'Login successful');
+           
+            // Check if the user's email is verified
+            if ($user->email_verified_at) {
+               
+    
+                // Set session data and redirect based on user's role
+                if ($user->role == 'super_admin' || $user->role == 'admin') {
+                    if ($user->status === 'pending') {
+                        $user->update(['status' => 'active']);
+                    }
+                    session()->put('authenticated', true);
+                    session()->put('user_id', $user->id); 
+                    session()->put('user_name', $user->name);
+                    return redirect()->route('dashboard')->with('success', 'Login successful');
+                } else {
+                    $userId = $user->id;
+                    $cartCount = Cart::where('user_id', $userId)->count();
+                    if ($user->status === 'pending') {
+                        $user->update(['status' => 'active']);
+                    }
+                    session()->put('authenticated', true);
+                    session()->put('user_id', $user->id); 
+                    session()->put('user_name', $user->name);
+                    session()->put('cart_count', $cartCount);
+    
+                    return redirect()->route('landing')->with('success', 'Login successful');
+                }
+            } else {
+                // If the email is not verified, redirect back with an error message
+                Auth::logout();
+                return redirect()->back()->with('error', 'Please verify your email before logging in.');
             }
-
-            $userId = $user->id;
-            $cartCount = Cart::where('user_id', $userId)->count();
-            session()->put('authenticated', true);
-            session()->put('user_id', $user->id); 
-            session()->put('user_name', $user->name);
-            session()->put('cart_count', $cartCount);
-
-            return redirect()->route('landing')->with('success', 'Login successful');
         } else {
-            // If the email is not verified, redirect back with an error message
-            Auth::logout();
-            return redirect()->back()->with('error', 'Please verify your email before logging in.');
+            return redirect()->back()->with('error', 'Invalid credentials')->withInput();
         }
-    } else {
-        return redirect()->back()->with('error', 'Invalid credentials')->withInput();
     }
-}
 
     public function logout(Request $request)
     {

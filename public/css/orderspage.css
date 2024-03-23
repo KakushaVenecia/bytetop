@@ -75,7 +75,7 @@ header p {
   padding: 6px 14px;
   display: inline;
   border: none;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 
 .odetails-1 p {
@@ -114,7 +114,7 @@ header p {
     font-size: .8rem;
     padding: 5px 10px 5px 40px ;
     color: black;
-    border-radius: 20px;
+    border-radius: 5px;
     font-weight: 600;
     text-decoration: none;
 }
@@ -274,6 +274,7 @@ header p {
   cursor: pointer;
   margin-left: 20px;
   display: inline;
+  border-radius: 5px;
 }
 
 .card-bottom button:hover{
@@ -300,7 +301,7 @@ header p {
 
   .heading button {
     padding: 18px;
-    border-radius: 50%;
+    border-radius: 5px;
   }
 
   .heading button i {
