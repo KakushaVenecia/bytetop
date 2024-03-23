@@ -57,10 +57,10 @@
       </div>
       <div class="navbar-cart">
         <a href="/cartpage"><i class="fas fa-shopping-cart"> </i>
-         {{-- @auth --}} {{-- <span class="cart-count"> {{ $cartItems->count() }}</span> --}} {{-- @endauth---}}
+        @auth <span class="cart-count"> {{ $cartItems->count() }}</span> @endauth-
         </a>
       </div>
     </div>
-    <source src="js/nav.js" type="">
+    <script src="{{ asset('js/nav.js') }}"></script> 
   </nav>
-  <script src="{{ asset('js/nav.js') }}"></script> 
+ 
