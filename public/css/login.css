@@ -2,7 +2,6 @@
       body {
  
   background: rgb(96,145,163);
-    background: linear-gradient(180deg, rgba(96,145,163,1) 56%, rgba(241,247,249,1) 100%);  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,8 +10,7 @@
 }
 .container {
   width: 350px;
-  height: 400px;
-  
+  height: fit-content;
    background:#001E2C;
   border-radius: 10px;
   padding: 10px;
@@ -85,6 +83,31 @@ button:hover {
   border-right: 2px solid rgb(255, 255, 255); 
   white-space: nowrap;
   animation: typing 3s steps(4, end), untyping 3s steps(6, end) 3s infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 5em; 
+  }
+}
+
+@keyframes untyping {
+  from {
+    width: 3em; 
+  }
+  to {
+    width: 0;
+  }
+}
+
+#signinText {
+  overflow: hidden; 
+  border-right: 2px solid rgb(255, 255, 255); 
+  white-space: nowrap;
+  animation: typing 3s steps(7, end), untyping 3s steps(6, end) 3s infinite;
 }
 
 @keyframes typing {

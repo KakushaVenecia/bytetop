@@ -1,155 +1,7 @@
- {{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
-    <link rel="stylesheet" href="css/cart.css">
-</head>
-<body>
-    @include('partials.navbar')
-    <div class="container">
-        <section>
-            @if(auth()->check())
-            <div class="cart-header">
-                <div class="heading">
-                    <h1>Shopping Basket</h1>
-                </div>
-                <div class="arow">
-                    No items selected. 
-                    <a id="select-all" class="link-normal" href="#">Select all items</a>
-                    <span class="itemsprice">Price</span>
-                </div>
-            </div>
-            <div>
-            <hr class="white-line">
-            </div>
-            <div class="item-content">
-                @foreach($cartItems as $cartItem)
-                <div class="grid-vertical-align">
-                    <div class="a-checkbox">
-                        <label>
-                            <input type="checkbox" name="" value="">
-                        </label>
-                    </div>
-                    <div class="item">
-                        <a class="product-link" target="_blank" rel="noopener" href="/gp/product/B0CJ2D4GWY/ref=ox_sc_act_image_1?smid=A3P5ROKL5A1OLE&amp;psc=1">
-                            <img src="https://m.media-amazon.com/images/I/81KDeMk361L._AC_AA180_.jpg" alt="HP Laptop PC 15s-fq5021sa | Intel Core i5-1235U Processor | 8GB RAM | 256GB SSD | Intel UHD Graphics | 15.6 inch Full HD 16:9 display | Windows 11 Home | Natural Silver, Opens in a new tab" width="180" height="180" class="sc-product-image" srcset="https://m.media-amazon.com/images/I/81KDeMk361L._AC_AA180_.jpg 1x, https://m.media-amazon.com/images/I/81KDeMk361L._AC_AA360_.jpg 2x, https://m.media-amazon.com/images/I/81KDeMk361L._AC_AA540_.jpg 3x, https://m.media-amazon.com/images/I/81KDeMk361L._AC_AA720_.jpg 4x">
-                        </a>
-                    </div>
-            
-                    <div class="item">
-                        <ul class="list">
-                            <li class="product-title">
-                                <span class="a-item">
-                                    <a class="a-link-normal sc-product-link" target="_blank" rel="noopener" href="/gp/product/B0CJ2D4GWY/ref=ox_sc_act_title_1?smid=A3P5ROKL5A1OLE&amp;psc=1">
-                                        <span class="a-size-base-plus a-color-base sc-product-title sc-grid-item-product-title">
-                                            <span class="item-product-title " data-a-word-break="normal" data-a-max-rows="2" data-a-overflow-marker="&amp;hellip;" style="line-height: 1.3em !important; max-height: 2.6em;" data-a-updated="true">
-                                                <span class="detils"><h3>{{ $cartItem->product->name }}</h3></span>
-                                            </span>
-                                        </span>
-                                    </a>
-                                </span>
-                            </li>
-            
-                            <div class="item-price">
-                                            <span class="a-medium a-color-base sc-price sc-white-space-nowrap  a-text-bold">£{{ $cartItem->price }}</span>
-                                <p class="a-spacing-small"></p>
-                            </div>
-            
-                            <div class="content-tail">
-                                <li>
-                                    <span class="a-list-item">
-                                        <span class="product-availability">
-                                            In stock
-                                        </span>
-                                    </span>
-                                </li>
-            
-                                <li class="product-variation">
-                                    <span class="list-item">
-                                        <span class="text-bold">Price:  </span>
-                                        <span class="size-small"> £{{ $cartItem->price }}</span>
-                                    </span>
-                                </li>
-                            </div>
-                        </ul>
-            
-                        <div class="action-links">
-                            <span class="action-quantity" data-old-value="1" {{ $cartItem->quantity }} data-action="quantity">
-                            <div class="quantity"><div class="quantity_align"><button class="decrement" disabled=""> - </button><div class="number_align"><input type="text" class="numberstatus" value="1" aria-autocomplete="list"></div><button class="increment"> + </button></div></div>
-                            <span data-action="delete" data-feature-id="delete" class="a-size-small action-delete">
-                                    <span class="a-declarative" data-action="sc-item-action" data-csa-c-type="widget" data-csa-c-func-deps="aui-da-sc-item-action" data-sc-item-action="{&quot;action&quot;:&quot;delete&quot;,&quot;itemID&quot;:&quot;e152fe26-1561-4ce4-814a-25a9581bc240&quot;,&quot;itemType&quot;:&quot;active&quot;,&quot;isFresh&quot;:0,&quot;isWishListItem&quot;:0}" data-csa-c-id="ftwnvr-nd2a2j-g1sujt-b32anf">
-                                        <input name="submit.delete.e152fe26-1561-4ce4-814a-25a9581bc240" value="Delete" data-action="delete" aria-label="Delete HP Laptop PC 15s-fq5021sa | Intel Core i5-1235U Processor | 8GB RAM | 256GB SSD | Intel UHD Graphics | 15.6 inch Full HD 16:9 display | Windows 11 Home | Natural Silver" type="submit" class="a-color-link">
-                                    </span>
-                                </span>
-            
-                                <span data-action="save-for-later" data-feature-id="save-for-later" class="a-size-small action-save-for-later">
-                                    <span class="a-declarative" data-action="sc-item-action" data-csa-c-type="widget" data-csa-c-func-deps="aui-da-sc-item-action" data-sc-item-action="{&quot;action&quot;:&quot;save-for-later&quot;,&quot;itemID&quot;:&quot;e152fe26-1561-4ce4-814a-25a9581bc240&quot;,&quot;itemType&quot;:&quot;active&quot;,&quot;isFresh&quot;:0,&quot;isWishListItem&quot;:0}" data-csa-c-id="fq6rf2-ealkz-dlbppp-c4ohf8">
-                                        <input name="submit.save-for-later.e152fe26-1561-4ce4-814a-25a9581bc240" value="Save for later" data-action="save-for-later" aria-label="Save for later HP Laptop PC 15s-fq5021sa | Intel Core i5-1235U Processor | 8GB RAM | 256GB SSD | Intel UHD Graphics | 15.6 inch Full HD 16:9 display | Windows 11 Home | Natural Silver" type="submit" class="a-color-link">
-                                    </span>
-                                </span>
-                                
-                            </span>
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
-              
-            </div>
-            <div>
-            <hr class="white-line">
-            </div>
-            <div data-name="Subtotals" class="subtotal-activecart">
-                
-                    <span id="subtotal" class="size-medium number-of-items">
-                        Subtotal ({{ $cartItems->count() }} item):
-                    </span>
-                <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£439.99</span></span>
-            </div>
-            
-                <div class="checkout">
-                <button type="button" id="proceed">Proceed to checkout</button>
-                    
-                </div>
-                
-                <div id="sc-active-cart" data-name="Active Cart" class="a-cardui sc-card-style sc-list sc-java-remote-feature celwidget sc-grid-view sc-grid-full-width sc-card-spacing-top-none" data-a-card-type="basic" data-csa-c-id="7ntulj-7bkkll-myg7rt-qbt35a" data-cel-widget="sc-active-cart">
-                <div class="a-cardui-body a-scroller-none">
-                    @else
-                    <div class="cart-header">
-                        <div class="heading">
-                            <h1>Shopping Basket</h1>
-                        </div>
-                        <div class="arow">
-                            No items in cart. Please <a href="{{ route('login') }}">log in</a> to add items to cart.
-                        </div>
-                    </div>
-                @endif
-            
-                <section>
-
-
-
-    </div>
-   
-
-<script src="js/cart.js"></script>
-
-</body>
-</html> 
-
-
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
-    <link rel="stylesheet" href="css/cart.css">
-</head>
-<body>
-   
-<section>
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+<title>Cart</title>
+@include('partials.navbar')
+<div class="container">
     @if(auth()->check())
         <div class="cart-header">
             <div class="heading">
@@ -164,36 +16,43 @@
         <div>
             <hr class="white-line">
         </div>
-        <div class="cart-items">
+        <div class="item-content">
             @foreach($cartItems as $cartItem)
-                <div class="cart-item">
-                    <div class="item-details">
-                        <h3>{{ $cartItem->product->name }}</h3>
-                        <p>Price: £{{ $cartItem->price }}</p>
-                        <p>Quantity: {{ $cartItem->quantity }}</p>
-                    </div>
-                    <div class="item-actions">
-                        
-                    </div>
+            <div class="grid-vertical-align">
+                <img src="{{ asset('storage/images/' . $cartItem->productDetail->image) }}" alt="{{ $cartItem->name }}">
+                <p>Name: {{ $cartItem->name }}</p>
+                <p>Price: {{ $cartItem->price }}</p>
+                <p>Quantity:
+                    <span class="quantity-control">
+                        <button class="decrement" data-product-id="{{ $cartItem->id }}"> - </button>
+                        <input type="text" class="quantity-input" value="{{ $cartItem->quantity }}" readonly>
+                        <button class="increment" data-product-id="{{ $cartItem->id }}"> + </button>
+                    </span>
+                </p>
+                <div class="action-links">
+                    <span data-action="delete" data-feature-id="delete" class="a-size-small action-delete">
+                        <span class="a-declarative" data-action="sc-item-action">
+                            <input name="submit.delete.e152fe26-1561-4ce4-814a-25a9581bc240" value="Delete" data-action="delete" aria-label="Delete HP Laptop PC 15s-fq5021sa | Intel Core i5-1235U Processor | 8GB RAM | 256GB SSD | Intel UHD Graphics | 15.6 inch Full HD 16:9 display | Windows 11 Home | Natural Silver" type="submit" class="a-color-link">
+                        </span>
+                    </span>
                 </div>
+            </div>
             @endforeach
         </div>
-        
+        <div>
+            <hr class="white-line">
+        </div>
         <div data-name="Subtotals" class="subtotal-activecart">
             <span id="subtotal" class="size-medium number-of-items">
-               
+                Subtotal ({{ $cartItems->count() }} item):
+                <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£<span id="total-price">{{ $totalPrice }}</span></span></span>
             </span>
-            <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£{{ $cartItem->price }}</span></span>
         </div>
-
         <div class="checkout">
             <button type="button" id="proceed">Proceed to checkout</button>
         </div>
-
-        <div id="sc-active-cart" data-name="Active Cart" class="a-cardui sc-card-style sc-list sc-java-remote-feature celwidget sc-grid-view sc-grid-full-width sc-card-spacing-top-none" data-a-card-type="basic" data-csa-c-id="7ntulj-7bkkll-myg7rt-qbt35a" data-cel-widget="sc-active-cart">
-            <div class="a-cardui-body a-scroller-none">
-                
-            </div>
+        <div id="sc-active-cart" data-name="Active Cart" class="a-cardui sc-card-style sc-list sc-java-remote-feature celwidget sc-grid-view sc-grid-full-width sc-card-spacing-top-none" data-a-card-type="basic">
+            <div class="a-cardui-body a-scroller-none"></div>
         </div>
     @else
         <div class="cart-header">
@@ -206,101 +65,6 @@
         </div>
     @endif
 </section>
-
-<script src="js/cart.js"></script>
-</body>
-</html> --}} 
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
-    <style>
-        
-        .container {
-            max-width: 1200px; 
-            margin: 0 auto; 
-            padding: 0 20px;
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    @include('partials.navbar')
-    <section>
-        @if(auth()->check())
-            <div class="cart-header">
-                <div class="heading">
-                    <h1>Shopping Basket</h1>
-                </div>
-                <div class="arow">
-                    No items selected.
-                    <a id="select-all" class="link-normal" href="#">Select all items</a>
-                    <span class="itemsprice">Price</span>
-                </div>
-            </div>
-            <div>
-                <hr class="white-line">
-            </div>
-            <div class="item-content">
-                @foreach($cartItems as $cartItem)
-                    <div class="grid-vertical-align">
-                        <h3>{{ $cartItem->product->name }}</h3>
-                        <p>Price: £{{ $cartItem->price }}</p>
-                        <p>Quantity: {{ $cartItem->quantity }}</p>
-                        <div class="action-links">
-                            <span class="action-quantity" data-old-value="1" {{ $cartItem->quantity }} data-action="quantity">
-                            <div class="quantity"><div class="quantity_align"><button class="decrement" disabled=""> - </button><div class="number_align"><input type="text" class="numberstatus" value="1" aria-autocomplete="list"></div><button class="increment"> + </button></div></div>
-                            <span data-action="delete" data-feature-id="delete" class="a-size-small action-delete">
-                                    <span class="a-declarative" data-action="sc-item-action" data-csa-c-type="widget" data-csa-c-func-deps="aui-da-sc-item-action" data-sc-item-action="{&quot;action&quot;:&quot;delete&quot;,&quot;itemID&quot;:&quot;e152fe26-1561-4ce4-814a-25a9581bc240&quot;,&quot;itemType&quot;:&quot;active&quot;,&quot;isFresh&quot;:0,&quot;isWishListItem&quot;:0}" data-csa-c-id="ftwnvr-nd2a2j-g1sujt-b32anf">
-                                        <input name="submit.delete.e152fe26-1561-4ce4-814a-25a9581bc240" value="Delete" data-action="delete" aria-label="Delete HP Laptop PC 15s-fq5021sa | Intel Core i5-1235U Processor | 8GB RAM | 256GB SSD | Intel UHD Graphics | 15.6 inch Full HD 16:9 display | Windows 11 Home | Natural Silver" type="submit" class="a-color-link">
-                                    </span>
-                                </span>
-            
-                                
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-            <div>
-                <hr class="white-line">
-            </div>
-            <div data-name="Subtotals" class="subtotal-activecart">
-                <span id="subtotal" class="size-medium number-of-items">
-                    Subtotal ({{ $cartItems->count() }} item):
-                </span>
-                {{-- <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£{{ $cartItem->price }}</span></span> --}}
-            </div>
-            <div class="checkout">
-                <button type="button" id="proceed">Proceed to checkout</button>
-            </div>
-            <div id="sc-active-cart" data-name="Active Cart" class="a-cardui sc-card-style sc-list sc-java-remote-feature celwidget sc-grid-view sc-grid-full-width sc-card-spacing-top-none" data-a-card-type="basic" data-csa-c-id="7ntulj-7bkkll-myg7rt-qbt35a" data-cel-widget="sc-active-cart">
-                <div class="a-cardui-body a-scroller-none">
-                    
-                </div>
-            </div>
-        @else
-            <div class="cart-header">
-                <div class="heading">
-                    <h1>Shopping Basket</h1>
-                </div>
-                <div class="arow">
-                    No items in cart. Please <a href="{{ route('login') }}">log in</a> to add items to cart.
-                </div>
-            </div>
-        @endif
-    </section>
 </div>
 
 <script src="js/cart.js"></script>

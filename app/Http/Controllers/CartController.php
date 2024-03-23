@@ -4,73 +4,55 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Cart;
-use App\Models\Order;
+use App\Models\ProductDetail;
+use Illuminate\Database\QueryException;
 
 class CartController extends Controller
 {
     public function addToCart(Request $request)
     {
         // Validate the incoming request
-        $validatedData = $request->validate([
-            'product_id' => 'required|exists:products,id',
+        $request->validate([
+            'product_name' => 'required|string', 
             'quantity' => 'required|integer|min:1',
+            'price' => 'required|numeric|min:0',
         ]);
-
-        // Retrieve the user ID from the session
-        $userId = session('user_id');
-
-        // Check if the user ID is available
-        if ($userId) {
-            // Check if there's an incomplete order for the user
-            $order = Order::where('user_id', $userId)->whereNull('completed_at')->first();
-
-            if (!$order) {
-                // If no incomplete order exists, create a new order
-                $order = Order::create([
-                    'user_id' => $userId,
-                ]);
-
-
-                // session(['current_order_id' => $order->id]);
-            }
-
-            $productId = $validatedData['product_id'];
-            $quantity = $validatedData['quantity'];
-
-            // Check if the product already exists in the cart for the current order
-            $existingCartItem = Cart::where('order_id', $order->id)
-                ->where('product_id', $productId)
-                ->first();
-
-            if ($existingCartItem) {
-                // If the cart item already exists, update the quantity
-                $existingCartItem->increment('quantity', $quantity);
-            } else {
-                // If the cart item does not exist, create a new one
-                Cart::create([
-                    'order_id' => $order->id,
-                    'user_id' => $userId, // can be removed
-                    'product_id' => $productId,
-                    'quantity' => $quantity,
-                ]);
-            }
-
-            // Update the cart count in the session or wherever you need it
-            $cartCount = $this->getCartCount();
-            // session(['cart_count' => $cartCount]);
-
-            return response()->json(['message' => 'Product added to cart successfully', 'cart_count' => $cartCount]);
-        } else {
-            // If the user ID is not found in the session, return a response indicating that they need to log in
-            return response()->json(['error' => 'User is not authenticated. Please log in.'], 401);
+    
+        // Ensure the user is authenticated
+        if (!auth()->check()) {
+            return redirect()->route('login')->with('error', 'You need to login first.');
+        }
+    
+        try {
+            // Retrieve validated data
+            $productName = $request->input('product_name');
+            $quantity = $request->input('quantity');
+            $price = $request->input('price');
+    
+            // Create a new cart item
+            Cart::create([
+                'name' => $productName,
+                'quantity' => $quantity,
+                'price' => $price,
+                'user_id' => auth()->id(), // Get the authenticated user's ID
+            ]);
+    
+            // Redirect the user back to the previous page with success message
+            return redirect()->back()->with('success', 'Product added to cart successfully.');
+        } catch (QueryException $e) {
+            // Handle the exception (e.g., log it)
+    
+            // Redirect the user to the landing page with an error message
+            return redirect()->back()->with('error', 'Failed to add product to cart. Please try again later.');
         }
     }
-    
+
+
+
     public function getCartCount()
     {
         $userId = session('user_id');
-        $cartCount = $this->getCartCount(); 
-    
+      
         if ($userId) {
             $cartCount = Cart::where('user_id', $userId)->count();
             return $cartCount > 0 ? $cartCount : '';

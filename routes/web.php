@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ProductDetail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\VerificationController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Models\Cart;
+use App\Models\Payment;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RegController;
 use App\Http\Controllers\ShippingAddressController;
@@ -16,6 +18,7 @@ use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\product\ProductDetailsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,8 +34,7 @@ use App\Http\Controllers\UserController;
 Route::get('/verify-email', [VerificationController::class, 'verify'])->name('verification.verify');
 
 // basic nav pages
-Route::get('/', function () {
-    //  'orderItem'==App\Models\OrderItem::count();
+Route::get('/', function () { //  'orderItem'==App\Models\OrderItem::count();
     return view('landing');
 })->name('landing');
 
@@ -52,26 +54,26 @@ Route::get('/forgotpwd', function () {
 
 Route::post('/forgot-password', [RegController::class, 'sendResetLinkEmail'])->name('forgot-password');
 
-// Route::get('password/reset', [RegController::class, 'showLinkRequestForm'])->name('password.request');
-// Route::post('password/email', [RegController::class, 'sendResetLinkEmail'])->name('password.email');
-// Route::get('password/reset/{token}', [RegController::class, 'showResetForm'])->name('password.reset');
-// Route::post('password/reset', [RegController::class, 'reset'])->name('password.update');
+ Route::get('password/reset', [RegController::class, 'showLinkRequestForm'])->name('password.request');
+ Route::post('password/email', [RegController::class, 'sendResetLinkEmail'])->name('password.email');
+ Route::get('password/reset/{token}', [RegController::class, 'showResetForm'])->name('password.reset');
+ Route::post('password/reset', [RegController::class, 'reset'])->name('password.update');
 
-Route::get('/forgot-password', function () {
-    return view('forgotpwd');
-})->middleware('guest')->name('password.request');
+//Route::get('/forgot-password', function () {
+    //return view('forgotpwd');
+//})->middleware('guest')->name('password.request');
 
-Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])
-    ->middleware('guest')
-    ->name('password.email');
+//Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])
+    //->middleware('guest')
+    //->name('password.email');
 
-Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])
-    ->middleware('guest')
-    ->name('password.reset');
+//Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])
+    //->middleware('guest')
+    //->name('password.reset');
 
-Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])
-    ->middleware('guest')
-    ->name('password.update');
+//Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])
+    //->middleware('guest')
+    //->name('password.update');
 
 
 // Delete these views
@@ -128,14 +130,6 @@ Route::get('/admin/reports' , function(){
 
 
 
-
-
-
-
-
-
-
-
 // Verification
 Route::view('/verify-success', 'verification.verify-success')->name('verification.success');
 Route::view('/verify-error', 'verification.verify-error')->name('verification.error');
@@ -144,9 +138,7 @@ Route::get('/verifyemail', function () {
 });
 
 
-Route::get('/Search', function () {
-    return view('search');
-});
+Route::get('/Search', function () {return view('search');});
 Route::post('/Search', [SearchController::class, 'findSearch']);
 
 
@@ -191,12 +183,12 @@ Route::get('/products', function () {
     // return view('productpage', compact('products', 'categories', 'distinctCategories', 'productCounts', 'uniqueProductNames'));
     return view ('productpage');
 });
-
-Route::get('/product/{id}', [ProductDetailsController::class, 'show'])->name('product.show');
-
-Route::post('/reviews/{productId}', [ReviewController::class, 'store'])->name('reviews.store');
-Route::post('/reviews/{reviewId}/reply', [ReviewController::class, 'reply'])->name('reviews.reply');
-
+// Define route for showing product details
+Route::get('/products/{id}', [ProductDetailsController::class, 'show'])->name('products.show');
+// Routes for submitting reviews and showing product details
+Route::post('/product/{productId}/review', [ReviewController::class, 'store'])->name('product.review.store');
+Route::post('/review/{reviewId}/reply', [ReviewController::class, 'reply'])->name('product.review.reply');
+Route::get('/product/{productId}', [ProductDetailsController::class, 'show'])->name('product.show');
 
 // CART ROUTE
 Route::get('/cartpage', function () {
@@ -205,14 +197,27 @@ Route::get('/cartpage', function () {
 
     // Iterate over each cart item and fetch the corresponding product details
     foreach ($cartItems as $cartItem) {
-        // Retrieve the product details based on the product ID in the cart item
-        $product = Product::find($cartItem->product_id);
+        // Retrieve the product details based on the product name in the cart item
+        $product = ProductDetail::where('name', $cartItem->name)->first();
 
-        // Assign the product price to the cart item
-        $cartItem->price = $product->price;
+        if ($product) {
+            // Assign the product price to the cart item
+            $cartItem->price = $product->price;
+            // Assign the product quantity to the cart item
+            $cartItem->product_quantity = $product->quantity; // Product quantity from ProductDetail model
+            // Assign the image to the cart item
+            $cartItem->image = $product->image; // Assuming 'image' is a field in the ProductDetail model
+
+            // Optionally, you can calculate the upper bound for the increment counter using both quantities
+            $cartItem->max_quantity = min($cartItem->quantity, $product->quantity);
+        } else {
+            // If product details not found, you may handle it accordingly (e.g., remove the cart item)
+            $cartItem->delete(); // Delete the cart item if product details not found
+        }
     }
     return view('cart', ['cartItems' => $cartItems]);
-});
+})->name('cart');
+
 
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
@@ -255,7 +260,9 @@ Route::get('/ordersuccess', function () {
 });
 
 Route::get('/account', function () {
-    return view('account');
+    $userId = auth()->id();
+    $paymentCards = Payment::where('user_id', $userId)->get();
+    return view('account', compact('paymentCards'));
 });
 
 
@@ -280,3 +287,6 @@ Route::get('/admin/invite', function () {
 Route::get('/contactus', function(){
     return view ('contactus');
 });
+
+
+Route::post('/account', [PaymentController::class, 'store'])->name('add-card-btn');

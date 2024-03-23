@@ -6,31 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCartsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('product_id');
-            $table->integer('quantity')->default(1);
+            $table->string('name');
+            $table->float('price');
+            $table->integer('quantity');
             $table->timestamps();
-
-            // Define foreign key constraints
+            
+            // Define foreign key constraint for user_id referencing id in users table
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('carts');

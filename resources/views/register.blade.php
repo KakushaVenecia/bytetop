@@ -5,19 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{ asset('css/register.css') }}">  
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">  
 </head>
-
-
 <body>
     <div class="container"> 
         <div class="logo">
         <a href="/" ><img src="/images/Bytetoplogo.png" alt="Logo"></a> 
         </div>
+        <h1 id="signinText">Register_</h1>
         <form method="POST" action="{{ route('tosignin') }}">
             @csrf
-            <h1>Register</h1>
-            <hr class="white-line">
             <div class="input">
                 <label for="name">Full Name</label><br>
                 <input type="text" id="name" name="name" required placeholder="Enter your Full Name">
@@ -51,9 +48,10 @@
             </div>
             <button type="submit">Register</button>
             <div class="info">
-                Have an Acount? <a  href="{{ route('login') }}">Login</a>
+                Have an Account? <a href="{{ route('login') }}">Login</a>
             </div>
         </form>
     </div>
+    <script src="js/login.js"></script>
 </body>
 </html>

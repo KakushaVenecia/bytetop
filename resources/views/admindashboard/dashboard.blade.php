@@ -1,44 +1,39 @@
 @extends('admindashboard.layout')
 @section('title', 'Dashboard')
 @section('content')
-<<div class="side-menu">
-               
-    </div>
-    <div class="container">
-    
-        <div class="content">
-            <div class="cards">
-                <div class="card">
-                    <div class="box">
-                        <div class="card-icon1"><i class="fas fa-chart-line"></i></div>
-                        <h1>80</h1>
-                        <h3>Sales</h3>
-                    </div>
-                    
+<div class="content">
+            <div id="dashboard">
+                <div class="user-bar" style="float: right">
+                    @if(auth()->check())
+                        <p>Hello, {{ auth()->user()->name }}</p>
+                    @endif
                 </div>
-                <div class="card">
-                    <div class="box">
-                        <div class="card-icon2"><i class="fas fa-box"></i></div> 
-                        <h1>{{$productCount}}</h1>
-                        <h3>Products</h3>
-                    </div>
-                    
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <div class="card-icon3"><i class="fas fa-users"></i></div>    
-                        <h1>500</h1>
-                        <h3>Customers</h3>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="box">
-                        <div class="card-icon4"><i class="fas fa-chart-line"></i></div>
-                        <h1>$5000</h1>
-                        <h3>Earnings</h3>
-                    </div>                    
-                </div>
+                <h3>Admin Dashboard</h3>
+                <div>
+                <div class="card-container">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="card-title">Total Sales</div>
+                <div class="card-value">$5000</div>
             </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-box"></i></div>
+                <div class="card-title">Total Products</div>
+                <div class="card-value">{{$productCount}}</div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-users"></i></div>
+                <div class="card-title">Users</div>
+                <div class="card-value">500</div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="card-title">Total Sales</div>
+                <div class="card-value">$5000</div>
+            </div>
+        </div>
+    
+        
             <div class="content-2">
                 <div class="recent-payments">
                     <div class="title">
@@ -199,94 +194,14 @@ td {
     padding: 8px;
 }
 
-
-.container {
-    position: absolute;
-    width: 80vw;
-    height: 100vh;
-    background: #f1f1f1;
-}
-
-
-
-.container .content {
-    position: relative;
-
-    min-height: 90vh;
-    background: #f1f1f1;
-}
-.container .content .cards {
-    padding: 20px 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-.container .content .cards .card {
-    width: 200px;
-    height: 120px;
-    background: #001E2C;
-    margin: 20px 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-.container .content .cards .box .card-icon1 {
-    padding: 20px 15px;
-    display: flex;
-    font-size: 32px;
-    color:orange;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: relative;
-    top: 40px;
-    right: 90px;
-}
-
-.container .content .cards .box .card-icon2 {
-    padding: 20px 15px;
-    display: flex;
-    font-size: 32px;
-    color:orange;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: relative;
-    top: 40px;
-    right: 65px;
-}
-
-.container .content .cards .box .card-icon3 {
-    padding: 20px 15px;
-    display: flex;
-    font-size: 32px;
-    color:orange;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: relative;
-    top: 40px;
-    right: 50px;
-}
-
-.container .content .cards .box .card-icon4 {
-    padding: 20px 15px;
-    display: flex;
-    font-size: 32px;
-    color:orange;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    position: relative;
-    top: 40px;
-    right: 65px;
-}
-
 .container .content .content-2 {
+    margin-top: 1rem;
     min-height: 60vh;
     display: flex;
     justify-content: space-around;
     align-items: flex-start;
     flex-wrap: wrap;
-}
+    }
 .container .content .content-2 .recent-payments {
     min-height: 50vh;
     flex: 5;
@@ -298,6 +213,7 @@ td {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
 }
 .container .content .content-2 .recentCustomers {
     flex: 3;
@@ -310,6 +226,7 @@ td {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     display: flex;
     flex-direction: column;
+    border-radius: 10px;
 }
 
 
@@ -325,10 +242,6 @@ td {
         display: none;
     }
 }
-
-  </style>
-
-
 
 
 @endsection
