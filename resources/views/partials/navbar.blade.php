@@ -20,7 +20,7 @@
             </div>
           </li>
         <li class="navbar-item dropdown">
-            <a href="#" id="products-link">Shop</a>
+            <a href="#" id="products-link">Shop our Products</a>
             <div class="dropdown-menu" id="products-dropdown">
                 <a href="{{ route('Laptops') }}">Laptops</a>
                 <a href="{{ route('Computers') }}">Computers</a>
@@ -63,4 +63,4 @@
     </div>
     <source src="js/nav.js" type="">
   </nav>
-
+  <script src="{{ asset('js/nav.js') }}"></script> 

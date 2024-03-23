@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ProductDetail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\VerificationController;
@@ -33,8 +34,7 @@ use App\Http\Controllers\PaymentController;
 Route::get('/verify-email', [VerificationController::class, 'verify'])->name('verification.verify');
 
 // basic nav pages
-Route::get('/', function () {
-    //  'orderItem'==App\Models\OrderItem::count();
+Route::get('/', function () { //  'orderItem'==App\Models\OrderItem::count();
     return view('landing');
 })->name('landing');
 
@@ -130,14 +130,6 @@ Route::get('/admin/reports' , function(){
 
 
 
-
-
-
-
-
-
-
-
 // Verification
 Route::view('/verify-success', 'verification.verify-success')->name('verification.success');
 Route::view('/verify-error', 'verification.verify-error')->name('verification.error');
@@ -146,9 +138,7 @@ Route::get('/verifyemail', function () {
 });
 
 
-Route::get('/Search', function () {
-    return view('search');
-});
+Route::get('/Search', function () {return view('search');});
 Route::post('/Search', [SearchController::class, 'findSearch']);
 
 
@@ -207,14 +197,27 @@ Route::get('/cartpage', function () {
 
     // Iterate over each cart item and fetch the corresponding product details
     foreach ($cartItems as $cartItem) {
-        // Retrieve the product details based on the product ID in the cart item
-        $product = Product::find($cartItem->product_id);
+        // Retrieve the product details based on the product name in the cart item
+        $product = ProductDetail::where('name', $cartItem->name)->first();
 
-        // Assign the product price to the cart item
-        $cartItem->price = $product->price;
+        if ($product) {
+            // Assign the product price to the cart item
+            $cartItem->price = $product->price;
+            // Assign the product quantity to the cart item
+            $cartItem->product_quantity = $product->quantity; // Product quantity from ProductDetail model
+            // Assign the image to the cart item
+            $cartItem->image = $product->image; // Assuming 'image' is a field in the ProductDetail model
+
+            // Optionally, you can calculate the upper bound for the increment counter using both quantities
+            $cartItem->max_quantity = min($cartItem->quantity, $product->quantity);
+        } else {
+            // If product details not found, you may handle it accordingly (e.g., remove the cart item)
+            $cartItem->delete(); // Delete the cart item if product details not found
+        }
     }
     return view('cart', ['cartItems' => $cartItems]);
-});
+})->name('cart');
+
 
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');

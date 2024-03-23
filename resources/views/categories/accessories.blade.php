@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Accessories</title>
-    <link rel="stylesheet" href="css/Accessoriespage.css"> 
-    <link rel="stylesheet" href="css/styles.css">   
-
-</head>
-<body onload="showAccessories()">
+ <title>Accessories</title>
+    <link rel="stylesheet" href="css/categories.css"> 
     @include('partials.navbar')
     <h2>Accessories</h2>
     <main class="container">
@@ -51,14 +42,13 @@
                 </ul>
             </div>
         </div>
-        
-        <div class="products">
-        @foreach($products as $product)
-                <div class="product">
+            <div class="products">
+                @foreach($products as $product)
+                <div class="product" data-product-id="{{ $product->id }}">
                     <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}">
                     <h3><a href="{{ route('product.show' , $product->id) }}">{{ $product->name }}</a></h3>
                     <div class="product-details">
-                        <p>Brand: {{ $product->brand }}</p>
+                        <p>Description {{ $product->description }}</p>
                         <p>Price: ${{ $product->price }}</p>
                         <p>Storage: {{ $product->storage }}</p>
                         <p>Operating System: {{ $product->operating_system }}</p>
@@ -68,14 +58,11 @@
                 </div>
                 
             @endforeach
+            
             </div>
+            
+        </div>
 </main>
 @include('partials.footer')
-<script>
-    function updatePriceLabel(value) {
-        const priceLabel = document.getElementById('priceLabel');
-        priceLabel.textContent = `£0 to £${value}`;
-    }
-</script>    
-</body>
-</html>
+{{-- <script src="js/categories.js"></script> --}}
+

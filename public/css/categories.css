@@ -1,0 +1,81 @@
+
+*{
+    margin: 0px;
+}
+
+/* Badge Styles */ 
+.badge {
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+  
+  .badge-success {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .badge-danger {
+    background-color: #dc3545;
+    color: #fff;
+  }
+
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    width:100% !important;
+}
+
+#filters {
+    width: 25%;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+h2{
+text-align: center;
+color: #00668a;
+}
+
+h2:hover{
+color: #331200;
+}
+
+.products {
+flex: 1; /* This will make .products expand to fill the remaining space */
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin-bottom: 20px;
+text-align: center;
+padding-bottom: 10px;
+}
+.product {
+flex: 1 0 calc(25% - 20px); /* Four products per row */
+margin: 10px;
+border: 1px solid #ddd;
+border-radius: 8px;
+}
+
+.product:last-child {
+flex: 1 0 calc(25% - 20px); /* Adjusting last child to occupy 25% width */
+}
+
+.product img {
+width: 100%;
+height: auto;
+}
+
+.product-details {
+padding: 15px;
+}
+
+.product-details h3 {
+margin-top: 0;
+font-size: 18px;
+}
+
+.product-details p {
+margin: 5px 0;
+font-size: 14px;
+}

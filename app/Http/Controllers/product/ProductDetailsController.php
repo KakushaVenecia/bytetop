@@ -43,7 +43,13 @@ class ProductDetailsController extends Controller
     public function getAccessories()
     {
         $products = ProductDetail::where('category', 'Accessories')->paginate(20);
-        return view('categories.accessories', compact('products'));
+        $productQuantities = [];
+        foreach ($products as $product) {
+            $productName = $product->name;
+            $quantity = Product::where('name', $productName)->count();
+            $productQuantities[$productName] = $quantity;
+        }
+        return view('categories.accessories', compact('products','productQuantities'));
     }
     public function getMonitors()
     {
@@ -54,5 +60,5 @@ class ProductDetailsController extends Controller
     {
         $products = ProductDetail::where('category', 'All-in-one')->paginate(20);
         return view('categories.all-in-one', compact('products'));
-    }
+    }    
 }
