@@ -140,7 +140,7 @@ Route::view('/verify-success', 'verification.verify-success')->name('verificatio
 Route::view('/verify-error', 'verification.verify-error')->name('verification.error');
 Route::get('/verifyemail', function () {
     return view('verifyyouremail');
-});
+})->name('verifyyouremail');
 
 
 Route::get('/Search', function () {return view('search');});

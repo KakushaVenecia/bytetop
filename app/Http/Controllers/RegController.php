@@ -64,7 +64,7 @@ class RegController extends Controller
         // Send welcome email with verification link
         $user->notify(new WelcomeEmail($verificationUrl));
 
-        return  redirect()->route('verifyyouremail')->with('success', 'Registration successful. Please check your email for verification.');
+        return redirect()->route('verifyyouremail')->with('success', 'Registration successful. Please check your email for verification.');
     } catch (\Exception $e) {
         // Log the detailed error message for debugging
         logger()->error('Failed to register user: ' . $e->getMessage());

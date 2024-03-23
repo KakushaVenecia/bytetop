@@ -45,7 +45,7 @@
         <div data-name="Subtotals" class="subtotal-activecart">
             <span id="subtotal" class="size-medium number-of-items">
                 Subtotal ({{ $cartItems->count() }} item):
-                <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£<span id="total-price">{{ $totalPrice }}</span></span></span>
+                {{-- <span id="subtotal-amount-activecart" class="color-price">&nbsp;<span class="size-medium color-base sc-price white-space-nowrap">£<span id="total-price">{{ $totalPrice }}</span></span></span> --}}
             </span>
         </div>
         <div class="checkout">

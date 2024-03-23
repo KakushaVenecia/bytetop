@@ -7,45 +7,53 @@ use App\Models\Cart;
 use App\Models\ProductDetail;
 use Illuminate\Database\QueryException;
 
-class CartController extends Controller
-{public function addToCart(Request $request)
-    {
-        // Validate the incoming request
-        $request->validate([
-            'product_name' => 'required|string', 
-            'quantity' => 'required|integer|min:1',
-            'price' => 'required|numeric|min:0',
-        ]);
-    
-        try {
-            // Ensure the user is authenticated
+class CartController extends Controller {
+
+public function addToCart(Request $request)
+{ 
+    // Validate the incoming request
+    $request->validate([
+        'product_name' => 'required|string', 
+        'product_quantity' => 'required|integer|min:1',
+        'product_price' => 'required|numeric|min:0',
+    ]);
+
+    try {
+        // Retrieve the user from the session
+        $user = session()->get('user');
+        if (!$user || !$user->id) {
             if (!auth()->check()) {
                 return redirect()->route('login')->with('error', 'You need to login first.');
             }
-            
-            // Retrieve validated data
-            $productName = $request->input('product_name');
-            $quantity = $request->input('quantity');
-            $price = $request->input('price');
-    
-            // Create a new cart item
-            Cart::create([
-                'name' => $productName,
-                'quantity' => $quantity,
-                'price' => $price,
-                'user_id' => auth()->id(), // Get the authenticated user's ID
-            ]);
-    
-            // Redirect the user back to the previous page with success message
-            return redirect()->back()->with('success', 'Product added to cart successfully.');
-        } catch (\Exception $e) {
-            // Log the exception for debugging
-            logger()->error('Failed to add product to cart: ' . $e->getMessage());
-    
-            // Redirect the user back to the previous page with error message
-            return redirect()->back()->with('error', 'Failed to add product to cart. Please try again later.');
+            $userId = auth()->id();
+        } else {
+            $userId = $user->id;
         }
+
+        // Retrieve validated data
+        $productName = $request->input('product_name');
+        $quantity = $request->input('product_quantity'); // Corrected input name
+        $price = $request->input('product_price'); // Corrected input name
+
+        // Create a new cart item
+        Cart::create([
+            'name' => $productName,
+            'quantity' => $quantity,
+            'price' => $price,
+            'user_id' => $userId,
+        ]);
+
+      
+        // Redirect the user back to the previous page with success message
+        return redirect()->back()->with('success', 'Product added to cart successfully.');
+    } catch (\Exception $e) {
+        // Log the exception for debugging
+        logger()->error('Failed to add product to cart: ' . $e->getMessage());
+
+        // Redirect the user back to the previous page with error message
+        return redirect()->back()->with('error', 'Failed to add product to cart. Please try again later.');
     }
+}
     
 
 
@@ -55,6 +63,7 @@ class CartController extends Controller
       
         if ($userId) {
             $cartCount = Cart::where('user_id', $userId)->count();
+            
             return $cartCount > 0 ? $cartCount : '';
         }
     
