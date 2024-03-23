@@ -220,8 +220,6 @@ public function getStockQuantity(Request $request){
 
     // Retrieve the product detail record based on the product name
     $productDetail = ProductDetail::where('name', $productName)->first();
-
-    // Check if the product detail record exists
     if ($productDetail) {
         // If the record exists, return its ID and the sum of quantities
         return response()->json([
@@ -229,7 +227,7 @@ public function getStockQuantity(Request $request){
             'quantity' => $productDetail->quantity
         ]);
     } else {
-        // If the record doesn't exist, return an error message
+
         return response()->json(['error' => 'Product not found'], 404);
     }
 }
@@ -237,42 +235,9 @@ public function getStockQuantity(Request $request){
 public function dashboard()
 {
     $productCount = Product::count();
-
-    // Get unique product names
-    // $products = Product::distinct()->pluck('name');
-
-    // $productCounts = [];
-    // foreach ($uniqueProductNames as $name) {
-    //     $count = Product::where('name', $name)->count();
-    //     $productCounts[$name] = $count;
-    // }
-
-    // // Paginate the products
     $products = ProductDetail::paginate(7);
-
-    // // Fetch all users
-    // $users = User::all();
-
-    // // Return the view with all necessary data
-    // return view('admindashboard.dashboard', [
-    //     'productCount' => $productCount,
-    //     'uniqueProductNames' => $uniqueProductNames,
-    //     'productCounts' => $productCounts,
-    //     'products' => $products,
-    //     'users' => $users,]);
-    // }
-
-    // public function getallusers()
-    // {
-    //     // Fetch all users with pagination
-    //     $customers = User::paginate(7);
-    
-    //     // Get the route for the view users
         $route = route('dashboard');
-    
 
-    //     dd($customers);
-    //     // Return the view with all necessary data, including the route
         return view('admindashboard.dashboard')->with([
             'productCount' => $productCount,
             'products' => $products,
@@ -282,7 +247,6 @@ public function dashboard()
     
 public function allproducts()
 {
-
     $products = ProductDetail::paginate(30);
     $productQuantities = [];
     foreach ($products as $product) {
@@ -290,38 +254,10 @@ public function allproducts()
         $quantity = Product::where('name', $productName)->count();
         $productQuantities[$productName] = $quantity;
     }
-    // $productCount = ProductDetail::select('name', DB::raw('count(*) as count'), DB::raw('sum(quantity) as total_quantity'))
-    // ->groupBy('name')
-    // ->get();
-
-   
-    
-//     // Get unique product names with associated fields
-//     $uniqueProducts = Product::select('name', 'description', 'price', 'tags', 'category')
-//                              ->distinct()
-//                              ->get();
-
-// //    $stock = ProductQuantity::                          
-
-//     // Paginate the unique products
-//     $perPage = 7;
-//     $currentPage = request()->get('page', 1); // Get the current page from the query string
-//     $offset = ($currentPage - 1) * $perPage;
-//     $uniqueProductsPaginated = array_slice($uniqueProducts->toArray(), $offset, $perPage);
-//     $uniqueProductsPaginated = new LengthAwarePaginator($uniqueProductsPaginated, $uniqueProducts->count(), $perPage, $currentPage);
-//     // Fetch all users
-//     $users = User::all();
-
-//     // Return the view with all necessary data
     return view('admindashboard.products')->with([
         'products' => $products,
         'productQuantities' => $productQuantities,
-       
     ]);        
 
 }
-
-
-
-
 }
