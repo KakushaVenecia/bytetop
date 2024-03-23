@@ -54,26 +54,26 @@ Route::get('/forgotpwd', function () {
 
 Route::post('/forgot-password', [RegController::class, 'sendResetLinkEmail'])->name('forgot-password');
 
-// Route::get('password/reset', [RegController::class, 'showLinkRequestForm'])->name('password.request');
-// Route::post('password/email', [RegController::class, 'sendResetLinkEmail'])->name('password.email');
-// Route::get('password/reset/{token}', [RegController::class, 'showResetForm'])->name('password.reset');
-// Route::post('password/reset', [RegController::class, 'reset'])->name('password.update');
+ Route::get('password/reset', [RegController::class, 'showLinkRequestForm'])->name('password.request');
+ Route::post('password/email', [RegController::class, 'sendResetLinkEmail'])->name('password.email');
+ Route::get('password/reset/{token}', [RegController::class, 'showResetForm'])->name('password.reset');
+ Route::post('password/reset', [RegController::class, 'reset'])->name('password.update');
 
-Route::get('/forgot-password', function () {
-    return view('forgotpwd');
-})->middleware('guest')->name('password.request');
+//Route::get('/forgot-password', function () {
+    //return view('forgotpwd');
+//})->middleware('guest')->name('password.request');
 
-Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])
-    ->middleware('guest')
-    ->name('password.email');
+//Route::post('/forgot-password', [PasswordResetController::class, 'sendResetLinkEmail'])
+    //->middleware('guest')
+    //->name('password.email');
 
-Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])
-    ->middleware('guest')
-    ->name('password.reset');
+//Route::get('/reset-password/{token}', [PasswordResetController::class, 'showResetForm'])
+    //->middleware('guest')
+    //->name('password.reset');
 
-Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])
-    ->middleware('guest')
-    ->name('password.update');
+//Route::post('/reset-password', [PasswordResetController::class, 'resetPassword'])
+    //->middleware('guest')
+    //->name('password.update');
 
 
 // Delete these views
