@@ -1,109 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Computers</title>
-    <link rel="stylesheet" href="css/Accessoriespage.css"> 
-    <link rel="stylesheet" href="css/styles.css"> 
-    
-</head>
-<body onload="showComputers()">
+<title>Accessories</title>
+    <link rel="stylesheet" href="css/categories.css"> 
     @include('partials.navbar')
     <h2>Computers</h2>
     <main class="container">
         <div id="filters">
             <div class="filter-section">
-                <h2>Brands</h2>
+                <h2>Category</h2>
                 <ul>
-                    <li><input type="checkbox" id="brand-dell"><label for="brand-dell">Dell</label></li>
-                    <li><input type="checkbox" id="brand-hp"><label for="brand-hp">HP</label></li>
-                    <li><input type="checkbox" id="brand-lenovo"><label for="brand-lenovo">Lenovo</label></li>
-                    <li><input type="checkbox" id="brand-apple"><label for="brand-apple">Apple</label></li>
-                    <li><input type="checkbox" id="brand-acer"><label for="brand-acer">Acer</label></li>
-                    <li><input type="checkbox" id="brand-asus"><label for="brand-asus">ASUS</label></li>
+                    <li><input type="checkbox" id="category-keyboards"><label for="category-keyboards">Keyboards</label></li>
+                    <li><input type="checkbox" id="category-mice"><label for="category-mice">Mice</label></li>
+                    <li><input type="checkbox" id="category-monitors"><label for="category-monitors">Monitors</label></li>
+                    <li><input type="checkbox" id="category-webcams"><label for="category-webcams">Webcams</label></li>
+                    <li><input type="checkbox" id="category-headsets"><label for="category-headsets">Headsets</label></li>
+                    <li><input type="checkbox" id="category-cables"><label for="category-cables">Cables</label></li>
                 </ul>
                 <a href="#">See more</a>
+            </div>
+            <div class="category-section">
+            <h21>PRICE</h21>
+            <input type="range" id="priceRange" min="0" max="5000" step="1" value="5000" oninput="updatePriceLabel(this.value)">
+            <label for="priceRange" id="priceLabel">£0 to £5000</label>
+        </div>
+        <div class="filter-section">
+                <h2>Brand</h2>
+                <ul>
+                    <li><input type="checkbox" id="brand-logitech"><label for="brand-logitech">Logitech</label></li>
+                    <li><input type="checkbox" id="brand-acer"><label for="brand-acer">Acer</label></li>
+                    <li><input type="checkbox" id="brand-hp"><label for="brand-hp">HP</label></li>
+                    <li><input type="checkbox" id="brand-dell"><label for="brand-dell">Dell</label></li>
+                    <li><input type="checkbox" id="brand-sony"><label for="brand-sony">Sony</label></li>
+                </ul>
             </div>
             <div class="filter-section">
                 <h2>Customer Ratings</h2>
                 <ul>
+                    <li><input type="checkbox" id="rating-5-stars"><label for="rating-5-stars">5★ & above</label></li>
                     <li><input type="checkbox" id="rating-4-stars"><label for="rating-4-stars">4★ & above</label></li>
                     <li><input type="checkbox" id="rating-3-stars"><label for="rating-3-stars">3★ & above</label></li>
                     <li><input type="checkbox" id="rating-2-stars"><label for="rating-2-stars">2★ & above</label></li>
                     <li><input type="checkbox" id="rating-1-star"><label for="rating-1-star">1★ & above</label></li>
                 </ul>
             </div>
-            <div class="category-section">
-                    <h20>PRICE</h20>
-                    <input type="range" id="priceRange" min="0" max="5000" step="1" value="5000" oninput="updatePriceLabel(this.value)">
-                    <label for="priceRange" id="priceLabel">£0 to £5000</label>
-            </div>
-            <div class="filter-section">
-                <h2>RAM Size</h2>
-                <ul>
-                    <li><input type="checkbox" id="ram-4gb"><label for="ram-4gb">4GB</label></li>
-                    <li><input type="checkbox" id="ram-8gb"><label for="ram-8gb">8GB</label></li>
-                    <li><input type="checkbox" id="ram-16gb"><label for="ram-16gb">16GB</label></li>
-                    <li><input type="checkbox" id="ram-32gb"><label for="ram-32gb">32GB</label></li>
-                    <li><input type="checkbox" id="ram-64gb"><label for="ram-64gb">64GB</label></li>
-                </ul>
-            </div>
-            <div class="filter-section">
-                <h2>Processor</h2>
-                <ul>
-                    <li><input type="checkbox" id="processor-i3"><label for="processor-i3">Intel Core i3</label></li>
-                    <li><input type="checkbox" id="processor-i5"><label for="processor-i5">Intel Core i5</label></li>
-                    <li><input type="checkbox" id="processor-i7"><label for="processor-i7">Intel Core i7</label></li>
-                    <li><input type="checkbox" id="processor-i9"><label for="processor-i9">Intel Core i9</label></li>
-                    <li><input type="checkbox" id="processor-ryzen3"><label for="processor-ryzen3">AMD Ryzen 3</label></li>
-                    <li><input type="checkbox" id="processor-ryzen5"><label for="processor-ryzen5">AMD Ryzen 5</label></li>
-                    <li><input type="checkbox" id="processor-ryzen7"><label for="processor-ryzen7">AMD Ryzen 7</label></li>
-                </ul>
-            </div>
-            <div class="filter-section">
-                <h2>Storage</h2>
-                <ul>
-                    <li><input type="checkbox" id="storage-128gb"><label for="storage-128gb">128GB SSD</label></li>
-                    <li><input type="checkbox" id="storage-256gb"><label for="storage-256gb">256GB SSD</label></li>
-                    <li><input type="checkbox" id="storage-512gb"><label for="storage-512gb">512GB SSD</label></li>
-                    <li><input type="checkbox" id="storage-1tb"><label for="storage-1tb">1TB HDD</label></li>
-                    <li><input type="checkbox" id="storage-2tb"><label for="storage-2tb">2TB HDD</label></li>
-                    <li><input type="checkbox" id="storage-1tb-256gb"><label for="storage-1tb-256gb">1TB HDD + 256GB SSD</label></li>
-                </ul>
-            </div>
-            <div class="filter-section">
-                <h2>Operating System</h2>
-                <ul>
-                    <li><input type="checkbox" id="os-windows"><label for="os-windows">Windows</label></li>
-                    <li><input type="checkbox" id="os-macos"><label for="os-macos">macOS</label></li>
-                    <li><input type="checkbox" id="os-linux"><label for="os-linux">Linux</label></li>
-                </ul>
-            </div>
         </div>
-        <div class="products">
-        @foreach($products as $product)
-                <div class="product">
+            <div class="products">
+                @foreach($products as $product)
+                <div class="product" data-product-id="{{ $product->id }}">
+                <a href="{{ route('product.show', $product->id) }}">
                     <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}">
-                    <h3><a href="{{ route('product.show' , $product->id) }}">{{ $product->name }}</a></h3>
+                    <h3 style="color: blue;">{{ $product->name }}</h3>
+                </a>
                     <div class="product-details">
-                        <p>Brand: {{ $product->brand }}</p>
+                        <p>Description {{ $product->description }}</p>
                         <p>Price: ${{ $product->price }}</p>
                         <p>Storage: {{ $product->storage }}</p>
                         <p>Operating System: {{ $product->operating_system }}</p>
-                       
+                        
                         <button class="btn btn-add">Add to Cart</button>
                     </div>
-                    <!-- Add the review section for this product -->
-                    <div class="product-reviews">
-                          @include('product.review', ['product' => $product])
-                    </div>
                 </div>
+                
             @endforeach
+            
             </div>
-    </main>
-    @include('partials.footer')
-<script src="js/Computerspage.js"> </script>    
-</body>
-</html>
+            
+        </div>
+</main>
+@include('partials.footer')
+{{-- <script src="js/categories.js"></script> --}}
+
