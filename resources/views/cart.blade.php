@@ -19,13 +19,13 @@
         <div class="item-content">
             @foreach($cartItems as $cartItem)
             <div class="grid-vertical-align">
-                <img src="{{ asset('storage/images/' . $cartItem->productDetail->image) }}" alt="{{ $cartItem->name }}">
+                <img style="width:70px height:70px" src="{{ asset('storage/images/' . $cartItem->productDetail->image) }}" alt="{{ $cartItem->name }}">
                 <p>Name: {{ $cartItem->name }}</p>
                 <p>Price: {{ $cartItem->price }}</p>
                 <p>Quantity:
                     <span class="quantity-control">
                         <button class="decrement" data-product-id="{{ $cartItem->id }}"> - </button>
-                        <input type="text" class="quantity-input" value="{{ $cartItem->quantity }}" readonly>
+                        <input type="text" class="quantity-input" value="{{ $cartItem->quantity }}">
                         <button class="increment" data-product-id="{{ $cartItem->id }}"> + </button>
                     </span>
                 </p>
@@ -66,7 +66,53 @@
     @endif
 </section>
 </div>
+<!-- Your HTML code remains unchanged -->
 
-<script src="js/cart.js"></script>
-</body>
-</html> 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Increment and decrement quantity buttons
+        document.querySelectorAll('.increment').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product-id');
+                const quantityInput = document.querySelector(`.quantity-input[data-product-id="${productId}"]`);
+                const currentQuantity = parseInt(quantityInput.value);
+                // Check if the current quantity exceeds the available quantity
+                // Replace this condition with your own logic for checking available quantity
+                if (currentQuantity < 10) { // Example: Maximum available quantity is 10
+                    quantityInput.value = currentQuantity + 1;
+                    // Update total price
+                    updateTotalPrice();
+                } else {
+                    alert('Maximum quantity reached.');
+                }
+            });
+        });
+    
+        document.querySelectorAll('.decrement').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-product-id');
+                const quantityInput = document.querySelector(`.quantity-input[data-product-id="${productId}"]`);
+                const currentQuantity = parseInt(quantityInput.value);
+                if (currentQuantity > 1) {
+                    quantityInput.value = currentQuantity - 1;
+                    // Update total price
+                    updateTotalPrice();
+                }
+            });
+        });
+    
+        // Function to update total price
+        function updateTotalPrice() {
+            let totalPrice = 0;
+            document.querySelectorAll('.item-content .grid-vertical-align').forEach(function(item) {
+                const price = parseFloat(item.querySelector('p:nth-child(3)').textContent.split(':')[1].trim());
+                const quantity = parseInt(item.querySelector('.quantity-input').value);
+                totalPrice += price * quantity;
+            });
+            document.getElementById('total-price').textContent = totalPrice.toFixed(2); // Update total price display
+        }
+    });
+    </script>
+    </body>
+    </html>
+    

@@ -55,8 +55,6 @@ public function addToCart(Request $request)
     }
 }
     
-
-
     public function getCartCount()
     {
         $userId = session('user_id');
@@ -71,6 +69,7 @@ public function addToCart(Request $request)
     }
 
 public function subtotal(){
+
     $userId = session('user_id');
 
         // Initialize subtotal variable
@@ -95,14 +94,11 @@ public function subtotal(){
     {
         $cartItem = Cart::find($id);
 
-
-
         // Check if the cart item exists
         if ($cartItem) {
             // Delete the cart item
             $cartItem->delete();
-
-            $cartItems = Cart::where('order_id', $cartItem->order_id)->get();
+            $cartItems = Cart::where('order_id')->get();
             $totalPrice = $cartItems->sum(function ($item) {
                 return $item->product->price * $item->quantity;
             });

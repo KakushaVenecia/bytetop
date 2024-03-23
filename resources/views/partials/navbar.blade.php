@@ -55,20 +55,7 @@
           <li class="navbar-item"><a href="/about">About</a></li>
       </ul>
       <div class="navbar-cart">
-          <a href="/cartpage"><i class="fas fa-shopping-cart"> </i>
-          @auth 
-              @if (session()->has('cart_count'))
-                  <span class="cart-count"> {{ session('cart_count') }}</span>
-              @else
-                  @php
-                      $userId = session('user_id');
-                      $cartCount = App\Models\Cart::where('user_id', $userId)->count();
-                      session(['cart_count' => $cartCount]);
-                  @endphp
-                  <span class="cart-count"> {{ $cartCount }}</span>
-              @endif
-          @endauth
-          </a>
+        <a href="/cartpage"><i class="fas fa-shopping-cart"> </i> <span class="cart-count">{{ $cartCount }}</span></a>
       </div>
   </div>
 </nav>
