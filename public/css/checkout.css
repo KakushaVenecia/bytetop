@@ -66,7 +66,7 @@ a.btn.action__pay_with_new_card {
   margin-right: auto;
   margin-top: -200px;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -79,7 +79,7 @@ a.btn.action__pay_with_new_card {
 .details__user {
   background: #f6f9fc;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 5px;
   border: 1px solid #dadada;
 }
 
@@ -217,7 +217,7 @@ input[type="text"] {
 
 .btn {
   font-family: "Josefin Sans", sans-serif;
-  border-radius: 8px;
+  border-radius: 5px;
   border: 0;
   letter-spacing: 1px;
   color: #fff;
@@ -264,13 +264,13 @@ input[type="text"] {
 .shipping__info {
   background: #f6f9fc;
   padding: 10px;
-  border-radius: 8px;
+  border-radius: 5px;
 }
 
 .payment__type {
   display: flex;
   border: 2px solid #d9d9d9;
-  border-radius: 8px;
+  border-radius: 5px;
   padding: 20px 40px;
   width: 100%;
   justify-content: center;
@@ -368,7 +368,7 @@ input[type="text"] {
 .name {
     background: #001e2c;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 5px;
     border: 1px solid #dadada;
     width: 25rem;
     margin-left: 12rem ;
@@ -378,7 +378,7 @@ input[type="text"] {
 .card {
   background: #f6f9fc;
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 5px;
   border: 1px solid #dadada;
   width: 35rem;
 }
@@ -466,7 +466,7 @@ input[type="text"] {
   width:280px;
   background:white;
   margin:0 auto;
-  border-radius:1.2em;
+  border-radius: 5px;
   margin-top:25px;
   padding:12px 20px;
 }
@@ -583,7 +583,7 @@ h5{
 .button{
   width:120px;
   height:35px;
-  border-radius:1.2em;
+  border-radius:5px;
   background:linear-gradient(
     to right,
     #6480ef,
