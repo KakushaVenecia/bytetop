@@ -15,7 +15,7 @@
         <p>
             You're almost there! We sent an email to </p> 
         
-            <strong>{{ session('user_email') }}</strong>>
+            <strong>{{ session('email') }}</strong>>
         <p>    
             Just click on the link in the email to complete your signup.
             If you don't see it, please <label> check your spam </label> folder. </p>

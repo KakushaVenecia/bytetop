@@ -56,7 +56,7 @@ class RegController extends Controller
             'email_verification_token' => $verificationToken, // Save the verification token
         ]);
 
-        session()->put('email', $user->email); 
+        session()->put('email', $validatedData['email']); 
         
         // Generate verification URL with JWT token
         $verificationUrl = URL::to('/verify-email') . '?token=' . $verificationToken;
@@ -87,26 +87,33 @@ class RegController extends Controller
     if (Auth::attempt($credentials)) {
         $user = Auth::user();
 
-        if ($user->role == 'super_admin' || $user->role == 'admin') {
+        // Check if the user's email is verified
+        if ($user->email_verified_at) {
+            // If the email is verified, proceed with login
+            if ($user->role == 'super_admin' || $user->role == 'admin') {
+                session()->put('authenticated', true);
+                session()->put('user_id', $user->id); 
+                session()->put('user_name', $user->name);
+                return redirect()->route('dashboard')->with('success', 'Login successful');
+            }
+
+            $userId = $user->id;
+            $cartCount = Cart::where('user_id', $userId)->count();
             session()->put('authenticated', true);
             session()->put('user_id', $user->id); 
             session()->put('user_name', $user->name);
-            return redirect()->route('dashboard')->with('success', 'Login successful');
+            session()->put('cart_count', $cartCount);
+
+            return redirect()->route('landing')->with('success', 'Login successful');
+        } else {
+            // If the email is not verified, redirect back with an error message
+            Auth::logout();
+            return redirect()->back()->with('error', 'Please verify your email before logging in.');
         }
-
-        $userId = $user->id;
-        $cartCount = Cart::where('user_id', $userId)->count();
-        session()->put('authenticated', true);
-        session()->put('user_id', $user->id); 
-        session()->put('user_name', $user->name);
-        session()->put('cart_count', $cartCount);
-
-        return redirect()->route('landing')->with('success', 'Login successful');
     } else {
         return redirect()->back()->with('error', 'Invalid credentials')->withInput();
     }
 }
-
 
     public function logout(Request $request)
     {
