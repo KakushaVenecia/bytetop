@@ -189,14 +189,12 @@
                 </div> -->
 
           <div class="payment__shipping">
+        
+
+            <div class="name">
             <div class="payment__title">
               <i class="icon icon-plane"></i> Shipping Information
             </div>
-
-
-
-
-            <div class="name">
                     <div class="title">First Name
                     </div>
                     <input type="text" class="input txt text-validated"/>

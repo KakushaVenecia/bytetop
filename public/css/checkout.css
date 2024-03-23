@@ -183,9 +183,10 @@ input[type="text"] {
 }
 
 .title {
-  font-size: 14px;
+  font-size: 18px;
   padding-bottom: 8px;
   padding-top: 10px;
+  color: white;
 }
 
 .field {
@@ -224,12 +225,13 @@ input[type="text"] {
   padding: 20px 0 0 0;
 }
 .payment__title {
-  margin: 40px 0 20px 0;
   font-size: 25px;
   display: flex;
   text-align: left;
-  margin-left: 12rem;
+  margin-left: 2rem;
   font-weight: 600;
+  color: white;
+  margin-bottom: 1.1rem;
 }
 .payment__title .icon {
   margin-right: 10px;
@@ -248,8 +250,14 @@ input[type="text"] {
   line-height: 1;
   text-transform: uppercase;
   transition: all 0.15s ease;
+  font-weight: 600;
   text-decoration: none;
 }
+
+.btn:hover{
+  background-color: orange;
+}
+
 .btn .icon {
   margin-left: 10px;
   font-size: 20px;
@@ -394,7 +402,7 @@ input[type="text"] {
 
 
 .name {
-    background: #f6f9fc;
+    background: #001e2c;
     padding: 20px;
     border-radius: 8px;
     border: 1px solid #dadada;
@@ -463,15 +471,10 @@ input[type="text"] {
 }
 .cardHolder {
   height: 300px;
-  background: linear-gradient(
-    to right,
-    #6480ef,
-    #7775e8,
-    #806ce8
-  ); 
-/*   border-bottom-left-radius:50%;
-  border-bottom-right-radius:50%; */
+  background: #001E2C; 
 }
+
+
 .center{
   display:flex;
   justify-content:center;
@@ -589,6 +592,7 @@ h5{
   display:flex;
   flex-direction:column;
   justify-content:center;
+  cursor: pointer;
 }
 .options > .opt > .icon{
   height:30px;
@@ -649,4 +653,9 @@ h5{
   margin-top: 1rem;
   margin-left: 6rem;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.optname1.center:hover{
+  background-color: orange;
 }
