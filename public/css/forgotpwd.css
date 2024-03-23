@@ -1,6 +1,6 @@
 body {
     background: rgb(96,145,163);
-    background: linear-gradient(180deg, rgba(96,145,163,1) 56%, rgba(241,247,249,1) 100%);
+    
     font-family: Arial,sans-serif;
     color: white;
     display: flex;
@@ -11,7 +11,7 @@ body {
 
 .container {
     background-color: #001E2C;
-    border-radius: 40px;
+    border-radius: 10px;
     padding: 20px;
     width: 550px;
     height: 500px;
@@ -22,31 +22,24 @@ h2 {
 	color:white ;
     text-align: left;
     font-size: 50px;
-    margin-left: 35px;
+    margin-left: 60px;
     height: 20px;
 
 }
 
-h3 {color: white;
-    font-size: 50px;
-    margin-top:.5px;
-    margin-left: 40px;
-    text-align: center;
-    height: 20px;
 
-}
 
-p:nth-of-type(1) {
-    color: #904d00; /* Red color, you can change to your desired color */
-    font-size: 25px; /* Adjust size as needed */
+.happen p {
+    color: orange;
+    font-size: 35px;
     margin-top: 3rem;
+    font-weight: 600;
 }
 
-/* Apply styles to the "Enter your email address" paragraph */
-p:nth-of-type(2) {
-    color: white; /* Blue color, you can change to your desired color */
-    font-size: 25px; /* Adjust size as needed */
-    margin-right: 3rem;
+
+.email p {
+    color: white; 
+    font-size: 25px; 
     height: 15px;
 }
 
@@ -61,26 +54,19 @@ input[type="text"] {
     font-size: 20px;
     margin-top: 0;
     color: black;
+    
 }
 
-/*button {
-	background-color:#00668A ;
-	border:none ;
-	color:black;
-	padding :15px 44px ;
-	text-align:center ;
-	text-decoration:none ;
-	display:inline-block ;
-	font-size :20px;
-	margin :35px 5px ;
-	cursor: pointer ;
-	border-radius :40px;
-
-}*/
+input[type="email" i] {
+    padding-block: 6px;
+    padding-inline: 10px;
+    font-size: 1.4rem;
+    border-radius: 5px;
+}
 
 .white-line {
-    border: .5px solid rgb(208, 205, 205); /* Adjust the border properties as needed */
-    margin: 30px 0; /* Adjust the margin properties as needed for spacing */
+    border: .5px solid rgb(208, 205, 205); 
+    margin: 30px 0; 
     width: 500px;
     margin-left: 20px;
 
@@ -143,3 +129,14 @@ input[type="text"] {
     margin-top: 5px;
     margin-right: 11rem;
   }
+
+  img {
+    width: 150px;
+    height: 100px;
+    margin: 0px;
+}
+
+hr.white-line {
+    width: 27rem;
+    margin-left: 3rem;
+}

@@ -173,3 +173,25 @@ $('input[ng-model="cvv"]').on('focus', function(){
     // Navigate to the verifynumber page
     window.location.href = 'http://127.0.0.1:8000/verifynumber'; // Change to the correct URL
 });
+
+
+
+// Get references to the month and year select elements
+var monthSelect = document.getElementById("expiry_month");
+var yearSelect = document.getElementById("expiry_year");
+
+// Function to get the expiry date
+function getExpiryDate() {
+    // Get the selected month and year values
+    var month = monthSelect.value;
+    var year = yearSelect.value;
+
+    // Format the expiry date as MM/YYYY
+    var expiryDate = month + '/' + year;
+
+    return expiryDate;
+}
+
+// Example usage
+var expiryDate = getExpiryDate();
+console.log('Expiry Date:', expiryDate);

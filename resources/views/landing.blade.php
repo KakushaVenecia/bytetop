@@ -1,5 +1,3 @@
-
-
 <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
 <title>Landing</title>

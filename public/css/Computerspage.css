@@ -1,5 +1,5 @@
 
-        /* Global styles */
+        
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -22,7 +22,7 @@
             padding: 0;
         }
 
-        /* Filters section */
+        
         #filters {
             width: 25%;
             float: left;
@@ -43,7 +43,7 @@
             margin-bottom: 5px;
         }
 
-        /* Computers section */
+        
         #computers {
             width: 50%;
             float: left;
@@ -83,5 +83,4 @@
             margin: 5px 0;
         }
 
-        /* Navbar and footer */
-        /* Define styles for navbar and footer */
+    

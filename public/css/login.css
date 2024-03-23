@@ -1,256 +1,129 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Righteous';
+
+      body {
+ 
+  background: rgb(96,145,163);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.container {
+  width: 350px;
+  height: fit-content;
+   background:#001E2C;
+  border-radius: 10px;
+  padding: 10px;
+  
+  text-align: center; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+form {
+    padding:10px;
+  width: 100%;
+  height: fit-content; 
+}
+img {
+  width: 150px;
+  height:100px;
+  margin: 0px;
+}
+h1{
+  margin:0px;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+a{
+    margin: 0px;
+    color: #fff
 }
 
-body {
-    background: rgb(96,145,163);
-    background: linear-gradient(180deg, rgba(96,145,163,1) 56%, rgba(241,247,249,1) 100%);    
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    margin: 0;
+label {
+  margin-bottom: 5px;
+  color: #ffffff;
 }
-
-section{
-    position: relative;
-    max-width: 500rem;
-    max-height: 660rem;
-    background-color: #001E2C;
-    /*border: 2px solid rgba(255, 255, 255, 0.5);*/
-    border-radius: 40px;
-    backdrop-filter: blur(55px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem 3rem;
-
+input {
+  width: 80%; 
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
-
-
-h1 {
-    font-size: 2.5rem;
-    width: 132px;
-    height: 54px;
-    color: #fff;
-    text-align: left;
-    
-}
-
-.white-line {
-    border: .5px solid rgb(208, 205, 205); /* Adjust the border properties as needed */
-    margin: 1px 0; /* Adjust the margin properties as needed for spacing */
-    width: 200px;
-}
-
-.inputbox {
-    position: relative;
-    margin: 65px 0;
-    max-width: 400rem;
-    border-bottom: none;
-}
-
-
-.inputbox label{
-    position: absolute;
-    top: .5px;
-    left: 10px;
-    transform: translateY(-100%);
-    color: #ffffff;
-    font-size: 25px;
-    transition: all 0.5s ease;
-}
-
-
-input:focus ~ label,
-input:valid ~ label {
-    top: -5px;
-}
-
-
-.inputbox input{
-    width: 25rem;
-    height: 52px;
-    background-color: #D9D9D9;
-    border-radius: 1rem;
-    font-size: 1.5rem;
-    padding: 0 35px 0 20px;
-}
-
-input[type=text]:focus, input[type=password]:focus{
-    background-color: #fff;
-    outline:none;
-}
-
-
-
-.input-box {
-    position: relative;
-    margin: 65px 0;
-    max-width: 400rem;
-    align-items: center;
-    display: flex;
-    
-}
-
-
-.input-box label{
-    position: absolute;
-    top: .5px;
-    left: 10px;
-    transform: translateY(-100%);
-    color: #ffffff;
-    font-size: 25px;
-    transition: all 0.5s ease;
-}
-
-
-
-
-.input-box input{
-    width: 25rem;
-    height: 52px;
-    background-color: #D9D9D9;
-    border-radius: 1rem;
-    font-size: 1.5rem;
-    padding: 0 35px 0 20px;
-}
-
-.input-box img{
-    width: 35px;
-    cursor: pointer;
-    
-}
-
-input[type=text]:focus, input[type=password]:focus{
-    background-color: #fff;
-    outline:none;
-}
-
-
-
-.forget{
-    margin: 20px 0;
-    font-size: 1rem;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-}
-
-
-.forget label{
-    display: flex;
-    align-items: center;
-}
-
-
-.forget label input{
-    margin-right: 10px;
-}
-
-.forget a{
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    margin-right: 10px;
-}
-
-.forget a:hover{
-    text-decoration: underline;
-}
-
-button{
-    width: 220px;
-    height: 48px;
-    border-radius: 40px;
+button {
     background-color: #00668A;
-    cursor: pointer;
-    font-size: 25px;
-    font-weight: 600;
-    transition: all 0.5s ease;
-    margin-left: 6rem;
-
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  opacity: 0.9;
+  border-radius: 50px;
+  text-align: center;
+  justify-content: center;
 }
-
-button:hover{
-    background-color: #ffffff;
+button:hover {
+  background-color: #f7890b;
 }
-
-.register{
-    font-size: 1.5rem;
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+.info{
+    padding: 5px;
     color: #fff;
-    text-align: center;
-    margin: 25px 0 10px;
+    font-weight: 300;
 }
 
-.register p a {
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: 600;
-
+#loginText {
+  overflow: hidden; 
+  border-right: 2px solid rgb(255, 255, 255); 
+  white-space: nowrap;
+  animation: typing 3s steps(4, end), untyping 3s steps(6, end) 3s infinite;
 }
 
-.register p a:hover{
-    text-decoration: underline;
-}
-
-
-
-
-.error-message {
-    color: rgb(238, 14, 14);
-    font-size: 20px;
-    margin-top: 5px;
-    margin-left: 20px;
+@keyframes typing {
+  from {
+    width: 0;
   }
-  
-
-
-.password-container{
-    width: 300px;
-    position: relative;
-}
-
-.fa-eye{
-    position: absolute;
-    top: 34%;
-    right: 4%;
-    cursor: pointer;
-    color: black;
-}
-
-
-
-
-
-
-
-.error-message {
-    color: rgb(238, 14, 14);
-    font-size: 20px;
-    margin-top: 5px;
-    margin-left: 20px;
+  to {
+    width: 5em; 
   }
-  
-
-
-.password-container{
-    width: 300px;
-    position: relative;
 }
 
-.fa-eye{
-    position: absolute;
-    top: 34%;
-    right: 4%;
-    cursor: pointer;
-    color: black;
+@keyframes untyping {
+  from {
+    width: 3em; 
+  }
+  to {
+    width: 0;
+  }
 }
 
+#signinText {
+  overflow: hidden; 
+  border-right: 2px solid rgb(255, 255, 255); 
+  white-space: nowrap;
+  animation: typing 3s steps(7, end), untyping 3s steps(6, end) 3s infinite;
+}
 
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 5em; 
+  }
+}
+
+@keyframes untyping {
+  from {
+    width: 3em; 
+  }
+  to {
+    width: 0;
+  }
+}

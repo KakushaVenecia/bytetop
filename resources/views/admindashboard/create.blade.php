@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Product</title>
+
     <link rel="stylesheet" href="{{ asset('css/products.css') }}">
-</head>
-<body>
     <div class="container">
         <div class="form-wrapper">
                     <h1>Create Product</h1>
@@ -92,6 +85,4 @@
         </div>
     </div>   
 <script src="{{ asset('js/products.js') }}"></script> 
-</body>
-</html> 
  

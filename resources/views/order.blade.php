@@ -7,7 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <!-- Add Order Item Form -->
+    
 <form action="{{ route('orderItems.store', ['order_id' => $order->id]) }}" method="post">
     @csrf
     <div>
@@ -27,7 +27,7 @@
 
 <hr>
 
-<!-- Order Items Table -->
+
 <table>
     <thead>
         <tr>
