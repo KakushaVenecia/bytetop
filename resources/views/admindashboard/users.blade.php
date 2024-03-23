@@ -1,103 +1,54 @@
 @extends('admindashboard.layout')
-@section('title', 'Orders')
+@section('title', 'Users')
 
 @section('content')
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
 <div class="search">
-<span class="search-icon material-symbols-outlined">search</span>
-<input class="search-input" type="search" placeholder="Search">
+    <span class="search-icon material-symbols-outlined">search</span>
+    <input class="search-input" type="search" placeholder="Search">
 </div>
-
-<button class="button button1">+Add Customer</button>
-
 <div class="content">
-<div id="Customers List">
-    <h1>Customers List</h1>
-    <table class="customers_list">
-
-	<thead>
-		<tr>
-			<th class="id">ID</th>
-			<th class="name">Name</th>
-			<th class="email">Email</th>
-			<th class="phone-number">Phone Number</th>
-			<th class="gender">Gender</th>
-			<th class="action">Action</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<tr class="users">
-			<td> #2080 </td>
-			<td> Christian Lego </td>
-      <td> c.lego12@gmail.com</td>
-			<td> +44 7767550544 </td>
-			<td> Male </td>			
-			<td> ... </td>			
-		</tr>
-
-		<tr class="users">
-    	<td> #1081 </td>
-			<td> Imran Khan </td>
-      <td> khan.i9992@gmail.com</td>
-			<td> +44 7769584903 </td>
-			<td> Male </td>			
-			<td> ... </td>			
-		</tr>
-
-		<tr class="users">
-			<td> #1310 </td>
-			<td> Julia Smith </td>
-      <td> smith_julia2345@gmail.com</td>
-			<td> +44 7754059978 </td>
-			<td> Female </td>			
-			<td> ... </td>			
-		</tr>
-
-		<tr class="users">
-			<td> #3379 </td>
-			<td> Chris Campbell </td>
-      <td> campbell.c007@gmail.com</td>
-			<td> +44 7760557890 </td>
-			<td> Male </td>			
-			<td> ... </td>			
-		</tr>
-
-		<tr class="users">
-			<td> #1100 </td>
-			<td> Philip Scott </td>
-      <td> philip.s3344@gmail.com</td>
-			<td> +44 7706504498 </td>
-			<td> Male </td>			
-			<td> ... </td>			
-		</tr>
-
-		<tr class="users">
-			<td> #3230 </td>
-			<td> Lily Brown </td>
-      <td> brown_lily2022@gmail.com</td>
-			<td> +44 7767550544 </td>
-			<td> Female </td>			
-			<td> ... </td>			
-		</tr>
-
-		<tr class="users">
-			<td> #2360 </td>
-			<td> Sophia Stewart </td>
-      <td> s.sophia777@gmail.com</td>
-			<td> +44 7743023209 </td>
-			<td> Female </td>			
-			<td> ... </td>			
-		</tr>
-	</tbody>
-</table>
-    
+    <div id="UsersList">
+        <h1>Users List</h1>
+        <table class="users_list">
+            <thead>
+                <tr>
+                    <th class="id">Name</th>
+                    <th class="name">Email</th>
+                    <th class="email">Invited_By</th>
+                    <th class="phone-number">Status</th>
+                    <th class="gender">Role</th>
+                    <th class="gender">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($users as $user)
+                <tr class="user">
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->invited_by }}</td>
+                    <td>{{ $user->status }}</td>
+                    <td>{{ $user->role }}</td>
+                    <td>
+                        @if($user->status === 'pending')
+                            <form action="{{ route('admin.deleteuser', $user->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="button button-delete">Delete</button>
+                            </form>
+                        @endif
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
-<div>
+
 
 <style>
-	{
+	*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;

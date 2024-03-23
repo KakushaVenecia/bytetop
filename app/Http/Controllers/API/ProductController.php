@@ -194,10 +194,10 @@ if ($requestQuantity >= $currentQuantity) {
     return redirect()->route('dashboard')->with('success', 'Product deleted successfully');
 }
     public function index()
-{
-    $products = Product::select('id', 'name')->distinct()->get();
-    return view('admindashboard.create', compact('products'));
-}
+ {
+     $products = Product::select('id', 'name')->distinct()->get();
+     return view('admindashboard.create', compact('products'));
+ }
 public function getProductDescription(Request $request)
 {
     $productName = $request->query('name');
@@ -237,11 +237,12 @@ public function dashboard()
     $productCount = Product::count();
     $products = ProductDetail::paginate(7);
         $route = route('dashboard');
-
+        $users = User::all();
         return view('admindashboard.dashboard')->with([
             'productCount' => $productCount,
             'products' => $products,
             'route' => $route,
+            'users' => $users
         ]);
     }
     
@@ -260,4 +261,6 @@ public function allproducts()
     ]);        
 
 }
+
+
 }
