@@ -214,7 +214,7 @@ Route::get('/cartpage', function () {
 })->name('cart');
 
 
-Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add')->middleware('auth');;
 Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
 Route::get('/cart/subtotal', [CartController::class, 'subtotal'])->name('subtotal');
 Route::post('/cart/update', [CartController::class, 'updateQuantity'])->name('cart.update');

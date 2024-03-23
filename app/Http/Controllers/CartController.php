@@ -8,8 +8,7 @@ use App\Models\ProductDetail;
 use Illuminate\Database\QueryException;
 
 class CartController extends Controller
-{
-    public function addToCart(Request $request)
+{public function addToCart(Request $request)
     {
         // Validate the incoming request
         $request->validate([
@@ -18,12 +17,12 @@ class CartController extends Controller
             'price' => 'required|numeric|min:0',
         ]);
     
-        // Ensure the user is authenticated
-        if (!auth()->check()) {
-            return redirect()->route('login')->with('error', 'You need to login first.');
-        }
-    
         try {
+            // Ensure the user is authenticated
+            if (!auth()->check()) {
+                return redirect()->route('login')->with('error', 'You need to login first.');
+            }
+            
             // Retrieve validated data
             $productName = $request->input('product_name');
             $quantity = $request->input('quantity');
@@ -36,15 +35,18 @@ class CartController extends Controller
                 'price' => $price,
                 'user_id' => auth()->id(), // Get the authenticated user's ID
             ]);
-
     
             // Redirect the user back to the previous page with success message
             return redirect()->back()->with('success', 'Product added to cart successfully.');
-        } catch (QueryException $e) {
-           
+        } catch (\Exception $e) {
+            // Log the exception for debugging
+            logger()->error('Failed to add product to cart: ' . $e->getMessage());
+    
+            // Redirect the user back to the previous page with error message
             return redirect()->back()->with('error', 'Failed to add product to cart. Please try again later.');
         }
     }
+    
 
 
     public function getCartCount()

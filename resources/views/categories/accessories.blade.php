@@ -42,8 +42,8 @@
                 </ul>
             </div>
         </div>
-            <div class="products">
-                @foreach($products as $product)
+        <div class="products">
+            @foreach($products as $product)
                 <div class="product" data-product-id="{{ $product->id }}">
                     <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}">
                     <h3><a href="{{ route('product.show' , $product->id) }}">{{ $product->name }}</a></h3>
@@ -53,16 +53,23 @@
                         <p>Storage: {{ $product->storage }}</p>
                         <p>Operating System: {{ $product->operating_system }}</p>
                         
-                        <button class="btn btn-add">Add to Cart</button>
+                        <form action="{{ route('cart.add') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <input type="hidden" name="product_name" value="{{ $product->name }}">
+                            <input type="hidden" name="product_quantity" value="1">
+                            <input type="hidden" name="product_price" value="{{ $product->price }}">
+                            
+                            <button type="submit" class="btn btn-add">Add to Cart</button>
+                        </form>
                     </div>
                 </div>
-                
             @endforeach
-            
-            </div>
-            
         </div>
+        
+        </div>
+{{-- <script src="js/categories.js"></script> --}}
 </main>
 @include('partials.footer')
-{{-- <script src="js/categories.js"></script> --}}
+
 
