@@ -46,30 +46,17 @@
                 @foreach($products as $product)
                 <div class="product" data-product-id="{{ $product->id }}">
                     <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->name }}">
-                    <h3>Brand {{ $product->name }}</h3>
+                    <h3><a href="{{ route('product.show' , $product->id) }}">{{ $product->name }}</a></h3>
                     <div class="product-details">
                         <p>Description {{ $product->description }}</p>
                         <p>Price: ${{ $product->price }}</p>
-                        @php
-                            $productName = $product->name;
-                            $productCount = $productQuantities[$productName] ?? 0;
-                        @endphp
-                        @if($productCount > 2)
-                            <span class="badge badge-success">In Stock:  {{ $productCount }}</span>
-                        @else
-                            <span class="badge badge-danger">Low Stock: ({{ $productCount }})</span>
-                        @endif
-                        <!-- Form for adding product to cart -->
-                        <form action="{{ route('cart.add') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="product_name" value="{{ $product->name }}">
-                            <input type="hidden" name="quantity" value="1">
-                            <input type="hidden" name="price" value="{{ $product->price }}"> <!-- Include the price -->
-                            <button type="submit" class="btn btn-add-cart">Add to Cart</button>
-                        </form>
+                        <p>Storage: {{ $product->storage }}</p>
+                        <p>Operating System: {{ $product->operating_system }}</p>
                         
+                        <button class="btn btn-add">Add to Cart</button>
                     </div>
                 </div>
+                
             @endforeach
             
             </div>

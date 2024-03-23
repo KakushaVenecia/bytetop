@@ -21,5 +21,10 @@ class ProductDetail extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }
 
