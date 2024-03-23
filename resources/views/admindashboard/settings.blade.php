@@ -1,22 +1,25 @@
 @extends('admindashboard.layout')
 @section('title', 'Settings')
 @section('content')
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
 <link rel="stylesheet" href="{{ asset('css/admin.settings.css') }}">
 
 <div class="search">
-<span class="search-icon material-symbols-outlined">search</span>
+<i class="fa-solid fa-magnifying-glass"></i>
 <input class="search-input" type="search" placeholder="Search">
 </div>
 
+<div class="user-bar" style="float: right">
+                    @if(auth()->check())
+                        <p>Hello, {{ auth()->user()->name }}</p>
+                    @endif
+                </div>
+                <h3>Settings</h3>
+                <div>
 
-<div class="content">  
+<!-- <div class="content">   -->
 <div id="settings">
-            <!-- Settings content -->
-            <h1>Settings</h1>
-            <p>This is the settings content.</p>
-            <button>Edit Settings</button>
-            <a href="{{ route('admin.invite.form') }}"><button>Invite Admins</button></a>
+    <a href="{{ route('admin.invite.form') }}"><button>Invite Admins</button></a>
         </div>
 </div>
 
@@ -35,7 +38,7 @@
         <div class="card-header">User Profile</div>
         <div class="card-body">
             <div class="profile-info">
-                <img src="path_to_your_profile_picture" alt="Profile Picture" class="profile-picture">
+                <img src="{{asset('images/girl.jpg')}}" alt="Profile Picture" class="profile-picture">
                 <input type="file" id="profile-image" accept="image/*">
                 <label for="profile-image" class="choose-file">Choose File</label>
                 <input type="text" id="full-name" placeholder="Full Name">
