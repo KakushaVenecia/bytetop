@@ -73,7 +73,7 @@
 
 
     <div class="group">
-        <label>Order ID *</label>
+        <label>Order ID</label>
         <input required="" type="text2" class="input7">
         <span class="highlight"></span>
         <span class="bar"></span>
@@ -137,7 +137,7 @@
                     <div class="namecontainer">
                         <div class="message">Make sure that you click the Save Changes button when you have finished...</div>
                         <div class="namegroup">
-                        <label>New name *</label>
+                        <label>New name</label>
                             <input required="" type="text2" class="input">
                         </div>
                         <div class="namegrp">
@@ -154,7 +154,7 @@
                     <div class="namecontainer">
                         <div class="message">Enter the new email address you would like to associate with your account below.</div>
                         <div class="namegroup">
-                        <label>New email address*</label>
+                        <label>New email address</label>
                             <input required="" type="text2" class="input">
                         </div>
                         <div class="namegrp">
@@ -171,7 +171,7 @@
                     <div class="namecontainer">
                         <div class="message">Enter the new mobile number you would like to associate with your account below...   We will send a One Time Password (OTP) to that number.</div>
                         <div class="namegroup">
-                        <label>Mobile number *</label>
+                        <label>Mobile number</label>
                             <input required="" type="text2" class="input">
                         </div>
                         <div class="namegrp">
