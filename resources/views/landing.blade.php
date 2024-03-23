@@ -5,6 +5,7 @@
 <title>Landing</title>
 @include('partials.navbar')
 <div class="slider-container">
+    
   <div class="slider">
     <div class="slide">
       <img src="{{ asset('images/33353.jpg') }}" alt="Image 1">
@@ -13,6 +14,7 @@
         <p> Here you find the Best Laptops.</p>
         <p> Click here to view more...</p>
       </div>
+     
     </div>
     <div class="slide">
       <img src="{{ asset('images/143023.jpg') }}" alt="Image 1">
