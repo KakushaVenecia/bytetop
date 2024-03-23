@@ -33,10 +33,13 @@ class InviteController extends Controller
     ]);
 
     // Determine the inviter (you may get this from the authenticated user or elsewhere)
-    $inviterId = auth()->id(); // Assuming the authenticated user is the inviter
-
+    if (auth()->check()) {
+        $inviterName = auth()->user()->name;
+    } else {
+        $inviterName = 'ByteTop Admin'; 
+    }
     // Send an invitation email with the generated password and inviter's ID
-    $invitedUser->notify(new InviteAdminEmail($token, $password, $inviterId));
+    $invitedUser->notify(new InviteAdminEmail($token, $password, $inviterName));
 
     // Return a success response
     return response()->json(['message' => 'Invitation sent successfully', 'invitation_id' => $invitedUser->id], 200);

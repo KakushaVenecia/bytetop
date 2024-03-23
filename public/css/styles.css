@@ -14,13 +14,6 @@ html, body {
 }
 
 
-
-/* .products{
-    width: 250px;
-    height: fit-content;
-} */
-
-
 .search-container {
     display: flex;
     max-width: 30rem;
@@ -41,6 +34,17 @@ button  {
     text-decoration: none;
  
 } 
+
+.color-switcher {
+	position: fixed;
+	top: 70px;
+	right: 40px;
+	background-color: transparent;
+	font-size: var(--fs-icon);
+	cursor: pointer;
+	color: var(--primary-color);
+	border: 0;
+}
 
   /* On mouse-over, add a deeper shadow */
   .card:hover {
