@@ -18,6 +18,7 @@
             <div class="input">
                 <label for="name">Full Name</label><br>
                 <input type="text" id="name" name="name" required placeholder="Enter your Full Name">
+              
                 @error('name')
                     <span class="error-message">{{ $message }}</span>
                 @enderror
@@ -33,7 +34,7 @@
 
             <div  class="input">
                 <label for="password">Password:</label><br>
-                <input type="password" id="password" name="password" required placeholder="Enter your Password">
+                <input type="password" id="password" name="password" required placeholder="Minimum 8 characters">
                 @error('password')
                     <span class="error-message">{{ $message }}</span>
                 @enderror
@@ -52,6 +53,5 @@
             </div>
         </form>
     </div>
-    <script src="js/login.js"></script>
 </body>
 </html>

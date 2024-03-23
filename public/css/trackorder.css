@@ -14,7 +14,7 @@
 .order-tracking .is-complete{
 	display: block;
 	position: relative;
-	border-radius: 50%;
+	border-radius: 5px;
 	height: 30px;
 	width: 30px;
 	border: 0px solid #AFAFAF;
