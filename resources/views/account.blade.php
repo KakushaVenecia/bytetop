@@ -184,38 +184,24 @@
                 <div id="editPasswordPopup" class="edit-popup" style="display: none">
                     <span class="close" onclick="closePopup('editPasswordPopup')">&times;</span>
                     
-                        <div class="modal" id="changePasswordModal" tabindex="-1" role="dialog">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">Change Password</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                       
-                                        <form method="post" action="{{ route('update.password') }}">
-                                            @csrf
-                                            <div class="form-group">
-                                                <label for="current_password">Current Password</label>
-                                                <input type="password" class="form-control" id="current_password" name="current_password" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="new_password">New Password</label>
-                                                <input type="password" class="form-control" id="new_password" name="new_password" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="confirm_password">Confirm Password</label>
-                                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
-                                            </div>
-                                            <button type="submit" class="btn-primary">Save changes</button>
-                                        </form>
-                                    </div>
-                                    
-                                </div>
+                    <div class="passwordcontainer">
+                        <h2>Change Password</h2>
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <label for="old-password">Old Password</label>
+                                <input type="password" id="old-password" name="old-password" required>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label for="new-password">New Password</label>
+                                <input type="password" id="new-password" name="new-password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm Password</label>
+                                <input type="password" id="confirm-password" name="confirm-password" required>
+                            </div>
+                            <button type="submit" class="btn-save">Save</button>
+                        </form>
+                    </div>          
 
                 </div>
 
@@ -274,7 +260,7 @@
             <div class="payment_col-50">
 
     <h3>Add your Payment details...</h3>
-    <h4>Card Details</h4>
+    <!-- <h4>Card Details</h4> -->
     <div style= "margin-bottom :1px"class="cards">
           @foreach ($paymentCards as $paymentCard)
                 <p class="Card number">{{ $paymentCard->card_number }}</p>
@@ -306,7 +292,7 @@
                     <i class="fa-brands fa-cc-mastercard" style="color:red;"></i>
                     <i class="fa-brands fa-cc-discover" style="color:orange;"></i>
                     </div>
-                    <input type="text" name="card_number" class="input txt text-validated" value="" />
+                    <input type="numbertext" name="card_number" class="input txt text-validated" value="" />
                   </div>
                 </div>
                 <div class="row">
@@ -363,7 +349,7 @@
                   <div class="field">
                     <div class="title">Name on Card
                     </div>
-                    <input type="text" name="name" class="input2 txt" />
+                    <input type="nametext" name="name" class="input2 txt" />
                   </div>
                 </div>
 

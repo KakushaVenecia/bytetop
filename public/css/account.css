@@ -424,6 +424,7 @@ h3 {
 .Card__title {
     font-size: 1.5rem;
     font-weight: 600;
+    margin-bottom: 2rem;
 }
 
 .card {
@@ -492,6 +493,7 @@ input.input1.txt {
 
 .button-container {
     text-align: right;
+    margin-top: 2rem;
 }
 
 
@@ -682,43 +684,30 @@ h5.modal-title {
 }
 
 
-input#current_password {
-    font-size: 1.2rem;
-    padding: 0.5rem;
-    margin-left: 1rem;
-}
-
-input#new_password {
-    font-size: 1.2rem;
-    padding: 0.5rem;
-    margin-left: 2.5rem;
-}
 
 
-input#confirm_password {
-    font-size: 1.2rem;
-    padding: 0.5rem;
-    margin-left: 0.3rem;
-}
-
-
-.btn-primary {
-    padding: 10px 20px;
-    text-decoration: none;
-    color: black;
+.passwordcontainer {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
     background-color: #fff;
-    border: 1px solid black;
-    /* cursor: pointer; */
-    margin-right: 10px;
-    font-size: 1.1rem;
-    width: 9rem;
-    margin: 3rem 11rem;
-
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.passwordcontainer h2 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-.btn-primary:hover{
-    background-color: orange;
+.btn-save {
+    width: 100%;
+    padding: 10px;
+    background-color: #4caf50;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
 }
-
-
-
+.btn-save:hover {
+    background-color: #45a049;
+}
