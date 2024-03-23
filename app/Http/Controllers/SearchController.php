@@ -3,18 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProductDetail;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+;
 use App\Http\Controllers\Controller;
-use App\TestMode;
-use App\view;
-use Illuminate\Support\Facades\Route;
-use Validator, Redirect;
-use Illuminate\Support\Facades\Auth;
-use Session;
-use Illuminate\Support\Facades\Input;
-use App\Models\Product;
+
 
 class SearchController extends Controller
 {

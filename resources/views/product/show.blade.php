@@ -54,7 +54,7 @@
                         <h5>Add Your Review</h5>
                         <div class="row">
                             <div class="col-md-4">
-                                <form method="post" action="{{ route('product.review.store', $product->id) }}">
+                                <form method="post" action="{{ route('product.review.store', $product->name) }}">
                                     @csrf
                                     <input type="hidden" name="product_image" value="{{ asset('storage/images/' . $product->image) }}">
                                     <div class="mb-3">

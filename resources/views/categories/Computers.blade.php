@@ -1,3 +1,10 @@
+
+    <title>Computers</title>
+    <link rel="stylesheet" href="css/Accessoriespage.css"> 
+    <link rel="stylesheet" href="css/styles.css"> 
+    
+</head>
+<body onload="showComputers()">
 <title>Accessories</title>
     <link rel="stylesheet" href="css/categories.css"> 
     @include('partials.navbar')
@@ -60,7 +67,7 @@
                 </div>
                 
             @endforeach
-            
+            {{ $products->links() }}
             </div>
             
         </div>

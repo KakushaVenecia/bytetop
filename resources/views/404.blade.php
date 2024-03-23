@@ -126,7 +126,7 @@ body {
 
 .color-switcher {
 	position: fixed;
-	top: 40px;
+	top: 70px;
 	right: 40px;
 	background-color: transparent;
 	font-size: var(--fs-icon);

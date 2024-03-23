@@ -17,6 +17,7 @@ class AdminWelcomeEmail extends Notification
     {
         $this->email = $email;
         $this->password = $password;
+       
     }
 
     public function via($notifiable)
