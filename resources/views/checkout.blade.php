@@ -68,11 +68,11 @@
     
     <div class="discount"></div>
 
-    <div class="container1">
-      <div class="payment">
+  <div class="container1">
+    <div class="payment">
         <div class="payment__info">
 
-                          <div class="mainContainer">
+                <div class="mainContainer">
                     <div class="cardHolder">
                       <div class="header">
                         <div class="heading center"></div>
@@ -107,65 +107,72 @@
                     <h5 class="center">PAYMENT OPTIONS</h5>
                   
                     <div class="options vcenter">
-                      <div class="opt">
-                        <div class="icon center">
-                        <img src="/images/visa.jpeg" border="0" />
+                        <div class="opt2" id="card1">
+                            <div class="icon center">
+                              <img src="/images/visa.jpeg" border="0" />
+                            </div>
+                            <div class="optname center">Card 1</div>
                         </div>
-                        <div class="optname center">Card 1</div>
-                      </div>
-                      <div class="opt">
-                        <div class="icon center">
-                          <div class = "mastercard"> 
-                        <img src="/images/mastercard.png" border="0" />
+                        <div class="opt3" id = "card2">
+                          <div class="icon center">
+                            <div class = "mastercard"> 
+                              <img src="/images/mastercard.png" border="0" />
+                            </div>
+                          </div>
+                          <div class="optname center">Card 2</div>
                         </div>
-</div>
-                        <div class="optname center">Card 2</div>
-                      </div>
-                      </div>
-                      <div class="opt1">
-                        <div class="icon center">
-                        </div>
+                    </div>
+                    <div class="opt1" id="newCard">
+                        <div class="icon center"></div>
                         <div class="optname1 center">New Card</div>
-                      </div>
+                    </div>
                     
                     
-                  </div>
+                </div>
 
+
+                <div id="new-card-popup" class="new-card-popup">
+    <div class="popup-content">
+        <form class="new-card-form">
+            <div class="input-group">
+                <label for="card-number">Card Number</label>
+                <input type="text1" id="card-number" name="card-number" placeholder="•••• •••• •••• ••••">
+            </div>
+            <div class="input-group multi-input">
+                <div>
+                    <label for="expiry-date">Expiry Date</label>
+                    <input type="text2" id="expiry-date" name="expiry-date" placeholder="MM / YY">
+                </div>
+                <div>
+                    <label for="cvv">CVV</label>
+                    <input type="text3" id="cvv" name="cvv" placeholder="•••">
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="card-holder">Card Holder</label>
+                <input type="text4" id="card-holder" name="card-holder" placeholder="Full Name">
+            </div>
+            <button id="save-new-card-btn" class="save-new-card-btn">Save</button>
+
+            <button id="close-popup" class="close-popup">Close</button>
+
+        </form>
+        
+    </div>
+</div>
         
         
 
-         <!-- <form>
-        <div class="input-group">
-        <div class = "userinput">
-        <input type="radio" id="card1" name="card" >
-        	<label for="card-number">Add new card</label>
-        </div>
-            
-            <label for="card-number">Card Number</label>
-            <input type="text" id="card-number" name="card-number" placeholder="•••• •••• •••• ••••">
-        </div>
-        <div class="input-group multi-input">
-            <div>
-                <label for="expiry-date">Expiry Date</label>
-                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM / YY">
-            </div>
-            <div>
-                <label for="cvv">CVV</label>
-                <input type="text" id="cvv" name="cvv" placeholder="•••">
-            </div>
-        </div>
-        <div class="input-group">
-            <label for="card-holder">Card Holder</label>
-            <input type="text" id="card-holder" name="card-holder" placeholder="Full Name">
-        </div>
-    </form> -->
+                
 
+                  
+
+
+              </div>
         
     
 
           <div class="payment__shipping">
-        
-
             <div class="name">
             <div class="payment__title">
               <i class="icon icon-plane"></i> Shipping Information
@@ -196,9 +203,9 @@
             </div>
 
           </div>
-        </div>
-      </div>
     </div>
+</div>
+
               <div class="placeordercontainer">
                     <div class="actions">
 
@@ -213,6 +220,7 @@
 
   </div>
   <script src="js/checkout.js"></script>
+  @include('partials.footer')
 
 </body>
 </html>

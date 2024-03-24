@@ -163,7 +163,7 @@ a {
 .navbar-profile .logout-btn:hover {
   background-color: #1a314f;
 }
-
+/* 
 @media screen and (max-width: 768px) {
   .navcontainer {
     flex-direction: column;
@@ -177,4 +177,57 @@ a {
   .navbar-item {
     margin-bottom: 10px;
   }
-}
+} */
+
+
+/* Add your existing CSS styles here */
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .navcontainer {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .navbar-menu {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .navbar-item {
+      margin-bottom: 10px;
+    }
+  
+    .navbar-search input[type="text"] {
+      width: 100%; 
+    }
+    
+    .navbar-cart {
+      margin-top: 10px;
+    }
+  
+    .navbar-brand {
+      margin-bottom: 20px; 
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .navbar-brand {
+      font-size: 20px; 
+    }
+  
+    .navbar-item {
+      margin-right: 10px; 
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
