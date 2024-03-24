@@ -48,6 +48,16 @@ body{
     display: flex;
     align-items: center;
 }
+.arow2{
+    min-height: 100vh;
+    width:100%;
+    margin-top: 4em;
+    background-color: inherit;
+    color:#7e0a0a;
+    padding: 20px;
+    margin-bottom: 4em;
+    font-weight: bolder;
+}
 
 .item-details img {
     width: 100px; /* Adjust image width as needed */
@@ -110,11 +120,11 @@ body{
         <div class="heading">
             <h1>Shopping Basket</h1>
         </div>
-        <div class="arow">
+        <div class="arow2">
             @auth
-                <p>No items in cart. <a class="link" href="{{ route('landing') }}"></a>Go back to explore products.</p>
+                <p>No items in cart. <a class="btn btn-primary"href="{{ route('landing') }}">Explore Products</a>Go back to explore products.</p>
             @else
-                <p>No items in cart. Please <a href="{{ route('login') }}">log in</a> to add items to cart.</p>
+                <p>No items in cart. Please <a class="btn btn-primary" href="{{ route('login') }}">Log in</a> to add items to cart.</p>
             @endif
         </div>
     </div>
