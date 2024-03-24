@@ -1,4 +1,7 @@
 function openTab(evt, tabName) {
+    // Prevent the default behavior of the tab click event
+    evt.preventDefault();
+
     // Get all elements with class="tabcontent" and hide them
     var tabcontents = document.getElementsByClassName("tabcontent");
     for (var i = 0; i < tabcontents.length; i++) {
@@ -15,6 +18,7 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.classList.add("active");
 }
-var line=document.querySelector('.line');
-            line.style.width  = e.target.offsetWidth + "px";
-            line.style.left  = e.target.offsetLeft + "px";
+
+// Initially display the first tab
+document.getElementById("profile").style.display = "block";
+document.getElementsByClassName("tablinks")[0].classList.add("active");
