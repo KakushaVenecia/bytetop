@@ -11,7 +11,7 @@ header h1 {
 }
 
 main {
-    width:70%;
+    width:80%;
     margin: 20px auto;
     padding: 0 20px;
 }
@@ -26,7 +26,7 @@ box-shadow: 25px 0px 0px -11px rgba(227,142,13,1);
     margin-bottom: 20px;
     color: #fff;
     border-radius: 20px;
-   font-size: 1.2em;
+   font-size: 1em;
 }
 
 .blog-post h2 {
@@ -50,4 +50,16 @@ box-shadow: 25px 0px 0px -11px rgba(227,142,13,1);
 
 .full-post {
     display: none;
+}
+
+@media only screen and (min-width: 768px) {
+    main {
+        width: 70%; 
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    main {
+        width: 60%; 
+    }
 }
