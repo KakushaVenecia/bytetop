@@ -8,7 +8,10 @@
     <script src="https://kit.fontawesome.com/4d0aa3dbc2.js" crossorigin="anonymous"></script>
 
 </head>
+@include('partials.navbar')
+
 <body>
+
 <div class="container">
                 <h5>ORDER <span class="text-primary font-weight-bold">#R86F854G7665</span></h5>
                 <p class="mb-0">Expected Arrival <span>02 April 2024</span></p>
@@ -25,7 +28,7 @@
                                     </div>
 								</div>
 
-								<div class="order-tracking completed">
+								<div class="order-tracking">
 									<span class="is-complete"></span>
 									<p><span>Thu, March 28</span></p>
                                     <div class="icon-content">
@@ -61,6 +64,7 @@
 	</div>
 
 </div>
+@include('partials.footer')
 
 </body>
 </html>
