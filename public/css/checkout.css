@@ -670,18 +670,35 @@ h5{
 
 .new-card-popup .close-popup {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: transparent;
-  border: none;
-  font-size: 20px;
-  font-weight: bold;
+  top: 2rem;
+  right: 25px;
   cursor: pointer;
+  background-color: orange;
+  color: #040404;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 1;
+  transition: background-color 0.3s ease;
+}
+
+select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  margin-bottom: 16px;
+  font-size: 1.1rem;
 }
 
 
-
-
+.ddl {
+  border-color: #f0f4f7;
+  background-color: #f0f4f7;
+  width: 100px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+}
 
 label {
   font-size: 1.2rem;
@@ -751,3 +768,4 @@ input#expiry-date {
 .save-new-card-btn:hover{
   background-color: #f9a825;
 }
+

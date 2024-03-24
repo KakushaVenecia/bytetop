@@ -132,6 +132,7 @@
 
 
                 <div id="new-card-popup" class="new-card-popup">
+
     <div class="popup-content">
         <form class="new-card-form">
             <div class="input-group">
@@ -141,7 +142,44 @@
             <div class="input-group multi-input">
                 <div>
                     <label for="expiry-date">Expiry Date</label>
-                    <input type="text2" id="expiry-date" name="expiry-date" placeholder="MM / YY">
+                    <!-- <input type="text2" id="expiry-date" name="expiry-date" placeholder="MM / YY"> -->
+                    <select name="expiry_month" class="input1 ddl">
+                      <option selected>01</option>
+                      <option>02</option>
+                      <option>03</option>
+                      <option>04</option>
+                      <option>05</option>
+                      <option>06</option>
+                      <option>07</option>
+                      <option>08</option>
+                      <option>09</option>
+                      <option>10</option>
+                      <option>11</option>
+                      <option>12</option>
+                    </select>
+                    <select name="expiry_year" class="input1 ddl">
+                      <option>2024</option>
+                      <option>2025</option>
+                      <option>2026</option>
+                      <option>2027</option>
+                      <option>2028</option>
+                      <option selected>2029</option>
+                      <option>2030</option>
+                      <option>2031</option>
+                      <option>2032</option>
+                      <option>2033</option>
+                      <option>2034</option>
+                      <option>2035</option>
+                      <option>2036</option>
+                      <option>2037</option>
+                      <option>2038</option>
+                      <option>2039</option>
+                      <option>2040</option>
+                      <option>2041</option>
+                      <option>2042</option>
+                      <option>2043</option>
+                      <option>2044</option>
+                    </select>
                 </div>
                 <div>
                     <label for="cvv">CVV</label>
@@ -154,7 +192,11 @@
             </div>
             <button id="save-new-card-btn" class="save-new-card-btn">Save</button>
 
-            <button id="close-popup" class="close-popup">Close</button>
+            <button id="close-popup" class="close-popup">X</button>
+
+
+            
+
 
         </form>
         
