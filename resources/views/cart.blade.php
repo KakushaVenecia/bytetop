@@ -1,13 +1,35 @@
 <style>
+:root {
+	--primary-color: orange;
+	--eye-pupil-color: #050505;
+	--bg-color: #fff;
+	--text-color: #000;
+	--fs-heading: 36px;
+	--fs-text: 26px;
+	--fs-button: 18px;
+  --fs-icon: 30px;
+	--pupil-size: 30px;
+	--eye-size: 80px;
+	--button-padding: 15px 30px;
 
-    *{
-        margin: 0px;
-    
-    }
+		@media only screen and (max-width: 567px) {
+      --fs-heading: 30px;
+      --fs-text: 22px;
+      --fs-button: 16px;
+      --fs-icon: 24px;
+	    --button-padding: 12px 24px;
+		}
+}
+
+body{
+    margin: 0px;
+    background-color: var(--bg-color);
+	color: var(--text-color);
+}
+
     .container{
         width:60%;
         margin:auto;
-
     }
 
     .cart-item {
@@ -32,8 +54,29 @@
     margin-right: 20px;
 }
 
-.link{
-    color: #000;
+.checkout{
+    /* background-color: #000;
+    width:4rem; */
+    margin-top: 4em;
+    color:#fff;
+    /* padding: 20px; */
+    margin-bottom: 4em;
+}
+
+.checkout:hover{
+    color: darkblue;
+}
+
+.btn-primary{
+    margin: 4px;
+    padding: 20px 5px;
+    border-radius: 4px;
+    background-color: orange;
+    color: #fff !important;
+}
+
+.btn-primary:hover{
+    color: darkblue;
 }
 .cart-header1{
     min-height: 50vh;
@@ -47,7 +90,19 @@
     text-align: right;
 }
 
+.color-switcher {
+	position: fixed;
+	top: 70px;
+	right: 40px;
+	background-color: transparent;
+	font-size: var(--fs-icon);
+	cursor: pointer;
+	color: var(--primary-color);
+	border: 0;
+}
+
 </style>
+<body>
 @include('partials.navbar')
 <div class="container">
     @if($cartItems->isEmpty())
@@ -89,7 +144,6 @@
                 <div class="quantity-price">
                     <p>Quantity:
                         <span class="quantity-control">
-                            <!-- Increment and decrement buttons -->
                             <button class="decrement"> - </button>
                             <input type="text" class="quantity-input" value="{{ $cartItem->quantity }}" readonly>
                             <button class="increment"> + </button>
@@ -121,6 +175,8 @@
 </div>
 <button class="color-switcher" data-theme-color-switch>&#127769;</button>
 @include('partials.footer')
+</body>
+</html>
 <script>
     document.querySelectorAll('.cart-item').forEach(function(item) {
     const maxQuantity = parseInt(item.dataset.maxQuantity);
@@ -180,4 +236,25 @@ function updateTotal() {
 document.addEventListener('DOMContentLoaded', function() {
         updateTotal();
     });
+
+const colorSwitcher = document.querySelector("[data-theme-color-switch]");
+let currentTheme = "light";
+
+colorSwitcher.addEventListener("click", function () {
+	const root = document.documentElement;
+
+	if (currentTheme == "dark") {
+		root.style.setProperty("--bg-color", "#fff");
+		root.style.setProperty("--text-color", "#000");
+		colorSwitcher.textContent = "\u{1F319}";
+		currentTheme = "light";
+	} else {
+		root.style.setProperty("--bg-color", "#050505");
+		root.style.setProperty("--text-color", "#fff");
+		colorSwitcher.textContent = "\u{2600}";
+		currentTheme = "dark";
+	}
+
+	colorSwitcher.setAttribute("data-theme", currentTheme);
+});
 </script>
