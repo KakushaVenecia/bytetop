@@ -14,6 +14,7 @@ class CreateProductDetailsTable extends Migration
             $table->string('description');
             $table->decimal('price', 10, 2);
             $table->string('tags');
+            $table->string('brand');
             $table->enum('category', ['Laptops', 'Accessories', 'Computers', 'Monitors', 'All in One Desktops']); 
             $table->string('image');
             $table->integer('quantity');
