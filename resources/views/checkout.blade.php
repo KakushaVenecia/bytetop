@@ -86,8 +86,8 @@
                             <div class="infocontent number vcenter">
                               <div class="num center">****</div>
                               <div class="num center">****</div>
-                              <div class="num center">4658</div>
                               <div class="num center">****</div>
+                              <div class="num center">1234</div>
                             </div>
                           </div>
                           <div class="bottom part">
@@ -194,26 +194,12 @@
 
             <button id="close-popup" class="close-popup">X</button>
 
-
-            
-
-
         </form>
         
     </div>
 </div>
-        
-        
-
-                
-
-                  
-
 
               </div>
-        
-    
-
           <div class="payment__shipping">
             <div class="name">
             <div class="payment__title">
@@ -221,15 +207,15 @@
             </div>
                     <div class="title">First Name
                     </div>
-                    <input type="text" class="input txt text-validated"/>
+                    <input type="text" class="input txt text-validated" placeholder="Byte"/>
 
                     <div class="title">Last Name
                     </div>
-                    <input type="text" class="input txt text-validated" />
+                    <input type="text" class="input txt text-validated"  placeholder="Top"/>
             
                     <div class="title">Phone Number
                     </div>
-                    <input type="text" class="input txt text-validated"/>
+                    <input type="text" class="input txt text-validated" placeholder="1234567890"/>
 
                     <div class="title">Postcode
                     </div>
@@ -237,11 +223,11 @@
 
                     <div class="title">Address
                     </div>
-                    <input type="text" class="input txt text-validated" />
+                    <input type="text" class="input txt text-validated" placeholder="542 W. 15th Street"/>
 
                     <div class="title">Town/City
                     </div>
-                    <input type="text" class="input txt text-validated"/>
+                    <input type="text" class="input txt text-validated" placeholder="Birmingham" />
             </div>
 
           </div>
