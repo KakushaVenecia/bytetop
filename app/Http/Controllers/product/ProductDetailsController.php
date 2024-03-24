@@ -36,9 +36,25 @@ class ProductDetailsController extends Controller
 
     public function getLaptops()
     {
-        $products = ProductDetail::where('category', 'Laptops')->paginate(20);
-        return view('categories.laptop', compact('products'));
+        $products = ProductDetail::where('category', 'Laptops')
+                         ->where('quantity', '>', 1) 
+                         ->paginate(8);
+
+    $maxComputerPrice = $products->max('price');
+    $minComputerPrice = $products->min('price');
+
+
+    $allTags = $products->pluck('tags')->flatMap(function ($tags) {
+        return explode(',', $tags);
+    })->unique()->values()->all();
+
+    $isInCart = [];
+    foreach ($products as $product) {
+        $isInCart[$product->id] = Cart::where('name', $product->name)->exists();
     }
+        return view('categories.laptop', compact('products','maxComputerPrice', 'minComputerPrice' , 'allTags', 'isInCart'));
+    }
+
     public function getComputers()
 {
     $products = ProductDetail::where('category', 'Computers')
@@ -64,26 +80,62 @@ class ProductDetailsController extends Controller
 
     public function getAccessories()
     {
-        $products = ProductDetail::where('category', 'Accessories')->paginate(20);
-        $productQuantities = [];
-        foreach ($products as $product) {
-            $productName = $product->name;
-            $quantity = Product::where('name', $productName)->count();
-            $productQuantities[$productName] = $quantity;
-        }
-        return view('categories.accessories', compact('products','productQuantities'));
+    $products = ProductDetail::where('category', 'Accessories' )
+                         ->where('quantity', '>', 1) 
+                         ->paginate(8);
+
+    $maxComputerPrice = $products->max('price');
+    $minComputerPrice = $products->min('price');
+
+
+    $allTags = $products->pluck('tags')->flatMap(function ($tags) {
+        return explode(',', $tags);
+    })->unique()->values()->all();
+
+    $isInCart = [];
+    foreach ($products as $product) {
+        $isInCart[$product->id] = Cart::where('name', $product->name)->exists();
+    }
+    
+        return view('categories.accessories', compact('products' ,'maxComputerPrice', 'minComputerPrice' , 'allTags', 'isInCart'));
     }
     public function getMonitors()
 {
-    $products = ProductDetail::where('category', 'Monitors')
-                             ->where('quantity', '>', 1) 
-                             ->paginate(20);
+    $products = ProductDetail::where('category', 'Monitors' )
+    ->where('quantity', '>', 1) 
+    ->paginate(8);
+    $maxComputerPrice = $products->max('price');
+    $minComputerPrice = $products->min('price');
 
-    return view('categories.monitors', compact('products'));
+
+    $allTags = $products->pluck('tags')->flatMap(function ($tags) {
+        return explode(',', $tags);
+    })->unique()->values()->all();
+
+    $isInCart = [];
+    foreach ($products as $product) {
+        $isInCart[$product->id] = Cart::where('name', $product->name)->exists();
+    }
+    return view('categories.monitors', compact('products' ,'maxComputerPrice', 'minComputerPrice' , 'allTags', 'isInCart'));
 }
     public function getAllInOne()
     {
-        $products = ProductDetail::where('category', 'All-in-one')->paginate(20);
-        return view('categories.all-in-one', compact('products'));
+       
+        $products = ProductDetail::where('category', 'Monitors' )
+        ->where('quantity', '>', 1) 
+        ->paginate(8);
+        $maxComputerPrice = $products->max('price');
+        $minComputerPrice = $products->min('price');
+
+
+        $allTags = $products->pluck('tags')->flatMap(function ($tags) {
+            return explode(',', $tags);
+        })->unique()->values()->all();
+
+        $isInCart = [];
+        foreach ($products as $product) {
+            $isInCart[$product->id] = Cart::where('name', $product->name)->exists();
+        }
+        return view('categories.all-in-one', compact('products' ,'maxComputerPrice', 'minComputerPrice' , 'allTags', 'isInCart'));
     }    
 }
