@@ -33,7 +33,7 @@
 }
 
 body {
-	min-height: 100vh;
+	height: 100vh;
 	background-color: var(--bg-color);
 	color: var(--text-color);
 }
@@ -161,7 +161,7 @@ body {
 </div>
 
 <button class="color-switcher" data-theme-color-switch>&#127769;</button>
-    @include('partials.footer')
+@include('partials.footer')
 </body>
 <script>
 const colorSwitcher = document.querySelector("[data-theme-color-switch]");
