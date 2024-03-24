@@ -15,7 +15,7 @@
     <div class="container"> 
       
         <div class="logo">
-        <a href="/" ><img src="/images/Bytetoplogo.png" alt="Logo"></a> 
+        <a href="/" ><img src="/images/Bytetoplogo1.png" alt="Logo"></a> 
         </div>
     <div>
     <h1 id="loginText">Login_</h1>
