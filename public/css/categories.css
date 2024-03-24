@@ -2,6 +2,33 @@
 *{
     margin: 0px;
 }
+a {
+  text-decoration-line: none;
+  color: orange!important;
+}
+svg{
+ width: 20px;
+ height: 20px;
+}
+.pagination-links{
+  margin: auto;
+  width: 90%;
+  font-size: 1.2em;
+  font-weight: 400;
+  text-align: right;
+  color: #00668a;
+  align-items: center;
+}
+
+.detail{
+  width: 30px;
+  background-color: #dc3545;
+}
+ul{
+  text-decoration: none;
+  list-style: none;
+}
+
 
 /* Badge Styles */ 
 .badge {
@@ -23,14 +50,27 @@
 
   .container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width:100% !important;
 }
 
 #filters {
-    width: 25%;
-    padding: 20px;
+    display: flex;
+    /* flex-wrap: wrap; */
+    width: 100%;
+    padding: 0.2rem;
     background-color: #f0f0f0;
+}
+
+.filter-section {
+  flex: 1 1 100%; 
+  margin-bottom: 5px; 
+}
+@media (min-width: 768px) {
+  .filter-section {
+      flex: 1 1 calc(100% - 20px); 
+      margin-right: 20px; 
+  }
 }
 h2{
 text-align: center;
@@ -79,3 +119,69 @@ font-size: 18px;
 margin: 5px 0;
 font-size: 14px;
 }
+
+.no-products {
+ margin: auto;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center;
+  
+}
+
+.no-products p {
+  font-size: 16px;
+  color: #333;
+}
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column; 
+  }
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  /* Add additional styles as needed */
+}
+
+.tag-list li {
+  flex: 0 0 calc(30% - 10px); /* Adjust the width as needed */
+  margin-right: 10px;
+  margin-bottom: 10px;
+  /* Add additional styling as needed */
+}
+.btn{
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 14px;
+  display: inline-block;
+  outline: 0;
+  border: none;
+  background: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  letter-spacing: .1em;
+  text-decoration: none; 
+  text-transform: uppercase;
+  line-height: 100%;
+  border: 1px solid black !important;
+  border-radius: 5px;
+  white-space: nowrap;
+  padding: 1.100rem 2rem;
+  transition: all .2s linear;
+  }
+  
+  .btn:hover{
+  color: #fff;
+  background-color: #f7890b;
+  }
+  
+  .btn-add{
+  grid-column: 3;
+  grid-row: 4 / 5;
+  align-self: center;
+  }

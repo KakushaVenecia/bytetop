@@ -146,14 +146,14 @@ Route::get('/products/{id}', [ProductDetailsController::class, 'show'])->name('p
 
 
 // Routes for submitting reviews and showing product details
-Route::post('/product/{productId}/review', [ReviewController::class, 'store'])->name('product.review.store');
-Route::post('/review/{reviewId}/reply', [ReviewController::class, 'reply'])->name('product.review.reply');
+Route::post('/product/{productId}/review', [ReviewController::class, 'store'])->name('product.review.store')->middleware('auth');;
+Route::post('/review/{reviewId}/reply', [ReviewController::class, 'reply'])->name('product.review.reply')->middleware('auth');;
 Route::get('/product/{productId}', [ProductDetailsController::class, 'show'])->name('product.show');
 
 
 
 Route::get('/cartpage', [CartController::class, 'index'])->name('cart');
-Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add')->middleware('auth');;
+Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add')->middleware('auth');
 Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
 Route::get('/cart/subtotal', [CartController::class, 'subtotal'])->name('subtotal');
 Route::post('/cart/update', [CartController::class, 'updateQuantity'])->name('cart.update');
