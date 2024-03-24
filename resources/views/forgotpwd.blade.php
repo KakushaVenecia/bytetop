@@ -15,7 +15,7 @@
 
 
 <div class="container">
-<img src="/images/Bytetoplogo.png" alt="Logo">
+<img src="/images/Bytetoplogo1.png" alt="Logo">
 
   <h2>Forgot Password</h2>
   

@@ -45,10 +45,10 @@ class ReviewController extends Controller
         $review->save();
 
         // Fetch the related product for the review
-        $product = $review->productDetail;
+        $productDetail = $review->productDetail;
 
 
-        return redirect()->route('product.show', ['productId' => $product->id])->with('success', 'Reply sent successfully!');
+        return redirect()->route('product.show', ['productId' => $productDetail->id])->with('success', 'Reply sent successfully!');
     }
 
 

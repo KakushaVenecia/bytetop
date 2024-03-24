@@ -128,7 +128,7 @@
                         <option value="Laptops" @if(old('category') == 'Laptops') selected @endif>Laptops</option>
                         <option value="Computers" @if(old('category') == 'Computers') selected @endif>Computers</option>
                         <option value="Accessories" @if(old('category') == 'Accessories') selected @endif>Accessories</option>
-                        <option value="Monitors" @if(old('category') == 'Computer Monitors') selected @endif>CMonitors</option>
+                        <option value="Monitors" @if(old('category') == 'Computer Monitors') selected @endif>Monitors</option>
                         <option value="All in One Desktops" @if(old('category') == 'All in One Desktops') selected @endif>All in One Desktops</option>
                     </select>
                     @if (session()->has('error'))
@@ -138,6 +138,13 @@
                 <div >
                     <label for="price" class="inline-block text-lg mb-2">Price</label>
                     <input type="text" class="border border-gray-200 rounded p-2 w-full" name="price" placeholder="Enter product Price" value="{{ old('price') }}">
+                    @if (session()->has('error'))
+                            <div style="color: red;">{{ session('error') }}</div>
+                            @endif
+                </div>
+                <div>
+                    <label for="brand" class="inline-block text-lg mb-2">Brand</label>
+                    <input type="text" class="border border-gray-200 rounded p-2 w-full" name="brand" value="{{ old('brands') }}" placeholder="Enter Brand Name">
                     @if (session()->has('error'))
                             <div style="color: red;">{{ session('error') }}</div>
                             @endif
