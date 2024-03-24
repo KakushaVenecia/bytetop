@@ -173,6 +173,9 @@ table th,td {
   margin: 22px 20px;
   cursor: pointer;
   float: right;
+  display: block;
+  background-color: #fc8b32;
+    
 }
 
 .button1 {background-color: #001E2C;}
