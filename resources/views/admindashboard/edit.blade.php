@@ -88,11 +88,13 @@ a{
             <input type="text" id="tags" name="tags" value="{{ $product->tags }}" required><br>
         </div>
 
-        <!-- <div>
-            <label for="image">Images:</label><br>
-            <input type="text" id="images" name="images" value="{{ $product->images }}" required><br>
-        </div> -->
-
+        <div>
+            <label for="brand" class="inline-block text-lg mb-2">Brand</label>
+            <input type="text" class="border border-gray-200 rounded p-2 w-full" name="brand" value="{{ old('brands') }}" placeholder="Enter Brand Name">
+            @if (session()->has('error'))
+                    <div style="color: red;">{{ session('error') }}</div>
+                    @endif
+        </div>
         <div class="mb-6">
             <label for="image" class="inline-block text-lg mb-2">Product Image</label>
             <input type="file" value="{{ $product->image }}" class="border border-gray-200 rounded p-2 w-full" name="image">

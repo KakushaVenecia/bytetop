@@ -52,22 +52,22 @@
         {
             serial: 1,
             preview: "2 pcs of Dell Keyboard left. - Mar 18, 2024 11:45 AM",
-            full: "This is to notify you that you have only 2 pieces of Dell Keyboard left. Thank you"
+            full: "This is to notify you that you have only 2 pieces of Dell Keyboard left. Thank you."
         },
         {
             serial: 2,
             preview: "1 pcs of HP monitor left. - Mar 17, 2024 01:20 PM",
-            full: "This is to notify you that you have only 1 piece of HP monitor left. Thank you"
+            full: "This is to notify you that you have only 1 piece of HP monitor left. Thank you."
         },
         {
             serial: 3,
             preview: "5 pcs of HP Pavillion Laptop left. - Mar 16, 2024 09:10 AM",
-            full: "This is to notify you that you have only 5 pieces of HP Pavillion Laptop left. Thank you"
+            full: "This is to notify you that you have only 5 pieces of HP Pavillion Laptop left. Thank you."
         },
         {
             serial: 4,
             preview: "4 pcs of Apple MacBook Pro A1990 left. - Mar 15, 2024 04:30 PM",
-            full: "This is to notify you that you have only 4 pieces of Apple MacBook Pro A1990 left. Thank you"
+            full: "This is to notify you that you have only 4 pieces of Apple MacBook Pro A1990 left. Thank you."
         }
     ];
 

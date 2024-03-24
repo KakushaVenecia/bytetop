@@ -14,6 +14,7 @@ class ProductDetail extends Model
         'description',
         'price',
         'tags',
+        'brand',
         'category',
         'image',
         'quantity',

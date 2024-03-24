@@ -33,7 +33,7 @@
 }
 
 body {
-	height: 100vh;
+	min-height: 100vh;
 	background-color: var(--bg-color);
 	color: var(--text-color);
 }
@@ -48,6 +48,7 @@ body {
 
 .error-page {
 	margin: auto;
+	min-height: 50vh;
 
 	&__heading {
 		&-title {
@@ -151,7 +152,6 @@ body {
     </div>
 
     <div class="error-page__heading">
-    {{-- {{dd(auth()->user())}}; --}}
       <h1 class="error-page__heading-title">Looks like you're lost</h1>
       <p class="error-page__heading-desciption">404 error</p>
     </div>
@@ -159,7 +159,7 @@ body {
     <a class="error-page__button" href="{{route('landing')}}" aria-label="back to home" title="back to home">back to home</a>
   </div>
 </div>
-
+</main>
 <button class="color-switcher" data-theme-color-switch>&#127769;</button>
 @include('partials.footer')
 </body>
