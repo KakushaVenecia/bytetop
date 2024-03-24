@@ -2,7 +2,7 @@
 
     <Style>
         body {
-            background-color: light blue; 
+            background-color: white; 
             display: flex;
             justify-content: center; 
             align-items: center;
