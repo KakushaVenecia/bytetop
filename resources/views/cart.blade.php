@@ -174,7 +174,7 @@ body{
             <hr class="white-line">
         </div>
         <div>
-            <p>Subtotal ({{ $cartItems->count() }} items): £ {{ $subtotal }}</p>
+            <!-- <p>Subtotal ({{ $cartItems->count() }} items): £ {{ $subtotal }}</p> -->
             <div id="total">Total: £0.00</div>
         </div>
         <div class="checkout" float="right">
