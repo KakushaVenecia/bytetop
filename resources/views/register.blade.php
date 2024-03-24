@@ -10,7 +10,7 @@
 <body>
     <div class="container"> 
         <div class="logo">
-        <a href="/" ><img src="/images/Bytetoplogo.png" alt="Logo"></a> 
+        <a href="/" ><img src="/images/Bytetoplogo1.png" alt="Logo"></a> 
         </div>
         <h1 id="signinText">Register_</h1>
         <form method="POST" action="{{ route('tosignin') }}">

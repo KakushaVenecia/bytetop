@@ -6,7 +6,7 @@
       <div class="navbar-brand">
           <div class="logo">
               <a href="{{ route('landing') }}">
-                  <img class="logo1" src="/images/Bytetoplogo.png" alt="Logo">
+                  <img class="logo1" src="/images/Bytetoplogo1.png" alt="Logo">
               </a>
           </div>
       </div>

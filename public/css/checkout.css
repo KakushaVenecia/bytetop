@@ -682,6 +682,11 @@ h5{
   transition: background-color 0.3s ease;
 }
 
+.new-card-popup .close-popup:hover {
+  background-color: #999;
+}
+
+
 select {
   padding: 12px;
   border: 1px solid #ccc;

@@ -108,11 +108,6 @@ main {
         margin-left: 10px;
     }
 
-/* .blurbackground {
-    filter: blur(5px);
-} */
-
-/* Popups */
 .popup {
     position: fixed;
     top: 50%;
@@ -241,11 +236,11 @@ input[type=text], textarea {
 
 .blurbackground{
     filter:none;
-    filter: blur(5px);
+    filter: blur(2px);
 }
 
 .blurbackground {
-    filter: blur(5px); /* Apply the blur effect */
+    filter: blur(2px);
 }
 
     .btn {

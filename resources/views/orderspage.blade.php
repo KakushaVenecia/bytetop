@@ -9,10 +9,9 @@
 
     
 </head>
+@include('partials.navbar')
+
 <body>
-  
-
-
 <header>
   <h1>My Orders</h1>
   <p>View all of your PENDING orders here.</p>
@@ -27,7 +26,7 @@
       <p>Order Placed: Mon 25th Mar 2024</p>
     </div>
 
-    <button id="track-order-btn">
+    <button id="track-order-btn" onclick="window.location.href = 'http://127.0.0.1:8000/trackorder';">
         <i class="fa-solid fa-truck"></i>
         <p>TRACK ORDER</p>
     </button>
@@ -275,5 +274,7 @@
 
 
 <script src="js/orderspage.js"></script>
+@include('partials.footer')
+
 </body>
 </html>
