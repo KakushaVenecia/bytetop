@@ -111,6 +111,12 @@ body{
 	border: 0;
 }
 
+
+input.quantity-input {
+    width: 2.5rem;
+    text-align: center;
+}
+
 </style>
 <body>
 @include('partials.navbar')
