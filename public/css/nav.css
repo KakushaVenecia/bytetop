@@ -1,4 +1,4 @@
-/* Navbar Dropdown */
+
 .dropdown {
   position: relative;
   display: inline-block;
@@ -67,7 +67,8 @@
   padding: 8px 30px 8px 10px;
   border: none;
   border-radius: 5px;
-  background-color: #fff; /* Add a background color for better visibility */
+  background-color: #fff; 
+  width: 25rem;
 }
 
 .search-icon {
@@ -99,14 +100,13 @@
 }
 
 .navbar-item {
-  position: relative; /* Ensure proper hover behavior for nested dropdowns */
+  position: relative; 
 }
 
 .navbar-item:hover .dropdown-menu {
   display: block;
 }
 
-/* General Styles */
 .logo1 {
   width: 100px;
   height: 70px;
@@ -161,9 +161,9 @@ a {
 }
 
 .navbar-profile .logout-btn:hover {
-  background-color: #1a314f; /* Add hover effect */
+  background-color: #1a314f;
 }
-
+/* 
 @media screen and (max-width: 768px) {
   .navcontainer {
     flex-direction: column;
@@ -177,4 +177,57 @@ a {
   .navbar-item {
     margin-bottom: 10px;
   }
-}
+} */
+
+
+/* Add your existing CSS styles here */
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .navcontainer {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .navbar-menu {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .navbar-item {
+      margin-bottom: 10px;
+    }
+  
+    .navbar-search input[type="text"] {
+      width: 100%; 
+    }
+    
+    .navbar-cart {
+      margin-top: 10px;
+    }
+  
+    .navbar-brand {
+      margin-bottom: 20px; 
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .navbar-brand {
+      font-size: 20px; 
+    }
+  
+    .navbar-item {
+      margin-right: 10px; 
+    }
+  }
+  
+
+
+
+
+
+
+
+
+
+
