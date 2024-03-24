@@ -9,6 +9,7 @@
         margin:auto;
 
     }
+
     .cart-item {
     display: flex;
     justify-content: space-between;
@@ -20,6 +21,7 @@
     margin-bottom: 2rem;
     color: orange;
 }
+
 .item-details {
     display: flex;
     align-items: center;
@@ -28,6 +30,13 @@
 .item-details img {
     width: 100px; /* Adjust image width as needed */
     margin-right: 20px;
+}
+
+.link{
+    color: #000;
+}
+.cart-header1{
+    min-height: 50vh;
 }
 
 .details {
@@ -42,15 +51,19 @@
 @include('partials.navbar')
 <div class="container">
     @if($cartItems->isEmpty())
-        <div class="cart-header">
-            <div class="heading">
-                <h1>Shopping Basket</h1>
-            </div>
-            <div class="arow">
-                No items in cart. Please <a href="{{ route('login') }}">log in</a> to add items to cart.
-            </div>
+    <div class="cart-header">
+        <div class="heading">
+            <h1>Shopping Basket</h1>
         </div>
-    @else
+        <div class="arow">
+            @auth
+                <p>No items in cart. <a class="link" href="{{ route('landing') }}"></a>Go back to explore products.</p>
+            @else
+                <p>No items in cart. Please <a href="{{ route('login') }}">log in</a> to add items to cart.</p>
+            @endif
+        </div>
+    </div>
+@else
         <div class="cart-header">
             <div class="heading">
                 <h1>Shopping Basket</h1>
@@ -64,7 +77,7 @@
         </div>
         <div class="item-content">
             @foreach($cartItems as $cartItem)
-            <div class="cart-item" data-product-id="{{ $cartItem->id }}" data-max-quantity="{{ $cartItem->product_count }}">
+            <div class="cart-item" data-product-id="{{ $cartItem->id }}" data-max-quantity="{{ $cartItem->product_count }}" data-price="{{ $cartItem->price }}">
                 <div class="item-details">
                     <img src="{{ asset('storage/images/' . $cartItem->image) }}" alt="{{ $cartItem->name }}">
                     <div class="details">
@@ -98,9 +111,10 @@
         </div>
         <div>
             <p>Subtotal ({{ $cartItems->count() }} items): £ {{ $subtotal }}</p>
+            <div id="total">Total: £0.00</div>
         </div>
         <div class="checkout" float="right">
-            <button href="{{ route('checkout') }}">Proceed to checkout</button>
+            <a href="{{ route('checkout') }}" class="btn btn-primary">Proceed to Checkout</a>
         </div>
     @endif
 </div>
@@ -111,13 +125,15 @@
     document.querySelectorAll('.cart-item').forEach(function(item) {
     const maxQuantity = parseInt(item.dataset.maxQuantity);
     const quantityInput = item.querySelector('.quantity-input');
-    const availableQuantity = item.querySelector('.available-quantity').textContent;
+    const availableQuantity = parseInt(item.querySelector('.available-quantity').textContent);
+    const price = parseFloat(item.dataset.price);
 
     item.querySelector('.increment').addEventListener('click', function() {
         let currentQuantity = parseInt(quantityInput.value);
-        if (currentQuantity < maxQuantity) {
+        if (currentQuantity < maxQuantity && currentQuantity < availableQuantity) {
             currentQuantity++;
             quantityInput.value = currentQuantity;
+            updateTotal();
         }
     });
 
@@ -126,8 +142,42 @@
         if (currentQuantity > 1) {
             currentQuantity--;
             quantityInput.value = currentQuantity;
+            updateTotal();
         }
     });
-});
-</script>
 
+    quantityInput.addEventListener('input', function() {
+        let currentQuantity = parseInt(quantityInput.value);
+        if (currentQuantity < 1 || currentQuantity > maxQuantity || currentQuantity > availableQuantity) {
+            quantityInput.value = Math.min(Math.max(1, currentQuantity), maxQuantity, availableQuantity);
+        }
+        updateTotal();
+    });
+});
+
+function updateTotal() {
+    let total = 0;
+    let subtotal = 0;
+    const cartItems = document.querySelectorAll('.cart-item');
+    
+    if (cartItems.length === 1) {
+        const quantity = parseInt(cartItems[0].querySelector('.quantity-input').value);
+        const price = parseFloat(cartItems[0].dataset.price);
+        subtotal = quantity * price;
+        total = subtotal;
+    } else {
+        cartItems.forEach(function(item) {
+            const quantity = parseInt(item.querySelector('.quantity-input').value);
+            const price = parseFloat(item.dataset.price);
+            subtotal += quantity * price;
+        });
+        total = subtotal;
+    }
+
+    document.getElementById('total').textContent = 'Total: £' + total.toFixed(2);
+    document.getElementById('subtotal').textContent = 'Subtotal: £' + subtotal.toFixed(2);
+}
+document.addEventListener('DOMContentLoaded', function() {
+        updateTotal();
+    });
+</script>
