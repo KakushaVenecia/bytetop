@@ -11,7 +11,10 @@ class PaymentController extends Controller
     
 
     public function store(Request $request)
-    {    auth()->check();
+
+    { 
+        
+        auth()->check();
         // Validate request data
          $request->validate([
             

@@ -7,9 +7,13 @@ namespace App\Http\Controllers;
     use Illuminate\Http\Request;
     
     class OrderItemController extends Controller
-    {
+    { 
         // Other methods...
     
+        public function create(Request $request){
+            dd($request);
+            return view('ordersuccess');
+        }
         public function update(Request $request, $order_id, $id)
         {
             // Validate the request data
@@ -36,6 +40,7 @@ namespace App\Http\Controllers;
             // Return the updated order item
             return response()->json(['order_item' => $orderItem], 200);
         }
+    
     
         public function destroy($order_id, $id)
         {

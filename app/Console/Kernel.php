@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Models\User;
 
 class Kernel extends ConsoleKernel
 {
@@ -22,7 +23,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->call(function () {
+            // Check user activity and log out inactive users
+            $inactiveUsers = User::where('last_activity', '<', now()->subMinutes(config('auth.timeout')))->get();
+            foreach ($inactiveUsers as $user) {
+                $user->logout(); // Implement logout logic in your User model
+            }
+        })->hourly();
     }
 
     /**
