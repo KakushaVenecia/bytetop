@@ -52,10 +52,7 @@ p {
 
 
 .content {
-  width: 85%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 40px;
+  width: 85%;  
   margin: auto;
   border: 1px solid #fff;
 }
