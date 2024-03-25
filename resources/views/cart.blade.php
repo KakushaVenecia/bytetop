@@ -207,7 +207,7 @@ input.quantity-input {
 </div>
 </div>
 <button class="color-switcher" data-theme-color-switch>&#127769;</button>
-@include('partials.footer')
+<!-- @include('partials.footer') -->
 </body>
 </html>
 <script>

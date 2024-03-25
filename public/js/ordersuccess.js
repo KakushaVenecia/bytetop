@@ -10,3 +10,18 @@ $('.order').click(function (e) {
     }
   
   });
+
+
+
+  $(document).ready(function() {
+    // Add click event handler to "Complete Order" button
+    $('#complete-order-btn').on('click', function() {
+      // Your logic for placing the order...
+      
+      // Redirect to orders page
+      window.location.href = 'http://127.0.0.1:8000/orderspage';
+    });
+  });
+  
+
+  

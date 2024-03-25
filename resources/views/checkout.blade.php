@@ -54,7 +54,7 @@
             margin-bottom: 20px;
         }
 
-        button {
+        .placeorder button {
             padding: 10px 20px;
             font-size: 16px;
             background-color: orange;
@@ -63,9 +63,11 @@
             border-radius: 5px;
             cursor: pointer;
             float: right;
+            font-weight:600;
+            margin-right:10rem;
         }
 
-        button:hover {
+        .placeorder button:hover {
             background-color: #45a049;
         }
 </style>
@@ -101,10 +103,12 @@
               @endforeach
               <div class="total" style="margin-top: 20px; text-align:center;">Total Price: £{{ number_format(session('cart.total_price', 0), 2) }}</div>
           </div>
+          <div class="placeorder">
           <button type="submit">Place Order</button>
+      </div>
       </form>
   </div>
-  @include('partials.footer')
+  <!-- @include('partials.footer') -->
 </section>
 
 </body>
