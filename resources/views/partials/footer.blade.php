@@ -30,12 +30,12 @@
 
 				<div>
 					<i class="fa fa-phone"></i>
-					<p>+44.555.555.5555</p>
+					<p>+44 7767550546</p>
 				</div>
 
 				<div>
 					<i class="fa fa-envelope"></i>
-					<p><a href="mailto:support@company.com">support@bytetop.com</a></p>
+					<p><a href="mailto:support@company.com">khan.mairaj78@gmail.com</a></p>
 				</div>
 
 			</div>
@@ -44,18 +44,8 @@
 
 				<p class="footer-company-about">
 					<span>About the company</span>
-					Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
-				</p>
-
-				<div class="footer-icons">
-
-					<a href="#"><i class="fa fa-facebook"></i></a>
-					<a href="#"><i class="fa fa-twitter"></i></a>
-					<a href="#"><i class="fa fa-linkedin"></i></a>
-					<a href="#"><i class="fa fa-github"></i></a>
-
-				</div>
-
+					Your one-stop destination for top-quality laptops and accessories online. Browse our wide selection for the latest tech and unbeatable deals, delivered straight to your door.
+				</p>				
 			</div>
 
 		</footer>

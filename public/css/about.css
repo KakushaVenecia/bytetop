@@ -140,10 +140,16 @@ p {
   padding: 20px;
   margin: 20px;
   border-radius: 20px;
-  flex: 0 0 10%; /* Adjust the width to fit all cards in one line */
-  max-width: 13%; /* Adjust the maximum width */
-  padding: 7px; /* Adjust padding */
+  flex: 0 0 10%; 
+  max-width: 13%; 
+  padding: 7px; 
   box-sizing: border-box;
+  transition: all 0.3s ease; /* Added transition for smooth animation */
+}
+
+.team:hover {
+  transform: translateY(-5px); /* Move up by 5 pixels */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add box-shadow on hover */
 }
 
 .team img {

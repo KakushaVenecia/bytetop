@@ -108,7 +108,7 @@
           <img class="card-img" src="{{ asset('images/female.svg') }}" alt="Venecia">
           <div class="name">Venecia Kakusha</div>
           <div class="design">Developer</div>
-          <div class="about">Backend and Scrum Master</div>
+          <div class="about">Backend/Scrum Master</div>
           <div class="social-link">    
             <a href="#" class="fa fa-facebook"></a>
             <a href="#" class="fa fa-instagram"></a>
