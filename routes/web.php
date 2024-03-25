@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CheckoutController;
+use App\Models\OrderItem;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\VerificationController;
@@ -206,7 +207,8 @@ Route::get('/ordersuccess', function () {
 
 
 Route::get('/orderspage', function () {
-    return view('orderspage');
+    $orders = OrderItem::all();
+    return view('orderspage' , compact('orders'));
 });
 
 
