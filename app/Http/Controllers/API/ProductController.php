@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Models\OrderItem;
 use App\Models\ProductDetail;
 use Illuminate\Http\Request;
 use App\Models\Product;
@@ -15,6 +16,7 @@ class ProductController extends Controller
 {
     public function create()
     {
+        auth()->check();
         $products = ProductDetail::all();
         return view('admindashboard.create')->with('products', $products);
         
@@ -235,6 +237,9 @@ public function getStockQuantity(Request $request){
 public function dashboard()
 {
     $productCount = Product::count();
+    $userCount =User::count();
+    $orders = OrderItem::paginate(20);
+    $orderCount= OrderItem::count();
     $products = ProductDetail::paginate(7);
         $route = route('dashboard');
         $users = User::all();
@@ -242,13 +247,17 @@ public function dashboard()
             'productCount' => $productCount,
             'products' => $products,
             'route' => $route,
+            'order' => $orders,
+            'orderCount'=>$orderCount,
+            'userCount'=>$userCount,
             'users' => $users
         ]);
     }
     
 public function allproducts()
 {
-    $products = ProductDetail::paginate(30);
+    $products = ProductDetail::paginate(10);
+  
     $productQuantities = [];
     foreach ($products as $product) {
         $productName = $product->name;

@@ -24,12 +24,12 @@
             <div class="card">
                 <div class="card-icon"><i class="fas fa-users"></i></div>
                 <div class="card-title">Users</div>
-                <div class="card-value">500</div>
+                <div class="card-value">{{$userCount}}</div>
             </div>
             <div class="card">
                 <div class="card-icon"><i class="fas fa-chart-line"></i></div>
-                <div class="card-title">Total Sales</div>
-                <div class="card-value">$5000</div>
+                <div class="card-title">Total Orders</div>
+                <div class="card-value">{{ $orderCount }}</div>
             </div>
         </div>
     
@@ -96,7 +96,7 @@
                 <div class="recentCustomers">
                     <div class="title">
                         <h1> </h1>
-                        <h4>Recent Customers</h4>
+                        <h4>Recent </h4>
                         <a href="#" class="btn">View All</a>
                     </div>
                     <table>

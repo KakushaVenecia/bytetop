@@ -88,21 +88,23 @@
         @endforeach
     </div>
 @endif
+
 </main>
 @if ($products->hasPages())
         <div class="pagination-links">
                 {{ $products->links() }}
         </div>
         @endif
+
 @include('partials.footer')
 
 </body>
 <script src="js\categories.js">
- function updatePriceLabel(maxPrice) {
-        const priceLabel = document.getElementById('priceLabel');
-        if (priceLabel) {
-            priceLabel.textContent = '£0 to £' + maxPrice;
-        }
-    }
+//  function updatePriceLabel(maxPrice) {
+//         const priceLabel = document.getElementById('priceLabel');
+//         if (priceLabel) {
+//             priceLabel.textContent = '£0 to £' + maxPrice;
+//         }
+//     }
 </script>
 

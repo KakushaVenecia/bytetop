@@ -19,12 +19,9 @@ class CreateOrderItemsTable extends Migration
             $table->string('name');
             $table->unsignedInteger('quantity');
             $table->decimal('price', 10, 2);
-            $table->enum('status', ['Initiated', 'Pending', 'Processed'])->default('Initiated');
-            $table->decimal('subtotal', 10, 2)->default(0); 
+            $table->string('status')->default('Initiated');
+            $table->uuid('order_identifier'); 
             $table->timestamps();
-            
-            //foreign key constraint
-            // $table->foreign('name')->references('name')->on('productdetails')->onDelete('cascade');
         });
     }
 
