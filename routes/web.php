@@ -101,9 +101,12 @@ Route::get('/admin/all-users', function () {
     return view('admindashboard.users', compact('users'));
 })->middleware(['super_admin', 'auth'])->name('admin.viewusers');;
 
-Route::get('/admin/all-orders' , function(){
-    return view ('admindashboard.orders');
-})->name('admin.vieworders');
+Route::get('/admin/all-orders', function () {
+    $orders = OrderItem::all();
+    $orderCount = OrderItem::count();
+    return view('admindashboard.orders', compact('orders', 'orderCount'));
+})->name('admin.vieworders')->middleware('super_admin')->middleware('auth');
+
 
 Route::get('/admin/settings' , function(){
     return view ('admindashboard.settings')->middleware('super_admin')->middleware('auth');

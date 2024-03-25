@@ -9,6 +9,9 @@ namespace App\Http\Controllers;
     use App\Models\Notification;
     use App\Models\User;
     use App\Notifications\NewOrderNotification;
+
+
+    
     
     class OrderItemController extends Controller
     { 
@@ -19,8 +22,9 @@ namespace App\Http\Controllers;
     $sessionData = $request->session()->all();
 
     // Generate a unique identifier for the order
-    $orderIdentifier = Str::uuid();
+    $orderIdentifier = substr(uniqid('order', true), -6);
 
+    // Your existing logic to create order items
     // Your existing logic to create order items
     foreach ($sessionData['cart']['items'] as $item) {
         OrderItem::create([

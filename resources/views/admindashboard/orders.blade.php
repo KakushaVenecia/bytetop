@@ -6,102 +6,35 @@
 
 <div class="content">
 <div id="orders">
-    <h1>Orders</h1><h2>7 Orders found</h2>
+    <h1>Orders</h1><h2>{{ $orderCount }} orders found </h2>
     <table class="shop_table_my_account_orders">
 
-	<thead>
-		<tr>
-			<th class="#">#</th>
-			<th class="order-number">Order ID</th>
-			<th class="product-name">Product ID</th>
-			<th class="address">Address</th>
-			<th class="order-date">Date</th>
-			<th class="order-total">Total</th>
-			<th class="order-status">Status</th>
-			<th class="action">Action</th>
-		</tr>
-	</thead>
-
-	<tbody>
-		<tr class="order">
-			<td> 1 </td>
-			<td> <a href="*">#2080</a></td>
-			<td> <a href="*">2384759685</a></td>
-			<td> 351 Palm Street</td>
-			<td> <time datetime="2014-06-12" title="1402562157">June 12, 2014</time></td>
-			<td> <span class="amount">£176.00</span> for 8 items</td>
-			<td> On-hold </td>
-			<td> <a href="*" class="button view">View</a></td>
-		</tr>
-
-		<tr class="order">
-			<td> 2 </td>
-			<td><a href="*">#2081</a></td>
-			<td><a href="*">5748394059</a></td>
-			<td>26 Parsons Hill</td>
-			<td><time datetime="2014-05-10" title="1402562157">May 10, 2014</time></td>
-			<td><span class="amount">£148.00</span> for 3 items</td>
-			<td>On-hold</td>
-			<td><a href="*" class="button view">View</a></td>
-		</tr>
-
-		<tr class="order">
-			<td> 3 </td>
-			<td><a href="*">#2082</a></td>
-			<td><a href="*">5867493021</a></td>
-			<td>1 Whitely Street</td>
-			<td><time datetime="2014-03-21" title="1402562157">March 21, 2014</time></td>
-			<td><span class="amount">£99.00</span> for 1 items</td>
-			<td>On-hold</td>
-			<td><a href="*" class="button view">View</a></td>
-		</tr>
-
-		<tr class="order">
-			<td> 4 </td>
-			<td><a href="*">#2083</a></td>
-			<td><a href="*">1584739205</a></td>
-			<td>26 Broad Avenue</td>
-			<td><time datetime="2014-06-19" title="1402562157">June 19, 2014</time></td>
-			<td><span class="amount">£218.00</span> for 4 items</td>
-			<td>On-hold</td>
-			<td><a href="*" class="button view">View</a></td>
-		</tr>
-
-		<tr class="order">
-			<td> 5 </td>
-			<td><a href="*">#1032</a></td>
-			<td><a href="*">6879504956</a></td>
-			<td>12 Rutherford Max</td>
-			<td><time datetime="2014-04-13" title="1402562157">April 13, 2014</time></td>
-			<td><span class="amount">£159.00</span> for 3 items</td>
-			<td>On-hold</td>
-			<td><a href="*" class="button view">View</a></td>
-		</tr>
-
-		<tr class="order">
-			<td> 6 </td>
-			<td><a href="*">#8431</a></td>
-			<td><a href="*">3746576890</a></td>
-			<td>99 Baker Street</td>
-			<td><time datetime="2014-02-10" title="1402562157">February 10, 2014</time></td>
-			<td><span class="amount">£687.00</span> for 5 items</td>
-			<td>On-hold</td>
-			<td><a href="*" class="button view">View</a></td>
-		</tr>
-
-		<tr class="order">
-			<td> 7 </td>
-			<td><a href="*">#3453</a></td>
-			<td><a href="*">1928374859</a></td>
-			<td>33 Lincoln Avenue</td>
-			<td><time datetime="2014-07-01" title="1402562157">July 01, 2014</time></td>
-			<td><span class="amount">£495.00</span> for 6 items</td>
-			<td>On-hold </td>
-			<td><a href="*" class="button view">View</a></td>
-		</tr>
+		<table>
+			<thead>
+				<tr>
+					<th>Order ID</th>
+					<th>Product Name</th>
+					<th>Address</th>
+					<th>Date</th>
+					<th>Status</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($orders as $order)
+				<tr>
+					<td>{{ $order->id}}</td>
+					<td>{{ $order->name }}</td>
+					<td>{{ $order->quantity }}</td>
+					<td>{{ $order->price }}</td>
+					<td>{{ $order->status }}</td>
+					<td>{{ $order->action }}</td>
+				</tr>
+				@endforeach
+			</tbody>
+		</table>
 	</tbody>
 </table>
-    <!-- Add products content here -->
 </div>
 <div>
 

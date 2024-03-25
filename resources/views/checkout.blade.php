@@ -104,7 +104,7 @@
           <button type="submit">Place Order</button>
       </form>
   </div>
-  @include('partials.footer')
+  {{-- @include('partials.footer') --}}
 </section>
 
 </body>
