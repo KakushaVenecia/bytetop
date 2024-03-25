@@ -28,7 +28,7 @@
             <div class="card">
                 <div class="card-icon"><i class="fas fa-users"></i></div>
                 <div class="card-title">Users</div>
-                <div class="card-value">500</div>
+                <div class="card-value">{{$userCount}}</div>
             </div>
             <div class="card">
                 <div class="card-icon"><i class="fas fa-chart-line"></i></div>

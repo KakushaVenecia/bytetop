@@ -10,8 +10,10 @@ use Illuminate\Support\Str;
 
 class InviteController extends Controller
 {
+    
     public function invite(Request $request)
 {
+    auth()->check();
     // Generate a token and password
     $token = Str::random(60);
     $password = Str::random(10);
