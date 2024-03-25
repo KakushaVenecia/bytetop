@@ -163,26 +163,7 @@ a {
 .navbar-profile .logout-btn:hover {
   background-color: #1a314f;
 }
-/* 
-@media screen and (max-width: 768px) {
-  .navcontainer {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .navbar-menu {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 
-  .navbar-item {
-    margin-bottom: 10px;
-  }
-} */
-
-
-/* Add your existing CSS styles here */
-
-/* Media queries for responsiveness */
 @media screen and (max-width: 768px) {
     .navcontainer {
       flex-direction: column;

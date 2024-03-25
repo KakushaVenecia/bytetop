@@ -4,34 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Password</title>
+   
 </head>
 <style>
-body {
-  background: rgb(96, 145, 163);
-  background: linear-gradient(180deg, rgba(96, 145, 163, 1) 40%, rgba(241, 247, 249, 1) 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
-}
+
 .container {
-  width: 350px;
-  height: 400px;
-  background-color: #001E2C;
-  padding: 2px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center; /* Center align content */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    width: 700px;
+    height: 400px;
+    background-color: white;
+    padding: 2px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
 }
 form {
     padding:10px;
   width: 100%;
-  height: fit-content; 
+  height: fit-content;
+  color: white;
 }
 img {
   width: 100px;
@@ -76,7 +71,11 @@ button:hover {
   background-color: #f7890b;
 }
 .error-message {
-  color: red;
+  color: red!important;
+  font-size: 12px;
+}
+.success-message {
+  color: red!important;
   font-size: 12px;
 }
 .info{
@@ -84,6 +83,9 @@ button:hover {
     color: #fff;
     font-weight: 300;
 }
+
+
+
 </style>
 <body>
     <div class="container">

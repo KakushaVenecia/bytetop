@@ -1,4 +1,4 @@
-/* Container styles */
+
 .container {
   background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../images/About-background.jpeg');
   width: 100%;
@@ -10,7 +10,7 @@
   background-attachment: fixed;
 }
 
-/* Text styles */
+
 p {
   color: #ffffff !important;
   font-weight: bold; 
@@ -116,7 +116,7 @@ p {
   border-radius: 8px;
 }
 
-/* Containers and teams styles */
+
 .containers {
   display: flex;
   justify-content: center;
@@ -140,10 +140,16 @@ p {
   padding: 20px;
   margin: 20px;
   border-radius: 20px;
-  flex: 0 0 10%; /* Adjust the width to fit all cards in one line */
-  max-width: 13%; /* Adjust the maximum width */
-  padding: 7px; /* Adjust padding */
+  flex: 0 0 10%; 
+  max-width: 13%; 
+  padding: 7px; 
   box-sizing: border-box;
+  transition: all 0.3s ease; 
+}
+
+.team:hover {
+  transform: translateY(-5px); 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
 }
 
 .team img {
@@ -186,40 +192,44 @@ p {
   color: #fff;
 }
 
-/* Media Queries */
 
-/* 2xl */
 @media (max-width: 1536px) {
-  .content {
-    grid-template-columns: repeat(1, 1fr);
+  .container {
+    max-width: 1280px;
   }
 }
 
-/* xl */
-@media (max-width: 1280px) {}
 
-/* lg */
-@media (max-width: 1024px) {}
+@media (max-width: 1280px) {
+  .container {
+    max-width: 1024px;
+  }
+}
 
-/* md */
-@media (max-width: 768px) {}
 
-/* sm */
+@media (max-width: 1024px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+
 @media (max-width: 640px) {
-  .team {
-    flex: 0 0 25%;
-    max-width: 25%;
-    padding: 0 15px;
-    box-sizing: border-box;
+  .container {
+    max-width: 475px;
   }
 }
 
-/* xs */
+
 @media (max-width: 475px) {
-  .team {
-    flex: 0 0 50%;
-    max-width: 50%;
-    padding: 0 7px;
-    box-sizing: border-box;
+  .container {
+    width: 100%;
   }
 }
