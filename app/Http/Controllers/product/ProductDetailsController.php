@@ -38,7 +38,7 @@ class ProductDetailsController extends Controller
     {
         $products = ProductDetail::where('category', 'Laptops')
                          ->where('quantity', '>', 1) 
-                         ->paginate(3);
+                         ->paginate(16);
 
     $maxComputerPrice = $products->max('price');
     $minComputerPrice = $products->min('price');
@@ -59,7 +59,7 @@ class ProductDetailsController extends Controller
 {
     $products = ProductDetail::where('category', 'Computers')
                          ->where('quantity', '>', 1) 
-                         ->paginate(8);
+                         ->paginate(16);
 
     $maxComputerPrice = $products->max('price');
     $minComputerPrice = $products->min('price');
@@ -82,7 +82,7 @@ class ProductDetailsController extends Controller
     {
     $products = ProductDetail::where('category', 'Accessories' )
                          ->where('quantity', '>', 1) 
-                         ->paginate(8);
+                         ->paginate(16);
 
     $maxComputerPrice = $products->max('price');
     $minComputerPrice = $products->min('price');
@@ -103,7 +103,7 @@ class ProductDetailsController extends Controller
 {
     $products = ProductDetail::where('category', 'Monitors' )
     ->where('quantity', '>', 1) 
-    ->paginate(8);
+    ->paginate(16);
     $maxComputerPrice = $products->max('price');
     $minComputerPrice = $products->min('price');
 
@@ -123,7 +123,7 @@ class ProductDetailsController extends Controller
        
         $products = ProductDetail::where('category', 'Monitors' )
         ->where('quantity', '>', 1) 
-        ->paginate(8);
+        ->paginate(16);
         $maxComputerPrice = $products->max('price');
         $minComputerPrice = $products->min('price');
 
