@@ -130,7 +130,7 @@
 
 
                 <!-- Edit Name Popup -->
-                <div id="editNamePopup" class="edit-popup" style="display: none">
+                {{-- <div id="editNamePopup" class="edit-popup" style="display: none">
                     <span class="close" onclick="closePopup('editNamePopup')">&times;</span>
                     <h01>Change your name</h01>
                     <div class="namecontainer">
@@ -143,11 +143,11 @@
                             <button type="button" onclick="updateField('name', 'newName')">Save changes</button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
 
 
-                <div id="editEmailPopup" class="edit-popup" style="display: none">
+                {{-- <div id="editEmailPopup" class="edit-popup" style="display: none">
                     <span class="close" onclick="closePopup('editEmailPopup')">&times;</span>
                     <h01>Change your email address</h01>
                     <div class="namecontainer">
@@ -160,11 +160,11 @@
                             <button id="verifyButton" type="button" >Verify</button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
 
 
-                <div id="editMobilePopup" class="edit-popup" style="display: none">
+                {{-- <div id="editMobilePopup" class="edit-popup" style="display: none">
                     <span class="close" onclick="closePopup('editMobilePopup')">&times;</span>
                     <h01>Add mobile number</h01>
                     <div class="namecontainer">
@@ -177,7 +177,7 @@
                             <button id="verifyButton" type="button" >Verify</button>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
 
                 <div id="editPasswordPopup" class="edit-popup" style="display: none">

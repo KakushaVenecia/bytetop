@@ -1,83 +1,69 @@
-
-
-    <Style>
-        body {
-            background-color: white; 
-            display: flex;
-            justify-content: center; 
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif; 
-        }
-        
-        h1 {
+<style>
+h1 {
     text-align: center;
     color: white;
 }
 
-        .container {
-            background-color: #001E2C; 
-            padding: 5px 20px;
-            border-radius: 10px;
-            max-width: 600px;
-            width: 100%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-        }
+.container {
+    height: 70vh; /* 50% of viewport height */
+    background-color: #001E2C; 
+    padding: 5px 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 100%;
+    margin:auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Enable vertical scrolling */
+}
 
-        .form-wrapper {
-            text-align: left; 
-        }
+.form-wrapper {
+    text-align: left; 
+}
 
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 16px;
-            color: white;
-        }
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: white;
+}
 
-        input[type="text"],
-        input[type="number"],
-        select,
-        textarea,
-        button {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
+input[type="text"],
+input[type="number"],
+select,
+textarea,
+button {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
 
-        button {
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
 
-        button:hover {
-            background-color: #0056b3;
-        }
+button:hover {
+    background-color: #0056b3;
+}
 
-        a {
-            text-decoration: none;
-            color: white;
-            margin-top: 15px;
-            display: block; 
-            text-align: center;
-            cursor: pointer;
-        }
+a {
+    text-decoration: none;
+    color: white;
+    margin-top: 10px;
+    display: block; 
+    text-align: center;
+    cursor: pointer;
+}
 
-        a:hover {
-            color: orange; 
-        }
-    </style>
-
-
-
-
-    </Style>
+a:hover {
+    color: orange; 
+}
+</Style>
 
     <div class="container">
         <h1>Create Product</h1>
@@ -103,9 +89,12 @@
                         <div id="custom-product-name" style="display: none;">
                             <label for="custom-name" class="inline-block text-lg mb-2">Custom Product Name</label>
                             <input type="text" id="custom-name" name="custom_name" class="border border-gray-200 rounded p-2 w-full" placeholder="Enter custom product name">
-                            @if (session()->has('error'))
-                            <div style="color: red;">{{ session('error') }}</div>
+                            @if (session()->has('custom_name'))
+                            <div style="color: red;">{{ session('custom_name') }}</div>
                             @endif
+                            @if ($errors->has('product_description'))
+                            <span class="text-red-500">{{ $errors->first('product_description') }}</span>
+                           @endif
                         </div>
                         <div id="default-product-description" style="display: block;">
                             <label for="product-description" class="inline-block text-lg mb-2">Product Description</label>
@@ -113,6 +102,9 @@
                             @if (session()->has('error'))
                             <div style="color: red;">{{ session('error') }}</div>
                             @endif
+                            @if ($errors->has('product_description'))
+                            <span class="text-red-500">{{ $errors->first('product_description') }}</span>
+                           @endif
                         </div>
                         <div id="custom-description-section" style="display: none;">
                             <label for="custom-description" class="inline-block text-lg mb-2">Custom Product Description</label>
@@ -120,6 +112,9 @@
                             @if (session()->has('error'))
                             <div style="color: red;">{{ session('error') }}</div>
                             @endif
+                            @if ($errors->has('custom_description'))
+                            <span class="text-red-500">{{ $errors->first('custom_description') }}</span>
+                           @endif
                         </div>
                     <div>
                     <label for="category" class="inline-block text-lg mb-2">Category</label>
@@ -134,6 +129,9 @@
                     @if (session()->has('error'))
                             <div style="color: red;">{{ session('error') }}</div>
                      @endif
+                     @if ($errors->has('category'))
+                            <span class="text-red-500">{{ $errors->first('category') }}</span>
+                           @endif
                 </div>
                 <div >
                     <label for="price" class="inline-block text-lg mb-2">Price</label>
@@ -141,12 +139,18 @@
                     @if (session()->has('error'))
                             <div style="color: red;">{{ session('error') }}</div>
                             @endif
+                            @if ($errors->has('price'))
+                            <span class="text-red-500">{{ $errors->first('price') }}</span>
+                           @endif
                 </div>
                 <div>
                     <label for="brand" class="inline-block text-lg mb-2">Brand</label>
                     <input type="text" class="border border-gray-200 rounded p-2 w-full" name="brand" value="{{ old('brands') }}" placeholder="Enter Brand Name">
                     @if (session()->has('error'))
                             <div style="color: red;">{{ session('error') }}</div>
+                            @endif
+                            @if ($errors->has('brand'))
+                             <span class="text-red-500">{{ $errors->first('brand') }}</span>
                             @endif
                 </div>
                 <div>
@@ -155,6 +159,9 @@
                     @if (session()->has('error'))
                             <div style="color: red;">{{ session('error') }}</div>
                             @endif
+                            @if ($errors->has('tags'))
+                             <span class="text-red-500">{{ $errors->first('tags') }}</span>
+                            @endif
                 </div>
                 <div>
                     <label for="image" class="inline-block text-lg mb-2">Product Image</label>
@@ -162,11 +169,17 @@
                     @if (session()->has('error'))
                     <div style="color: red;">{{ session('error') }}</div>
                     @endif
+                    @if (session()->has('image'))
+                    <div style="color: red;">{{ session('image') }}</div>
+                    @endif
                 </div>
                 <div>
                     <label for="quantity" class="inline-block text-lg mb-2">Quantity</label>
                     
                  <input type="number" class="border border-gray-200 rounded p-2 w-full" name="quantity" value="1" min="1" placeholder="Enter quantity">
+                 @if (session()->has('quantity'))
+                 <div style="color: red;">{{ session('quantity') }}</div>
+                 @endif
                 </div>
                 <br>
                 <div >
