@@ -27,11 +27,7 @@
           enthusiasts, professionals, and students alike. Our journey began 
           with a commitment to providing an unparalleled online shopping 
           experience, backed by exceptional customer service.</p>
-        <a href="" class="button">Read More</a>
-      </div>
-
-      <div class="remaining">
-        <h4>Our Mission</h4>
+          <h4>Our Mission</h4>
         <p>At ByteTop, our mission is clear — to empower individuals with the latest and most advanced laptop solutions. We strive to be more than just a marketplace; we want to be your go-to source for everything related to laptops, from high-performance devices to must-have accessories.</p>
         <h5>What Sets Us Apart</h5>
         <p>We handpick the best laptops and accessories to ensure you get only the finest products available in the market.
@@ -41,7 +37,9 @@
         <h6>Our Commitment</h6>
         <p>We stand behind the quality of every product we offer. Expect nothing less than excellence when you shop with us.
           Stay ahead of the curve with the latest technological advancements. We are committed to bringing you the newest trends and innovations in the laptop industry.</p>
-      </div>      
+        
+      </div>
+          
     </div>
     <div class="containers">
       <h6>Our Team</h6>
@@ -110,7 +108,7 @@
           <img class="card-img" src="{{ asset('images/female.svg') }}" alt="Venecia">
           <div class="name">Venecia Kakusha</div>
           <div class="design">Developer</div>
-          <div class="about">Backend and Scrum Master</div>
+          <div class="about">Backend/Scrum Master</div>
           <div class="social-link">    
             <a href="#" class="fa fa-facebook"></a>
             <a href="#" class="fa fa-instagram"></a>

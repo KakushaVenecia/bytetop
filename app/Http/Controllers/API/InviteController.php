@@ -27,7 +27,7 @@ class InviteController extends Controller
         'name' => $formFields['name'],
         'email' => $formFields['email'],
         'password' => bcrypt($password),
-        'status' => 'pending',
+        'status' => 'active',
         'role'=> 'admin',
         'email_verification_token' => $token,
     ]);

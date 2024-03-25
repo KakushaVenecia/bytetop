@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<link rel="stylesheet" href="{{ asset('css/landing.css') }}">
 <div class="container mt-0">
     <div class="card">
         <div class="card-body">
@@ -14,10 +14,9 @@
                     <h5 class="card-title">{{ $product->tags }}</h5>
                     <p class="card-text">{{ $product->description }}</p>
                     <p class="card-text"><strong>Price:</strong> $ {{ $product->price }}</p>
-                    <!-- Link to go to the review page -->
-
-
+                    <p class="card-text"><strong>Average Rating:</strong> {{ number_format($product->reviews->avg('rating'), 1) }}/5</p>
                 </div>
+                
                 <div class="col-md-12">
                     <div class="product-reviews">
                         @forelse($product->reviews as $review)
@@ -27,6 +26,19 @@
                                 <h5 class="card-title"><strong>{{ $review->user->name }}</strong></h5>
                                 <p class="card-text">{{ $review->content }}</p>
                                 <p class="card-text"><small class="text-muted">Rating: {{ $review->rating }}/5</small></p>
+                                <div class="review">
+                                    <div class="stars">
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            @if ($i <= $review->rating)
+                                                <span class="star full">&#9733;</span>
+                                            @elseif ($i - 0.5 <= $review->rating)
+                                                <span class="star half">&#9733;</span>
+                                            @else
+                                                <span class="star empty">&#9733;</span>
+                                            @endif
+                                        @endfor
+                                    </div>
+                                </div>
                                 @if ($review->admin_reply)
                                 <div class="admin-reply alert alert-info">
                                     <strong>Admin Reply:</strong>
@@ -66,7 +78,7 @@
                                         <input type="range" class="form-range" id="reviewRating" name="rating" min="0" max="5" step="1" required>
                                         <output for="reviewRating" class="form-label mt-2">3</output>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Submit Review</button>
+                                    <button type="submit" class="btn">Submit Review</button>
                                 </form>
                             </div>
                         </div>
@@ -81,6 +93,8 @@
                                 // Update the content of the output element with the current value of the range input
                                 output.textContent = this.value;
                             });
+
+
                         </script>
                     </div>
                 </div>

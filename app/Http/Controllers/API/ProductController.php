@@ -9,7 +9,6 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Redirect;;
 use Illuminate\Support\Str;
-use Tymon\JWTAuth\Facades\JWTAuth;
 
 
 class ProductController extends Controller
@@ -29,6 +28,7 @@ class ProductController extends Controller
         'description' => 'required|string',
         'price' => 'required|numeric',
         'tags' => 'required|string',
+        'brand'=>'required|string',
         'category' => 'required|string',
         'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         'quantity' => 'required|integer|min:1',
@@ -48,8 +48,6 @@ class ProductController extends Controller
             'name' => $request->input('name')
         ]);
     }
-   
-
     // Store the image
     $image = $request->file('image');
     $filename = $image->hashName();
@@ -62,6 +60,7 @@ class ProductController extends Controller
         'description' => $request->input('description'),
         'price' => $request->input('price'),
         'tags' => $request->input('tags'),
+        'brand' => $request->input('brand'),
         'category' => $request->input('category'),
         'image' => $filename,
         'quantity' => $request->input('quantity'),
@@ -74,10 +73,8 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        
         $product = ProductDetail::findOrFail($id);
         return view('admindashboard.edit', compact('product'));
-        
     }
 
     public function update(Request $request, $id)
@@ -88,6 +85,7 @@ class ProductController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'tags' => 'required|string',
+            'brand'=>'required|string',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'category' => 'required|string',
             'quantity' =>'required|integer|min:1',
@@ -120,6 +118,7 @@ if ($requestQuantity >= $currentQuantity) {
         'description' => $request->input('description'),
         'price' => $request->input('price'),
         'tags' => $request->input('tags'),
+        'brand' => $request->input('brand'),
         'category' => $request->input('category'), 
         'quantity' => $requestQuantity,
         'image' => $imageName
@@ -151,6 +150,7 @@ if ($requestQuantity >= $currentQuantity) {
                 'description' => $request->input('description'),
                 'price' => $request->input('price'),
                 'tags' => $request->input('tags'),
+                'brand' => $request->input('brand'),
                 'category' => $request->input('category'), 
                 'quantity' => $requestQuantity,
                 'image' => $imageName

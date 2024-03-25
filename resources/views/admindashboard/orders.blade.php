@@ -206,5 +206,71 @@ table th,td,.shop_table my_account_orders {
   padding-right: 0px;
 }
 
+@media only screen and (max-width: 1055px) {
+    h1 {
+        font-size: 26px;
+        margin-left: 5%;
+    }
+
+    h2 {
+        font-size: 14px;
+        margin-left: 5px;
+    }
+
+    tbody > tr > :nth-child(7) {
+        padding: 5px 10px; 
+    }
+}
+@media only screen and (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+        margin-left: 5%;
+    }
+
+    h2 {
+        font-size: 12px;
+        margin-left: 5px;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 640px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 10px;
+    }
+
+    td {
+        font-size: 10px;
+    }
+
+    tbody > tr > :nth-child(7) {
+        padding: 5px 10px; 
+    }
+}
+
+
+@media only screen and (max-width: 475px) {
+    h1 {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 8px;
+    }
+
+    td {
+        font-size: 8px;
+    }
+
+    tbody > tr > :nth-child(7) {
+        padding: 5px 20px; 
+    }
+}
 </style>
 @endsection

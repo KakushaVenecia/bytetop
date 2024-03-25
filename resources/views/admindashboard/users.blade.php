@@ -78,23 +78,21 @@ th{
 	height:30px;
 	background: #001E2C;
 	color:white;
+  width: -10%;
 }
-th{
-	font-family: Arial, Helvetica, sans-serif;
-	font-size:15px;
-}
+
 td{
 	font-family: Arial, Helvetica, sans-serif;
 	font-size:12px;
 	}
 tbody>tr>:nth-child(5){
- 	width:200px;
+ 	width:100px;
  	text-align:center;
  	background-clip: padding-box;
     border-radius: 20px;
     background-color: #F0F0F0;
     color: red;
-    padding: 5px 50px 5px 50px;
+    padding: 5px 10px 5px 10px;
     display: inline;
 }
 table th,td {
@@ -164,15 +162,17 @@ table th,td {
 .button {
   border: none;
   color: white;
-  padding: 15px;
+  padding: 10px;
   border-radius: 28px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 14px;
-  margin: 22px 20px;
+  font-size: 12px; 
   cursor: pointer;
   float: right;
+  display: block;
+  background-color: #fc8b32;
+    
 }
 
 .button1 {background-color: #001E2C;}
@@ -186,6 +186,58 @@ table th,td {
 	button1{
 		font-size: 10px;
 	}
+}
+
+@media (max-width: 948px) {
+    h1 {
+        font-size: 26px;
+    }
+    th, td {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 22px;
+        margin-left: 5%;
+    }
+
+    th, td {
+        font-size: 12px;
+    }
+
+    .search-input {
+        width: 200px;
+    }
+}
+
+@media (max-width: 640px) {
+    h1 {
+        font-size: 18px;
+    }
+
+    th, td {
+        font-size: 10px;
+    }
+
+    .search-input {
+        width: 150px;
+    }
+}
+
+@media (max-width: 475px) {
+    h1 {
+        font-size: 16px;
+    }
+
+    th, td {
+        font-size: 8px;
+    }
+
+    .search-input {
+        width: 100px;
+    }
 }
  
 </style>

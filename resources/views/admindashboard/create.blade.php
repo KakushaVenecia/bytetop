@@ -1,10 +1,84 @@
 
 
     <Style>
-        body{
-            background-color:white!important;
+        body {
+            background-color: white; 
+            display: flex;
+            justify-content: center; 
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif; 
         }
+        
+        h1 {
+    text-align: center;
+    color: white;
+}
+
+        .container {
+            background-color: #001E2C; 
+            padding: 5px 20px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+        }
+
+        .form-wrapper {
+            text-align: left; 
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 16px;
+            color: white;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea,
+        button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            margin-top: 15px;
+            display: block; 
+            text-align: center;
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: orange; 
+        }
+    </style>
+
+
+
+
     </Style>
+
     <div class="container">
         <h1>Create Product</h1>
         <div class="form-wrapper">
@@ -54,7 +128,7 @@
                         <option value="Laptops" @if(old('category') == 'Laptops') selected @endif>Laptops</option>
                         <option value="Computers" @if(old('category') == 'Computers') selected @endif>Computers</option>
                         <option value="Accessories" @if(old('category') == 'Accessories') selected @endif>Accessories</option>
-                        <option value="Monitors" @if(old('category') == 'Computer Monitors') selected @endif>CMonitors</option>
+                        <option value="Monitors" @if(old('category') == 'Computer Monitors') selected @endif>Monitors</option>
                         <option value="All in One Desktops" @if(old('category') == 'All in One Desktops') selected @endif>All in One Desktops</option>
                     </select>
                     @if (session()->has('error'))
@@ -69,6 +143,13 @@
                             @endif
                 </div>
                 <div>
+                    <label for="brand" class="inline-block text-lg mb-2">Brand</label>
+                    <input type="text" class="border border-gray-200 rounded p-2 w-full" name="brand" value="{{ old('brands') }}" placeholder="Enter Brand Name">
+                    @if (session()->has('error'))
+                            <div style="color: red;">{{ session('error') }}</div>
+                            @endif
+                </div>
+                <div>
                     <label for="tags" class="inline-block text-lg mb-2">Tags (Comma Separated)</label>
                     <input type="text" class="border border-gray-200 rounded p-2 w-full" name="tags" value="{{ old('tags') }}" placeholder="Enter tags">
                     @if (session()->has('error'))
@@ -77,14 +158,14 @@
                 </div>
                 <div>
                     <label for="image" class="inline-block text-lg mb-2">Product Image</label>
-                    <input type="file" class="border border-gray-200 rounded p-2 w-full" name="image">
+                    <input type="file" class="border border-gray-200 rounded p-2 w-full" name="image" style="color: white;padding-bottom: 10px;">
                     @if (session()->has('error'))
                     <div style="color: red;">{{ session('error') }}</div>
                     @endif
                 </div>
                 <div>
                     <label for="quantity" class="inline-block text-lg mb-2">Quantity</label>
-                    <br>
+                    
                  <input type="number" class="border border-gray-200 rounded p-2 w-full" name="quantity" value="1" min="1" placeholder="Enter quantity">
                 </div>
                 <br>
