@@ -52,6 +52,7 @@ ul{
     display: flex;
     flex-direction: column;
     width:100% !important;
+    min-height: 100vh;
 }
 
 #filters {
