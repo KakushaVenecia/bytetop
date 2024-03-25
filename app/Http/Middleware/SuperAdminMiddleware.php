@@ -20,7 +20,7 @@ class SuperAdminMiddleware
         }
 
         if ($request->user() && $request->user()->role === 'admin') {
-            return redirect()->route('dashboard'); // Redirect admin to dashboard
+            return redirect()->route('admin.dashboard'); // Redirect admin to dashboard
         }
 
         return redirect('/'); // Redirect customer or unauthorized users to landing page

@@ -9,14 +9,32 @@
                   <img class="logo1" src="/images/Bytetoplogo1.png" alt="Logo">
               </a>
           </div>
-      </div>
+      </div> 
+      <ul class="navbar-nav ml-auto">
+        @if(auth()->check())
+            @if(auth()->user()->role === 'super_admin')
+                <li class="navbar-item">
+                    <a class="nav-link" href="{{ route('dashboard') }}">Go to your Dashboard</a>
+                </li>
+            @elseif(auth()->user()->role === 'admin')
+                <li class="navbar-item">
+                    <a class="nav-link" href="{{ route('admin.dashboard') }}">Go to Admin Dashboard</a>
+                </li>
+            @endif
+        @endif
+    </ul>
       <ul class="navbar-menu">
-          <li class="navbar-item">
-              <div class="navbar-search">
-                  <i class="fas fa-search search-icon"></i>
-                  <input type="text" class="search-input" placeholder="Search...">
-              </div>
-          </li>
+        <li class="navbar-item"><a href="/about">About</a></li>
+        <li class="navbar-item">
+            <form method="post" action="{{ route('search') }}">
+                @csrf
+                <div class="navbar-search">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" name="search" class="search-input" placeholder="Search for products..">
+                </div>
+                <button type="submit">Search Now</button>
+            </form>
+        </li>
           <li class="navbar-item dropdown">
               <a href="#" id="products-link">Shop our Products</a>
               <div class="dropdown-menu" id="products-dropdown">
@@ -52,7 +70,6 @@
               @endauth
                 </div>          
           </li>
-          <li class="navbar-item"><a href="/about">About</a></li>
       </ul>
       <div class="navbar-cart">
         <a href="/cartpage"><i class="fas fa-shopping-cart"></i><span class="cart-count">{{ $cartCount }}</span></a>

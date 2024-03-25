@@ -862,12 +862,17 @@ only screen and (max-width: 600px) {
 
 .badge-success {
   background-color: #28a745;
-  color: #fff;
+  color: black;
 }
 
 .badge-danger {
   background-color: #dc3545;
-  color: #fff;
+  color: black;
+}
+
+.badge-warning{
+  background-color: orange;
+  color:black;
 }
 /* Button Styles */
 .btn {
