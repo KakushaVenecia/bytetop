@@ -14,11 +14,15 @@ This project is made by Team 1 for the Team Project Module.
 
 ## Table of Contents
 1. [Installation](#installation)
-2. [Usage](#usage)
-3. [Features](#features)
-4. [Technologies Used](#technologies-used)
-5. [Contributing](#contributing)
-6. [License](#license)
+2. [Features](#features)
+3. [Behavior Driven Development](#behavior-driven-development)
+4. [User Scenarios](#user-scenarios)
+5. [Admin Scenarios](#admin-scenarios)
+6. [Reported Bugs](#reported-bugs)
+7. [Technologies Used](#technologies-used)
+8. [Contributing](#contributing)
+9. [License](#license)
+10. [Contact](#contact)
 
 ## Installation
 ### Prerequisites
@@ -65,9 +69,6 @@ php artisan serve
 
 You are free to code. Just remember to create your branch in order to work and make pull requests to the master branch. Happy Coding. 
 
-## Usage
-[Provide instructions on how to use the e-commerce website, including how users can navigate through the site, make purchases, manage their accounts, etc. Screenshots or GIFs can be included to demonstrate the user experience.]
-
 ## Features
 - User registration and authentication
 - Product browsing and searching
@@ -77,43 +78,8 @@ You are free to code. Just remember to create your branch in order to work and m
 - Admin dashboard for managing products, orders, and users
 - Wishlist functionality
 - Product reviews and ratings
-- Responsive design for mobile devices
-- SEO optimization
-- Integration with social media platforms
-
 
 ## Behavior Driven Development 
-
-## Features and Scenarios
-
-### User Features:
-
-| Feature | Description |
-|---------|-------------|
-| User registration and authentication | Users can create an account and log in securely. |
-| User profile management | Users can view, edit, and update their profile information. |
-| Product browsing and searching | Users can search for products and browse through different categories. |
-| Product filtering and sorting | Users can filter and sort products by various criteria such as category, price, and popularity. |
-| Product details page | Users can view detailed information about each product including descriptions, images, prices, and reviews. |
-| Shopping cart management | Users can add products to their shopping cart, view/edit the cart, and remove items as needed. |
-| Wishlist functionality | Users can add products to their wishlist for future reference. |
-| Checkout process | Users can proceed through a seamless checkout process with multiple payment options. |
-| Order history and tracking | Users can view their order history and track the status of their orders. |
-| User reviews and ratings | Users can leave reviews and ratings for products they have purchased. |
-| Account settings | Users can manage account settings such as password change and email preferences. |
-
-### Admin Features:
-
-| Feature | Description |
-|---------|-------------|
-| Admin authentication and authorization | Admins can securely log in and access administrative functionalities. |
-| Dashboard | Admins have access to a dashboard for overall site management and monitoring. |
-| Product management | Admins can add, edit, and delete products from the inventory. |
-| User management | Admins can view, edit, and delete user accounts as needed. |
-| Order management | Admins can view order details, update order status, and process orders. |
-| Inventory management | Admins can track stock levels, receive notifications for low stock, and manage inventory. |
-| Content management system | Admins can manage static pages such as About Us and Contact Us. |
-
 
 ### Scenarios:
 
@@ -149,7 +115,8 @@ You are free to code. Just remember to create your branch in order to work and m
 | User clicks on "Log In" link                  | User is on the home page            | User clicks on the "Log In" link                | User navigates to the login page                  |
 | User fills out login form and submits         | User is on the login page           | User fills out the login form and submits       | User logs into their account successfully         |
 | User clicks on "Forgot Password" link         | User is on Login Page                   | User clicks on the "Change Password" link       | User navigates to the change password page        |
-| User fills out password change form and submits | User is on the change password page | User enters the email ID and click on Send Password Reset Link | User receives an email verification link in email inbox        |
+| User fills out password change form and submits | User is on the change password page | User enters the email ID and click on Send Password Reset Link | User receives an update password link in email inbox        |
+| User clicks on update password link       | User is on the change password         | User clicks on update password link from email inbox    | The change password form is populated and user updates the new password          |
 
 ### Scenario 3: Product Management
 
@@ -184,6 +151,53 @@ You are free to code. Just remember to create your branch in order to work and m
 |--------------------------------------|---------------------------|-------------------------------------------------|--------------------------------------------|
 | User fills out and submits contact form | User is on the "Contact Us" page | User fills out the contact form and submits it | Request is sent to the admin automatically |
 
+## User Scenarios
+
+| Scenario                                    | Description                                                                                                                                                                             |
+|---------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1. Sign Up                                  | A new user signs up for the website for the first time, creating an account with their email address and setting a password.                                                             |
+| 2. Password Change                          | After the first login, a user decides to change their password for future security. They navigate to the password change page and update it.                                           |
+| 3. Search and Filter Products               | A user searches for a specific product or applies filters to narrow down the product list by category or price range.                                                                     |
+| 4. Place an Order                           | A user adds items to their shopping cart and proceeds to checkout. They submit their order, which registers it in the database along with the total price.                            |
+| 5. Return a Product                         | A user wants to return a product they purchased in a previous order. They navigate to their order history, select the order containing the product, and initiate a return.           |
+| 6. Manage Shopping Cart                     | A user adds items to their shopping cart, updates the quantity of some items, and removes others.                                                                                       |
+| 7. View, Add, Update, Delete Details        | A user views their account details, adds a new shipping address, updates their email address, and deletes an outdated phone number.                                                      |
+| 8. Check Status of Past Orders              | A user checks the status of their past orders to track their progress.                                                                                                                  |
+| 9. Rate and Review Products                 | A user purchases a product and leaves a review, rating the product.                                               |
+
+## Admin Scenarios
+
+| Scenario                                    | Description                                                                                                                                                                             |
+|---------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 1. Sign Up                                  | An admin signs up for the website for the first time, creating an account with their email address and setting a password.                                                             |
+| 2. Password Change                          | After the first login, an admin decides to change their password for future security. They navigate to the password change page and update it.                                           |
+| 3. Process an Order                         | An admin processes an order by checking customers' transactions and processing shipments. They review order details, update shipment status, and confirm shipment.                 |
+| 4. Manage Customers                         | An admin views, adds, deletes, and updates customers' details such as personal information, addresses, and contact information.                                                      |
+| 5. Inventory Management                     | An admin effectively operates the inventory management system by adding, removing, or editing products. They update stock numbers, manage product categories, and set pricing.     |
+| 6. Filter and View Order Status             | An admin filters and views the status of orders to track their progress. They can filter orders by status (e.g., pending, shipped, delivered) and view detailed order information. |
+| 7. Automatic Stock Update                   | An admin makes changes to the inventory (e.g., adding new products, updating product quantities) and ensures that the stock numbers are automatically updated in the system.       |
+
+## Reported Bugs
+
+## Bug 1: Price Range Filtering Issue
+
+- **Description:** Filtering the price range to the original range is not working as expected.
+- **Steps to Reproduce:**
+  1. Go to the product listing page.
+  2. Apply a price range filter (e.g., $10 - $20).
+  3. Remove the filter or reset it to the original range.
+  4. Notice that the products displayed do not revert to the original range.
+- **Expected Behavior:** When removing the price range filter or resetting it to the original range, the product listing should display the products within the original range.
+
+## Bug 2: Flash Message Color Editing Issue
+
+- **Description:** We are unable to edit the color of the reset password flash message "We have emailed your password reset link".
+- **Steps to Reproduce:**
+  1. Trigger the password reset functionality by requesting a password reset link.
+  2. Observe the flash message displayed on the screen.
+  3. Attempt to edit the color of the flash message.
+- **Expected Behavior:** The color of the flash message should be editable to match the styling of the website or application.
+
 
 
 ## Technologies Used
@@ -199,11 +213,45 @@ You are free to code. Just remember to create your branch in order to work and m
   - Aston University Hosting
 
 ## Contributing
-[Include guidelines for contributing to the project, such as how to report bugs, suggest new features, or submit pull requests. Be sure to specify any coding standards or conventions to follow.]
+
+We welcome contributions from the community to improve our project. Whether you want to report a bug, suggest a new feature, or submit a pull request, we appreciate your help in making our project better. Please take a moment to review the guidelines below before contributing:
+
+### How to Contribute
+
+1. **Reporting Bugs:** If you encounter a bug or issue with the project, please open a new issue and provide detailed information about the bug, including steps to reproduce it, expected behavior, and any relevant screenshots or error messages.
+
+2. **Suggesting Features:** If you have an idea for a new feature or enhancement, please open a new issue and describe the feature you would like to see added. We welcome feedback and suggestions from the community.
+
+3. **Submitting Pull Requests:** If you would like to contribute code to the project, you can submit a pull request. Before submitting a pull request, please ensure the following:
+   - Fork the repository and create a new branch for your feature or bug fix.
+   - Follow the coding standards and conventions used in the project.
+   - Write clear and concise commit messages.
+   - Test your changes thoroughly to ensure they work as expected.
+   - Update the documentation, if applicable.
+   - Submit the pull request and provide a detailed description of the changes made.
+
+### Coding Standards and Conventions
+
+- Follow the coding style and conventions used in the project.
+- Write clean, readable, and maintainable code.
+- Use meaningful variable names and comments to explain complex code.
+- Keep code modular and well-structured.
+- Adhere to best practices and industry standards for the programming language and framework used.
+
+We appreciate your contributions and thank you for helping to improve our project!
+
 
 ## License
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 
 ## Contact
-[Provide contact information for the maintainers or developers of the e-commerce website, such as email addresses or links to social media profiles.]
+| Name                          | Email ID                  |
+|-------------------------------|---------------------------|
+| Venecia Kakusha              | 230406094@aston.ac.uk     |
+| Maneendra Reddy Meegada      | 230342404@aston.ac.uk     |
+| Saikiran Surineni            | 230342507@aston.ac.uk     |
+| Morikeh Daramy               | 230140888@aston.ac.uk     |
+| MohammadJavad Aghababaei Beni| 230357039@aston.ac.uk     |
+| Mairaj Shakeel Khan   | 220281081@aston.ac.uk     |
+
