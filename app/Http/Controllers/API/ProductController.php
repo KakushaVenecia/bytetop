@@ -270,6 +270,25 @@ public function allproducts()
     ]);        
 
 }
-
+public function landing()
+    {
+        // Retrieve distinct categories from ProductDetail table
+        $categories = ProductDetail::distinct()->pluck('category');
+    
+        // Array to store category-wise products
+        $categoryProducts = [];
+    
+        // Retrieve a certain number of products for each category
+        foreach ($categories as $category) {
+            // Retrieve products for the current category (e.g., 2 products)
+            $products = ProductDetail::where('category', $category)->take(2)->get();
+            
+            // Store products in the array, keyed by category ID
+            $categoryProducts[$category] = $products;
+        }
+    
+        // Pass categories and products to the view
+        return view('landing', compact('categories', 'categoryProducts'));
+    }
 
 }

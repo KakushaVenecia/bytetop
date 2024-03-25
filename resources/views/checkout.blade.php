@@ -57,11 +57,12 @@
         button {
             padding: 10px 20px;
             font-size: 16px;
-            background-color: #4CAF50;
+            background-color: orange;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            float: right;
         }
 
         button:hover {

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 use App\Notifications\PasswordUpdatedEmail;
 use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -37,7 +37,6 @@ class UserController extends Controller
         $user->save();
 
         $user->notify(new PasswordUpdatedEmail());
-
 
         // Redirect the user back with a success message
         return redirect()->back()->with('success', 'Password updated successfully.');

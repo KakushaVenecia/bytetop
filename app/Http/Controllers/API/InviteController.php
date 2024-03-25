@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Notifications\InviteAdminEmail;
@@ -43,7 +44,6 @@ class InviteController extends Controller
     // Send an invitation email with the generated password and inviter's ID
     $invitedUser->notify(new InviteAdminEmail($token, $password, $inviterName));
 
-    // Return a success response
-    return response()->json(['message' => 'Invitation sent successfully', 'invitation_id' => $invitedUser->id], 200);
+    return Redirect::route('dashboard')->with('success', 'Invitation sent successfully');
 }
 }

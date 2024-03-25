@@ -112,7 +112,7 @@ a.btn.action__pay_with_new_card {
 }
 .item__price {
   font-size: 22px;
-  color: #bec3cb;
+  color: orange;
 }
 
 
@@ -394,38 +394,6 @@ input[type="text"] {
   margin-left: 10px;
   font-weight: 600;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .mainContainer {
   width: 350px;

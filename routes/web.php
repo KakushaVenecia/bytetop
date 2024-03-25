@@ -34,9 +34,9 @@ use App\Http\Controllers\AdminUserController;
 Route::get('/verify-email', [VerificationController::class, 'verify'])->name('verification.verify');
 
 
-Route::get('/', function () { //  'orderItem'==App\Models\OrderItem::count();
-    return view('landing');
-})->name('landing');
+Route::get('/', [ProductController::class, 'landing'])->name('landing');
+
+
 Route::get('/blog', function(){
     return view('blog');
 });
