@@ -16,10 +16,15 @@ class SearchController extends Controller
     public function findSearch()
     {			
         $search = request()->input("search");		
-        $test = ProductDetail::where ( 'name', 'tag','LIKE', '%' . $search . '%' )->orWhere ( 'description', 'LIKE', '%' . $search . '%' )->get ();
-    if (count ( $test ) > 0)
-    return view ('Search')->withTest($test)->withQuery ($search);
-    else
-    return view ( 'Search' )->withMessage ( 'No Details found. Try to search again !' );		
+        $test = ProductDetail::where('name', 'LIKE', '%' . $search . '%')
+            ->orWhere('description', 'LIKE', '%' . $search . '%')
+            ->orWhere('tags', 'LIKE', '%' . $search . '%')
+            ->get();
+
+        if (count($test) > 0) {
+            return view('Search')->with('test', $test)->with('query', $search);
+        } else {
+            return view('Search')->with('message', 'No Details found. Try to search again !');
+        }		
     }
 }
