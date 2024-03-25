@@ -255,3 +255,10 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 | MohammadJavad Aghababaei Beni| 230357039@aston.ac.uk     |
 | Mairaj Shakeel Khan   | 220281081@aston.ac.uk     |
 
+## Superadmin Credentials
+We have a superadmin login which enables the admin to delete the pending users details, add or delete products, while the admin login provides read only access for the user details and process the Order details.
+
+
+| Email ID                          | Password                  |
+|-------------------------------|---------------------------|
+| khan.mairaj78@gmail.com      | nRUIwSUSY8     |
