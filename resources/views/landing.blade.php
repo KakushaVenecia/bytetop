@@ -8,8 +8,9 @@
       <img src="{{ asset('images/33353.jpg') }}" alt="Image 1">
       <div class="text-overlay">
         <h2>Laptops Catalogues</h2>
+        
         <p> Here you find the Best Laptops.</p>
-        <p> Click here to view more...</p>
+       
       </div>
     </div>
     <div class="slide">
@@ -17,7 +18,7 @@
       <div class="text-overlay">
         <h2>Computers Catalogues</h2>
         <p> Here you find the Best Computers.</p>
-        <p> Click here to view more...</p>
+       
       </div>
     </div>
     <div class="slide">
@@ -25,7 +26,7 @@
       <div class="text-overlay">
         <h2>Accessories Catalogues</h2>
         <p> Here you find the Best Accessories.</p>
-        <p> Click here to view more...</p>
+       
       </div>
     </div>
     <div class="slide">
@@ -33,7 +34,6 @@
       <div class="text-overlay">
         <h2>Monitors Catalogues</h2>
         <p> Here you find the Best Monitors.</p>
-        <p> Click here to view more...</p>
       </div>
     </div>
     <div class="slide">
@@ -41,7 +41,6 @@
       <div class="text-overlay">
         <h2>All in one Desktops Catalogues</h2>
         <p> Here you find the Best All in one Desktops.</p>
-        <p> Click here to view more...</p>
       </div>
     </div>
   </div>
@@ -62,9 +61,6 @@
                 <span class="star empty">&#9733;</span>
             </div>
         </div>
-
-
-
             <button class="btn btn-add">Add to Cart</button>
         </div>
         <div class="grid-item">
@@ -80,9 +76,7 @@
                 <span class="star full">&#9733;</span>
                 <span class="star half">&#9733;</span>
             </div>
-        </div>
-
-            
+        </div>            
             <button class="btn btn-add">Add to Cart</button>
         </div>
          <div class="grid-item">
