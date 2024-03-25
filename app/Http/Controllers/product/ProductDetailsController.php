@@ -137,5 +137,8 @@ class ProductDetailsController extends Controller
             $isInCart[$product->id] = Cart::where('name', $product->name)->exists();
         }
         return view('categories.all-in-one', compact('products' ,'maxComputerPrice', 'minComputerPrice' , 'allTags', 'isInCart'));
-    }    
+    }  
+    
+
+    
 }

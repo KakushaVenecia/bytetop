@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
 use App\Notifications\PasswordUpdatedEmail;
 use Illuminate\Support\Facades\Auth;
 
+
 class UserController extends Controller
 {
-    /**
-     * Update the user's password.
+     /**
+     * This function logs in the user.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request The request object.
+     * @return \Illuminate\Http\RedirectResponse Redirects the user after login.
      */
     public function updatePassword(Request $request)
     {
@@ -37,7 +37,6 @@ class UserController extends Controller
         $user->save();
 
         $user->notify(new PasswordUpdatedEmail());
-
 
         // Redirect the user back with a success message
         return redirect()->back()->with('success', 'Password updated successfully.');

@@ -2,7 +2,6 @@
 @section('title', 'Products')
 
 @section('content')
-{{-- <div class="content"> --}}
 
             <h1 style="text-align: center">Products</h1>
             <a href="{{ route('admin.products.create') }}"><button>Create Products</button></a>
@@ -33,12 +32,15 @@
                                 $productName = $product->name;
                                 $productCount = $productQuantities[$productName] ?? 0;
                                 @endphp
-                                @if($productCount > 5)
-                                    <span class="badge badge-success">Low Stock:  ({{ $productCount }})</span>
-                                @else
+                                @if($productCount > 20)
+                                <span class="badge badge-success">In Stock: ({{ $productCount }})</span>
+                                @elseif($productCount > 5)
+                                    <span class="badge badge-warning">Low Stock: ({{ $productCount }})</span>
+                                @elseif($productCount > 0)
                                     <span class="badge badge-danger">Insufficient Stock: ({{ $productCount }})</span>
+                                @else
+                                    <span class="badge badge-danger">Out of Stock</span>
                                 @endif
-                        
                             </td>
                             <td>
                                 @if($product->image)
@@ -59,7 +61,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="bg-red-500 text-white rounded py-2 px-4 hover:bg-red-700">Delete Product</button>
-                                        <a href="{{ route('dashboard') }}" class="text-black ml-4">Cancel</a>
+                                        <a href="{{ route('admin.viewproducts') }}" class="text-black ml-4">Delete All</a>
                                     </form>
                                     <span class="tooltiptext">Delete</span>
                                 </div>
@@ -73,7 +75,9 @@
                 {{ $products->links() }}
             </div>
         @else
-            <h6 class="text-center">No Products found! Please create a Product.</h6>
+        <div class="no-products" style="margin-top: 10vh">
+            <h2 class="text-center">No Products found! Please create a Product.</h2>
+        </div>
         @endif
     </div>
 @endsection

@@ -8,7 +8,7 @@
                         <p>Hello, {{ auth()->user()->name }}</p>
                     @endif
                 </div>
-                <h3>Admin Dashboard</h3>
+                <h3>SuperAdmin Dashboard</h3>
                 <div>
                 <div class="card-container">
             <div class="card">
@@ -32,8 +32,6 @@
                 <div class="card-value">{{ $orderCount }}</div>
             </div>
         </div>
-    
-        
             <div class="content-2">
                 <div class="recent-payments">
                     <div class="title">
