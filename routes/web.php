@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminData;
-use App\Models\ProductDetail;
+use App\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\VerificationController;
@@ -9,18 +8,17 @@ use App\Models\Product;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
-use App\Models\Cart;
 use App\Models\Payment;
 use App\Models\User;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RegController;
 use App\Http\Controllers\ShippingAddressController;
 use App\Http\Controllers\API\InviteController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\product\ProductDetailsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\AdminUserController;
 /*
 |--------------------------------------------------------------------------
@@ -128,9 +126,9 @@ Route::post('/Search', [SearchController::class, 'findSearch']);
 
 
 
-Route::get('/checkout', function () {
-    return view('checkout');
-})->name('checkout');
+Route::get('/checkout', [CheckoutController::class, 'showCheckoutForm'])->name('checkout');
+Route::post('/checkout', [CheckoutController::class, 'initiateOrder'])->name('initiate');
+
 
 Route::get('/Laptops', [ProductDetailsController::class, 'getLaptops'])->name('Laptops');
 Route::get('/Computers', [ProductDetailsController::class, 'getComputers'])->name('Computers');
@@ -146,8 +144,8 @@ Route::get('/products/{id}', [ProductDetailsController::class, 'show'])->name('p
 
 
 // Routes for submitting reviews and showing product details
-Route::post('/product/{productId}/review', [ReviewController::class, 'store'])->name('product.review.store')->middleware('auth');;
-Route::post('/review/{reviewId}/reply', [ReviewController::class, 'reply'])->name('product.review.reply')->middleware('auth');;
+Route::post('/product/{productId}/review', [ReviewController::class, 'store'])->name('product.review.store')->middleware('auth');
+Route::post('/review/{reviewId}/reply', [ReviewController::class, 'reply'])->name('product.review.reply')->middleware('auth');
 Route::get('/product/{productId}', [ProductDetailsController::class, 'show'])->name('product.show');
 
 
@@ -176,6 +174,8 @@ Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'des
 // Route for submitting the shipping address form
 Route::post('/shipping-address', [ShippingAddressController::class, 'store'])->name('shipping-address.store');
 
+Route::post('/create-order', [OrderItemController::class, 'create'])->name('createorder');
+
 
 // Landing page routes
 Route::get('/productpage', function () {
@@ -187,17 +187,16 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
 
 
 Route::get('/ordersuccess', function () {
     return view('ordersuccess');
 });
 
-Route::get('/account', function () {
-    $userId = auth()->id();
-    $paymentCards = Payment::where('user_id', $userId)->get();
-    return view('account', compact('paymentCards'));
-});
 
 
 Route::get('/orderspage', function () {
@@ -222,5 +221,11 @@ Route::get('/contactus', function(){
     return view ('contactus');
 });
 
+// PAYMENT ROUTES
 
-Route::post('/account', [PaymentController::class, 'store'])->name('add-card-btn');
+Route::get('/account', function () {
+    $userId = auth()->id();
+    $paymentCards = Payment::where('user_id', $userId)->get();
+    return view('account', compact('paymentCards'));
+})->middleware('auth');
+Route::post('/payments', [PaymentController::class, 'store'])->name('add-card-btn');

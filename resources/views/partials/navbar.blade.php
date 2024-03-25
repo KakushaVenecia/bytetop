@@ -55,7 +55,7 @@
           <li class="navbar-item"><a href="/about">About</a></li>
       </ul>
       <div class="navbar-cart">
-        <a href="/cartpage"><i class="fas fa-shopping-cart"> </i> <span class="cart-count">{{ $cartCount }}</span></a>
+        <a href="/cartpage"><i class="fas fa-shopping-cart"></i><span class="cart-count">{{ $cartCount }}</span></a>
       </div>
   </div>
 </nav>

@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var popup = document.getElementById("new-card-popup");
 
     card1Option.addEventListener("click", function() {
-        newCardForm.style.display = "none";
+        newCardForm.style.display = "block";
         card1Option.classList.remove("disabled");
         card2Option.classList.remove("disabled");
         // Logic to display card 1 details

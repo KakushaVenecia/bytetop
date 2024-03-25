@@ -65,11 +65,8 @@ body{
 }
 
 .checkout{
-    /* background-color: #000;
-    width:4rem; */
     margin-top: 4em;
     color:#fff;
-    /* padding: 20px; */
     margin-bottom: 4em;
 }
 
@@ -141,8 +138,13 @@ body{
             <hr class="white-line">
         </div>
         <div class="item-content">
+            @php
+            $totalPrice = 0; // Initialize $totalPrice here
+            $itemsData = []; // Initialize $itemsData array
+            @endphp
             @foreach($cartItems as $cartItem)
             <div class="cart-item" data-product-id="{{ $cartItem->id }}" data-max-quantity="{{ $cartItem->product_count }}" data-price="{{ $cartItem->price }}">
+               
                 <div class="item-details">
                     <img src="{{ asset('storage/images/' . $cartItem->image) }}" alt="{{ $cartItem->name }}">
                     <div class="details">
@@ -168,14 +170,29 @@ body{
                     </div>
                 </div>
             </div>
+            <div>
+                <hr class="white-line">
+            </div>
+            <div>
+            @php
+            $itemData = [
+                'name' => $cartItem->name,
+                'quantity' => $cartItem->quantity,
+                'price' => $cartItem->price,
+                'image' => asset('storage/images/' . $cartItem->image),
+            ];
+            $itemsData[] = $itemData;
+            $totalPrice += $cartItem->price * $cartItem->quantity;
+            @endphp
             @endforeach
-        </div>
-        <div>
-            <hr class="white-line">
-        </div>
-        <div>
-            <!-- <p>Subtotal ({{ $cartItems->count() }} items): £ {{ $subtotal }}</p> -->
-            <div id="total">Total: £0.00</div>
+            <p>Subtotal ({{ $cartItems->count() }} items): £ {{ $subtotal }}</p>
+                <div id="total">Total: £0.00</div>
+            </div>
+            @php
+            // Store the items data and total price in the session
+            session()->put('cart.items', $itemsData);
+            session()->put('cart.total_price', $totalPrice);
+            @endphp
         </div>
         <div class="checkout" float="right">
             <a href="{{ route('checkout') }}" class="btn btn-primary">Proceed to Checkout</a>

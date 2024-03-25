@@ -3,11 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Checkout</title>
     <link rel="stylesheet" href="css/checkout.css">
+    <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
 </head>
 
+<style>
+ .tabs {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
+        .tablinks {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background-color: #f2f2f2;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .tablinks.active {
+            background-color: #ddd;
+        }
+
+        .tabcontent {
+            width: 50%;
+            display: inline-block;
+            vertical-align: top;
+            background-color: darkblue;
+            padding: 20px;
+            border-radius: 0 0 5px 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+</style>
 <body>
 
 @include('partials.navbar')
@@ -16,8 +76,8 @@
     <div class="container">
       <div class="navigation">
 
-        
-        
+        <a href="{{ route('cart') }}" class="btn btn add"><i class="fa-solid fa-arrow-left"></i> Go back to Cart</a>
+      
       </div>
       <div class="notification">
         Complete Your Purchase
@@ -30,225 +90,121 @@
 
     </div>
     <div class="details shadow">
-      <div class="details__item">
-
-        <div class="item__image">
-          <img class="iphone" src="https://m.media-amazon.com/images/I/81KDeMk361L._AC_AA180_.jpg" alt="">
-        </div>
-        <div class="item__details">
-          <div class="item__title">
-          HP Laptop PC 15s-fq5021sa
+      @foreach(session('cart.items', []) as $item)
+          <div class="details__item" style="display: flex; width:200px; height:200px; padding:2em">
+              <img src="{{ $item['image'] }}" alt="{{ $item['name'] }}" style="width: 100px;">
+              <div class="item__details" style="display: flex; flex-direction: column; justify-content: center;">
+                  <p>Product Name:</p>
+                  <div class="item__title">{{ $item['name'] }}</div>
+                  <p>Product Price:</p>
+                  <div class="item__price">Price: £{{ $item['price'] }}</div>
+              </div>
           </div>
-          <div class="item__price">
-          £439.99
-          </div>
-          <div class="item__quantity">
-            Quantity: 1
-          </div>
-          <div class="item__description">
-            <ul style="">
-              <li>Intel Core i5-1235U Processor</li>
-              <li>8GB RAM | 256GB SSD</li>
-              <li>Intel UHD Graphics</li>
-              <li>15.6 inch Full HD 16:9 display</li>
-              <li>Windows 11 Home</li>
-              <li>Natural Silver</li>
-            </ul>
-
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-
-
-    
+      @endforeach
+      <div class="total" style="margin-top: 20px; text-align:center;">Total Price: £{{ number_format(session('cart.total_price', 0), 2) }}</div>
+  </div>
+  
 
     
     <div class="discount"></div>
 
   <div class="container1">
-    <div class="payment">
-        <div class="payment__info">
+    <div class="tabs">
+      <button class="tablinks active" onclick="openTab(event, 'shipping')">Shipping Details</button>
+      <button class="tablinks" onclick="openTab(event, 'payment')" style="display: none;">Payment</button>
+  </div>
 
-                <div class="mainContainer">
-                    <div class="cardHolder">
-                      <div class="header">
-                        <div class="heading center"></div>
-                        <div class="stepHeading center">Payment Method</div>
-                        <div class="card">
-                          <div class="top part">
-                            <img src="/images/visa.jpeg" border="0" />
-                          </div>
-                          <div class="middle part">
-                            <div class="infoheader vcenter">CARD NUMBER</div>
-                            <div class="infocontent number vcenter">
-                              <div class="num center">****</div>
-                              <div class="num center">****</div>
-                              <div class="num center">****</div>
-                              <div class="num center">1234</div>
-                            </div>
-                          </div>
-                          <div class="bottom part">
-                            <div class="holderInfo">
-                              <div class="infoheader vcenter">CARD HOLDER</div>
-                              <div class="holdername ">JOHN DOE</div>
-                            </div>
-                            <div class="expDate">
-                              <div class="infoheader vcenter">EXP. DATE</div>
-                              <div class="infocontent date vcenter">09/2023</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <h5 class="center">PAYMENT OPTIONS</h5>
-                  
-                    <div class="options vcenter">
-                        <div class="opt2" id="card1">
-                            <div class="icon center">
-                              <img src="/images/visa.jpeg" border="0" />
-                            </div>
-                            <div class="optname center">Card 1</div>
-                        </div>
-                        <div class="opt3" id = "card2">
-                          <div class="icon center">
-                            <div class = "mastercard"> 
-                              <img src="/images/mastercard.png" border="0" />
-                            </div>
-                          </div>
-                          <div class="optname center">Card 2</div>
-                        </div>
-                    </div>
-                    <div class="opt1" id="newCard">
-                        <div class="icon center"></div>
-                        <div class="optname1 center">New Card</div>
-                    </div>
-                    
-                    
-                </div>
+  <div id="shipping" class="tabcontent" style="display: block;">
+      <h2>Shipping Information</h2>
+      <form id="shippingForm">
+          <div class="title"> Name</div>
+          <input type="text" id="name" name="name" placeholder="Enter your name" value="{{ session('user_name') }}">
 
+          <div class="title">Phone Number</div>
+          <input type="text" id="phone" name="phone" placeholder="Enter your phone number">
 
-                <div id="new-card-popup" class="new-card-popup">
+          <div class="title">Postcode</div>
+          <input type="text" id="postcode" name="postcode" placeholder="Enter your postcode">
 
-    <div class="popup-content">
-        <form class="new-card-form">
-            <div class="input-group">
-                <label for="card-number">Card Number</label>
-                <input type="text1" id="card-number" name="card-number" placeholder="•••• •••• •••• ••••">
-            </div>
-            <div class="input-group multi-input">
-                <div>
-                    <label for="expiry-date">Expiry Date</label>
-                    <!-- <input type="text2" id="expiry-date" name="expiry-date" placeholder="MM / YY"> -->
-                    <select name="expiry_month" class="input1 ddl">
-                      <option selected>01</option>
-                      <option>02</option>
-                      <option>03</option>
-                      <option>04</option>
-                      <option>05</option>
-                      <option>06</option>
-                      <option>07</option>
-                      <option>08</option>
-                      <option>09</option>
-                      <option>10</option>
-                      <option>11</option>
-                      <option>12</option>
-                    </select>
-                    <select name="expiry_year" class="input1 ddl">
-                      <option>2024</option>
-                      <option>2025</option>
-                      <option>2026</option>
-                      <option>2027</option>
-                      <option>2028</option>
-                      <option selected>2029</option>
-                      <option>2030</option>
-                      <option>2031</option>
-                      <option>2032</option>
-                      <option>2033</option>
-                      <option>2034</option>
-                      <option>2035</option>
-                      <option>2036</option>
-                      <option>2037</option>
-                      <option>2038</option>
-                      <option>2039</option>
-                      <option>2040</option>
-                      <option>2041</option>
-                      <option>2042</option>
-                      <option>2043</option>
-                      <option>2044</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="cvv">CVV</label>
-                    <input type="text3" id="cvv" name="cvv" placeholder="•••">
-                </div>
-            </div>
-            <div class="input-group">
-                <label for="card-holder">Card Holder</label>
-                <input type="text4" id="card-holder" name="card-holder" placeholder="Full Name">
-            </div>
-            <button id="save-new-card-btn" class="save-new-card-btn">Save</button>
+          <div class="title">Address</div>
+          <input type="text" id="address" name="address" placeholder="Enter your address">
 
-            <button id="close-popup" class="close-popup">X</button>
+          <div class="title">Town/City</div>
+          <input type="text" id="city" name="city" placeholder="Enter your town/city">
 
-        </form>
-        
-    </div>
-</div>
+          <button type="button" onclick="nextTab()">Next</button>
+      </form>
+  </div>
 
-              </div>
-          <div class="payment__shipping">
-            <div class="name">
-            <div class="payment__title">
-              <i class="icon icon-plane"></i> Shipping Information
-            </div>
-                    <div class="title">First Name
-                    </div>
-                    <input type="text" class="input txt text-validated" placeholder="Byte"/>
-
-                    <div class="title">Last Name
-                    </div>
-                    <input type="text" class="input txt text-validated"  placeholder="Top"/>
-            
-                    <div class="title">Phone Number
-                    </div>
-                    <input type="text" class="input txt text-validated" placeholder="1234567890"/>
-
-                    <div class="title">Postcode
-                    </div>
-                    <input type="text" class="input txt text-validated"/>
-
-                    <div class="title">Address
-                    </div>
-                    <input type="text" class="input txt text-validated" placeholder="542 W. 15th Street"/>
-
-                    <div class="title">Town/City
-                    </div>
-                    <input type="text" class="input txt text-validated" placeholder="Birmingham" />
-            </div>
-
+  <div id="payment" class="tabcontent" style="display: none;">
+      <h2>Payment Information</h2>
+      <form id="paymentForm">
+          <div class="input-group">
+              <label for="card-number">Card Number</label>
+              <input type="text" id="card_number" name="card_number" placeholder="•••• •••• •••• ••••">
           </div>
-    </div>
-</div>
-
-              <div class="placeordercontainer">
-                    <div class="actions">
-
-                      <a href="#" class="btn action__submit">Place your Order
-                      </a>
-
-
-                    </div>
+          <div class="input-group multi-input">
+              <div>
+                  <label for="expiry-date">Expiry Month</label>
+                  <select name="expiry_month" id="expiry_month">
+                      @for ($month = 1; $month <= 12; $month++)
+                          <option {{ $month == date('m') ? 'selected' : '' }}>
+                              {{ str_pad($month, 2, '0', STR_PAD_LEFT) }}
+                          </option>
+                      @endfor
+                  </select>
+                  <label for="expiry-year">Expiry Year</label>
+                  <select name="expiry_year" id="expiry_year">
+                      @php
+                          $currentYear = date('Y');
+                          $endYear = $currentYear + 10; 
+                      @endphp
+                      @for ($year = $currentYear; $year <= $endYear; $year++)
+                          <option {{ $year == $currentYear ? 'selected' : '' }}>{{ $year }}</option>
+                      @endfor
+                  </select>
               </div>
+              <div>
+                  <label for="cvv">CVV</label>
+                  <input type="text" id="cvv" name="cvv" placeholder="•••">
+              </div>
+               <div>
+                  <label for="card-holder">Card Holder Name</label>
+                  <input type="text4" id="card-holder" name="name" placeholder="Full Name">
+              </div>
+              <div class="actions">
+                <form method="POST" action="{{ route('createorder') }}">
+                  @csrf
+                  <!-- Other form fields -->
+                  <button type="submit" class="btn ">Place Your Order</button>
+              </form>
+
+            </div>
   
     </section>
 
-  </div>
-  <script src="js/checkout.js"></script>
-  @include('partials.footer')
+    @include('partials.footer')
+    <script>
+      function openTab(evt, tabName) {
+          var tabcontent = document.getElementsByClassName("tabcontent");
+          for (var i = 0; i < tabcontent.length; i++) {
+              tabcontent[i].style.display = "none";
+          }
+          var tablinks = document.getElementsByClassName("tablinks");
+          for (var i = 0; i < tablinks.length; i++) {
+              tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(tabName).style.display = "block";
+          evt.currentTarget.className += " active";
+      }
+  
+      function nextTab() {
+          openTab(event, 'payment');
+          document.getElementsByClassName("tablinks")[0].style.display = "none";
+          document.getElementsByClassName("tablinks")[1].style.display = "block";
+      }
+  </script>
+ 
 
 </body>
 </html>

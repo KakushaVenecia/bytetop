@@ -185,18 +185,19 @@
                     
                     <div class="passwordcontainer">
                         <h2>Change Password</h2>
-                        <form action="#" method="post">
+                        <form action="{{ route('update.password') }}" method="post">
+                            @csrf
                             <div class="form-group">
                                 <label for="old-password">Old Password</label>
-                                <input type="password" id="old-password" name="old-password" required>
+                                <input type="password" id="old-password" name="current_password" required>
                             </div>
                             <div class="form-group">
                                 <label for="new-password">New Password</label>
-                                <input type="password" id="new-password" name="new-password" required>
+                                <input type="password" id="new-password" name="new_password" required>
                             </div>
                             <div class="form-group">
                                 <label for="confirm-password">Confirm Password</label>
-                                <input type="password" id="confirm-password" name="confirm-password" required>
+                                <input type="password" id="confirm-password" name="confirm_password" required>
                             </div>
                             <button type="submit" class="btn-save">Save</button>
                         </form>
@@ -262,7 +263,12 @@
     <!-- <h4>Card Details</h4> -->
     <div style= "margin-bottom :1px"class="cards">
           @foreach ($paymentCards as $paymentCard)
-                <p class="Card number">{{ $paymentCard->card_number }}</p>
+                    @if ($paymentCard)
+                    <p class="Card number">{{ $paymentCard->card_number }}</p>
+                @else
+                    <p class="Card number">No payment card available</p>
+                @endif
+                @dd($paymentCard)
                 <p class="Expiry month">{{ $paymentCard->expiry_month }}</p>
                 <p class="Expiry year">{{ $paymentCard->expiry_year }}</p>
                 <p class="Security code">{{ $paymentCard->security_code }}</p>
@@ -418,12 +424,12 @@
                 </div>
 
 </div>
-
         </div>
     </div>
-
-<script src="js/account.js"></script>
+<script src="js/account.js">
+document.getElementById('editPassword').addEventListener('click', function() {
+        document.getElementById('passwordForm').submit()
+})</script>
 @include('partials.footer')
 </body>
-
 </html>
