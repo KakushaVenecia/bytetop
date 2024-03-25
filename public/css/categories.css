@@ -18,6 +18,7 @@ svg{
   text-align: right;
   color: #00668a;
   align-items: center;
+  background-color: #331200;
 }
 
 .detail{
@@ -52,6 +53,7 @@ ul{
     display: flex;
     flex-direction: column;
     width:100% !important;
+    min-height: 100vh;
 }
 
 #filters {

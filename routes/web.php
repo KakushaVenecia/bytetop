@@ -74,7 +74,7 @@ Route::post('/update-password', [UserController::class, 'updatePassword'])->name
 
 
 
-Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create');
+Route::get('/admin/products/create', [ProductController::class, 'create'])->name('admin.products.create')->middleware('super_admin')->middleware('auth');
 Route::post('/admin/products', [ProductController::class, 'store'])->name('admin.products.store');
 Route::get('/admin/products/{id}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
 Route::put('/admin/products/{id}', [ProductController::class, 'update'])->name('admin.products.update');
@@ -82,7 +82,7 @@ Route::delete('/admin/products/{id}', [ProductController::class, 'destroy'])->na
 Route::get('/admin/dashboard', [ProductController::class, 'dashboard'])->name('dashboard');
 Route::get('/get-product-description', [ProductController::class, 'getProductDescription'])->name('get-product-description');
 Route::get('/get-product-quantity', [ProductController::class, 'getStockQuantity'])->name('get-product-quantity');
-Route::get('/admin/allproducts', [ProductController::class, 'allproducts'])->name('admin.viewproducts');
+Route::get('/admin/allproducts', [ProductController::class, 'allproducts'])->name('admin.viewproducts')->middleware('super_admin')->middleware('auth');
 
 
 // Define the route for deleting a user
@@ -92,14 +92,14 @@ Route::delete('/admin/user/{user}', [AdminUserController::class, 'deleteUser'])-
 
 Route::get('/admin/all-users' , function(){
     $users = User::all();
-    return view ('admindashboard.users', compact('users'));
+    return view ('admindashboard.users', compact('users'))->middleware('super_admin')->middleware('auth');
 })->name('admin.viewusers');
 Route::get('/admin/all-orders' , function(){
     return view ('admindashboard.orders');
 })->name('admin.vieworders');
 
 Route::get('/admin/settings' , function(){
-    return view ('admindashboard.settings');
+    return view ('admindashboard.settings')->middleware('super_admin')->middleware('auth');
 })->name('admin.viewsettings');
 
 Route::get('/admin/notifications' , function(){
@@ -107,7 +107,7 @@ Route::get('/admin/notifications' , function(){
 })->name('admin.viewnotifications');
 
 Route::get('/admin/reports' , function(){
-    return view ('admindashboard.reports');
+    return view ('admindashboard.reports')->middleware('super_admin')->middleware('auth');
 })->name('admin.viewreports');
 
 
@@ -195,7 +195,7 @@ Route::get('/welcome', function () {
 
 Route::get('/ordersuccess', function () {
     return view('ordersuccess');
-});
+})->name('ordersuccess');
 
 
 
@@ -213,10 +213,10 @@ Route::get('/verifynumber', function () {
 });
 
 
-Route::post('/admin/invite', [InviteController::class, 'invite'])->name('invite.send');
+Route::post('/admin/invite', [InviteController::class, 'invite'])->name('invite.send')->middleware('super_admin')->middleware('auth');
 Route::get('/admin/invite', function () {
     return view('admindashboard.invite');
-})->name('admin.invite.form');
+})->name('admin.invite.form')->middleware('super_admin')->middleware('auth');;
 Route::get('/contactus', function(){
     return view ('contactus');
 });
