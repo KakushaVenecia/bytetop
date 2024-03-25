@@ -253,6 +253,27 @@ public function dashboard()
             'users' => $users
         ]);
     }
+
+    public function admindashboard()
+{
+    $productCount = Product::count();
+    $userCount =User::count();
+    $orders = OrderItem::paginate(20);
+    $orderCount= OrderItem::count();
+    $products = ProductDetail::paginate(7);
+        $route = route('dashboard');
+        $users = User::all();
+        return view('admindashboard.admindash')->with([
+            'productCount' => $productCount,
+            'products' => $products,
+            'route' => $route,
+            'order' => $orders,
+            'orderCount'=>$orderCount,
+            'userCount'=>$userCount,
+            'users' => $users
+        ]);
+    }
+    
     
 public function allproducts()
 {

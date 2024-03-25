@@ -3,16 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
     // Method to fetch all orders
-    public function index()
-    {
-        $orders = Order::all();
-        return response()->json(['orders' => $orders], 200);
-    }
+   
 
     // Method to fetch a specific order by its ID
     public function show($id)

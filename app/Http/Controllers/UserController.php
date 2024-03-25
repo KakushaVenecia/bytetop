@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    /**
-     * Update the user's password.
+     /**
+     * This function logs in the user.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request The request object.
+     * @return \Illuminate\Http\RedirectResponse Redirects the user after login.
      */
     public function updatePassword(Request $request)
     {

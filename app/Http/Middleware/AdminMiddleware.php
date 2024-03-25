@@ -15,10 +15,20 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->role === 'admin') {
-            return $next($request);
+         // Check if the user is authenticated
+         if ($request->user()) {
+            // Check if the user is an admin
+            if ($request->user()->role === 'admin') {
+                return $next($request);
+            } 
+            // Check if the user is a super admin
+            elseif ($request->user()->role === 'super_admin') {
+                // Redirect super admin to the dashboard
+                return redirect()->route('dashboard');
+            }
         }
 
-        return redirect('/admin/dashboard'); // Redirect to home or unauthorized page
+        // Redirect other users to the home page or display an unauthorized message
+        return redirect('/')->with('error', 'Unauthorized access.');
     }
 }

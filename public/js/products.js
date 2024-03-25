@@ -82,8 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => {
             // Handle network errors or other exceptions
-            console.error('Error:', error);
-            alert('An error occurred while processing your request');
+            console.error('Error:', error.message); // Display the error message
+            alert('An error occurred while processing your request: ' + error.message);
         });
     });
 });

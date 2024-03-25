@@ -85,49 +85,44 @@ class RegController extends Controller
      * @return \Illuminate\Http\RedirectResponse Redirects the user after login.
      */
     public function login(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
-    
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-    
+{
+    $credentials = $request->only('email', 'password');
 
-           
-            // Check if the user's email is verified
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user();
+        if ($user->role == 'super_admin') {
+            session()->put('authenticated', true);
+            session()->put('user_id', $user->id); 
+            session()->put('user_name', $user->name);
+            return redirect()->route('admindash')->with('success', 'Login successful');
+        } elseif ($user->role == 'admin') {
+            session()->put('authenticated', true);
+            session()->put('user_id', $user->id); 
+            session()->put('user_name', $user->name);
+
+            return redirect()->route('admindash')->with('success', 'Login successful');
+        } else {
             if ($user->email_verified_at) {
-               
-    
-                // Set session data and redirect based on user's role
-                if ($user->role == 'super_admin' || $user->role == 'admin') {
-                    if ($user->status === 'pending') {
-                        $user->update(['status' => 'active']);
-                    }
-                    session()->put('authenticated', true);
-                    session()->put('user_id', $user->id); 
-                    session()->put('user_name', $user->name);
-                    return redirect()->route('dashboard')->with('success', 'Login successful');
-                } else {
-                    $userId = $user->id;
-                    $cartCount = Cart::where('user_id', $userId)->count();
-                    if ($user->status === 'pending') {
-                        $user->update(['status' => 'active']);
-                    }
-                    session()->put('authenticated', true);
-                    session()->put('user_id', $user->id); 
-                    session()->put('user_name', $user->name);
-                    session()->put('cart_count', $cartCount);
-    
-                    return redirect()->route('landing')->with('success', 'Login successful');
+                $userId = $user->id;
+                $cartCount = Cart::where('user_id', $userId)->count();
+
+                if ($user->status === 'pending') {
+                    $user->update(['status' => 'active']);
                 }
+                session()->put('authenticated', true);
+                session()->put('user_id', $user->id); 
+                session()->put('user_name', $user->name);
+                session()->put('cart_count', $cartCount);
+                return redirect()->route('landing')->with('success', 'Login successful');
             } else {
-                // If the email is not verified, redirect back with an error message
                 Auth::logout();
                 return redirect()->back()->with('error', 'Please verify your email before logging in.');
             }
-        } else {
-            return redirect()->back()->with('error', 'Invalid credentials')->withInput();
         }
+    } else {
+        return redirect()->back()->with('error', 'Invalid credentials')->withInput();
     }
+}
 
     public function logout(Request $request)
     {

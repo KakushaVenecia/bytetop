@@ -80,20 +80,26 @@ Route::get('/admin/products/{id}/edit', [ProductController::class, 'edit'])->nam
 Route::put('/admin/products/{id}', [ProductController::class, 'update'])->name('admin.products.update')->middleware('super_admin')->middleware('auth');
 Route::delete('/admin/products/{id}', [ProductController::class, 'destroy'])->name('admin.products.destroy')->middleware('super_admin')->middleware('auth');
 Route::get('/admin/dashboard', [ProductController::class, 'dashboard'])->name('dashboard')->middleware('super_admin')->middleware('auth');
+Route::get('/admindash', [ProductController::class, 'admindashboard'])->name('admindash')->middleware('admin')->middleware('auth');
+    
+
+
+
 Route::get('/get-product-description', [ProductController::class, 'getProductDescription'])->name('get-product-description');
 Route::get('/get-product-quantity', [ProductController::class, 'getStockQuantity'])->name('get-product-quantity');
 Route::get('/admin/allproducts', [ProductController::class, 'allproducts'])->name('admin.viewproducts')->middleware('super_admin')->middleware('auth');
 
 
 // Define the route for deleting a user
-Route::delete('/admin/user/{user}', [AdminUserController::class, 'deleteUser'])->name('admin.deleteuser');
+Route::delete('/admin/user/{user}', [AdminUserController::class, 'deleteUser'])->name('admin.deleteuser')->middleware('super_admin')->middleware('auth');
 
 
 
-Route::get('/admin/all-users' , function(){
+Route::get('/admin/all-users', function () {
     $users = User::all();
-    return view ('admindashboard.users', compact('users'))->middleware('super_admin')->middleware('auth');
-})->name('admin.viewusers');
+    return view('admindashboard.users', compact('users'));
+})->middleware(['super_admin', 'auth'])->name('admin.viewusers');;
+
 Route::get('/admin/all-orders' , function(){
     return view ('admindashboard.orders');
 })->name('admin.vieworders');
@@ -120,8 +126,8 @@ Route::get('/verifyemail', function () {
 })->name('verifyyouremail');
 
 
-Route::get('/Search', function () {return view('search');});
-Route::post('/Search', [SearchController::class, 'findSearch']);
+// Route::get('/Search', function () {return view('Search');});
+Route::post('/Search', [SearchController::class, 'findSearch'])->name('search');
 
 
 
@@ -217,6 +223,8 @@ Route::post('/admin/invite', [InviteController::class, 'invite'])->name('invite.
 Route::get('/admin/invite', function () {
     return view('admindashboard.invite');
 })->name('admin.invite.form')->middleware('super_admin')->middleware('auth');;
+
+
 Route::get('/contactus', function(){
     return view ('contactus');
 });

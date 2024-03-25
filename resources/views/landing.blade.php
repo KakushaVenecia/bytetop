@@ -7,8 +7,8 @@
     <div class="slide">
       <img src="{{ asset('images/33353.jpg') }}" alt="Image 1">
       <div class="text-overlay">
-        <h2>Laptops Catalogues</h2>
-        
+        <h2>Laptops Catalogue</h2>
+        <a color="orange" href="{{ route('Laptops') }}"> View Laptops</a>
         <p> Here you find the Best Laptops.</p>
        
       </div>
@@ -17,7 +17,8 @@
       <img src="{{ asset('images/143023.jpg') }}" alt="Image 1">
       <div class="text-overlay">
         <h2>Computers Catalogues</h2>
-        <p> Here you find the Best Computers.</p>
+        <a color="orange" href="{{ route('Computers') }}"> View Computers</a>
+        <p> We will help you choose your best study companion.</p>
        
       </div>
     </div>
@@ -25,7 +26,8 @@
       <img src="{{ asset('images/2150713961.jpg') }}" alt="Image 3">
       <div class="text-overlay">
         <h2>Accessories Catalogues</h2>
-        <p> Here you find the Best Accessories.</p>
+        <a color="orange" href="{{ route('Accessories') }}"> View Accessories</a>
+        <p> Look no further ! We Got you</p>
        
       </div>
     </div>
@@ -33,13 +35,15 @@
       <img src="{{ asset('images/2150706387.jpg') }}" alt="Image 3">
       <div class="text-overlay">
         <h2>Monitors Catalogues</h2>
-        <p> Here you find the Best Monitors.</p>
+        <a color="orange" href="{{ route('Accessories') }}"> View Accessories</a>
+        <p> Best Deals in town</p>
       </div>
     </div>
     <div class="slide">
       <img src="{{ asset('images/all-in-one.jpg') }}" alt="Image 3">
       <div class="text-overlay">
         <h2>All in one Desktops Catalogues</h2>
+        <a color="orange" href="{{ route('All-in-one') }}"> Complete Desktops</a>
         <p> Here you find the Best All in one Desktops.</p>
       </div>
     </div>
