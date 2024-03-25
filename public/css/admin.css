@@ -2,8 +2,6 @@
   margin: 0%;
 }
 
-/* Layout */
-
 .container {
  height: 100vh;
   display: flex;
@@ -11,7 +9,7 @@
 }
 
 .primary-nav {
-  width: 250px; /* Adjust the width as needed */
+  width: 250px; 
 }
 
 .content {
@@ -39,14 +37,6 @@
 
 }
 
-
-/* Menu Styles */
-/* 
-.primary-nav {
-	position: fixed;
-	z-index: 999;
-} */
-
 .menu {
 	position: relative;
 }
@@ -64,10 +54,8 @@
   padding: 0;
 }
 
-
-
 .hamburger:before {
-	content:"\2630"; /* hamburger icon */
+	content:"\2630"; 
 	display: block;
   color: #000;
   line-height: 32px;
@@ -75,7 +63,7 @@
 }
 
 .openNav .hamburger:before {
-	content:"\2715"; /* close icon */
+	content:"\2715"; 
 	display: block;
   color: lightgray;
   line-height: 32px;
@@ -131,8 +119,6 @@
 	color: #fff;
 }
 
-
-
 .menu label {
   margin-bottom: 0;
   display: block;
@@ -150,21 +136,9 @@ input#menu[type="checkbox"] {
   display: none;
 }
 
-
-
-
-
-
 .sub-menu-dropdown {
 	display: none;
 }
-
-/* .new-wrapper {
-	position: absolute;
-	left: 50px;
-  width: calc(100% - 50px);
-  transition: transform .45s cubic-bezier(0.77, 0, 0.175, 1);
-} */
 
 #menu:checked + ul.menu-dropdown {
     
@@ -214,18 +188,7 @@ html{
   height: 100vh !important;
 }
 
-/* .menu {
-	position: absolute;
-	display: block;
-	left: -200px;
-  top: 0;
-	width: 250px;
-  transition: all 0.45s cubic-bezier(0.77, 0, 0.175, 1);
-  background-color: yellow;
-	z-index: 999;
-} */
 
-/* Remove transition effect from the menu */
 .menu {
   position: absolute;
   display: block;
@@ -239,12 +202,11 @@ html{
   z-index: 999;
 }
 
-/* Ensure content starts where the navbar ends
 
 
 
 
-/* Ensure content and navbar are side by side */
+
 @media screen and (max-width: 992px) {
   .new-wrapper {
       position: relative;
@@ -317,9 +279,46 @@ html{
     transition: transform .45s cubic-bezier(0.77, 0, 0.175, 1);
 }
 	
-	/* label.hamburger {
-		display: none;
-	} */
+@media (max-width: 1536px) {
+  .primary-nav {
+    max-width: 1280px;
+  }
+}
+
+
+@media (max-width: 1280px) {
+  .primary-nav {
+    max-width: 1024px;
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .primary-nav {
+    max-width: 768px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .primary-nav {
+    max-width: 640px;
+  }
+}
+
+
+@media (max-width: 640px) {
+  .primary-nav {
+    max-width: 475px;
+  }
+}
+
+
+@media (max-width: 475px) {
+  .primary-nav {
+    width: 100%;
+  }
+}
 
 
 

@@ -1,4 +1,4 @@
-/* Container styles */
+
 .container {
   background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('../images/About-background.jpeg');
   width: 100%;
@@ -10,7 +10,7 @@
   background-attachment: fixed;
 }
 
-/* Text styles */
+
 p {
   color: #ffffff !important;
   font-weight: bold; 
@@ -116,7 +116,7 @@ p {
   border-radius: 8px;
 }
 
-/* Containers and teams styles */
+
 .containers {
   display: flex;
   justify-content: center;
@@ -144,12 +144,12 @@ p {
   max-width: 13%; 
   padding: 7px; 
   box-sizing: border-box;
-  transition: all 0.3s ease; /* Added transition for smooth animation */
+  transition: all 0.3s ease; 
 }
 
 .team:hover {
-  transform: translateY(-5px); /* Move up by 5 pixels */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Add box-shadow on hover */
+  transform: translateY(-5px); 
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
 }
 
 .team img {
