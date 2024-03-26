@@ -1,4 +1,4 @@
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,7 +15,7 @@
         <p>
             You're almost there! We sent an email to </p> 
         
-            <strong>{{ session('email') }}</strong>>
+            <strong>{{ session('email') }}</strong>
         <p>    
             Just click on the link in the email to complete your signup.
             If you don't see it, please <label> check your spam </label> folder. </p>
@@ -25,4 +25,4 @@
         <a class="button" href="mailto:member@email.com">Resend Verification Email</a>
     </div>
 </body>
-</html> --}}
+</html>
