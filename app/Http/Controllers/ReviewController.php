@@ -4,11 +4,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\ProductDetail;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -34,7 +34,6 @@ class ReviewController extends Controller
         return redirect()->route('product.show', $productDetail->id)->with('success', 'Review submitted successfully!');
     }
 
-
     public function reply(Request $request, $reviewId)
     {
         $request->validate([
@@ -47,14 +46,13 @@ class ReviewController extends Controller
         // Fetch the related product for the review
         $productDetail = $review->productDetail;
 
-
         return redirect()->route('product.show', ['productId' => $productDetail->id])->with('success', 'Reply sent successfully!');
     }
-
 
     public function showReviewPage($productId)
     {
         $product = Product::findOrFail($productId);
+
         return view('review', compact('product'));
     }
 }

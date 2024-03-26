@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
+use App\Models\User;
+use App\Notifications\WelcomeEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Notifications\WelcomeEmail;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Password;
-use App\Models\Cart;
-
 
 class RegController extends Controller
 {
@@ -21,117 +20,121 @@ class RegController extends Controller
     }
 
     public function register(Request $request)
-{
-    $validatedData = $request->validate([
-        'name' => 'required|string',
-        'email' => 'required|email|unique:users,email',
-        'password' => 'required|min:8|confirmed',
-    ], [
-        'name.required' => 'The name field is required.',
-        'email.required' => 'The email field is required.',
-        'email.email' => 'Please enter a valid email address.',
-        'email.unique' => 'The email address is already in use.',
-        'password.required' => 'The password is required.',
-        'password.min' => 'The password must be at least 8 characters long.',
-        'password_confirmation.required' => 'Please confirm your password.',
-        'password_confirmation.same' => 'The passwords do not match.',
-    ]);
-
-    try {
-        // Check if user already exists
-        $existingUser = User::where('email', $validatedData['email'])->first();
-        if ($existingUser) {
-            return redirect()->back()->with('error', 'User with this email already exists.');
-        }
-
-        // Generate a random verification token
-        $verificationToken = Str::random(40); // You can adjust the length as needed
-
-        // Create the user with the verification token
-        $user = User::create([
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-            'password' => Hash::make($validatedData['password']),
-            'role' => 'customer', // Set the default role to "customer"
-            'email_verification_token' => $verificationToken, // Save the verification token
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed',
+        ], [
+            'name.required' => 'The name field is required.',
+            'email.required' => 'The email field is required.',
+            'email.email' => 'Please enter a valid email address.',
+            'email.unique' => 'The email address is already in use.',
+            'password.required' => 'The password is required.',
+            'password.min' => 'The password must be at least 8 characters long.',
+            'password_confirmation.required' => 'Please confirm your password.',
+            'password_confirmation.same' => 'The passwords do not match.',
         ]);
 
-        session()->put('email', $validatedData['email']); 
-        
-        // Generate verification URL with JWT token
-        $verificationUrl = URL::to('/verify-email') . '?token=' . $verificationToken;
+        try {
+            // Check if user already exists
+            $existingUser = User::where('email', $validatedData['email'])->first();
+            if ($existingUser) {
+                return redirect()->back()->with('error', 'User with this email already exists.');
+            }
 
-        // Send welcome email with verification link
-        $user->notify(new WelcomeEmail($verificationUrl));
+            // Generate a random verification token
+            $verificationToken = Str::random(40); // You can adjust the length as needed
 
-        return redirect()->route('verifyyouremail')->with('success', 'Registration successful. Please check your email for verification.');
-    } catch (\Exception $e) {
-        // Log the detailed error message for debugging
-        logger()->error('Failed to register user: ' . $e->getMessage());
+            // Create the user with the verification token
+            $user = User::create([
+                'name' => $validatedData['name'],
+                'email' => $validatedData['email'],
+                'password' => Hash::make($validatedData['password']),
+                'role' => 'customer', // Set the default role to "customer"
+                'email_verification_token' => $verificationToken, // Save the verification token
+            ]);
 
-        // Flash error message for registration failure
-        return redirect()->back()->with('error', 'Failed to register user. Please try again later.');
+            session()->put('email', $validatedData['email']);
+
+            // Generate verification URL with JWT token
+            $verificationUrl = URL::to('/verify-email').'?token='.$verificationToken;
+
+            // Send welcome email with verification link
+            $user->notify(new WelcomeEmail($verificationUrl));
+
+            return redirect()->route('verifyyouremail')->with('success', 'Registration successful. Please check your email for verification.');
+        } catch (\Exception $e) {
+            // Log the detailed error message for debugging
+            logger()->error('Failed to register user: '.$e->getMessage());
+
+            // Flash error message for registration failure
+            return redirect()->back()->with('error', 'Failed to register user. Please try again later.');
+        }
     }
-}
 
     public function showLoginForm()
     {
         return view('login');
     }
+
     /**
      * This function logs in the user.
      *
-     * @param \Illuminate\Http\Request $request The request object.
+     * @param  \Illuminate\Http\Request  $request  The request object.
      * @return \Illuminate\Http\RedirectResponse Redirects the user after login.
      */
     public function login(Request $request)
-{
-    $credentials = $request->only('email', 'password');
+    {
+        $credentials = $request->only('email', 'password');
 
-    if (Auth::attempt($credentials)) {
-        $user = Auth::user();
-        if ($user->role == 'super_admin') {
-            session()->put('authenticated', true);
-            session()->put('user_id', $user->id); 
-            session()->put('user_name', $user->name);
-            return redirect()->route('admindash')->with('success', 'Login successful');
-        } elseif ($user->role == 'admin') {
-            session()->put('authenticated', true);
-            session()->put('user_id', $user->id); 
-            session()->put('user_name', $user->name);
-
-            return redirect()->route('admindash')->with('success', 'Login successful');
-        } else {
-            if ($user->email_verified_at) {
-                $userId = $user->id;
-                $cartCount = Cart::where('user_id', $userId)->count();
-
-                if ($user->status === 'pending') {
-                    $user->update(['status' => 'active']);
-                }
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            if ($user->role == 'super_admin') {
                 session()->put('authenticated', true);
-                session()->put('user_id', $user->id); 
+                session()->put('user_id', $user->id);
                 session()->put('user_name', $user->name);
-                session()->put('cart_count', $cartCount);
-                return redirect()->route('landing')->with('success', 'Login successful');
+
+                return redirect()->route('admindash')->with('success', 'Login successful');
+            } elseif ($user->role == 'admin') {
+                session()->put('authenticated', true);
+                session()->put('user_id', $user->id);
+                session()->put('user_name', $user->name);
+
+                return redirect()->route('admindash')->with('success', 'Login successful');
             } else {
-                Auth::logout();
-                return redirect()->back()->with('error', 'Please verify your email before logging in.');
+                if ($user->email_verified_at) {
+                    $userId = $user->id;
+                    $cartCount = Cart::where('user_id', $userId)->count();
+
+                    if ($user->status === 'pending') {
+                        $user->update(['status' => 'active']);
+                    }
+                    session()->put('authenticated', true);
+                    session()->put('user_id', $user->id);
+                    session()->put('user_name', $user->name);
+                    session()->put('cart_count', $cartCount);
+
+                    return redirect()->route('landing')->with('success', 'Login successful');
+                } else {
+                    Auth::logout();
+
+                    return redirect()->back()->with('error', 'Please verify your email before logging in.');
+                }
             }
+        } else {
+            return redirect()->back()->with('error', 'Invalid credentials')->withInput();
         }
-    } else {
-        return redirect()->back()->with('error', 'Invalid credentials')->withInput();
     }
-}
 
     public function logout(Request $request)
     {
-  
+
         Auth::logout(); // Clear the user's session
         $request->session()->invalidate(); // Invalidate the session
         $request->session()->regenerateToken();
 
-    return redirect()->route('landing');
+        return redirect()->route('landing');
     }
 
     public function showLinkRequestForm()
@@ -167,7 +170,7 @@ class RegController extends Controller
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user, $password) {
                 $user->forceFill([
-                    'password' => Hash::make($password)
+                    'password' => Hash::make($password),
                 ])->save();
             }
         );

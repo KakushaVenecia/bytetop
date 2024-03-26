@@ -1,18 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\Notifications\PasswordUpdatedEmail;
-use Illuminate\Support\Facades\Auth;
 
+use App\Notifications\PasswordUpdatedEmail;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-     /**
+    /**
      * This function logs in the user.
      *
-     * @param \Illuminate\Http\Request $request The request object.
+     * @param  \Illuminate\Http\Request  $request  The request object.
      * @return \Illuminate\Http\RedirectResponse Redirects the user after login.
      */
     public function updatePassword(Request $request)
@@ -28,7 +28,7 @@ class UserController extends Controller
         $user = Auth::user();
 
         // Check if the current password matches the user's password
-        if (!Hash::check($request->input('current_password'), $user->password)) {
+        if (! Hash::check($request->input('current_password'), $user->password)) {
             return redirect()->back()->withErrors(['current_password' => 'The current password is incorrect.']);
         }
 

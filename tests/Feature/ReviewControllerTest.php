@@ -31,7 +31,6 @@ class ReviewControllerTest extends TestCase
             'rating' => $this->faker->optional()->randomFloat(2, 1, 5),
         ]);
 
-        
         $user = User::first();
 
         // Create a Review instance associated with the ProductDetail and User
@@ -42,20 +41,17 @@ class ReviewControllerTest extends TestCase
             'user_id' => $user->id,
         ]);
 
-
         $replyContent = $this->faker->sentence;
         $response = $this->post(route('product.review.reply', ['reviewId' => $review->id]), [
             'reply_content' => $replyContent,
         ]);
-
-
 
         $response->assertStatus(Response::HTTP_FOUND)
             ->assertSessionHas('success', 'Reply sent successfully!');
 
         $updatedReview = Review::find($review->id);
         $this->assertEquals($replyContent, $updatedReview->admin_reply);
-        
+
         // Assert that the user is redirected to the correct product page
         $response->assertRedirect(route('product.show', ['productId' => $productDetail->id]));
     }

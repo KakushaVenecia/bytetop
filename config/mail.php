@@ -49,7 +49,7 @@ return [
                 'name' => env('MAIL_FROM_NAME', 'Bytetop'), // Specifies the default "from" name.
             ],
         ],
-    
+
         'ses' => [
             'transport' => 'ses',
         ],

@@ -3,8 +3,8 @@
 namespace App\Notifications;
 
 use Illuminate\Auth\Notifications\VerifyEmail as VerifyEmailNotification;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\URL;
 
 class VerifyEmail extends VerifyEmailNotification
 {
@@ -17,4 +17,3 @@ class VerifyEmail extends VerifyEmailNotification
         );
     }
 }
-

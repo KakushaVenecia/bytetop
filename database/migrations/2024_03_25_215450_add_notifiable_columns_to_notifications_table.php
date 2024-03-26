@@ -12,15 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('notifications', function (Blueprint $table) {
-            if (!Schema::hasColumn('notifications', 'notifiable_id')) {
+            if (! Schema::hasColumn('notifications', 'notifiable_id')) {
                 $table->unsignedBigInteger('notifiable_id');
             }
-            if (!Schema::hasColumn('notifications', 'notifiable_type')) {
+            if (! Schema::hasColumn('notifications', 'notifiable_type')) {
                 $table->string('notifiable_type');
             }
         });
-        
-        
+
     }
 
     /**
@@ -32,6 +31,6 @@ return new class extends Migration
             $table->dropColumn('notifiable_id');
             $table->dropColumn('notifiable_type');
         });
-        
+
     }
 };

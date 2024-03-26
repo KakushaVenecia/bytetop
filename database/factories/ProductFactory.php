@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'price' => $this->faker->randomFloat(2, 10, 500), // Adjust the range based on your needs
             'tags' => $this->faker->words(3, true), // Generates three words as tags
             'images' => $this->faker->imageUrl(), // Generates a random image URL
-            'category' => $this->faker->randomElement(['laptop', 'PC', 'accessory']), 
+            'category' => $this->faker->randomElement(['laptop', 'PC', 'accessory']),
             //
         ];
     }

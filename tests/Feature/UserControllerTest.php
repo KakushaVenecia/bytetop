@@ -1,10 +1,9 @@
-<?php 
+<?php
 
 use App\Http\Controllers\UserController;
 use App\Models\User;
 use App\Notifications\PasswordUpdatedEmail;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -43,7 +42,7 @@ class UserControllerTest extends TestCase
         // Assert that the password is updated successfully
         $this->assertDatabaseHas('users', [
             'id' => $user->id,
-            'password' =>  $user->password, //Hash::make('new_password'),
+            'password' => $user->password, //Hash::make('new_password'),
         ]);
 
         // Assert that the user receives the PasswordUpdatedEmail notification

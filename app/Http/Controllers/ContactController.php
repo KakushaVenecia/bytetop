@@ -1,13 +1,11 @@
 <?php
 
-
-
 // app/Http/Controllers/ContactController.php
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Message;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
@@ -15,6 +13,7 @@ class ContactController extends Controller
     {
         return view('contactus');
     }
+
     public function store(Request $request)
     {
         // Validate the form data

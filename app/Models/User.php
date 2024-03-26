@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\CanResetPassword;
@@ -18,7 +17,7 @@ class User extends Authenticatable implements CanResetPassword
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'invited_by', 'status', 'role', 'email_verification_token'
+        'name', 'email', 'password', 'invited_by', 'status', 'role', 'email_verification_token',
     ];
 
     /**

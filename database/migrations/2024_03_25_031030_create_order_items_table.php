@@ -20,7 +20,7 @@ class CreateOrderItemsTable extends Migration
             $table->unsignedInteger('quantity');
             $table->decimal('price', 10, 2);
             $table->string('status')->default('Initiated');
-            $table->uuid('order_identifier'); 
+            $table->uuid('order_identifier');
             $table->timestamps();
         });
     }

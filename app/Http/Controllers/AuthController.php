@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // namespace App\Http\Controllers;
 
@@ -19,7 +19,6 @@
 //         $this->middleware('web');
 //     }
 
-    
 //     public function login(Request $request)
 //     {
 //         $credentials = $request->only('email', 'password');

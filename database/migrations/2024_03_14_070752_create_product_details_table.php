@@ -15,7 +15,7 @@ class CreateProductDetailsTable extends Migration
             $table->decimal('price', 10, 2);
             $table->string('tags');
             $table->string('brand');
-            $table->enum('category', ['Laptops', 'Accessories', 'Computers', 'Monitors', 'All in One Desktops']); 
+            $table->enum('category', ['Laptops', 'Accessories', 'Computers', 'Monitors', 'All in One Desktops']);
             $table->string('image');
             $table->integer('quantity');
             $table->float('rating')->nullable();
@@ -28,4 +28,3 @@ class CreateProductDetailsTable extends Migration
         Schema::dropIfExists('product_details');
     }
 }
-

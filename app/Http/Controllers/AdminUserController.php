@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class AdminUserController extends Controller
 {
@@ -21,6 +20,4 @@ class AdminUserController extends Controller
             return redirect()->back()->with('error', 'User not found.');
         }
     }
-
-   
 }
