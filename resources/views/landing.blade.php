@@ -51,102 +51,28 @@
 </div>
     <h1>Popular Deals</h1>
     <div class="grid-container">
-        <div class="grid-item">
-            <img src="{{asset('images/galaxybook.webp')}}" class="item-image" alt="">
-            <h1 class="body-title">Galaxy Book</h1>
-            <p class="body-content">Get this at only £400.</p>
+      @foreach($categories as $category)
+          @foreach($categoryProducts[$category] as $product)
+              <div class="grid-item">
+                  <img src="{{ asset('storage/images/'.$product->image) }}" class="item-image" alt="{{ $product->name }}">
+                  <h1 class="body-title">{{ $product->name }}</h1>
+                  <p class="body-content">Get this at only £{{ $product->price }}.</p>
+                  <div class="review">
+                    <div class="stars">
+                        <span class="star full">&#9733;</span>
+                        <span class="star full">&#9733;</span>
+                        <span class="star full">&#9733;</span>
+                        <span class="star half">&#9733;</span>
+                        <span class="star empty">&#9733;</span>
+                    </div>
+              </div>
+              <button class="btn btn-add">Add to Cart</button>
+          @endforeach
+      @endforeach
+  </div>
             
-            <div class="review">
-            <div class="stars">
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-                <span class="star half">&#9733;</span>
-                <span class="star empty">&#9733;</span>
-            </div>
-        </div>
-            <button class="btn btn-add">Add to Cart</button>
-        </div>
-        <div class="grid-item">
-            <img src="{{asset('images/Lenovoyoga.webp')}}" class="item-image" alt="">
-            <h1 class="body-title">Lenovo Yoga</h1>
-            <p class="body-content">Get this at only £800.</p>
-
-            <div class="review">
-            <div class="stars">
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-                <span class="star half">&#9733;</span>
-            </div>
-        </div>            
-            <button class="btn btn-add">Add to Cart</button>
-        </div>
-         <div class="grid-item">
-        <img src="{{asset('images/hpenvy.webp')}}" class="item-image" alt="">
-        <h1 class="body-title">HP Envy</h1>
-        <p class="body-content">Get this at only £400.</p>
-        <div class="review">
-            <div class="stars">
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-                <span class="star empty">&#9733;</span>
-                <span class="star empty">&#9733;</span>
-            </div>
-        </div>
-
-        <button class="btn btn-add">Add to Cart</button>
-        </div>
-        <div class="grid-item">
-            <img src="{{asset('images/Lenovoyoga.webp')}}" class="item-image" alt="">
-            <h1 class="body-title">Lenovo Yoga</h1>
-            <p class="body-content">Get this at only £800.</p>
-            <div class="review">
-            <div class="stars">
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-                <span class="star half">&#9733;</span>
-                <span class="star empty">&#9733;</span>
-            </div>
-        </div>
-            <button class="btn btn-add">Add to Cart</button>
-        </div>
-
-        <div class="grid-item">
-            <img src="{{asset('images/hpenvy.webp')}}" class="item-image" alt="">
-            <h1 class="body-title">HP Envy</h1>
-            <p class="body-content">Get this at only £400.</p>
-            <div class="review">
-            <div class="stars">
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-                <span class="star half">&#9733;</span>
-                <span class="star empty">&#9733;</span>
-            </div>
-        </div>
-            <button class="btn btn-add">Add to Cart</button>
-        </div>
-
-        <div class="grid-item">
-            <img src="{{asset('images/galaxybook.webp')}}" class="item-image" alt="">
-            <h1 class="body-title">Galaxy Book</h1>
-            <p class="body-content">Get this at only £400.</p>
-            <div class="review">
-            <div class="stars">
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-                <span class="star full">&#9733;</span>
-
-            </div>
-        </div>
-            <button class="btn btn-add">Add to Cart</button>
-        </div>
-    </div>
+</div>
+   
+    </div> 
     @include('partials.footer')
 <script src="js/landing.js"></script>
