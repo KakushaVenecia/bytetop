@@ -108,6 +108,12 @@ body{
 	border: 0;
 }
 
+
+input.quantity-input {
+    width: 2.5rem;
+    text-align: center;
+}
+
 </style>
 <body>
 @include('partials.navbar')
@@ -201,7 +207,7 @@ body{
 </div>
 </div>
 <button class="color-switcher" data-theme-color-switch>&#127769;</button>
-@include('partials.footer')
+<!-- @include('partials.footer') -->
 </body>
 </html>
 <script>

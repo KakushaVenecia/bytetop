@@ -23,7 +23,9 @@
         <div class="inner-content">
             <h2>Orders</h2>
             <p>Track, return, cancel an order</p>
-            <div class="edit-order" onclick="openPopup('ordersPopup')">See your order history &gt;</div>
+            <div class = "orderhistory" id="track-order-btn" onclick="window.location.href = 'http://127.0.0.1:8000/orderspage';">
+            <p>See your order history></p>
+            </div>
         </div>
     </section>
 
@@ -56,7 +58,7 @@
 
 
 
-
+<!-- 
 <div class="popup" id="ordersPopup">
     <div class="popup-content">
         <span class="close" onclick="closePopup('ordersPopup')">&times;</span>
@@ -83,7 +85,7 @@
             </div>
 
         </div>
-    </div>
+    </div> -->
 
 
 
