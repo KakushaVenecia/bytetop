@@ -7,15 +7,15 @@
 				<h3>Byte<span>Top</span></h3>
 
 				<p class="footer-links">
-					<a href="#" class="link-1">Home</a>
+					<a href="{{ route('landing') }}">Home</a>
 					
-					<a href="#">Track Order</a>
+					<a href="/trackorder">Track Order</a>
 				
 					<a href="/about">About</a>
 					
 					<a href="/blog">Blog</a>
 					
-					<a href="/contactus">Contact Us</a>
+					<a href="/speak-to-us">Contact Us</a>
 				</p>
 
 				<p class="footer-company-name">Bytetop © 2024</p>

@@ -6,7 +6,7 @@
 
 <div class="search">
     <span class="search-icon material-symbols-outlined">search</span>
-    <input class="search-input" type="search" placeholder="Search">
+    <input class="search-input" type="search" placeholder="Search" onkeyup="searchUsers()">
 </div>
 <div class="content">
     <div id="UsersList">
@@ -22,7 +22,7 @@
                     <th class="gender">Action</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="userTableBody">
                 @foreach($users as $user)
                 <tr class="user">
                     <td>{{ $user->name }}</td>
@@ -30,21 +30,36 @@
                     <td>{{ $user->invited_by }}</td>
                     <td>{{ $user->status }}</td>
                     <td>{{ $user->role }}</td>
-                    <td>
-                        @if($user->status === 'pending')
-                            <form action="{{ route('admin.deleteuser', $user->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="button button-delete">Delete</button>
-                            </form>
-                        @endif
-                    </td>
+                    <td>{{-- Action button goes here --}}</td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 </div>
+
+<script>
+    function searchUsers() {
+        var input = document.querySelector('.search-input');
+        var filter = input.value.toUpperCase();
+        var table = document.querySelector('.users_list');
+        var tbody = document.getElementById('userTableBody');
+        var tr = tbody.getElementsByTagName('tr');
+        
+        for (var i = 0; i < tr.length; i++) {
+            var td = tr[i].getElementsByTagName('td')[0];
+            if (td) {
+                var textValue = td.textContent || td.innerText;
+                if (textValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = '';
+                } else {
+                    tr[i].style.display = 'none';
+                }
+            }
+        }
+    }
+</script>
+
 
 
 <style>

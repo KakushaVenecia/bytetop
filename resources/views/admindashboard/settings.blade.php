@@ -14,9 +14,7 @@
                 <div>
 
 
-<div id="settings">
-    <a href="{{ route('admin.invite.form') }}"><button>Invite Admins</button></a>
-        </div>
+
         <div class="tabs">            
             <button class="tablinks" onclick="openTab(event, 'profile')">Profile</button>
             <button class="tablinks" onclick="openTab(event, 'add-bank')">Add Bank</button>

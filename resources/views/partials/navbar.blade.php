@@ -25,14 +25,14 @@
     </ul>
       <ul class="navbar-menu">
         <li class="navbar-item"><a href="/about">About</a></li>
+        {{-- <li class="navbar-item"><a href="/contactus">Contact Us</a></li> --}}
         <li class="navbar-item">
             <form method="post" action="{{ route('search') }}">
                 @csrf
                 <div class="navbar-search">
                     <i class="fas fa-search search-icon"></i>
-                    <input type="text" name="search" class="search-input" placeholder="Search for products..">
+                    <input type="text" name="search" class="search-input" placeholder="Search for products.." required>
                 </div>
-                <button type="submit">Search Now</button>
             </form>
         </li>
           <li class="navbar-item dropdown">

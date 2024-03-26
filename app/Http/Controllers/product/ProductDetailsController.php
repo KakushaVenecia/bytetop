@@ -38,7 +38,7 @@ class ProductDetailsController extends Controller
     {
         $products = ProductDetail::where('category', 'Laptops')
                          ->where('quantity', '>', 1) 
-                         ->paginate(16);
+                         ->paginate(6);
 
     $maxComputerPrice = $products->max('price');
     $minComputerPrice = $products->min('price');

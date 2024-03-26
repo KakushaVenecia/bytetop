@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,7 @@
 <body>
 
 <div class="container">
-                <h5>ORDER <span class="text-primary font-weight-bold">#R86F854G7665</span></h5>
+                <h5>ORDER <span class="text-primary font-weight-bold"></span></h5>
                 <p class="mb-0">Expected Arrival <span>02 April 2024</span></p>
   <div class="row">
 						<div class="hh-grayBox pt45">
@@ -21,7 +21,7 @@
 
 								<div class="order-tracking completed">
 									<span class="is-complete"></span>
-									<p><span>Mon, March 25</span></p>
+									<p><span>Mon, March 27</span></p>
                                     <div class="icon-content">
                                         <img class="icon" src="/images/orderprocessed.png">
                                             <p class="font-weight-bold">Order<br>Processed</p>
@@ -67,4 +67,4 @@
 @include('partials.footer')
 
 </body>
-</html>
+</html> --}}
