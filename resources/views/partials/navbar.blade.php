@@ -31,9 +31,8 @@
                 @csrf
                 <div class="navbar-search">
                     <i class="fas fa-search search-icon"></i>
-                    <input type="text" name="search" class="search-input" placeholder="Search for products..">
+                    <input type="text" name="search" class="search-input" placeholder="Search for products.." required>
                 </div>
-                <button type="submit">Search Now</button>
             </form>
         </li>
           <li class="navbar-item dropdown">

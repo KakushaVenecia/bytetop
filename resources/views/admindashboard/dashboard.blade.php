@@ -11,11 +11,11 @@
                 <h3>SuperAdmin Dashboard</h3>
                 <div>
                 <div class="card-container">
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-icon"><i class="fas fa-chart-line"></i></div>
                 <div class="card-title">Total Sales</div>
                 <div class="card-value">$5000</div>
-            </div>
+            </div> --}}
             <div class="card">
                 <div class="card-icon"><i class="fas fa-box"></i></div>
                 <div class="card-title">Total Products</div>
@@ -56,7 +56,7 @@
                     </td>
                 </tr>
                 @endforeach
-                <td><a href="#" class="btn">View</a></td>
+                <td><a href="{{ route('admin.viewusers') }}" class="btn">View</a></td>
                         </tr>
                     </table>
                 </div>

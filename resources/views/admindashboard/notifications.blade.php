@@ -15,8 +15,8 @@
         </ul>
     </div>
     
-    <div class="inbox-content" style="background-color:red" id="inbox-content">
-        <!-- Messages will be displayed here -->
+    <div class="inbox-content" style="color:rgb(0, 35, 65); background-color:beige"  id="inbox-content">
+        {{-- message should appear here --}}
     </div>
 </div>
 
@@ -29,7 +29,7 @@
                 .then(response => response.json())
                 .then(messages => {
                     inboxContent.innerHTML = ""; // Clear previous messages
-                    const messageList = document.createElement("ul");
+                    const messageList = document.createElement("ol");
                     messages.forEach((message, index) => {
                         const messageItem = document.createElement("li");
                         messageItem.innerHTML = `
