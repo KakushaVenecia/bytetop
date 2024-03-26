@@ -11,6 +11,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Models\Payment;
 use App\Models\User;
+use App\Models\Message;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RegController;
 use App\Http\Controllers\ShippingAddressController;
@@ -107,14 +109,22 @@ Route::get('/admin/all-orders', function () {
     return view('admindashboard.orders', compact('orders', 'orderCount'));
 })->name('admin.vieworders')->middleware('super_admin')->middleware('auth');
 
+Route::put('/admin/orders/{order}', [OrderItemController::class,'approve'])->name('order.approve')->middleware(['admin', 'super_admin']);;
+
 
 Route::get('/admin/settings' , function(){
-    return view ('admindashboard.settings')->middleware('super_admin')->middleware('auth');
+    return view ('admindashboard.settings');
 })->name('admin.viewsettings');
 
 Route::get('/admin/notifications' , function(){
-    return view ('admindashboard.notifications');
+    $messages = Message::all();
+    return view ('admindashboard.notifications', compact('messages'));
 })->name('admin.viewnotifications');
+
+
+Route::get('/messages/fetch', [ContactController::class, 'fetch'])->name('messages.fetch');
+
+
 
 Route::get('/admin/reports' , function(){
     return view ('admindashboard.reports')->middleware('super_admin')->middleware('auth');
@@ -160,11 +170,11 @@ Route::get('/product/{productId}', [ProductDetailsController::class, 'show'])->n
 
 
 
-Route::get('/cartpage', [CartController::class, 'index'])->name('cart');
+Route::get('/cartpage', [CartController::class, 'index'])->name('cart')->middleware('auth');
 Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add')->middleware('auth');
 Route::get('/cart/count', [CartController::class, 'getCartCount'])->name('cart.count');
 Route::get('/cart/subtotal', [CartController::class, 'subtotal'])->name('subtotal');
-Route::post('/cart/update', [CartController::class, 'updateQuantity'])->name('cart.update');
+Route::post('/cart/update', [CartController::class, 'updateQuantity'])->name('cart.update')->middleware('auth');;
 Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.delete');
 
 
@@ -182,9 +192,9 @@ Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'des
 
 
 // Route for submitting the shipping address form
-Route::post('/shipping-address', [ShippingAddressController::class, 'store'])->name('shipping-address.store');
+Route::post('/shipping-address', [ShippingAddressController::class, 'store'])->name('shipping-address.store')->middleware('auth');;
 
-Route::post('/create-order', [OrderItemController::class, 'create'])->name('createorder');
+Route::post('/create-order', [OrderItemController::class, 'create'])->name('createorder')->middleware('auth');;
 
 
 // Landing page routes
@@ -197,9 +207,6 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
 
 
 
@@ -210,29 +217,30 @@ Route::get('/ordersuccess', function () {
 
 
 Route::get('/orderspage', function () {
-    $orders = OrderItem::all();
+    $orders = OrderItem::with('product')->get();
     return view('orderspage' , compact('orders'));
 });
 
 
 Route::get('/trackorder', function () {
     return view('trackorder');
-});
+})->name('trackorder')->middleware('auth');;
 
 Route::get('/verifynumber', function () {
     return view('verifynumber');
 });
 
 
-Route::post('/admin/invite', [InviteController::class, 'invite'])->name('invite.send')->middleware('super_admin')->middleware('auth');
+Route::post('/admin/invite', [InviteController::class, 'invite'])->name('invite.send');
 Route::get('/admin/invite', function () {
     return view('admindashboard.invite');
 })->name('admin.invite.form')->middleware('super_admin')->middleware('auth');;
 
 
-Route::get('/contactus', function(){
-    return view ('contactus');
-});
+
+Route::get('/contactus', [ContactController::class, 'index'])->name('contact.us');
+
+
 
 // PAYMENT ROUTES
 
@@ -241,4 +249,9 @@ Route::get('/account', function () {
     $paymentCards = Payment::where('user_id', $userId)->get();
     return view('account', compact('paymentCards'));
 })->middleware('auth');
-Route::post('/payments', [PaymentController::class, 'store'])->name('add-card-btn');
+Route::post('/payments', [PaymentController::class, 'store'])->name('add-card-btn')->middleware('auth');;
+
+Route::post('/message', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/speak-to-us', function(){
+    return view('speak-to-us');
+});

@@ -268,13 +268,13 @@
                 @else
                     <p class="Card number">No payment card available</p>
                 @endif
-                @dd($paymentCard)
                 <p class="Expiry month">{{ $paymentCard->expiry_month }}</p>
                 <p class="Expiry year">{{ $paymentCard->expiry_year }}</p>
                 <p class="Security code">{{ $paymentCard->security_code }}</p>
                 <p class="Name">{{ $paymentCard->name }}</p>
+        @endforeach
         </div>
-    @endforeach
+    
     
     <hr class="white-line">
     <div class = "information"> 

@@ -28,7 +28,15 @@
 					<td>{{ $order->quantity }}</td>
 					<td>{{ $order->price }}</td>
 					<td>{{ $order->status }}</td>
-					<td>{{ $order->action }}</td>
+					<td>
+						@if ($order->status !== 'Processing')
+						<form method="POST" action="{{ route('order.approve', $order->id) }}">
+							@csrf
+							@method('PUT')
+							<button type="submit" class="btn btn-success">Approve</button>
+						</form>
+						@endif
+					</td>
 				</tr>
 				@endforeach
 			</tbody>

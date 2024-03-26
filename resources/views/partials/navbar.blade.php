@@ -25,6 +25,7 @@
     </ul>
       <ul class="navbar-menu">
         <li class="navbar-item"><a href="/about">About</a></li>
+        {{-- <li class="navbar-item"><a href="/contactus">Contact Us</a></li> --}}
         <li class="navbar-item">
             <form method="post" action="{{ route('search') }}">
                 @csrf

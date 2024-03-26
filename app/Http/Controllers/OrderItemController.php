@@ -5,50 +5,59 @@ namespace App\Http\Controllers;
     use App\Models\Order;
     use App\Models\OrderItem;
     use Illuminate\Http\Request;
+    use App\Models\Cart;
     use Illuminate\Support\Str;
     use App\Models\Notification;
     use App\Models\User;
     use App\Notifications\NewOrderNotification;
 
 
-    
-    
     class OrderItemController extends Controller
     { 
         // Other methods...
     
         public function create(Request $request)
+        {
+            $sessionData = $request->session()->all();
+        
+            // Generate a unique identifier for the order
+            $orderIdentifier = substr(uniqid('order', true), -6);
+        
+            // Your existing logic to create order items
+            foreach ($sessionData['cart']['items'] as $item) {
+                OrderItem::create([
+                    'order_identifier' => $orderIdentifier,
+                    'user_id' => $sessionData['user_id'],
+                    'name' => $item['name'],
+                    'quantity' => $item['quantity'],
+                    'price' => $item['price'],
+                    'status' => 'Initiated'
+                ]);
+            }
+        
+            // Delete cart items from the database
+            Cart::where('user_id', $sessionData['user_id'])->delete();
+        
+            $admins = User::where('role', 'admin')->get();
+            $superAdmins = User::where('role', 'super_admin')->get();
+            
+            foreach ($admins as $admin) {
+                $admin->notify(new NewOrderNotification($orderIdentifier));
+            }
+            
+            foreach ($superAdmins as $superAdmin) {
+                $superAdmin->notify(new NewOrderNotification($orderIdentifier));
+            }
+        
+            return view('ordersuccess');
+        }
+
+public function approve(Order $order)
 {
-    $sessionData = $request->session()->all();
+    $order->update(['status' => 'Processing']);
 
-    // Generate a unique identifier for the order
-    $orderIdentifier = substr(uniqid('order', true), -6);
-
-    // Your existing logic to create order items
-    // Your existing logic to create order items
-    foreach ($sessionData['cart']['items'] as $item) {
-        OrderItem::create([
-            'order_identifier' => $orderIdentifier,
-            'user_id' => $sessionData['user_id'],
-            'name' => $item['name'],
-            'quantity' => $item['quantity'],
-            'price' => $item['price'],
-            'status' => 'Initiated'
-        ]);
-    }
-
-    $admins = User::where('role', 'admin')->get();
-    $superAdmins = User::where('role', 'super_admin')->get();
-    
-    foreach ($admins as $admin) {
-        $admin->notify(new NewOrderNotification($orderIdentifier));
-    }
-    
-    foreach ($superAdmins as $superAdmin) {
-        $superAdmin->notify(new NewOrderNotification($orderIdentifier));
-    }
-
-    return view('ordersuccess');
+    // Redirect back or do any other necessary actions
+    return redirect()->back()->with('success', 'Order approved successfully.');
 }
 
         public function update(Request $request, $order_id, $id)
