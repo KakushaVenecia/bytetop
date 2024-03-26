@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
@@ -12,7 +11,9 @@ class InviteAdminEmail extends Notification
     use Queueable;
 
     protected $token;
+
     protected $password;
+
     protected $inviterName;
 
     /**
@@ -48,10 +49,10 @@ class InviteAdminEmail extends Notification
     {
         return (new MailMessage)
             ->subject('Invitation to Bytetop')
-            ->line('Hello ' . $notifiable->name . ',')
-            ->line('You have been invited to join Bytetop as an admin by ' . $this->inviterName)
-            ->line('Your temporary password is: ' . $this->password)
-            ->action('Login Here', config('app.url') . '/login')
+            ->line('Hello '.$notifiable->name.',')
+            ->line('You have been invited to join Bytetop as an admin by '.$this->inviterName)
+            ->line('Your temporary password is: '.$this->password)
+            ->action('Login Here', config('app.url').'/login')
             ->line('We Hope you will have fun at ByteTop!');
     }
 

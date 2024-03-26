@@ -5,8 +5,8 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Tests\TestCase;
-use Illuminate\Support\Str; // Import Str class
+use Illuminate\Support\Str;
+use Tests\TestCase; // Import Str class
 
 class ProductControllerTest extends TestCase
 {
@@ -18,7 +18,7 @@ class ProductControllerTest extends TestCase
         Storage::fake('public');
 
         $data = [
-            'name' => 'Test Product '. Str::random(6), // update name each time running the test, because name is unique
+            'name' => 'Test Product '.Str::random(6), // update name each time running the test, because name is unique
             'description' => 'Test description',
             'price' => 10.99,
             'tags' => 'tag1, tag2',
@@ -41,10 +41,9 @@ class ProductControllerTest extends TestCase
             'price' => $data['price'],
             'tags' => $data['tags'],
             'category' => $data['category'],
-            
+
             // Add more assertions as needed
         ]);
-
 
         // Assert that the image was stored
         // Storage::disk('public')->assertExists('images/' . $response['image']);

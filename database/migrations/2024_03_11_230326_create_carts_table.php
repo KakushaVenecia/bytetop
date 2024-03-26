@@ -15,7 +15,7 @@ class CreateCartsTable extends Migration
             $table->float('price');
             $table->integer('quantity');
             $table->timestamps();
-            
+
             // Define foreign key constraint for user_id referencing id in users table
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

@@ -18,8 +18,8 @@ class CreateNotificationsTable extends Migration
             $table->string('title')->nullable();
             $table->text('content')->nullable();
             $table->timestamp('read_at')->nullable();
-            $table->unsignedBigInteger('notifiable_id'); 
-            $table->string('notifiable_type'); 
+            $table->unsignedBigInteger('notifiable_id');
+            $table->string('notifiable_type');
             $table->timestamps();
         });
     }

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\ShippingAddress;
+use Illuminate\Http\Request;
 
 class ShippingAddressController extends Controller
 {
@@ -17,7 +17,8 @@ class ShippingAddressController extends Controller
     }
 
     public function store(Request $request)
-    { dd($request);
+    {
+        dd($request);
         // Validate request data
         $validatedData = $request->validate([
             'user_id' => 'required',

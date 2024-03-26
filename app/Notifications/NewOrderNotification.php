@@ -4,8 +4,8 @@ namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class NewOrderNotification extends Notification implements ShouldQueue
 {
@@ -45,8 +45,8 @@ class NewOrderNotification extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->subject('New Order Notification')
-            ->line('A new order has been initialized with the order identifier: ' . $this->orderIdentifier)
-            ->action('View Order', config('app.url') . '/admin/all-orders')
+            ->line('A new order has been initialized with the order identifier: '.$this->orderIdentifier)
+            ->action('View Order', config('app.url').'/admin/all-orders')
             ->line('Thank you for using our application!');
     }
 
@@ -60,7 +60,7 @@ class NewOrderNotification extends Notification implements ShouldQueue
     {
         return [
             'title' => 'New Order Notification',
-            'content' => "A new order has been initialized with the following details:\nOrder Identifier: $this->orderIdentifier\nStatus: Initialized\nAction Required: Yes\nCreated At: " . now(),
+            'content' => "A new order has been initialized with the following details:\nOrder Identifier: $this->orderIdentifier\nStatus: Initialized\nAction Required: Yes\nCreated At: ".now(),
         ];
     }
 }

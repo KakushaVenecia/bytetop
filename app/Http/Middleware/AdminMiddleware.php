@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 
 class AdminMiddleware
 {
@@ -15,12 +14,12 @@ class AdminMiddleware
      */
     public function handle($request, Closure $next)
     {
-         // Check if the user is authenticated
-         if ($request->user()) {
+        // Check if the user is authenticated
+        if ($request->user()) {
             // Check if the user is an admin
             if ($request->user()->role === 'admin') {
                 return $next($request);
-            } 
+            }
             // Check if the user is a super admin
             elseif ($request->user()->role === 'super_admin') {
                 // Redirect super admin to the dashboard

@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Search extends Model
 {
     use HasFactory;
+
     protected $table = 'test';
-    protected $fillable = ['name','description'];
+
+    protected $fillable = ['name', 'description'];
 }
