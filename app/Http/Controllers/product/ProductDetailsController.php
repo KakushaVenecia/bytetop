@@ -70,7 +70,7 @@ class ProductDetailsController extends Controller
             $isInCart[$product->id] = Cart::where('name', $product->name)->exists();
         }
 
-        return view('categories.computers', compact('products', 'maxComputerPrice', 'minComputerPrice', 'allTags', 'isInCart'));
+        return view('categories.Computers', compact('products', 'maxComputerPrice', 'minComputerPrice', 'allTags', 'isInCart'));
     }
 
     public function getAccessories()
