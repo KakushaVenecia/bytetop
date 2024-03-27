@@ -182,7 +182,7 @@ Route::get('/orderspage', function () {
     $orders = OrderItem::where('user_id', $user->id)->get();
 
     return view('orderspage', compact('orders'));
-});
+})->name('orderspage');
 
 
 Route::get('/trackorder', function () {
