@@ -52,7 +52,7 @@ class InviteAdminEmail extends Notification
             ->line('Hello '.$notifiable->name.',')
             ->line('You have been invited to join Bytetop as an admin by '.$this->inviterName)
             ->line('Your temporary password is: '.$this->password)
-            ->action('Login Here', config('app.url').'/login')
+            ->action('Login Here', 'http://165.232.32.166/login')
             ->line('We Hope you will have fun at ByteTop!');
     }
 
