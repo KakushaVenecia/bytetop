@@ -411,11 +411,24 @@ html{
 #dashboard{
   padding:20px;
   height: 100vh;
-  margin-left: 0px;
+  margin-left: 250px;
   background-color: #ffffff;
 }
 
-
+svg{
+width: 20px;
+height: 20px;
+}
+.pagination-links{
+ margin: auto;
+ width: 90%;
+ font-size: 1.2em;
+ font-weight: 400;
+ text-align: right;
+ color: #00668a;
+ align-items: center;
+ background-color: #331200;
+}
 
 
 
@@ -936,4 +949,47 @@ only screen and (max-width: 600px) {
 /* Centered Text */
 .text-center {
   text-align: center;
+}
+
+.pagination-container {
+  text-align: right; /* Align pagination links to the right */
+  margin-top: 20px; /* Adjust top margin as needed */
+}
+
+/* Optional: Adjust the style of pagination links */
+.pagination-container .pagination {
+  display: inline-block;
+  padding-left: 0;
+  margin: 0;
+  border-radius: 4px;
+}
+
+.pagination-container .pagination li {
+  display: inline;
+}
+
+.pagination-container .pagination li a {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  margin-left: -1px;
+  line-height: 1.42857143;
+  color: #007bff;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.pagination-container .pagination li.active a {
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
+}
+
+.pagination-container .pagination li.disabled a {
+  color: #999;
+  pointer-events: none;
+  cursor: not-allowed;
+  background-color: #fff;
+  border-color: #ddd;
 }

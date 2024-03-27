@@ -71,8 +71,8 @@
                     </tbody>
                 </table>
             </div>
-            <div class="d-flex justify-content-end">
-                {{ $products->links() }}
+            <div class="pagination-container">
+                {{ $products->links() }} 
             </div>
         @else
         <div class="no-products" style="margin-top: 10vh">

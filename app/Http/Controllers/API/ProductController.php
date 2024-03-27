@@ -243,7 +243,7 @@ class ProductController extends Controller
         $userCount = User::count();
         $orders = OrderItem::paginate(20);
         $orderCount = OrderItem::count();
-        $products = ProductDetail::paginate(7);
+        $products = ProductDetail::paginate(4);
         $route = route('dashboard');
         $users = User::all();
 
@@ -264,7 +264,7 @@ class ProductController extends Controller
         $userCount = User::count();
         $orders = OrderItem::paginate(20);
         $orderCount = OrderItem::count();
-        $products = ProductDetail::paginate(7);
+        $products = ProductDetail::paginate(4);
         $route = route('dashboard');
         $users = User::all();
 
@@ -281,7 +281,7 @@ class ProductController extends Controller
 
     public function allproducts()
     {
-        $products = ProductDetail::paginate(10);
+        $products = ProductDetail::paginate(5);
 
         $productQuantities = [];
         foreach ($products as $product) {
