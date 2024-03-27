@@ -39,7 +39,7 @@
                 <div class="recentCustomers">
                     <div class="title">
                         <h1> </h1>
-                        <h4>Recent Customers </h4>
+                        <h4>Recent Users </h4>
                     </div>
                     <table>
                         <tr>
