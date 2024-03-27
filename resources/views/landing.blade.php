@@ -35,7 +35,7 @@
       <img src="{{ asset('images/2150706387.jpg') }}" alt="Image 3">
       <div class="text-overlay">
         <h2>Monitors Catalogues</h2>
-        <a color="orange" href="{{ route('Accessories') }}"> View Accessories</a>
+        <a color="orange" href="{{ route('Monitors') }}"> View Monitors</a>
         <p> Best Deals in town</p>
       </div>
     </div>
