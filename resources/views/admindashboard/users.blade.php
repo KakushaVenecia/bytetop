@@ -30,7 +30,15 @@
                     <td>{{ $user->invited_by }}</td>
                     <td>{{ $user->status }}</td>
                     <td>{{ $user->role }}</td>
-                    <td>{{-- Action button goes here --}}</td>
+                    <td>
+                        @if($user->status === 'pending')
+                            <form action="{{ route('admin.deleteuser', $user->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="button button-delete">Delete</button>
+                            </form>
+                        @endif
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
