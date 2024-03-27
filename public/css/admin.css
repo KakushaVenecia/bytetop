@@ -411,7 +411,7 @@ html{
 #dashboard{
   padding:20px;
   height: 100vh;
-  margin-left: 250px;
+  margin-left: 0px;
   background-color: #ffffff;
 }
 
