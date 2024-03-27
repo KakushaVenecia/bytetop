@@ -31,13 +31,13 @@
                     <td>{{ $user->status }}</td>
                     <td>{{ $user->role }}</td>
                     <td>
-                        @if($user->status === 'pending')
+                        {{-- @if($user->status === 'pending' ) --}}
                             <form action="{{ route('admin.deleteuser', $user->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="button button-delete">Delete</button>
                             </form>
-                        @endif
+                        {{-- @endif --}}
                     </td>
                 </tr>
                 @endforeach
