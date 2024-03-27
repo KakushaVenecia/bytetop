@@ -23,7 +23,7 @@
         <div class="inner-content">
             <h2>Orders</h2>
             <p>Track, return, cancel an order</p>
-            <div class = "orderhistory" id="track-order-btn" onclick="window.location.href = 'http://127.0.0.1:8000/orderspage';">
+            <div class="orderhistory" id="track-order-btn" onclick="window.location.href = '{{ route('orderspage') }}';">
             <p>See your order history></p>
             </div>
         </div>
