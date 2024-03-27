@@ -20,7 +20,7 @@
                     <li><a  href="{{ route('admin.viewproducts') }}">Products</a><span class="icon"><i class="fa-solid fa-bag-shopping" style="color:orange"></i></i></span></li>
                     <li><a href="{{ route('admin.viewusers') }}">Users</a><span class="icon"><i class="fa-solid fa-users" style="color:orange"></i></span></li>
                     <li><a href="{{ route('admin.vieworders') }}" >Orders</a><span class="icon"><i class="fa-solid fa-truck-fast" style="color:orange"></i></span></li>
-                    <li><a href="{{ route('admin.viewsettings') }}">Settings</a><span class="icon"><i class="fa-solid fa-gear" style="color:orange"></i></span></li>
+                    {{-- <li><a href="{{ route('admin.viewsettings') }}">Settings</a><span class="icon"><i class="fa-solid fa-gear" style="color:orange"></i></span></li> --}}
                     <li><a href="{{ route('admin.viewnotifications') }}">Notifications</a><span class="icon"><i class="fa-solid fa-envelope" style="color:orange"></i></span></li>  
                     <li><a href="{{ route('landing') }}"> Customer View</a><span class="icon"><i class="fa-solid fa-home" style="color:orange"></i></span></li>                   
                     <form  id="logout-form" action="{{ route('tologout') }}" method="POST">
