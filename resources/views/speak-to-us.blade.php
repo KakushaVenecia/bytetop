@@ -35,8 +35,8 @@
             <label for="name">Contact Number:</label><br>
             <input type="text" name="contact_no" placeholder="Contact Number">
             <br>
-            <label for="name">Message :</label><br>
-            <input type="text-area" name="message" placeholder="Talk to Us">
+            <label for="message">Message Us:</label><br>
+            <textarea id="message" name="message" rows="4" style="width: 100%;" placeholder="Talk to Us"></textarea>
             @if (session()->has('error'))
             <div style="color: red;">{{ session('error') }}</div>
             @endif
