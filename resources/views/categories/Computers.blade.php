@@ -1,10 +1,10 @@
 
     <title>Computers</title>
     <link rel="stylesheet" href="css/styles.css"> 
-    
+    <link rel="stylesheet" href="css/categories.css"> 
 </head>
 <body onload="showComputers()">
-    <link rel="stylesheet" href="css/categories.css"> 
+   
     @include('partials.navbar')
     <h2>Computers</h2>
     <main class="container">
