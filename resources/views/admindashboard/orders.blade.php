@@ -14,8 +14,8 @@
 				<tr>
 					<th>Order ID</th>
 					<th>Product Name</th>
-					<th>Address</th>
-					<th>Date</th>
+					<th>Quantity</th>
+					<th>Price</th>
 					<th>Status</th>
 					<th>Action</th>
 				</tr>
@@ -26,7 +26,7 @@
 					<td>{{ $order->id}}</td>
 					<td>{{ $order->name }}</td>
 					<td>{{ $order->quantity }}</td>
-					<td>{{ $order->price }}</td>
+					<td>£ {{ $order->price }}</td>
 					<td>{{ $order->status }}</td>
 					<td>
 						@if ($order->status !== 'Processing')
