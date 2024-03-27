@@ -12,6 +12,11 @@ This is an ecommerce platform that sells computers and accessories targeting stu
 This project is made by Team 1 for the Team Project Module. 
 
 
+## ADMIN CREDENTIALS
+khanmairaj78@gmail.com
+1234qwer
+
+
 ## Table of Contents
 1. [Installation](#installation)
 2. [Features](#features)
