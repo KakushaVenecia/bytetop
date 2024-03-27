@@ -160,7 +160,7 @@ Route::delete('/orders/{order_id}/items/{id}', [OrderItemController::class, 'des
 // Route for submitting the shipping address form
 Route::post('/shipping-address', [ShippingAddressController::class, 'store'])->name('shipping-address.store')->middleware('auth');
 
-Route::post('/create-order', [OrderItemController::class, 'create'])->name('createorder')->middleware('auth');
+Route::post('/create-order', [OrderItemController::class, 'create'])->name('createorder');
 
 // Landing page routes
 Route::get('/productpage', function () {

@@ -22,7 +22,7 @@
             <span>CONTACT</span>
             <span>US</span>
           </div>
-          <div class="app-contact">CONTACT INFO : mairajkhan@gmail.com</div>
+          <div class="app-contact">CONTACT INFO : mairajkhan78@gmail.com</div>
         </div>
         <div class="screen-body-item">
           <form action="{{ route('contact.store') }}" method="POST">

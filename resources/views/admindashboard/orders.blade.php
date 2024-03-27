@@ -35,12 +35,13 @@
 					<td>{{ $order->status }}</td>
 					<td>
 						@if ($order->status !== 'Processing')
-                            <form method="POST" action="{{ route('order.approve', $order->id) }}">
-                                @csrf
-                                @method('PUT')
-                                <button type="submit" class="btn btn-success">Approve</button>
-                            </form>
-                        @endif
+                        <form method="POST" action="{{ route('order.approve', $order->id) }}">
+                            @csrf
+                            @method('PUT') <!-- Change 'PUT' to 'PATCH' -->
+                            <button type="submit" class="btn btn-success">Approve</button>
+                        </form>
+                    @endif
+
 					</td>
 				</tr>
 				@endforeach

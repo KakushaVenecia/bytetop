@@ -49,13 +49,17 @@ class OrderItemController extends Controller
         return view('ordersuccess');
     }
 
-    public function approve(OrderItem $order)
+        public function approve(Request $request, $id) // Change the parameter to $id
     {
+        // Find the order item by ID
+        $order = OrderItem::findOrFail($id);
+
+        // Update the status of the order item
         $order->update(['status' => 'Processing']);
 
         // Redirect back or do any other necessary actions
         return redirect()->back()->with('success', 'Order approved successfully.');
-    }
+}
 
     public function update(Request $request, $order_id, $id)
     {
