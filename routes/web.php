@@ -86,7 +86,7 @@ Route::get('/admin/all-users', function () {
 })->middleware(['super_admin', 'auth'])->name('admin.viewusers');
 
 Route::get('/admin/all-orders', function () {
-    $orders = OrderItem::paginate(10);
+    $orders = OrderItem::paginate(7);
     $orderCount = OrderItem::count();
 
     return view('admindashboard.orders', compact('orders', 'orderCount'));
