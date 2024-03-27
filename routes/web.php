@@ -86,11 +86,12 @@ Route::get('/admin/all-users', function () {
 })->middleware(['super_admin', 'auth'])->name('admin.viewusers');
 
 Route::get('/admin/all-orders', function () {
-    $orders = OrderItem::all();
+    $orders = OrderItem::paginate(10);
     $orderCount = OrderItem::count();
 
     return view('admindashboard.orders', compact('orders', 'orderCount'));
-})->name('admin.vieworders')->middleware('super_admin')->middleware('auth');
+})->name('admin.vieworders')->middleware(['super_admin', 'auth']);
+
 
 Route::put('/admin/orders/{order}', [OrderItemController::class, 'approve'])->name('order.approve')->middleware(['admin', 'super_admin']);
 
