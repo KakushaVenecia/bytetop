@@ -65,15 +65,21 @@
                     <h3 style="color: blue;">{{ $product->name }}</h3>
                 </a>
                 <div class="product-details">
-                    <p>Brand: {{ $product->brand }}</p>
-                    <p>Description {{ $product->description }}</p>
-                    <p class="product-price">Price: £{{ $product->price }}</p>
+                    <h4>Brand</h4>
+                    <p>{{ $product->brand }}</p>
+                    <h4>Description</h4>
+                    <p class="des">{{ $product->description }}</p>
+                    <h4>Price</h4>
+                    <p class="product-price"> £{{ $product->price }}</p>
+                    <br>
                     @foreach(explode(',', $product->tags) as $tag)
                         <span class="tag">{{ $tag }}</span>
-                    @endforeach       
+                    @endforeach     
+                    <br>  
                     @if($isInCart[$product->id])
                     <p class="text-danger">This product is already in your cart.</p>
                      @else
+                     <br>
                     <form action="{{ route('cart.add') }}" method="POST">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
