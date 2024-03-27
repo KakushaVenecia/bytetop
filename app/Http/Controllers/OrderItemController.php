@@ -49,7 +49,7 @@ class OrderItemController extends Controller
         return view('ordersuccess');
     }
 
-    public function approve(Order $order)
+    public function approve(OrderItem $order)
     {
         $order->update(['status' => 'Processing']);
 
@@ -68,7 +68,7 @@ class OrderItemController extends Controller
         ]);
 
         // Find the order
-        $order = Order::findOrFail($order_id);
+        $order = OrderItem::findOrFail($order_id);
 
         // Find the order item within the order
         $orderItem = OrderItem::where('order_id', $order->id)->findOrFail($id);
@@ -87,7 +87,7 @@ class OrderItemController extends Controller
     public function destroy($order_id, $id)
     {
         // Find the order
-        $order = Order::findOrFail($order_id);
+        $order = OrderItem::findOrFail($order_id);
 
         // Find the order item within the order
         $orderItem = OrderItem::where('order_id', $order->id)->findOrFail($id);

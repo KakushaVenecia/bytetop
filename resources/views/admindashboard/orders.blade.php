@@ -6,6 +6,11 @@
 
 <div class="content">
 <div id="orders">
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
     <h1>Orders</h1><h2>{{ $orderCount }} orders found </h2>
     <table class="shop_table_my_account_orders">
 
@@ -30,12 +35,12 @@
 					<td>{{ $order->status }}</td>
 					<td>
 						@if ($order->status !== 'Processing')
-						<form method="POST" action="{{ route('order.approve', $order->id) }}">
-							@csrf
-							@method('PUT')
-							<button type="submit" class="btn btn-success">Approve</button>
-						</form>
-						@endif
+                            <form method="POST" action="{{ route('order.approve', $order->id) }}">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" class="btn btn-success">Approve</button>
+                            </form>
+                        @endif
 					</td>
 				</tr>
 				@endforeach
