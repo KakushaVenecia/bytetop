@@ -97,7 +97,7 @@ color: #331200;
   margin: 10px;
   border: 1px solid #ddd;
   border-radius: 10px;
-  max-width: calc(25% - 20px); /* Maximum width for each product */
+  max-width: calc(25% - 20px)!important; /* Maximum width for each product */
   
 }
 .tag {
