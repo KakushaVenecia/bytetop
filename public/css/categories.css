@@ -84,23 +84,23 @@ color: #331200;
 }
 
 .products {
-flex: 1; /* This will make .products expand to fill the remaining space */
-display: flex;
-flex-wrap: wrap;
-justify-content: space-between;
-margin-bottom: 20px;
-text-align: center;
-padding-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  text-align: center;
+  padding-bottom: 10px;
 }
 .product {
-flex: 1 0 calc(25% - 20px); /* Four products per row */
-margin: 10px;
-border: 1px solid #ddd;
-border-radius: 10px;
+  flex: 1 0 calc(25% - 20px); /* Four products per row */
+  margin: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  max-width: calc(25% - 20px); /* Maximum width for each product */
 }
 
 .product:last-child {
-flex: 1 0 calc(25% - 20px); /* Adjusting last child to occupy 25% width */
+  width: auto; /* Allow the last product to adjust width as per the content */
+  margin-right: 0; /* Remove right margin to prevent overflow */
 }
 
 .product img {
