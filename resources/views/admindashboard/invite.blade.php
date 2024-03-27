@@ -6,22 +6,25 @@
     <title>Create Product</title>
 </head>
 <body>
-   <div class="container">
+    <div class="container">
         <h1>Invite Admin</h1>
         <form action="{{ route('invite.send') }}" method="POST">
-        @csrf
-        <div>
-            <label for="name">Name: </label>
-            <input type="text" id="name" name="name" placeholder="Name"  required="" style="    width: 300px;">
-        </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Email" required ="" style="    width: 300px;">
-        </div>
-        <button type="submit">Invite</button>
-    </form>
-   </div> 
-
+            @csrf
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Name" required="" style="width: 300px;">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Email" required="" style="width: 300px;">
+                <br>
+                @error('email')
+                    <span style="color: red;">{{ $message }}</span>
+                @enderror
+            </div>
+            <button type="submit">Invite</button>
+        </form>
+    </div>
     <style>
         body {
     font-family: 'Poppins', sans-serif;

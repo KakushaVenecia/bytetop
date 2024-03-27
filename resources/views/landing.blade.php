@@ -57,6 +57,7 @@
             <img src="{{ asset('storage/images/'.$product->image) }}" class="item-image" alt="{{ $product->name }}">
             <h1 class="body-title">{{ $product->name }}</h1>
             <p class="body-content">Get this at only £{{ $product->price }}.</p>
+            <br>
             <div class="review">
                 <div class="stars">
                     <span class="star full">&#9733;</span>
@@ -66,7 +67,10 @@
                     <span class="star empty">&#9733;</span>
                 </div>
             </div>
+            <br>
             <a href="{{ route('Laptops') }}" class="btn btn-add">View All Categories</a>
+            <br>
+            <br>
         </div>
     @endforeach
 @endforeach

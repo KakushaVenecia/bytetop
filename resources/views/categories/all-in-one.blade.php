@@ -67,7 +67,7 @@
             <div class="product-details">
                 <p>Brand: {{ $product->brand }}</p>
                 <p>Description {{ $product->description }}</p>
-                <p class="product-price">Price: ${{ $product->price }}</p>
+                <p class="product-price">Price: £{{ $product->price }}</p>
                 @foreach(explode(',', $product->tags) as $tag)
                     <span class="tag">{{ $tag }}</span>
                 @endforeach       
