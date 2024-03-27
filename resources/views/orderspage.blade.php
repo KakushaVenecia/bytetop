@@ -32,7 +32,7 @@
                     @if ($order->status === 'Initiated')
                       <button id="track-order-btn">
                         <a href="{{ route('trackorder', $order->id) }}">
-                            <i class="fa-solid fa-truck"></i>
+                            <i style="color: black" class="fa-solid fa-truck"></i>
                             <p style="color: black">TRACK ORDER</p>
                    
   
