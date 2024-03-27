@@ -215,7 +215,7 @@ You are free to code. Just remember to create your branch in order to work and m
   - MySQL
 
 - Hosting:
-  - Aston University Hosting
+  - Digital Ocean
 
 ## Contributing
 
