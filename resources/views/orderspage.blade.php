@@ -33,7 +33,7 @@
                       <button id="track-order-btn">
                         <a href="{{ route('trackorder', $order->id) }}">
                             <i class="fa-solid fa-truck"></i>
-                            <p>TRACK ORDER</p>
+                            <p style="color: black">TRACK ORDER</p>
                    
   
                         </a>
