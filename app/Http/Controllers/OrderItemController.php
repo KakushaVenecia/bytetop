@@ -38,13 +38,13 @@ class OrderItemController extends Controller
         $admins = User::where('role', 'admin')->get();
         $superAdmins = User::where('role', 'super_admin')->get();
 
-        foreach ($admins as $admin) {
-            $admin->notify(new NewOrderNotification($orderIdentifier));
-        }
+        // foreach ($admins as $admin) {
+        //     $admin->notify(new NewOrderNotification($orderIdentifier));
+        // }
 
-        foreach ($superAdmins as $superAdmin) {
-            $superAdmin->notify(new NewOrderNotification($orderIdentifier));
-        }
+        // foreach ($superAdmins as $superAdmin) {
+        //     $superAdmin->notify(new NewOrderNotification($orderIdentifier));
+        // }
 
         return view('ordersuccess');
     }
