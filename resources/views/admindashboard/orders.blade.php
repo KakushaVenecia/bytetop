@@ -51,6 +51,20 @@
 <div>
 
 <style>
+        svg{
+width: 20px !important;
+height: 20px!important;
+}
+.pagination-links{
+ margin: auto;
+ width: 90%;
+ font-size: 1.2em;
+ font-weight: 400;
+ text-align: right;
+ color: #00668a;
+ align-items: center;
+ background-color: #331200;
+}
 	{
     margin: 0;
     padding: 0;
