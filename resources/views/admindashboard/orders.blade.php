@@ -23,7 +23,7 @@
 			<tbody>
 				@foreach($orders as $order)
 				<tr>
-					<td>{{ $order->id}}</td>
+                    <td>{{ $order->order_identifier}}</td>
 					<td>{{ $order->name }}</td>
 					<td>{{ $order->quantity }}</td>
 					<td>£ {{ $order->price }}</td>
