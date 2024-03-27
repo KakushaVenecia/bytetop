@@ -7,7 +7,7 @@
 				<h3>Byte<span>Top</span></h3>
 
 				<p class="footer-links">
-					<a href="{{ route('landing') }}">Home</a>
+					<a href="/">Home</a>
 					
 					<a href="/trackorder">Track Order</a>
 				
