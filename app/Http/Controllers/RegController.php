@@ -90,13 +90,7 @@ class RegController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            if ($user->role == 'super_admin') {
-                session()->put('authenticated', true);
-                session()->put('user_id', $user->id);
-                session()->put('user_name', $user->name);
-
-                return redirect()->route('admindash')->with('success', 'Login successful');
-            } elseif ($user->role == 'admin') {
+            if ($user->role == 'super_admin'|| $user->role == 'super_admin') {
                 session()->put('authenticated', true);
                 session()->put('user_id', $user->id);
                 session()->put('user_name', $user->name);
