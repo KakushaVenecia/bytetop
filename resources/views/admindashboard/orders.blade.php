@@ -43,6 +43,10 @@
 		</table>
 	</tbody>
 </table>
+<div class="pagination-container">
+    {{ $orders->links() }} 
+</div>
+
 </div>
 <div>
 
