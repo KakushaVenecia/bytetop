@@ -99,7 +99,7 @@ color: #331200;
 }
 
 .product:last-child {
-  width: auto; /* Allow the last product to adjust width as per the content */
+  max-width: calc(25% - 20px); /* Allow the last product to adjust width as per the content */
   margin-right: 0; /* Remove right margin to prevent overflow */
 }
 
