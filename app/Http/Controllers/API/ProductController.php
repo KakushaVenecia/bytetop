@@ -281,7 +281,7 @@ class ProductController extends Controller
 
     public function allproducts()
     {
-        $products = ProductDetail::paginate(5);
+        $products = ProductDetail::paginate(3);
 
         $productQuantities = [];
         foreach ($products as $product) {
