@@ -1,6 +1,5 @@
 @extends('admindashboard.layout')
 @section('title', 'Products')
-
 @section('content')
 
             <h1 style="text-align: center">Products</h1>
@@ -80,4 +79,21 @@
         </div>
         @endif
     </div>
+
+    <style>
+        svg{
+width: 20px !important;
+height: 20px!important;
+}
+.pagination-links{
+ margin: auto;
+ width: 90%;
+ font-size: 1.2em;
+ font-weight: 400;
+ text-align: right;
+ color: #00668a;
+ align-items: center;
+ background-color: #331200;
+}
+    </style>
 @endsection
