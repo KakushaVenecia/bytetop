@@ -20,9 +20,9 @@
             Just click on the link in the email to complete your signup.
             If you don't see it, please <label> check your spam </label> folder. </p>
         <p>
-            Still can't find the email? No problem.
+            {{-- Still can't find the email? No problem.
         </p>
-        <a class="button" href="mailto:member@email.com">Resend Verification Email</a>
+        <a class="button" href="mailto:member@email.com">Resend Verification Email</a> --}}
     </div>
 </body>
 </html>

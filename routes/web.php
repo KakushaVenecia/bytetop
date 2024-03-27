@@ -178,10 +178,15 @@ Route::get('/ordersuccess', function () {
 })->name('ordersuccess');
 
 Route::get('/orderspage', function () {
-    $orders = OrderItem::with('product')->get();
+    // Retrieve the authenticated user
+    $user = Auth::user();
+    
+    // Fetch orders belonging to the authenticated user
+    $orders = $user->orders()->with('product')->get();
 
     return view('orderspage', compact('orders'));
-});
+})->middleware('auth');
+
 
 Route::get('/trackorder', function () {
     return view('trackorder');
