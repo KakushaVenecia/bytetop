@@ -32,8 +32,9 @@
                 <div class="card-value">{{ $orderCount }}</div>
             </div>
         </div>
-        <div id="settings" style="margin-top: 20px; text-align:center;>
-            <a href="{{ route('admin.invite.form') }}"><button>Invite Admins</button></a>
+        <div id="settings" style="margin-top: 20px; text-align:center;">
+        <button><a href="{{ route('admin.invite.form') }}">Invite Admins</a></button>
+
                 </div>
                 <div class="recentCustomers">
                     <div class="title">

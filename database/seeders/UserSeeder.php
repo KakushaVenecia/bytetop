@@ -20,16 +20,16 @@ class UserSeeder extends Seeder
         User::upsert([
             [
                 'name' => 'Venecia Kakusha',
-                'email' => 'cvenee@gmail.com',
-                'password' => bcrypt($password),
+                'email' => 'bytetop@gmail.com',
+                'password' =>bcrypt(12345678),
                 'role' => 'super_admin',
                 'status' => 'active',
                 'email_verification_token' => $token,
             ],
             [
                 'name' => 'Venecia Kakusha',
-                'email' => 'kakushavenecia@gmail.com',
-                'password' => bcrypt($password),
+                'email' => 'venecia@gmail.com',
+                'password' => bcrypt(12345678),
                 'role' => 'super_admin',
                 'status' => 'active',
                 'email_verification_token' => $token,
