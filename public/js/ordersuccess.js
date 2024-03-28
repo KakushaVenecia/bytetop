@@ -19,7 +19,7 @@ $('.order').click(function (e) {
       // Your logic for placing the order...
       
       // Redirect to orders page
-      window.location.href = 'http://127.0.0.1:8000/orderspage';
+      window.location.href = 'http://165.232.32.166/orderspage';
     });
   });
   
